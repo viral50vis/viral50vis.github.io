@@ -1,0 +1,5 @@
+spotipy
+jupyterlab
+numpy
+matplotlib
+pandas
