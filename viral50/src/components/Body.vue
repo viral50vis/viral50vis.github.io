@@ -2,36 +2,26 @@
   <div class="body">
     <h1>{{ heading }}</h1>
     <h2>{{ subtitle }}</h2>
-    <div id="country-list">
-      <h4>Countries</h4>
-      <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">        
-        <Country
-           v-for="country in countries" v-bind:key="country.id"
-           v-bind:name="country">
-        </Country>
-      </div>
-    </div>
+    <Countries>
+    </Countries>
   </div>
 </template>
 
 <script>
-import countries from '../assets/countries.json'
-import Country from './Country.vue'
+import Countries from './Countries.vue'
 
 export default {
   name: 'Body',
   props: {
     heading: String,
-    subtitle: String
+    subtitle: String,
   },
   data: function(){
     return {
-      countries: countries,
-      selected: -1
     }
   },
   components: {
-    Country
+    Countries
   }
 }
 </script>

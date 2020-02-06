@@ -1,7 +1,9 @@
 <template> 
   <div class="country-container">
-    <label class="btn btn-block country">
-      <input v-bind:value="checked" type="radio" name="countries">{{name}}
+    <label class="btn btn-block country"
+        v-on:click="updateSelected">
+          <input type="radio" name="countries">
+      {{name}}
     </label>
   </div>
   </template>
@@ -11,9 +13,15 @@ export default {
   name: 'Country',
   props: {
     name: String,
+    id: Number
   },
   data: function(){
-    return {checked: false}
+    return {}
+  },
+  methods: {
+    updateSelected: function(event){
+      this.$emit('selected', event, this.id);
+    }
   }
 }
 </script>
@@ -21,7 +29,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-/* Fill parent component */ 
+/* Fill parent component width */ 
 .country-container {
   width: 100%;
   background-color: #17201e;
