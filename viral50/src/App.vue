@@ -1,17 +1,17 @@
 <template>
   <div id="app" class="container-fluid">
     <!-- img alt="Vue logo" src="./assets/logo.png"-->
-    <HelloWorld heading="Viral 50" subtitle="Visualizing Spotify data from Viral 50 lists"/>
+    <Body heading="Viral 50" subtitle="Visualizing Spotify data from Viral 50 lists"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Body from './components/Body.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Body
   }
 }
 </script>

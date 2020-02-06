@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="body">
     <h1>{{ heading }}</h1>
     <h2>{{ subtitle }}</h2>
     <div id="country-list">
@@ -19,7 +19,7 @@ import countries from '../assets/countries.json'
 import Country from './Country.vue'
 
 export default {
-  name: 'HelloWorld',
+  name: 'Body',
   props: {
     heading: String,
     subtitle: String
