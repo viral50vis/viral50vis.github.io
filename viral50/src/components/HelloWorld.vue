@@ -3,8 +3,8 @@
     <h1>{{ heading }}</h1>
     <h2>{{ subtitle }}</h2>
     <div id="country-list">
-      <div class="list-group">
-        <h4>Countries</h4>
+      <h4>Countries</h4>
+      <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">        
         <Country
            v-for="country in countries" v-bind:key="country.id"
            v-bind:name="country">
@@ -41,9 +41,6 @@ export default {
 h1 {
   font-size: 10vw;
   font-weight: bold;
-}
-h3 {
-  margin-top: 0;
 }
 ul {
   list-style-type: none;

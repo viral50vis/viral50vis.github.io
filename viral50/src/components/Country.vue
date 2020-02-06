@@ -1,10 +1,8 @@
 <template> 
-  <div>
-    <a href="#" class="list-group-item list-group-item-action country"
-            v-bind:class="{active: isActive}"
-            v-on:click="isActive=!isActive">
-            {{name}}
-    </a>
+  <div class="country-container">
+    <label class="btn btn-block country">
+      <input v-bind:value="checked" type="radio" name="countries">{{name}}
+    </label>
   </div>
   </template>
 
@@ -13,36 +11,48 @@ export default {
   name: 'Country',
   props: {
     name: String,
-    key: Number
   },
   data: function(){
-    return {isActive: false}
+    return {checked: false}
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.country{
+
+/* Fill parent component */ 
+.country-container {
+  width: 100%;
   background-color: #17201e;
-  border: 1px solid rgba(0,0,0, 0.125);
 }
 
+#country-list .country {
+  background-color: #17201e;
+  border: none;
+  color: #42b983;
+  width: 100%;
+  box-shadow: none;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  margin-bottom: 0;
+  cursor: pointer;
+}
 
-#country-list .country.active{
+#country-list .country.active {
   background-color: rgb(47, 70, 52) !important;
   color: #42b983;
+  
 }
 
-#country-list .country:hover{
+#country-list .country:hover {
   background-color: #202e23;
   color: #42b983;
 }
-#country-list .country:active {
-  background-color: rgb(47, 70, 52);
-  color: #42b983;
-}
-#country-list .country:visited{
-  color: #42b983;
+
+.country > input[type=radio] {
+  position: absolute;
+  clip: rect(0,0,0,0);
+  pointer-events: none;
 }
 </style>
