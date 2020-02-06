@@ -25,7 +25,10 @@ export default {
     subtitle: String
   },
   data: function(){
-    return {countries: countries}
+    return {
+      countries: countries,
+      selected: -1
+    }
   },
   components: {
     Country
@@ -56,21 +59,5 @@ a {
 
 #country-list{
   width: 15%;
-}
-
-.country{
-  background-color: #17201e;
-}
-#country-list .country:hover{
-  background-color: #202e23;
-  color: #42b983;
-}
-#country-list .country:active{
-  background-color: #fff;
-  /*background-color: rgb(47, 70, 52);*/
-  color: #42b983;
-}
-#country-list .country:visited{
-  color: #42b983;
 }
 </style>

@@ -12,7 +12,8 @@
 export default {
   name: 'Country',
   props: {
-    name: String
+    name: String,
+    key: Number
   },
   data: function(){
     return {isActive: false}
@@ -24,7 +25,15 @@ export default {
 <style scoped>
 .country{
   background-color: #17201e;
+  border: 1px solid rgba(0,0,0, 0.125);
 }
+
+
+#country-list .country.active{
+  background-color: rgb(47, 70, 52) !important;
+  color: #42b983;
+}
+
 #country-list .country:hover{
   background-color: #202e23;
   color: #42b983;
