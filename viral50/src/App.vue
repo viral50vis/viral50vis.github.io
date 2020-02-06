@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Visualizing Spotify data from Viral 50 lists"/>
+  <div id="app" class="container-fluid">
+    <!-- img alt="Vue logo" src="./assets/logo.png"-->
+    <HelloWorld heading="Viral 50" subtitle="Visualizing Spotify data from Viral 50 lists"/>
   </div>
 </template>
 
@@ -22,7 +22,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 2%;
+  color: #85d6eb; /*2c3e50*/
+  background-color: #07100e;
+  padding-top: 2%;
 }
 </style>
