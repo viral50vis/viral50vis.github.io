@@ -3,3 +3,4 @@ jupyterlab
 numpy
 matplotlib
 pandas
+bs4
