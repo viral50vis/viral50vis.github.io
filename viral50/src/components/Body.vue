@@ -32,6 +32,9 @@ h1 {
   font-size: 10vw;
   font-weight: bold;
 }
+h2 {
+  font-size: 2.5vw;
+}
 ul {
   list-style-type: none;
   padding: 0;

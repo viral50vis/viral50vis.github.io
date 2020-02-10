@@ -17,7 +17,7 @@ import countries from '../assets/countries.json'
 import Country from './Country.vue'
 
 export default {
-  name: 'Body',
+  name: 'Countries',
   props: {
     heading: String,
     subtitle: String
