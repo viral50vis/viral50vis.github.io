@@ -1,12 +1,20 @@
 <template>
-  <div id="country-list">
+  <div id="countries-container">
     <h4>Countries</h4>
     <span>Selected ID: {{selectedId || 'None'}}</span>
-    <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">        
+    <div>
+      <div class="md-form active-purple-2 mb-3">
+        <input id="country-search" class="form-control" type="text" 
+              placeholder="Search" aria-label="Search" v-model="searchTerm">
+      </div>
+    </div>
+    <div id="country-list"
+    class="btn-group-vertical btn-group-toggle" data-toggle="buttons">        
       <Country
          @selected="updateSelected"
-         v-for="(country, id) in countries" v-bind:key="id"
-         v-bind:name="country" v-bind:id="id">
+         v-for="(country) in filteredCountries" v-bind:key="country.id"
+         v-bind:name="country.name" v-bind:id="country.id"
+         v-bind:selectedId="selectedId">
       </Country>
     </div>
   </div>
@@ -17,15 +25,20 @@ import countries from '../assets/countries.json'
 import Country from './Country.vue'
 
 export default {
-  name: 'Body',
+  name: 'Countries',
   props: {
-    heading: String,
-    subtitle: String
   },
   data: function(){
     return {
       countries: countries,
       selectedId: null,
+      searchTerm: ""
+    }
+  },
+  computed:{
+    filteredCountries(){
+      let filter = new RegExp(this.searchTerm, 'i');
+      return this.countries.filter(c => c.name.match(filter));
     }
   },
   methods: {
@@ -34,7 +47,7 @@ export default {
     }
   },
   components: {
-    Country
+    Country,
   }
 }
 </script>
@@ -42,13 +55,58 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-#country-list{
-  width: 15%;
+#countries-container{
+  width: 15vw;
+  max-height: 100%;
 }
+
+#countries-container > * {
+  display: flex;
+  flex-direction: column;
+}
+
+h4 {
+  font-size: 2.5vw;
+}
+
+span {
+  font-size: 1.5vw;
+}
+
+#country-search {
+  background-color: #17201e;
+  border: none;
+  color: #42b983;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+.mb-3{
+  margin-bottom: 0.1rem!important;
+}
+
+#country-list {
+  overflow-y: auto;
+  max-height: 50vh;
+  display: block;
+}
+
+/* Scroll bar */
+#country-list::-webkit-scrollbar {
+    width: 12px;
+}
+#country-list::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #42b98333;
+    border-radius: 3px;
+}
+#country-list::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px #42b98350; 
+}
+
 .country-container:first-of-type{
-  border-radius: 10vw;
+  border-radius: 5em;
 }
 .country-container:last-of-type{
-  border-radius: 10vw;
+  border-radius: 5em;
 }
 </style>
