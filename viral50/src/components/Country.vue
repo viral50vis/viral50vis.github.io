@@ -51,7 +51,6 @@ export default {
   padding-bottom: 0.5vw;
   margin-bottom: 0;
   cursor: pointer;
-  display: list-item;
 }
 
 .country-container .country.active {

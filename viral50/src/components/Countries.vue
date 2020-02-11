@@ -90,6 +90,19 @@ span {
   display: block;
 }
 
+/* Scroll bar */
+#country-list::-webkit-scrollbar {
+    width: 12px;
+}
+#country-list::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #42b98333;
+    border-radius: 3px;
+}
+#country-list::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px #42b98350; 
+}
+
 .country-container:first-of-type{
   border-radius: 5em;
 }
