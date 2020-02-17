@@ -1,0 +1,5 @@
+,danceability,energy,key,loudness,mode,speechiness,acousticness,instrumentalness,liveness,valence,tempo,time_signature
+mean,0.2,0.943,9.0,-8.217,1.0,0.0544,0.0125,0.0,0.139,0.778,203.243,4.0
+std,,,,,,,,,,,,
+min,0.2,0.943,9.0,-8.217,1.0,0.0544,0.0125,0.0,0.139,0.778,203.243,4.0
+max,0.2,0.943,9.0,-8.217,1.0,0.0544,0.0125,0.0,0.139,0.778,203.243,4.0
