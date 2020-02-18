@@ -1,6 +1,0 @@
-spotipy
-jupyterlab
-numpy
-matplotlib
-pandas
-bs4
