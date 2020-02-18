@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Copy Me</title>
-
-
+    <title>Viral50</title>
     <link
       rel="stylesheet"
       href="https://code.getmdl.io/1.3.0/material.green-orange.min.css"
@@ -17,70 +15,149 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <link rel="stylesheet" type="text/css" href="css/modal.css" />
-    
   </head>
   <body>
-
-    
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
           <span class="mdl-layout-title">Viral50</span>
-   
         </div>
       </header>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Viral50</span>
         <nav class="mdl-navigation">
-          <span id="about-button" class="mdl-navigation__link" href="">About</span  >
-          <span id="background-button" class="mdl-navigation__link" href="">Background</span>
-          <span id="team-button" class="mdl-navigation__link" href="">Team</span>
+          <span id="about-button" class="mdl-navigation__link" href=""
+            >About</span
+          >
+          <span id="background-button" class="mdl-navigation__link" href=""
+            >Background</span
+          >
+          <span id="team-button" class="mdl-navigation__link" href=""
+            >Team</span
+          >
         </nav>
       </div>
       <main class="mdl-layout__content">
-        <div class="page-content"><!-- Your content goes here --></div>
+        <div class="page-content">
+          <div id="about-modal" class="modal-content">
+            <div class="modal-header">
+              <h4>About</h4>
+              <span class="about-close">&times;</span>
+            </div>
+            <div class="modal-body">
+              This is the about modal
+            </div>
+          </div>
+
+          <div id="background-modal" class="modal-content">
+            <div class="modal-header">
+              <h4>Background</h4>
+              <span class="background-close">&times;</span>
+            </div>
+            <div class="modal-body">
+              This is the background modal
+            </div>
+          </div>
+
+          <div id="team-modal" class="modal-content">
+            <div class="modal-header">
+              <h4>The team</h4>
+              <span class="team-close">&times;</span>
+            </div>
+            <div class="modal-body">
+              This is the team modal
+            </div>
+          </div>
+          <div id="overlay"></div>
+
+          <!-- START ATTR LIST -->
+          <div id="attr-list-container">
+            <button
+              id="demo-menu-lower-left"
+              class="mdl-button mdl-js-button mdl-button--icon"
+            >
+              <i class="material-icons">more_vert</i>
+            </button>
+
+            <ul
+              id="attr-list-items"
+              class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+              for="demo-menu-lower-left"
+            >
+              <li class="mdl-menu__item">Some Action</li>
+              <li class="mdl-menu__item">Yet Another Action</li>
+            </ul>
+          </div>
+          <!-- END ATTR LIST -->
+
+          <div class="mdl-grid world-grid">
+            <div class="mdl-cell mdl-cell--3-col">
+              <div class="mdl-card wide-card mdl-shadow--4dp">
+                <!-- LIST
+                <div
+                  id="list-wrapper"
+                  class="mdl-card__media full-media-height"
+                >
+                  <div class="search-bar">
+                    <div class="icon">
+                      <i class="material-icons">search</i>
+                    </div>
+                    <div class="bar">
+                      <input class="search" type="text" placeholder="Search" />
+                      <span></span>
+                    </div>
+                  </div>
+                  <ul id="list" class="mdl-list list"></ul>
+                </div>
+                -->
+              </div>
+            </div>
+            <div class="mdl-cell mdl-cell--9-col">
+              <div class="mdl-card wide-card mdl-shadow--4dp">
+                <div class="mdl-card__media full-media-height">
+                  <div id="world"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mdl-grid slider-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+              <div class="mdl-card wide-card mdl-shadow--4dp">
+                <div class="mdl-card__media full-media-height">
+                  <input
+                    id="slider"
+                    type="range"
+                    min="0"
+                    max="155"
+                    value="155"
+                    step="1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
-
-
-        <div id="about-modal" class="modal-content">
-          <div class="modal-header">
-            <h4>About</h4>
-            <span class="about-close">&times;</span>
-          </div>
-          <div class="modal-body">
-            This is the about modal
-          </div>
-        </div>
-
-        <div id="background-modal" class="modal-content">
-          <div class="modal-header">
-            <h4>Background</h4>
-            <span class="background-close">&times;</span>
-          </div>
-          <div class="modal-body">
-            This is the background modal
-          </div>
-        </div>
-
-        <div id="team-modal" class="modal-content">
-          <div class="modal-header">
-            <h4>The team</h4>
-            <span class="team-close">&times;</span>
-          </div>
-          <div class="modal-body">
-            This is the team modal
-          </div>
-        </div>
-        <div id="overlay"></div>
-        
 
     <!-- Scripts -->
     <script src="https://code.getmdl.io/1.1.1/material.min.js"></script>
-    <script src="js/another-file.js"></script>
-    <script src="js/main.polyfills.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"></script>
+
+    <!-- Utils -->
+    <script src="js/utils.js"></script>
+
+    <!-- World map -->
+    <script src="js/worldmap.js"></script>
+
+    <!-- Time slider -->
+    <script src="js/timeslider.js"></script>
+
+    <!-- Load data -->
+    <script src="js/data_loader.js"></script>
     <script src="js/nav.js"></script>
+    <script src="js/attr_list.js"></script>
   </body>
 </html>

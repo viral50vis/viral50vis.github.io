@@ -1,0 +1,37 @@
+.world-grid {
+  height: 60%;
+
+  .mdl-cell {
+    .mdl-card {
+      width: 100%;
+      height: 100%;
+
+      .mdl-card__media {
+        height: 100%;
+        background-color: white;
+
+        #world {
+          height: 100%;
+
+          svg {
+            width: 100%;
+            height: 100%;
+            background-color: #535353;
+          }
+        }
+      }
+    }
+  }
+}
+
+.defaultCountry {
+  fill: #121212;
+  stroke: #b3b3b3;
+  stroke-width: 0.1;
+}
+
+.countryIsInCurrentData {
+  fill: #1db954;
+  stroke: #121212;
+  stroke-width: 0.1;
+}
