@@ -22,31 +22,34 @@ aboutButton.onclick = function () {
   toggleDrawer();
   aboutModal.style.display = "block";
   overlay.style.display = "block";
-}
+};
+
 backgroundButton.onclick = function () {
   toggleDrawer();
-  backgroundModal.style.display = "block"
+  backgroundModal.style.display = "block";
   overlay.style.display = "block";
-}
+};
+
 teamButton.onclick = function () {
   toggleDrawer();
   teamModal.style.display = "block";
   overlay.style.display = "block";
-}
-
+};
 
 aboutSpan.onclick = function () {
   aboutModal.style.display = "none";
   overlay.style.display = "none";
-}
+};
+
 backgroundSpan.onclick = function () {
   backgroundModal.style.display = "none";
   overlay.style.display = "none";
-}
+};
+
 teamSpan.onclick = function () {
   teamModal.style.display = "none";
   overlay.style.display = "none";
-}
+};
 
 overlay.onclick = function (event) {
   console.log("overlay happening");
@@ -54,4 +57,4 @@ overlay.onclick = function (event) {
   backgroundModal.style.display = "none";
   teamModal.style.display = "none";
   overlay.style.display = "none";
-}
+};
