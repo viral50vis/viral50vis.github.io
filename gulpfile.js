@@ -37,6 +37,10 @@ var paths = {
     input: "src/copy/**/*",
     output: "dist/"
   },
+  data: {
+    input: "src/data/**/*",
+    output: "dist/data/"
+  },
   reload: "./dist/"
 };
 
@@ -224,6 +228,15 @@ var copyFiles = function(done) {
   return src(paths.copy.input).pipe(dest(paths.copy.output));
 };
 
+// Copy static data files into output folder
+var copyData = function(done) {
+  // Make sure this feature is activated before running
+  if (!settings.copy) return done();
+
+  // Copy static files
+  return src(paths.data.input).pipe(dest(paths.data.output));
+};
+
 // Watch for changes to the src directory
 var startServer = function(done) {
   // Make sure this feature is activated before running
@@ -261,7 +274,14 @@ var watchSource = function(done) {
 // gulp
 exports.default = series(
   cleanDist,
-  parallel(buildScripts, lintScripts, buildStyles, buildSVGs, copyFiles)
+  parallel(
+    buildScripts,
+    lintScripts,
+    buildStyles,
+    buildSVGs,
+    copyFiles,
+    copyData
+  )
 );
 
 // Watch and reload

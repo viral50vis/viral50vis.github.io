@@ -1,1 +1,20 @@
-@import "components/base"
+@import "modal.scss";
+@import "worldmap.scss";
+@import "timeslider.scss";
+
+html,
+body {
+  margin: 0;
+  height: 100vh !important;
+  width: 100vw !important;
+  font-family: "Roboto", sans-serif;
+}
+
+.mdl-layout__content,
+.page-content {
+  height: 100%;
+}
+
+.mdl-cell {
+  height: calc(100% - 16px);
+}
