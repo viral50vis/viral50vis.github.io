@@ -60,12 +60,24 @@ function generateWorldMap(worldJSON) {
     });
 }
 
-function updateWorldMap(data) {
+function updateWorldMap(data, minimum, maximum) {
   var CCinData = Object.keys(data);
+
   d3.selectAll(".defaultCountry")
     .classed("countryIsInCurrentData", false)
     .filter(function(d) {
       return CCinData.indexOf(d.id) > -1;
     })
-    .classed("countryIsInCurrentData", true);
+    .each(function(d) {
+      d3.select(this).style(
+        "fill",
+        calculateColorFromValue(
+          data[d.id].danceability,
+          minimum.danceability,
+          maximum.danceability,
+          minColor,
+          maxColor
+        )
+      );
+    });
 }
