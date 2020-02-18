@@ -160,3 +160,20 @@ var weeks = [
 function valueToWeek(value) {
   return weeks[value];
 }
+
+function calculateColorFromValue(value, min, max, minColor, maxColor) {
+  var range = max - min;
+  var perc = value / range;
+
+  var dRed = maxColor.red - minColor.red;
+  var dGreen = maxColor.green - minColor.green;
+  var dBlue = maxColor.blue - minColor.blue;
+
+  dRed = parseInt(dRed * perc + minColor.red);
+  dGreen = parseInt(dGreen * perc + minColor.green);
+  dBlue = parseInt(dBlue * perc + minColor.blue);
+
+  var h = dRed * 0x10000 + dGreen * 0x100 + dBlue * 0x1;
+  var val = "#" + ("000000" + h.toString(16)).slice(-6);
+  return val;
+}
