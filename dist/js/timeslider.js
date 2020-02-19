@@ -42,6 +42,7 @@ function loadTimeSlider() {
     .on("click", (function(d) {
       sliderInput.property("value", 155 - weekToValue(d));
       updateTimeSliderStyle(weekToValue(d));
+      sliderInput.dispatch("input");
     }));
   sliderLabels.selectAll("#week_0").classed("active selected", true);
 
@@ -55,33 +56,6 @@ function loadTimeSlider() {
     "background",
     "linear-gradient(to right, #37adbf 0%, #37adbf 100%, #b2b2b2 100%, #b2b2b2 100%)"
   );
-
-  //OLD STUFF
-  var getTrackStyle = function(el) {
-    var curVal = el.value,
-      val = (curVal - 1) * 16.666666667,
-      style = "";
-
-    // Change background gradient
-    for (var i = 0; i < prefs.length; i++) {
-      style +=
-        ".range {background: linear-gradient(to right, #37adbf 0%, #37adbf " +
-        val +
-        "%, #fff " +
-        val +
-        "%, #fff 100%)}";
-      style +=
-        ".range input::-" +
-        prefs[i] +
-        "{background: linear-gradient(to right, #37adbf 0%, #37adbf " +
-        val +
-        "%, #b2b2b2 " +
-        val +
-        "%, #b2b2b2 100%)}";
-    }
-
-    return style;
-  };
 }
 
 function updateTimeSliderStyle(value) {
