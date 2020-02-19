@@ -161,6 +161,10 @@ function valueToWeek(value) {
   return weeks[value];
 }
 
+function weekToValue(week) {
+  return weeks.indexOf(week);
+}
+
 function calculateColorFromValue(value, min, max, minColor, maxColor) {
   var range = max - min;
   var perc = value / range;

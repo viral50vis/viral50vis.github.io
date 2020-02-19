@@ -1,16 +1,16 @@
 {
-  "name": "project-name",
+  "name": "viral-50",
   "version": "0.0.1",
-  "description": "A description for your project.",
+  "description": "Visualizing Historical Viral 50 Spotify Data.",
   "main": "./dist/your-main-js-file.js",
   "author": {
-    "name": "YOUR NAME",
-    "url": "http://link-to-your-website.com"
+    "name": "Erik Båvenstrand",
+    "url": "https://bavenstrand.se/DH2321-Spotify-Project/"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://link-to-your-git-repo.com"
+    "url": "https://github.com/ErikBavenstrand/DH2321-Spotify-Project"
   },
   "browserslist": [
     "last 2 versions",

@@ -1,4 +1,7 @@
 var data;
+var dataWeek = "2020-01-23";
+var currentAttribute = "danceability";
+var filesLoaded = false;
 
 var maxColor = {
   red: 29,
@@ -16,9 +19,13 @@ function main() {
     d3.json("data/week_mean.json"),
     d3.json("data/world_topology.json")
   ]).then(function(files) {
+    filesLoaded = true;
     data = files[0];
     generateWorldMap(files[1]);
-    updateWorldMap(data["2020-01-23"], data.minimum, data.maximum);
+    updateWorldMap(data[dataWeek], data.minimum, data.maximum);
+    loadAttrList();
+    loadCountryList(data[dataWeek]);
+    loadTimeSlider();
   });
 }
 
