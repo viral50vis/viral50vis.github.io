@@ -52,7 +52,7 @@ function generateWorldMap(worldJSON) {
     })
     /* On Click */
     .on("click", function(d, i) {
-      //handleCountryClick(d.id);
+      d3.select(".cards").classed("flipped", true);
     })
     /* On Mouse Out */
     .on("mouseout", function(d, i) {
@@ -65,16 +65,18 @@ function updateWorldMap(data, minimum, maximum) {
 
   d3.selectAll(".defaultCountry")
     .classed("countryIsInCurrentData", false)
+    .style("fill", null)
     .filter(function(d) {
       return CCinData.indexOf(d.id) > -1;
     })
+    .classed("countryIsInCurrentData", true)
     .each(function(d) {
       d3.select(this).style(
         "fill",
         calculateColorFromValue(
-          data[d.id].danceability,
-          minimum.danceability,
-          maximum.danceability,
+          data[d.id][currentAttribute],
+          minimum[currentAttribute],
+          maximum[currentAttribute],
           minColor,
           maxColor
         )
