@@ -19,29 +19,29 @@ var settings = {
 
 var paths = {
   input: "src/",
-  output: "dist/",
+  output: "docs/",
   scripts: {
     input: "src/js/*",
     polyfills: ".polyfill.js",
-    output: "dist/js/"
+    output: "docs/js/"
   },
   styles: {
     input: "src/sass/**/*.{scss,sass}",
-    output: "dist/css/"
+    output: "docs/css/"
   },
   svgs: {
     input: "src/svg/*.svg",
-    output: "dist/svg/"
+    output: "docs/svg/"
   },
   copy: {
     input: "src/copy/**/*",
-    output: "dist/"
+    output: "docs/"
   },
   data: {
     input: "src/data/**/*",
-    output: "dist/data/"
+    output: "docs/data/"
   },
-  reload: "./dist/"
+  reload: "./docs/"
 };
 
 /**
@@ -97,11 +97,11 @@ var browserSync = require("browser-sync");
  */
 
 // Remove pre-existing content from output folders
-var cleanDist = function(done) {
+var cleanDocs = function(done) {
   // Make sure this feature is activated before running
   if (!settings.clean) return done();
 
-  // Clean the dist folder
+  // Clean the docs folder
   del.sync([paths.output]);
 
   // Signal completion
@@ -273,7 +273,7 @@ var watchSource = function(done) {
 // Default task
 // gulp
 exports.default = series(
-  cleanDist,
+  cleanDocs,
   parallel(
     buildScripts,
     lintScripts,
