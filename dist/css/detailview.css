@@ -1,0 +1,185 @@
+/*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
+/* line 1, src/sass/detailview.scss */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* line 9, src/sass/detailview.scss */
+.yAxisRed line {
+  stroke: white !important;
+}
+
+/* line 13, src/sass/detailview.scss */
+.yAxisRed path {
+  stroke: white !important;
+}
+
+/* line 17, src/sass/detailview.scss */
+.xAxisRed line {
+  stroke: white !important;
+}
+
+/* line 21, src/sass/detailview.scss */
+.xAxisRed path {
+  stroke: white !important;
+}
+
+/* line 25, src/sass/detailview.scss */
+div#layout {
+  text-align: center !important;
+}
+
+/* line 29, src/sass/detailview.scss */
+#bar svg {
+  width: 100%;
+  height: 100%;
+  margin-top: -40px;
+}
+
+/* line 35, src/sass/detailview.scss */
+.bar {
+  fill: #80cbc4;
+}
+
+/* line 39, src/sass/detailview.scss */
+#bar text {
+  font-size: 12px;
+  /*fill: #fff;*/
+  fill: #fff;
+}
+
+/* line 45, src/sass/detailview.scss */
+#bar path {
+  stroke: gray;
+}
+
+/* line 49, src/sass/detailview.scss */
+#bar line {
+  stroke: gray;
+}
+
+/* line 53, src/sass/detailview.scss */
+line#limit {
+  stroke: #fed966;
+  stroke-width: 3;
+  stroke-dasharray: 3 6;
+}
+
+/* line 59, src/sass/detailview.scss */
+.grid path {
+  stroke-width: 0;
+}
+
+/* line 63, src/sass/detailview.scss */
+.grid .tick line {
+  stroke: #9faaae;
+  stroke-opacity: 0.3;
+}
+
+/* line 68, src/sass/detailview.scss */
+#bar text.divergence {
+  font-size: 14px;
+  fill: #2f4a6d;
+}
+
+/* line 73, src/sass/detailview.scss */
+#bar text.value {
+  font-size: 14px;
+}
+
+/* line 77, src/sass/detailview.scss */
+#bar text.title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* line 82, src/sass/detailview.scss */
+#bar text.label {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* line 87, src/sass/detailview.scss */
+#bar text.source {
+  font-size: 10px;
+}
+
+/* line 91, src/sass/detailview.scss */
+.header {
+  padding: 40px 0px 40px 40px;
+}
+
+/* line 95, src/sass/detailview.scss */
+.header h1 {
+  font-weight: bold;
+}
+
+/* line 99, src/sass/detailview.scss */
+.header h3 {
+  color: #676060;
+  font-weight: 400;
+}
+
+/* line 104, src/sass/detailview.scss */
+.section {
+  padding: 0px 40px 40px 40px;
+}
+
+/* line 108, src/sass/detailview.scss */
+.subSection {
+  vertical-align: top;
+  display: inline-block;
+}
+
+/* line 113, src/sass/detailview.scss */
+.subSection h2 {
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  font-stretch: condensed;
+  padding-bottom: 20px;
+}
+
+/* line 120, src/sass/detailview.scss */
+#bar {
+  width: 980px;
+  height: 500px;
+  padding-left: 60px;
+}
+
+/* line 126, src/sass/detailview.scss */
+#song-stats {
+  float: right;
+  margin-bottom: 40px;
+}
+
+/* line 131, src/sass/detailview.scss */
+table {
+  width: 500px;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+/* line 138, src/sass/detailview.scss */
+th {
+  border: 1px solid none;
+  border-bottom: 1px solid #dddddd;
+  padding: 8px;
+}
+
+/* line 144, src/sass/detailview.scss */
+td {
+  border: none;
+  padding: 8px;
+  border-bottom: 1px solid #dddddd;
+}
+
+/* line 149, src/sass/detailview.scss */
+#detailed {
+  background-color: #535353;
+  color: #fff;
+}

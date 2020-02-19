@@ -1,0 +1,123 @@
+/*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
+/* line 1, src/sass/country_list.scss */
+#country-list {
+  height: calc(91% - 10px);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: block;
+  overflow-y: auto;
+  list-style: none;
+}
+
+/* line 10, src/sass/country_list.scss */
+#country-list li {
+  border-bottom: 1px solid lightgrey;
+  padding: 5px;
+  height: 6%;
+}
+
+/* line 15, src/sass/country_list.scss */
+#country-list li span {
+  height: 100%;
+}
+
+/* line 18, src/sass/country_list.scss */
+#country-list li span .country {
+  margin-left: 5%;
+  height: auto;
+  font-style: normal;
+  font-size: 150%;
+}
+
+/* line 24, src/sass/country_list.scss */
+#country-list li span img {
+  height: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 50%;
+  background-color: lightgrey;
+}
+
+/* line 30, src/sass/country_list.scss */
+#country-list li span .selectedMarker {
+  font-size: 200%;
+}
+
+/* line 34, src/sass/country_list.scss */
+#country-list li:hover {
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+/* line 40, src/sass/country_list.scss */
+#list-wrapper {
+  width: 100%;
+}
+
+/* line 44, src/sass/country_list.scss */
+.search-bar {
+  width: calc(100% - 10px);
+  height: 9%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid lightgrey;
+  padding: 5px;
+}
+
+/* line 53, src/sass/country_list.scss */
+.search-bar .icon {
+  width: 7.5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* line 59, src/sass/country_list.scss */
+.search-bar .bar {
+  width: 85%;
+  margin-left: 5%;
+}
+
+/* line 63, src/sass/country_list.scss */
+.search-bar .bar input {
+  width: 70%;
+  border: 0;
+  font-size: 120%;
+}
+
+/* line 68, src/sass/country_list.scss */
+.search-bar .bar input ~ span {
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #3399ff;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+/* line 75, src/sass/country_list.scss */
+.search-bar .bar input:focus {
+  outline: none;
+}
+
+/* line 78, src/sass/country_list.scss */
+.search-bar .bar input:focus ~ span {
+  width: 70%;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
