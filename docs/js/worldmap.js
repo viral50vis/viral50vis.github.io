@@ -86,6 +86,7 @@ function handleCountryClickShowDetail(CC) {
 }
 
 function zoomInCountry(CC) {
+  toggleDetailViewVisibility();
   var coords = worldProjection(worldCountryZoomJSON[CC]);
   var x = coords[0];
   var y = coords[1];
@@ -99,15 +100,11 @@ function zoomInCountry(CC) {
         .translate(worldWidth / 2, worldHeight / 2)
         .scale(1000)
         .translate(-x, -y)
-    )
-    .on("end", (function() {
-      toggleDetailViewVisibility();
-    }));
+    );
 }
 
 function zoomOutCountryHideDetail() {
   toggleDetailViewVisibility();
-
   d3.event.stopPropagation();
   world
     .transition()
