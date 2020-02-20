@@ -1,86 +1,24 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
 /* line 1, src/sass/worldmap.scss */
-.world-grid {
-  height: 85%;
-  padding-bottom: 0;
-}
-
-/* line 6, src/sass/worldmap.scss */
-.world-grid .mdl-cell .mdl-card {
-  width: 100%;
+#world {
   height: 100%;
 }
 
-/* line 10, src/sass/worldmap.scss */
-.world-grid .mdl-cell .mdl-card .mdl-card__media {
-  height: 100%;
-  background-color: white;
-}
-
-/* line 14, src/sass/worldmap.scss */
-.world-grid .mdl-cell .mdl-card .mdl-card__media .world-detail {
-  width: 100%;
-  height: 100%;
-  -webkit-perspective: 2000px;
-          perspective: 2000px;
-  overflow: visible;
-  z-index: 100;
-}
-
-/* line 21, src/sass/worldmap.scss */
-.world-grid .mdl-cell .mdl-card .mdl-card__media .world-detail .cards {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  -webkit-transition: -webkit-transform 1s;
-  transition: -webkit-transform 1s;
-  transition: transform 1s;
-  transition: transform 1s, -webkit-transform 1s;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-}
-
-/* line 28, src/sass/worldmap.scss */
-.world-grid .mdl-cell .mdl-card .mdl-card__media .world-detail .cards.flipped {
-  -webkit-transform: rotateX(180deg);
-          transform: rotateX(180deg);
-}
-
-/* line 32, src/sass/worldmap.scss */
-.world-grid .mdl-cell .mdl-card .mdl-card__media .world-detail .cards .card-face {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-}
-
-/* line 39, src/sass/worldmap.scss */
-.world-grid .mdl-cell .mdl-card .mdl-card__media .world-detail .cards .world-wrapper #world {
-  height: 100%;
-}
-
-/* line 42, src/sass/worldmap.scss */
-.world-grid .mdl-cell .mdl-card .mdl-card__media .world-detail .cards .world-wrapper #world svg {
+/* line 4, src/sass/worldmap.scss */
+#world svg {
   width: 100%;
   height: 100%;
   background-color: #535353;
 }
 
-/* line 50, src/sass/worldmap.scss */
-.world-grid .mdl-cell .mdl-card .mdl-card__media .world-detail .cards #detailed {
-  -webkit-transform: rotateX(180deg);
-          transform: rotateX(180deg);
-}
-
-/* line 60, src/sass/worldmap.scss */
+/* line 11, src/sass/worldmap.scss */
 .defaultCountry {
   fill: #121212;
   stroke: #b3b3b3;
   stroke-width: 0.1;
 }
 
-/* line 66, src/sass/worldmap.scss */
+/* line 17, src/sass/worldmap.scss */
 .countryIsInCurrentData {
   stroke: #121212;
 }

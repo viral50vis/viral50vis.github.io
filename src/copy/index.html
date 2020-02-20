@@ -41,6 +41,7 @@
       </div>
       <main class="mdl-layout__content">
         <div class="page-content">
+          <!-- Begin Modals -->
           <div id="about-modal" class="modal-content">
             <div class="modal-header">
               <h4>About</h4>
@@ -95,7 +96,6 @@
               </p>
             </div>
           </div>
-
           <div id="team-modal" class="modal-content">
             <div class="modal-header">
               <h4>The team</h4>
@@ -147,27 +147,14 @@
               </p>
             </div>
           </div>
-
+          <!-- End Modals -->
           <div id="overlay"></div>
 
-          <!-- <div id="attr-list-container">
-            <button
-              id="demo-menu-lower-left"
-              class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
-            >
-              Attributes
-            </button>
-
-            <ul
-              id="attr-list-items"
-              class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-              for="demo-menu-lower-left"
-            ></ul>
-          </div> -->
-
-          <div class="mdl-grid world-grid">
+          <!-- Begin Top Grid -->
+          <div class="mdl-grid top-grid">
             <div class="mdl-cell mdl-cell--2-col">
               <div class="mdl-card wide-card mdl-shadow--4dp">
+                <!-- Begin Country List -->
                 <div
                   id="list-wrapper"
                   class="mdl-card__media full-media-height"
@@ -183,77 +170,59 @@
                   </div>
                   <ul id="country-list" class="mdl-list list"></ul>
                 </div>
+                <!-- End Country List -->
               </div>
             </div>
             <div class="mdl-cell mdl-cell--10-col">
               <div class="mdl-card wide-card">
                 <div class="mdl-card__media full-media-height">
+                  <!-- Begin World Detail Card -->
                   <div class="world-detail">
                     <div class="cards mdl-shadow--4dp">
                       <div class="world-wrapper card-face">
-                        <div id="world">
-                          <!-- START ATTR LIST -->
-                          <div id="attr-list-container">
-                            <button
-                              id="demo-menu-lower-left"
-                              class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
-                            >
-                              Attributes
-                            </button>
+                        <!-- Begin Attribute List -->
+                        <div id="attr-list-container">
+                          <button
+                            id="demo-menu-lower-left"
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+                          >
+                            Attributes
+                          </button>
 
-                            <ul
-                              id="attr-list-items"
-                              class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-                              for="demo-menu-lower-left"
-                            ></ul>
-                          </div>
-                          <!-- END ATTR LIST -->
+                          <ul
+                            id="attr-list-items"
+                            class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                            for="demo-menu-lower-left"
+                          ></ul>
                         </div>
+                        <!-- End Attribute List -->
+
+                        <!-- Begin World -->
+                        <div id="world"></div>
+                        <!-- End World -->
                       </div>
+
+                      <!-- Begin Detailed View -->
                       <div id="detailed" class="card-face">
-                        <section class="section">
-                          <div class="subSection" id="donut">
-                            <h2 id="refresh">Diagram 1</h2>
-                            <div id="chart"></div>
-                          </div>
-                          <div class="subSection" id="bar">
-                            <h2>Diagram 2</h2>
-                            <svg id="svg"></svg>
-                          </div>
-                        </section>
-                        <section class="section">
-                          <div></div>
-                          <div id="song-stats">
-                            <table>
-                              <tr>
-                                <th>Song</th>
-                                <th>Author</th>
-                                <th>bpm</th>
-                              </tr>
-                              <tr>
-                                <td>blabla</td>
-                                <td>Maria Anders</td>
-                                <td>112</td>
-                              </tr>
-                            </table>
-                          </div>
-                        </section>
+                        Details
                       </div>
+                      <!-- End Detailed View -->
                     </div>
                   </div>
+                  <!-- End World Detail Card -->
                 </div>
               </div>
             </div>
           </div>
+          <!-- End Top Grid -->
 
+          <!-- Begin Slider Grid -->
           <div class="mdl-grid slider-grid">
             <div class="mdl-cell mdl-cell--12-col">
-              <div class="mdl-card wide-card mdl-shadow--4dp">
-                <div
-                  id="slider-background"
-                  class="mdl-card__media full-media-height"
-                >
-                  <div class="slider-wrapper">
+              <div class="mdl-card mdl-shadow--4dp">
+                <div class="mdl-card__media full-media-height">
+                  <!-- Begin Slider -->
+                  <div id="slider-wrapper">
                     <input
                       class="slider"
                       type="range"
@@ -262,13 +231,14 @@
                       steps="1"
                       value="155"
                     />
-
                     <ul class="slider-labels"></ul>
                   </div>
+                  <!-- End Slider -->
                 </div>
               </div>
             </div>
           </div>
+          <!-- End Slider Grid -->
         </div>
       </main>
     </div>
@@ -291,10 +261,16 @@
     <!-- Detail view -->
     <script src="js/detailview.js"></script>
 
-    <!-- Load data -->
-    <script src="js/data_loader.js"></script>
+    <!-- Navbar -->
     <script src="js/nav.js"></script>
+
+    <!-- Attribute selection list -->
     <script src="js/attr_list.js"></script>
+
+    <!-- Country list -->
     <script src="js/country_list.js"></script>
+
+    <!-- Main (data loading) -->
+    <script src="js/main.js"></script>
   </body>
 </html>

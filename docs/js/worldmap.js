@@ -53,7 +53,7 @@ function generateWorldMap(worldJSON) {
     }))
     /* On Click */
     .on("click", (function(d, i) {
-      d3.select(".cards").classed("flipped", true);
+      flipWorldDetailedCard();
     }))
     /* On Mouse Out */
     .on("mouseout", (function(d, i) {

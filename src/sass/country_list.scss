@@ -1,81 +1,92 @@
-#country-list {
-  height: calc(91% - 10px);
-  border: 0;
-  padding: 0;
-  margin: 0;
-  display: block;
-  overflow-y: auto;
-  list-style: none;
-}
-#country-list li {
-  border-bottom: 1px solid lightgrey;
-  padding: 5px;
-  height: 6%;
-}
-#country-list li span {
-  height: 100%;
-}
-#country-list li span .country {
-  margin-left: 5%;
-  height: auto;
-  font-style: normal;
-  font-size: 150%;
-}
-#country-list li span img {
-  height: 100%;
-  border: 1px solid lightgrey;
-  border-radius: 50%;
-  background-color: lightgrey;
-}
-#country-list li span .selectedMarker {
-  font-size: 200%;
-}
-
-#country-list li:hover {
-  transition: background-color 0.2s ease;
-  background-color: #eeeeee;
-  cursor: pointer;
-}
-
 #list-wrapper {
-  width: 100%;
-}
+  overflow-y: auto;
 
-.search-bar {
-  width: calc(100% - 10px);
-  height: 9%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border-bottom: 1px solid lightgrey;
-  padding: 5px;
-}
-.search-bar .icon {
-  width: 7.5%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.search-bar .bar {
-  width: 85%;
-  margin-left: 5%;
-}
-.search-bar .bar input {
-  width: 70%;
-  border: 0;
-  font-size: 120%;
-}
-.search-bar .bar input ~ span {
-  display: block;
-  width: 0;
-  height: 2px;
-  background-color: #3399ff;
-  transition: 0.4s;
-}
-.search-bar .bar input:focus {
-  outline: none;
-}
-.search-bar .bar input:focus ~ span {
-  width: 70%;
-  transition: 0.4s;
+  .search-bar {
+    width: calc(100% - 10px);
+    height: 9%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid lightgrey;
+    padding: 5px;
+
+    .icon {
+      width: 7.5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bar {
+      width: 85%;
+      margin-left: 5%;
+
+      input {
+        width: 70%;
+        border: 0;
+        font-size: 120%;
+
+        &:focus {
+          outline: none;
+
+          & ~ span {
+            width: 70%;
+            transition: 0.4s;
+          }
+        }
+
+        & ~ span {
+          display: block;
+          width: 0;
+          height: 2px;
+          background-color: #3399ff;
+          transition: 0.4s;
+        }
+      }
+    }
+  }
+
+  #country-list {
+    height: calc(91% - 10px);
+    border: 0;
+    padding: 0;
+    margin: 0;
+    display: block;
+    overflow-y: auto;
+    list-style: none;
+
+    li {
+      border-bottom: 1px solid lightgrey;
+      padding: 5px;
+      height: 6%;
+
+      &:hover {
+        transition: background-color 0.2s ease;
+        background-color: #eeeeee;
+        cursor: pointer;
+      }
+
+      span {
+        height: 100%;
+
+        .country {
+          margin-left: 5%;
+          height: auto;
+          font-style: normal;
+          font-size: 150%;
+        }
+
+        img {
+          height: 100%;
+          border: 1px solid lightgrey;
+          border-radius: 50%;
+          background-color: lightgrey;
+        }
+
+        .selectedMarker {
+          font-size: 200%;
+        }
+      }
+    }
+  }
 }
