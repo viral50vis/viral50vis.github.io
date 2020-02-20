@@ -181,3 +181,13 @@ function calculateColorFromValue(value, min, max, minColor, maxColor) {
   var val = "#" + ("000000" + h.toString(16)).slice(-6);
   return val;
 }
+
+function toggleDetailViewVisibility() {
+  var details = d3.select(".detail-wrapper");
+  var isHidden = details.classed("detail-hidden");
+  if (isHidden) {
+    details.classed("detail-hidden", false);
+  } else {
+    details.classed("detail-hidden", true);
+  }
+}

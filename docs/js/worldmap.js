@@ -48,17 +48,13 @@ function generateWorldMap(worldJSON) {
       d3.select(this).classed(d.id, true);
     }))
     /* On Mouse Enter */
-    .on("mouseover", (function(d, i) {
-      //handleCountryMouseOver(d.id, d.properties.name);
-    }))
+    .on("mouseover", (function(d, i) {}))
     /* On Click */
     .on("click", (function(d, i) {
-      flipWorldDetailedCard();
+      handleCountryClickShowDetail(d.id);
     }))
     /* On Mouse Out */
-    .on("mouseout", (function(d, i) {
-      //handleCountryMouseOut(d.id);
-    }));
+    .on("mouseout", (function(d, i) {}));
 }
 
 function updateWorldMap(data, minimum, maximum) {
@@ -83,4 +79,38 @@ function updateWorldMap(data, minimum, maximum) {
         )
       );
     }));
+}
+
+function handleCountryClickShowDetail(CC) {
+  zoomInCountry(CC);
+}
+
+function zoomInCountry(CC) {
+  var coords = worldProjection(worldCountryZoomJSON[CC]);
+  var x = coords[0];
+  var y = coords[1];
+  d3.event.stopPropagation();
+  world
+    .transition()
+    .duration(1000)
+    .call(
+      zoom.transform,
+      d3.zoomIdentity
+        .translate(worldWidth / 2, worldHeight / 2)
+        .scale(1000)
+        .translate(-x, -y)
+    )
+    .on("end", (function() {
+      toggleDetailViewVisibility();
+    }));
+}
+
+function zoomOutCountryHideDetail() {
+  toggleDetailViewVisibility();
+
+  d3.event.stopPropagation();
+  world
+    .transition()
+    .duration(1000)
+    .call(zoom.transform, d3.zoomIdentity.scale(1));
 }

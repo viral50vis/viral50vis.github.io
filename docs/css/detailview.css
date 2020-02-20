@@ -1,6 +1,25 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
 /* line 1, src/sass/detailview.scss */
-#detailed {
-  -webkit-transform: rotateX(180deg);
-          transform: rotateX(180deg);
+.detail-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
+
+/* line 9, src/sass/detailview.scss */
+.detail-wrapper #details {
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+/* line 17, src/sass/detailview.scss */
+.detail-hidden {
+  opacity: 0;
+  pointer-events: none;
 }

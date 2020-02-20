@@ -1,3 +1,3 @@
-d3.select("#detailed").on("click", function() {
-  flipWorldDetailedCard();
+d3.select("#details-back-button").on("click", function() {
+  zoomOutCountryHideDetail();
 });
