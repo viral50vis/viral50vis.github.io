@@ -1,3 +1,20 @@
-#detailed {
-  transform: rotateX(180deg);
+.detail-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: opacity 0.25s ease-in-out;
+
+  #details {
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+  }
+}
+
+.detail-hidden {
+  opacity: 0;
+  pointer-events: none;
 }

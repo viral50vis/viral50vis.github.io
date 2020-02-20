@@ -174,40 +174,45 @@
               </div>
             </div>
             <div class="mdl-cell mdl-cell--10-col">
-              <div class="mdl-card wide-card">
-                <div class="mdl-card__media full-media-height">
+              <div class="mdl-card wide-card cards mdl-shadow--4dp">
+                <div class="mdl-card__media">
                   <!-- Begin World Detail Card -->
                   <div class="world-detail">
-                    <div class="cards mdl-shadow--4dp">
-                      <div class="world-wrapper card-face">
-                        <!-- Begin Attribute List -->
-                        <div id="attr-list-container">
-                          <button
-                            id="demo-menu-lower-left"
-                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
-                          >
-                            Attributes
-                          </button>
+                    <div class="world-wrapper">
+                      <!-- Begin Attribute List -->
+                      <div id="attr-list-container">
+                        <button
+                          id="demo-menu-lower-left"
+                          class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+                        >
+                          Attributes
+                        </button>
 
-                          <ul
-                            id="attr-list-items"
-                            class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-                            for="demo-menu-lower-left"
-                          ></ul>
-                        </div>
-                        <!-- End Attribute List -->
-
-                        <!-- Begin World -->
-                        <div id="world"></div>
-                        <!-- End World -->
+                        <ul
+                          id="attr-list-items"
+                          class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                          for="demo-menu-lower-left"
+                        ></ul>
                       </div>
+                      <!-- End Attribute List -->
 
-                      <!-- Begin Detailed View -->
-                      <div id="detailed" class="card-face">
-                        Details
-                      </div>
-                      <!-- End Detailed View -->
+                      <!-- Begin World -->
+                      <div id="world"></div>
+                      <!-- End World -->
                     </div>
+
+                    <!-- Begin Detailed View -->
+                    <div class="detail-wrapper detail-hidden">
+                      <div id="details">
+                        <button
+                          class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                          id="details-back-button"
+                        >
+                          Back to Overview
+                        </button>
+                      </div>
+                    </div>
+                    <!-- End Detailed View -->
                   </div>
                   <!-- End World Detail Card -->
                 </div>
