@@ -1,28 +1,28 @@
 function loadCountryList(data) {
-  list = d3.select("#country-list");
-  list.selectAll(".country-list-items").remove();
+  list = d3.select("#country-list-ul");
+  list.selectAll(".country-list-item").remove();
 
   countries = Object.keys(data);
 
+  /* Create li items */
   list
     .selectAll("li")
     .data(countries)
     .enter()
     .append("li")
-    .attr("class", "mdl-list__item" + " country-list-item")
+    .classed("country-list-item", true)
     .attr("id", function(d) {
       return "country-list-" + d;
     })
-    .on("click", function(d) {
-      console.log(d);
-    })
+    .on("click", function(d) {})
     .on("mouseover", function(d, i) {});
 
-  d3.select("#country-list")
+  /* Insert span into li */
+  list
     .selectAll("li")
     .data(countries)
     .append("span")
-    .attr("class", "mdl-list__item-primary-content country-code-list")
+    .attr("class", "country-code-list")
     .text(function(d) {
       return d;
     });

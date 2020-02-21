@@ -53,7 +53,7 @@ function loadTimeSlider() {
 
   sliderInput.style(
     "background",
-    "linear-gradient(to right, #37adbf 0%, #37adbf 100%, #b2b2b2 100%, #b2b2b2 100%)"
+    "linear-gradient(to right, #1ed760 0%, #1ed760 100%, #404040 100%, #404040 100%)"
   );
 }
 
@@ -71,10 +71,10 @@ function updateTimeSliderStyle(value) {
 
   sliderInput.style(
     "background",
-    "linear-gradient(to right, #37adbf 0%, #37adbf " +
+    "linear-gradient(to right, #1ed760 0%, #1ed760 " +
       percent +
-      "%, #b2b2b2 " +
+      "%, #404040 " +
       percent +
-      "%, #b2b2b2 100%)"
+      "%, #404040 100%)"
   );
 }
