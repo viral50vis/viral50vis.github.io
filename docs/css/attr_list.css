@@ -2,4 +2,5 @@
 /* line 1, src/sass/attr_list.scss */
 #attr-list-container {
   position: absolute;
+  z-index: 1;
 }
