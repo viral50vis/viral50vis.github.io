@@ -3,35 +3,37 @@
 .world-detail {
   height: 100%;
   width: 100%;
+  display: block;
 }
 
-/* line 5, src/sass/worldmap.scss */
+/* line 6, src/sass/worldmap.scss */
 .world-detail .world-wrapper {
   height: 100%;
   width: 100%;
 }
 
-/* line 9, src/sass/worldmap.scss */
+/* line 10, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world {
   height: 100%;
   width: 100%;
 }
 
-/* line 13, src/sass/worldmap.scss */
+/* line 14, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg {
   width: 100%;
   height: 100%;
   background-color: #535353;
+  position: absolute;
 }
 
-/* line 18, src/sass/worldmap.scss */
+/* line 20, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg .defaultCountry {
   fill: #121212;
   stroke: #b3b3b3;
   stroke-width: 0.1;
 }
 
-/* line 24, src/sass/worldmap.scss */
+/* line 26, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg .countryIsInCurrentData {
   stroke: #121212;
 }

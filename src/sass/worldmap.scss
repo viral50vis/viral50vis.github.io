@@ -1,6 +1,7 @@
 .world-detail {
   height: 100%;
   width: 100%;
+  display: block;
 
   .world-wrapper {
     height: 100%;
@@ -14,6 +15,7 @@
         width: 100%;
         height: 100%;
         background-color: #535353;
+        position: absolute;
 
         .defaultCountry {
           fill: #121212;

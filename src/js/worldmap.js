@@ -1,7 +1,7 @@
 var world = d3.select("#world").append("svg");
 var g = world.append("g");
-var worldWidth = parseInt(world.style("width"));
-var worldHeight = parseInt(world.style("height"));
+var worldWidth = parseInt(d3.select(".Root__main-view").style("width"));
+var worldHeight = parseInt(d3.select(".Root__main-view").style("height"));
 
 var worldProjection = d3
   .geoMercator()
