@@ -116,45 +116,85 @@
 }
 
 /* line 1, src/sass/worldmap.scss */
-.world-wrapper {
+.world-detail {
   height: 100%;
   width: 100%;
 }
 
 /* line 5, src/sass/worldmap.scss */
-.world-wrapper #world {
+.world-detail .world-wrapper {
   height: 100%;
   width: 100%;
 }
 
 /* line 9, src/sass/worldmap.scss */
-.world-wrapper #world svg {
+.world-detail .world-wrapper #world {
+  height: 100%;
+  width: 100%;
+}
+
+/* line 13, src/sass/worldmap.scss */
+.world-detail .world-wrapper #world svg {
   width: 100%;
   height: 100%;
   background-color: #535353;
 }
 
-/* line 14, src/sass/worldmap.scss */
-.world-wrapper #world svg .defaultCountry {
+/* line 18, src/sass/worldmap.scss */
+.world-detail .world-wrapper #world svg .defaultCountry {
   fill: #121212;
   stroke: #b3b3b3;
   stroke-width: 0.1;
 }
 
-/* line 20, src/sass/worldmap.scss */
-.world-wrapper #world svg .countryIsInCurrentData {
+/* line 24, src/sass/worldmap.scss */
+.world-detail .world-wrapper #world svg .countryIsInCurrentData {
   stroke: #121212;
 }
 
-/* line 1, src/sass/timeslider.scss */
-#slider-wrapper {
-  width: 95%;
+/* line 3, src/sass/timeslider.scss */
+.timeslider-bar-wrapper {
+  min-width: 620px;
+  background-color: #282828;
+  border-top: 1px solid #000000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: auto;
+}
+
+/* line 11, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 90px;
+  padding: 0 64px;
+}
+
+/* line 19, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper {
+  width: 100%;
   position: relative;
   padding-bottom: 10px;
 }
 
-/* line 25, src/sass/timeslider.scss */
-#slider-wrapper .slider {
+/* line 43, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider {
   width: 100%;
   top: -2px;
   height: 5px;
@@ -164,45 +204,45 @@
   z-index: 10;
 }
 
-/* line 35, src/sass/timeslider.scss */
-#slider-wrapper .slider::-webkit-slider-thumb {
+/* line 53, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 18px;
   height: 18px;
   margin: -8px 0 0;
   border-radius: 50%;
-  background: #37adbf;
+  background: #ffffff;
   cursor: pointer;
   border: 0 !important;
   z-index: 10;
 }
 
-/* line 40, src/sass/timeslider.scss */
-#slider-wrapper .slider::-moz-range-thumb {
+/* line 58, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-moz-range-thumb {
   width: 18px;
   height: 18px;
   margin: -8px 0 0;
   border-radius: 50%;
-  background: #37adbf;
+  background: #ffffff;
   cursor: pointer;
   border: 0 !important;
   z-index: 10;
 }
 
-/* line 44, src/sass/timeslider.scss */
-#slider-wrapper .slider::-ms-thumb {
+/* line 62, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-thumb {
   width: 18px;
   height: 18px;
   margin: -8px 0 0;
   border-radius: 50%;
-  background: #37adbf;
+  background: #ffffff;
   cursor: pointer;
   border: 0 !important;
   z-index: 10;
 }
 
-/* line 49, src/sass/timeslider.scss */
-#slider-wrapper .slider::-webkit-slider-runnable-track {
+/* line 67, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-webkit-slider-runnable-track {
   width: 100%;
   height: 3px;
   cursor: pointer;
@@ -210,8 +250,8 @@
   z-index: 10;
 }
 
-/* line 53, src/sass/timeslider.scss */
-#slider-wrapper .slider::-moz-range-track {
+/* line 71, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-moz-range-track {
   width: 100%;
   height: 3px;
   cursor: pointer;
@@ -219,8 +259,8 @@
   z-index: 10;
 }
 
-/* line 57, src/sass/timeslider.scss */
-#slider-wrapper .slider::-ms-track {
+/* line 75, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-track {
   width: 100%;
   height: 3px;
   cursor: pointer;
@@ -228,14 +268,14 @@
   z-index: 10;
 }
 
-/* line 61, src/sass/timeslider.scss */
-#slider-wrapper .slider:focus {
+/* line 79, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider:focus {
   background: none;
   outline: none;
 }
 
-/* line 67, src/sass/timeslider.scss */
-#slider-wrapper .slider::-ms-track {
+/* line 85, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-track {
   width: 100%;
   cursor: pointer;
   background: transparent;
@@ -243,15 +283,15 @@
   color: transparent;
 }
 
-/* line 78, src/sass/timeslider.scss */
-#slider-wrapper .slider-labels {
+/* line 96, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* line 83, src/sass/timeslider.scss */
-#slider-wrapper .slider-labels li {
+/* line 101, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels li {
   position: absolute;
   color: #b2b2b2;
   font-size: 14px;
@@ -259,8 +299,8 @@
   cursor: pointer;
 }
 
-/* line 90, src/sass/timeslider.scss */
-#slider-wrapper .slider-labels li::before {
+/* line 108, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels li::before {
   position: absolute;
   top: -13px;
   right: 0;
@@ -269,23 +309,23 @@
   margin: 0 auto;
   width: 12px;
   height: 12px;
-  background: #b2b2b2;
+  background: #595959;
   border-radius: 50%;
   z-index: 0;
 }
 
-/* line 105, src/sass/timeslider.scss */
-#slider-wrapper .slider-labels .active {
-  color: #37adbf;
+/* line 123, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active {
+  color: #ffffff;
 }
 
-/* line 109, src/sass/timeslider.scss */
-#slider-wrapper .slider-labels .active::before {
-  background: #37adbf;
+/* line 127, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active::before {
+  background: #1ed760;
 }
 
-/* line 113, src/sass/timeslider.scss */
-#slider-wrapper .slider-labels .active.selected::before {
+/* line 131, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active.selected::before {
   display: none;
 }
 
@@ -294,130 +334,120 @@
   position: absolute;
 }
 
-/* line 1, src/sass/country_list.scss */
-#list-wrapper {
-  overflow-y: auto;
-}
-
-/* line 4, src/sass/country_list.scss */
-#list-wrapper .search-bar {
-  width: calc(100% - 10px);
-  height: 9%;
+/* line 3, src/sass/country_list.scss */
+#country-list {
+  padding-top: 24px;
+  -webkit-box-orient: vertical;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+      flex: 1;
+  min-height: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: default;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-bottom: 1px solid lightgrey;
-  padding: 5px;
+  -ms-flex-flow: column;
+      flex-flow: column;
 }
 
-/* line 13, src/sass/country_list.scss */
-#list-wrapper .search-bar .icon {
-  width: 7.5%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+/* line 14, src/sass/country_list.scss */
+#country-list #list-wrapper {
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  min-height: 0;
+  margin-top: 24px;
 }
 
-/* line 20, src/sass/country_list.scss */
-#list-wrapper .search-bar .bar {
-  width: 85%;
-  margin-left: 5%;
-}
-
-/* line 24, src/sass/country_list.scss */
-#list-wrapper .search-bar .bar input {
-  width: 70%;
-  border: 0;
-  font-size: 120%;
-}
-
-/* line 29, src/sass/country_list.scss */
-#list-wrapper .search-bar .bar input:focus {
-  outline: none;
-}
-
-/* line 32, src/sass/country_list.scss */
-#list-wrapper .search-bar .bar input:focus ~ span {
-  width: 70%;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-/* line 38, src/sass/country_list.scss */
-#list-wrapper .search-bar .bar input ~ span {
-  display: block;
-  width: 0;
-  height: 2px;
-  background-color: #3399ff;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-/* line 49, src/sass/country_list.scss */
-#list-wrapper #country-list {
-  height: calc(91% - 10px);
-  border: 0;
-  padding: 0;
-  margin: 0;
-  display: block;
+/* line 21, src/sass/country_list.scss */
+#country-list #list-wrapper ul {
   overflow-y: auto;
+  overscroll-behavior-y: contain;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: calc(100% - 32px);
 }
 
-/* line 58, src/sass/country_list.scss */
-#list-wrapper #country-list li {
-  border-bottom: 1px solid lightgrey;
-  padding: 5px;
-  height: 6%;
-}
-
-/* line 63, src/sass/country_list.scss */
-#list-wrapper #country-list li:hover {
-  -webkit-transition: background-color 0.2s ease;
-  transition: background-color 0.2s ease;
-  background-color: #eeeeee;
+/* line 30, src/sass/country_list.scss */
+#country-list #list-wrapper ul:hover {
   cursor: pointer;
 }
 
-/* line 69, src/sass/country_list.scss */
-#list-wrapper #country-list li span {
+/* line 34, src/sass/country_list.scss */
+#country-list #list-wrapper ul li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin: 0;
+  padding: 0 0 0 24px;
+  position: relative;
+}
+
+/* line 41, src/sass/country_list.scss */
+#country-list #list-wrapper ul li::before {
+  background-color: transparent;
+  position: absolute;
   height: 100%;
+  left: 0;
+  width: 2px;
+  content: "";
+}
+
+/* line 50, src/sass/country_list.scss */
+#country-list #list-wrapper ul li:hover {
+  color: #fff;
+}
+
+/* line 53, src/sass/country_list.scss */
+#country-list #list-wrapper ul li:hover::before {
+  background-color: #1ed760;
+}
+
+/* line 59, src/sass/country_list.scss */
+#country-list #list-wrapper ul::-webkit-scrollbar {
+  width: 16px;
+}
+
+/* line 62, src/sass/country_list.scss */
+#country-list #list-wrapper ul::-webkit-scrollbar-thumb {
+  border: 4px solid transparent;
+  border-radius: 16px;
+  background-clip: padding-box;
+  min-height: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* line 72, src/sass/country_list.scss */
-#list-wrapper #country-list li span .country {
-  margin-left: 5%;
-  height: auto;
-  font-style: normal;
-  font-size: 150%;
+#country-list #list-wrapper .search-bar .bar {
+  padding: 0;
+  margin: 0 24px;
 }
 
-/* line 79, src/sass/country_list.scss */
-#list-wrapper #country-list li span img {
-  height: 100%;
-  border: 1px solid lightgrey;
-  border-radius: 50%;
-  background-color: lightgrey;
+/* line 75, src/sass/country_list.scss */
+#country-list #list-wrapper .search-bar .bar input {
+  color: #000000;
+  padding: 6px 24px;
+  height: 20px;
+  line-height: 20px;
+  width: calc(100% - 48px);
+  border: 0;
+  border-radius: 500px;
+  outline: 0;
+  font-size: 14px;
+  letter-spacing: 0.015em;
 }
 
-/* line 86, src/sass/country_list.scss */
-#list-wrapper #country-list li span .selectedMarker {
-  font-size: 200%;
-}
-
-/* line 1, src/sass/detailview.scss */
+/* line 3, src/sass/detailview.scss */
 .detail-wrapper {
   position: absolute;
   top: 0;
@@ -428,78 +458,147 @@
   transition: opacity 0.5s 0.5s ease-in-out;
 }
 
-/* line 9, src/sass/detailview.scss */
+/* line 11, src/sass/detailview.scss */
 .detail-wrapper #details {
   opacity: 1;
   height: 100%;
   width: 100%;
-  background-color: white;
+  background-color: #121212;
 }
 
-/* line 17, src/sass/detailview.scss */
+/* line 19, src/sass/detailview.scss */
 .detail-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* line 8, src/sass/main.scss */
+/* Layout */
+/* line 10, src/sass/main.scss */
 html,
 body {
   margin: 0;
-  height: 100vh !important;
-  width: 100vw !important;
+  min-width: 800px;
+  min-height: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overscroll-behavior-y: none;
+  overflow: hidden;
+  height: 100%;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.015em;
+  -webkit-font-smoothing: antialiased;
   font-family: "Roboto", sans-serif;
+  color: #b2b2b2;
 }
 
-/* line 16, src/sass/main.scss */
+/* line 27, src/sass/main.scss */
+.Root__wrapper {
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "country-list main-view" "timeslider-bar timeslider-bar";
+  background-color: #121212;
+}
+
+/* line 38, src/sass/main.scss */
+.Root__wrapper .Root__country-list,
+.Root__wrapper .Root__main-view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  min-height: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+
+/* line 47, src/sass/main.scss */
+.Root__wrapper .Root__country-list {
+  will-change: transform;
+  grid-area: country-list;
+  width: 230px;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* line 55, src/sass/main.scss */
+.Root__wrapper .Root__main-view {
+  grid-area: main-view;
+  width: 100%;
+  position: relative;
+}
+
+/* line 60, src/sass/main.scss */
+.Root__wrapper .Root__main-view .main-view-wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-height: 0;
+}
+
+/* line 66, src/sass/main.scss */
+.Root__wrapper .Root__timeslider-bar {
+  grid-area: timeslider-bar;
+  width: 100%;
+  z-index: 4;
+}
+
+/* line 73, src/sass/main.scss */
 .mdl-layout__content,
 .page-content {
   height: 100%;
 }
 
-/* line 21, src/sass/main.scss */
+/* line 78, src/sass/main.scss */
 .mdl-cell {
   height: calc(100% - 16px);
 }
 
-/* line 25, src/sass/main.scss */
+/* line 82, src/sass/main.scss */
 .top-grid {
   height: calc(85% - 8px);
   padding-bottom: 0;
 }
 
-/* line 29, src/sass/main.scss */
+/* line 86, src/sass/main.scss */
 .top-grid .mdl-card {
   width: 100%;
   height: 100%;
 }
 
-/* line 33, src/sass/main.scss */
+/* line 90, src/sass/main.scss */
 .top-grid .mdl-card .mdl-card__media {
   height: 100%;
   background-color: white;
 }
 
-/* line 37, src/sass/main.scss */
+/* line 94, src/sass/main.scss */
 .top-grid .mdl-card .mdl-card__media .world-detail {
   width: 100%;
   height: 100%;
 }
 
-/* line 45, src/sass/main.scss */
+/* line 102, src/sass/main.scss */
 .slider-grid {
   padding-top: 0;
   height: calc(15% - 8px);
 }
 
-/* line 49, src/sass/main.scss */
+/* line 106, src/sass/main.scss */
 .slider-grid .mdl-card {
   width: 100%;
   height: 100%;
   min-height: 0;
 }
 
-/* line 54, src/sass/main.scss */
+/* line 111, src/sass/main.scss */
 .slider-grid .mdl-card .mdl-card__media {
   height: 100%;
   width: 100%;

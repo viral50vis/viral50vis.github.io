@@ -1,5 +1,5 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
-/* line 1, src/sass/detailview.scss */
+/* line 3, src/sass/detailview.scss */
 .detail-wrapper {
   position: absolute;
   top: 0;
@@ -10,15 +10,15 @@
   transition: opacity 0.5s 0.5s ease-in-out;
 }
 
-/* line 9, src/sass/detailview.scss */
+/* line 11, src/sass/detailview.scss */
 .detail-wrapper #details {
   opacity: 1;
   height: 100%;
   width: 100%;
-  background-color: white;
+  background-color: #121212;
 }
 
-/* line 17, src/sass/detailview.scss */
+/* line 19, src/sass/detailview.scss */
 .detail-hidden {
   opacity: 0;
   pointer-events: none;

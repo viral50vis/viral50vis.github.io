@@ -105,8 +105,5 @@ function zoomInCountry(CC) {
 function zoomOutCountryHideDetail() {
   toggleDetailViewVisibility();
   d3.event.stopPropagation();
-  world
-    .transition()
-    .duration(1000)
-    .call(zoom.transform, d3.zoomIdentity.scale(1));
+  world.call(zoom.transform, d3.zoomIdentity.scale(1));
 }
