@@ -92,7 +92,7 @@ function zoomInCountry(CC) {
   d3.event.stopPropagation();
   world
     .transition()
-    .duration(1000)
+    .duration(1500)
     .call(
       zoom.transform,
       d3.zoomIdentity
@@ -105,5 +105,8 @@ function zoomInCountry(CC) {
 function zoomOutCountryHideDetail() {
   toggleDetailViewVisibility();
   d3.event.stopPropagation();
-  world.call(zoom.transform, d3.zoomIdentity.scale(1));
+  world
+    .transition()
+    .duration(1500)
+    .call(zoom.transform, d3.zoomIdentity.scale(1));
 }
