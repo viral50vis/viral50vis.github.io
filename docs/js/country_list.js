@@ -1,10 +1,9 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
-function loadCountryList(data) {
+function loadCountryList(data, cNames) {
   list = d3.select("#country-list-ul");
   list.selectAll(".country-list-item").remove();
 
   countries = Object.keys(data);
-
   /* Create li items */
   list
     .selectAll("li")
@@ -25,7 +24,7 @@ function loadCountryList(data) {
     .append("span")
     .attr("class", "country-code-list")
     .text((function(d) {
-      return d;
+      return cNames[d];
     }));
 
   var options = {
