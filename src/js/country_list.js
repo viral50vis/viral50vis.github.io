@@ -1,9 +1,8 @@
-function loadCountryList(data) {
+function loadCountryList(data, cNames) {
   list = d3.select("#country-list-ul");
   list.selectAll(".country-list-item").remove();
 
   countries = Object.keys(data);
-
   /* Create li items */
   list
     .selectAll("li")
@@ -24,7 +23,7 @@ function loadCountryList(data) {
     .append("span")
     .attr("class", "country-code-list")
     .text(function(d) {
-      return d;
+      return cNames[d];
     });
 
   var options = {
