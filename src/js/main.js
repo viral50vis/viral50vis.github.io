@@ -2,7 +2,7 @@ var data;
 var dataWeek = "2020-01-23";
 var worldJSON;
 var worldCountryZoomJSON;
-var countriesJSON;
+var countryCCJSON;
 var currentAttribute = "danceability";
 var filesLoaded = false;
 
@@ -27,10 +27,10 @@ Promise.all([
   data = files[0];
   worldJSON = files[1];
   worldCountryZoomJSON = files[2];
-  countryJSON = files[3];
+  countryCCJSON = files[3];
   generateWorldMap(files[1]);
   updateWorldMap(data[dataWeek], data.minimum, data.maximum);
   loadAttrList();
-  loadCountryList(data[dataWeek], countryJSON);
+  loadCountryList(data[dataWeek], countryCCJSON);
   loadTimeSlider();
 });
