@@ -1,5 +1,5 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
-/* line 3, src/sass/timeslider.scss */
+/* line 6, src/sass/timeslider.scss */
 .timeslider-bar-wrapper {
   min-width: 620px;
   background-color: #282828;
@@ -14,7 +14,7 @@
   height: auto;
 }
 
-/* line 11, src/sass/timeslider.scss */
+/* line 14, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -33,14 +33,20 @@
   padding: 0 64px;
 }
 
-/* line 19, src/sass/timeslider.scss */
+/* line 23, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper-test {
+  visibility: hidden;
+  position: relative;
+}
+
+/* line 28, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper {
   width: 100%;
   position: relative;
   padding-bottom: 10px;
 }
 
-/* line 43, src/sass/timeslider.scss */
+/* line 60, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider {
   width: 100%;
   top: -2px;
@@ -51,7 +57,7 @@
   z-index: 10;
 }
 
-/* line 53, src/sass/timeslider.scss */
+/* line 72, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 18px;
@@ -64,7 +70,7 @@
   z-index: 10;
 }
 
-/* line 58, src/sass/timeslider.scss */
+/* line 77, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-moz-range-thumb {
   width: 18px;
   height: 18px;
@@ -76,7 +82,7 @@
   z-index: 10;
 }
 
-/* line 62, src/sass/timeslider.scss */
+/* line 81, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-thumb {
   width: 18px;
   height: 18px;
@@ -88,7 +94,7 @@
   z-index: 10;
 }
 
-/* line 67, src/sass/timeslider.scss */
+/* line 86, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-webkit-slider-runnable-track {
   width: 100%;
   height: 3px;
@@ -97,7 +103,7 @@
   z-index: 10;
 }
 
-/* line 71, src/sass/timeslider.scss */
+/* line 90, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-moz-range-track {
   width: 100%;
   height: 3px;
@@ -106,7 +112,7 @@
   z-index: 10;
 }
 
-/* line 75, src/sass/timeslider.scss */
+/* line 94, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-track {
   width: 100%;
   height: 3px;
@@ -115,13 +121,13 @@
   z-index: 10;
 }
 
-/* line 79, src/sass/timeslider.scss */
+/* line 98, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider:focus {
   background: none;
   outline: none;
 }
 
-/* line 85, src/sass/timeslider.scss */
+/* line 104, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-track {
   width: 100%;
   cursor: pointer;
@@ -130,14 +136,14 @@
   color: transparent;
 }
 
-/* line 96, src/sass/timeslider.scss */
+/* line 115, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* line 101, src/sass/timeslider.scss */
+/* line 120, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels li {
   position: absolute;
   color: #b2b2b2;
@@ -146,7 +152,7 @@
   cursor: pointer;
 }
 
-/* line 108, src/sass/timeslider.scss */
+/* line 127, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels li::before {
   position: absolute;
   top: -13px;
@@ -161,17 +167,17 @@
   z-index: 0;
 }
 
-/* line 123, src/sass/timeslider.scss */
+/* line 142, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active {
   color: #ffffff;
 }
 
-/* line 127, src/sass/timeslider.scss */
+/* line 146, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active::before {
   background: #1ed760;
 }
 
-/* line 131, src/sass/timeslider.scss */
+/* line 150, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active.selected::before {
   display: none;
 }

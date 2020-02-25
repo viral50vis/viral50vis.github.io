@@ -22,10 +22,7 @@ function loadTimeSlider() {
     })
     .each(function(d) {
       var offset =
-        (sliderInput.node().getBoundingClientRect().width *
-          (155 - weekToValue(d))) /
-          155 -
-        (18 * (155 - weekToValue(d))) / 155;
+        (sliderInput.node().getBoundingClientRect().width * (155 - weekToValue(d))) / 155 - (18 * (155 - weekToValue(d))) / 155;
       var labelWidth = d3
         .select(this)
         .node()
@@ -46,6 +43,7 @@ function loadTimeSlider() {
   sliderLabels.selectAll("#week_0").classed("active selected", true);
 
   sliderInput.on("input", function() {
+    console.log("waaalah");
     updateTimeSliderStyle(155 - this.value);
     dataWeek = valueToWeek(155 - this.value);
     updateWorldMap(data[dataWeek], data.minimum, data.maximum);
