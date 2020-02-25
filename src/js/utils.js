@@ -167,7 +167,7 @@ function weekToValue(week) {
 
 function calculateColorFromValue(value, min, max, minColor, maxColor) {
   var range = max - min;
-  var perc = value / range;
+  var perc = (value - min) / range;
 
   var dRed = maxColor.red - minColor.red;
   var dGreen = maxColor.green - minColor.green;
