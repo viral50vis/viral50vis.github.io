@@ -1,0 +1,12 @@
+@import "variables.scss";
+
+.line {
+  fill: none;
+  stroke: $spotify_green_color;
+  stroke-width: 1px;
+}
+
+.dot {
+  fill: $spotify_green_color;
+  stroke: $body_color;
+}

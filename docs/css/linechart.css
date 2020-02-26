@@ -1,0 +1,13 @@
+/*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
+/* line 3, src/sass/linechart.scss */
+.line {
+  fill: none;
+  stroke: #1ed760;
+  stroke-width: 1px;
+}
+
+/* line 9, src/sass/linechart.scss */
+.dot {
+  fill: #1ed760;
+  stroke: #b2b2b2;
+}

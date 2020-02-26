@@ -484,8 +484,21 @@
   pointer-events: none;
 }
 
+/* line 3, src/sass/linechart.scss */
+.line {
+  fill: none;
+  stroke: #1ed760;
+  stroke-width: 1px;
+}
+
+/* line 9, src/sass/linechart.scss */
+.dot {
+  fill: #1ed760;
+  stroke: #b2b2b2;
+}
+
 /* Layout */
-/* line 10, src/sass/main.scss */
+/* line 11, src/sass/main.scss */
 html,
 body {
   margin: 0;
@@ -505,7 +518,7 @@ body {
   color: #b2b2b2;
 }
 
-/* line 27, src/sass/main.scss */
+/* line 28, src/sass/main.scss */
 .Root__wrapper {
   min-height: 100%;
   width: 100%;
@@ -518,7 +531,7 @@ body {
   background-color: #121212;
 }
 
-/* line 38, src/sass/main.scss */
+/* line 39, src/sass/main.scss */
 .Root__wrapper .Root__country-list,
 .Root__wrapper .Root__main-view {
   display: -webkit-box;
@@ -531,7 +544,7 @@ body {
   -webkit-box-direction: normal;
 }
 
-/* line 47, src/sass/main.scss */
+/* line 48, src/sass/main.scss */
 .Root__wrapper .Root__country-list {
   will-change: transform;
   grid-area: country-list;
@@ -540,14 +553,14 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 55, src/sass/main.scss */
+/* line 56, src/sass/main.scss */
 .Root__wrapper .Root__main-view {
   grid-area: main-view;
   width: 100%;
   position: relative;
 }
 
-/* line 60, src/sass/main.scss */
+/* line 61, src/sass/main.scss */
 .Root__wrapper .Root__main-view .main-view-wrapper {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -555,62 +568,62 @@ body {
   min-height: 0;
 }
 
-/* line 66, src/sass/main.scss */
+/* line 67, src/sass/main.scss */
 .Root__wrapper .Root__timeslider-bar {
   grid-area: timeslider-bar;
   width: 100%;
   z-index: 4;
 }
 
-/* line 73, src/sass/main.scss */
+/* line 74, src/sass/main.scss */
 .mdl-layout__content,
 .page-content {
   height: 100%;
 }
 
-/* line 78, src/sass/main.scss */
+/* line 79, src/sass/main.scss */
 .mdl-cell {
   height: calc(100% - 16px);
 }
 
-/* line 82, src/sass/main.scss */
+/* line 83, src/sass/main.scss */
 .top-grid {
   height: calc(85% - 8px);
   padding-bottom: 0;
 }
 
-/* line 86, src/sass/main.scss */
+/* line 87, src/sass/main.scss */
 .top-grid .mdl-card {
   width: 100%;
   height: 100%;
 }
 
-/* line 90, src/sass/main.scss */
+/* line 91, src/sass/main.scss */
 .top-grid .mdl-card .mdl-card__media {
   height: 100%;
   background-color: white;
 }
 
-/* line 94, src/sass/main.scss */
+/* line 95, src/sass/main.scss */
 .top-grid .mdl-card .mdl-card__media .world-detail {
   width: 100%;
   height: 100%;
 }
 
-/* line 102, src/sass/main.scss */
+/* line 103, src/sass/main.scss */
 .slider-grid {
   padding-top: 0;
   height: calc(15% - 8px);
 }
 
-/* line 106, src/sass/main.scss */
+/* line 107, src/sass/main.scss */
 .slider-grid .mdl-card {
   width: 100%;
   height: 100%;
   min-height: 0;
 }
 
-/* line 111, src/sass/main.scss */
+/* line 112, src/sass/main.scss */
 .slider-grid .mdl-card .mdl-card__media {
   height: 100%;
   width: 100%;
