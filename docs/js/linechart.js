@@ -2,6 +2,13 @@
 // local data array
 var sampleData = [];
 
+// FOR TESTING:
+// uncomment/comment lines:
+// - with "var xLength =" to test different data sizes
+//    # Note: small data size will show next data point outside of chart
+// - with 'd3.select("#details")' and 'container'
+//    to test different ways of tracking the mouse movement
+
 // TODO:
 /*
 - Legend
@@ -86,7 +93,8 @@ var lineMarker = chart.append("rect")
 // determines whether the data marker is fixed in position or not
 var lockedDataMarker = false;
 // add listeners for moving and locking the data marker
-d3.select("#details")
+//d3.select("#details")
+container
     .on("mousemove", (function(){
       handleMouseMove(this);
     }))
