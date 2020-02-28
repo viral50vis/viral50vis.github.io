@@ -1,12 +1,57 @@
 @import "variables.scss";
 
+/* Extra long horizontal gridlines for y-axis */
+.y-gridline{
+  stroke: rgba($body_color, 0.1);
+  stroke-width: 1px;
+}
+
+
+/* The line itself that illustrates the path between data points */
 .line {
   fill: none;
   stroke: $spotify_green_color;
   stroke-width: 1px;
+
+  /* Adds animation to the path when data is loaded */
+  &.line-loaded{
+    stroke-dasharray: 10000;
+    stroke-dashoffset: 10000;
+    animation: drawline 2.5s ease-in forwards;
+  }
 }
 
-.dot {
+/* The vertical line that helps mark the correct data point */ 
+.chart-marker {
+  fill: rgba(#b2b2b2, 40);
+}
+
+/* The circles that represent each data point */
+.chart-dot {
   fill: $spotify_green_color;
-  stroke: $body_color;
+}
+.chart-dot.nonfocus{
+  opacity: 0.5;
+  r: 3px;
+  transition: opacity 0.4s ease, r 0.4s ease;
+}
+.chart-dot.focus {
+  opacity: 1.0;
+  r: 5px;
+  transition: opacity 0.8s ease, r 0.8s ease;
+  transition-delay: 0.05s;
+  fill: darken($spotify_green_color, 20);
+  stroke: darken($spotify_green_color, 20);
+  fill: saturate($spotify_green_color, 15);
+  stroke-width: 1px;
+}
+
+/* Animation of drawing the line path of the chart/graph */ 
+@keyframes drawline{
+  from {
+    stroke-dashoffset: 10000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }

@@ -484,17 +484,80 @@
   pointer-events: none;
 }
 
-/* line 3, src/sass/linechart.scss */
+/* Extra long horizontal gridlines for y-axis */
+/* line 4, src/sass/linechart.scss */
+.y-gridline {
+  stroke: rgba(178, 178, 178, 0.1);
+  stroke-width: 1px;
+}
+
+/* The line itself that illustrates the path between data points */
+/* line 11, src/sass/linechart.scss */
 .line {
   fill: none;
   stroke: #1ed760;
   stroke-width: 1px;
+  /* Adds animation to the path when data is loaded */
 }
 
-/* line 9, src/sass/linechart.scss */
-.dot {
+/* line 17, src/sass/linechart.scss */
+.line.line-loaded {
+  stroke-dasharray: 10000;
+  stroke-dashoffset: 10000;
+  -webkit-animation: drawline 2.5s ease-in forwards;
+          animation: drawline 2.5s ease-in forwards;
+}
+
+/* The vertical line that helps mark the correct data point */
+/* line 25, src/sass/linechart.scss */
+.chart-marker {
+  fill: #b2b2b2;
+}
+
+/* The circles that represent each data point */
+/* line 30, src/sass/linechart.scss */
+.chart-dot {
   fill: #1ed760;
-  stroke: #b2b2b2;
+}
+
+/* line 33, src/sass/linechart.scss */
+.chart-dot.nonfocus {
+  opacity: 0.5;
+  r: 3px;
+  -webkit-transition: opacity 0.4s ease, r 0.4s ease;
+  transition: opacity 0.4s ease, r 0.4s ease;
+}
+
+/* line 38, src/sass/linechart.scss */
+.chart-dot.focus {
+  opacity: 1.0;
+  r: 5px;
+  -webkit-transition: opacity 0.8s ease, r 0.8s ease;
+  transition: opacity 0.8s ease, r 0.8s ease;
+  -webkit-transition-delay: 0.05s;
+          transition-delay: 0.05s;
+  fill: #127d38;
+  stroke: #127d38;
+  fill: #0ce95b;
+  stroke-width: 1px;
+}
+
+/* Animation of drawing the line path of the chart/graph */
+@-webkit-keyframes drawline {
+  from {
+    stroke-dashoffset: 10000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes drawline {
+  from {
+    stroke-dashoffset: 10000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 /* Layout */
