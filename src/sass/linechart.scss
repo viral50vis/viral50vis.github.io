@@ -40,10 +40,25 @@
   r: 5px;
   transition: opacity 0.8s ease, r 0.8s ease;
   transition-delay: 0.05s;
-  fill: darken($spotify_green_color, 20);
+  fill: ligthen($spotify_green_color, 60);
   stroke: darken($spotify_green_color, 20);
-  fill: saturate($spotify_green_color, 15);
   stroke-width: 1px;
+}
+
+/* Styling of hover tooltip */
+.chart-tooltip {
+  display: block;
+  position: absolute;
+  text-align: center;
+  width: 50px;
+  padding: 2px;
+  font: 9px sans-serif;
+  background: $body_color;
+  color: darken($spotify_green_color, 40);
+  border: 1px #222 solid;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 100;
 }
 
 /* Animation of drawing the line path of the chart/graph */ 

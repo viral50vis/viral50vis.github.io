@@ -4,9 +4,14 @@ var sampleData = [];
 
 // TODO:
 /*
-- Tooltip over data picker
-- Better ticks on each axis (dynamic)
 - Legend
+- Better ticks on each axis (dynamic)
+- Use <selection>.join() to animate when data enters/exits the graph
+- Scale size according to rest of detail view (currently hardcoded 35%x30% size)
+- Zooming of x-axis (or/and y-axis?)
+- Styling of tooltip and possible change its animation (opacity?)
+- ^ OR \/
+- Move tooltip to side of chart, next to the legend
 - Change line animation to be dynamic to size of data (?) ( - seems really hard )
 */
 /* DONE:
@@ -16,6 +21,8 @@ var sampleData = [];
 - Animation of line onload
 - Horizontal grid lines
 - Clean up classed properties of data point circles
+- Tooltip over data picker
+- Animated tooltip
 */
 
 
@@ -30,6 +37,7 @@ var margin = {top: 50, right: 10, bottom: 20, left: 60},
 toggleDetailViewVisibility();
 
 // create the container element
+var container = d3.select("#linechart");
 var chart = d3.select("#linechart").append("svg")
     .attr("width", totalWidth)
     .attr("height", totalHeight)
@@ -38,8 +46,8 @@ var chart = d3.select("#linechart").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // number of weeks (utils.js) for indexing x axis
-var xLength = weeks.length -1; // for large sample data
-//var xLength = 52 -1; // for small sample data
+//var xLength = weeks.length -1; // for large sample data
+var xLength = 30 -1; // for small sample data
 
 // set up scales for chart
 var xScale = d3.scaleLinear()
@@ -74,16 +82,57 @@ var lineMarker = chart.append("rect")
       .style("z-index", "19")
       .style("width", "2px")
       .style("height", innerHeight);
-// add a listener for mouse movement
+
+// determines whether the data marker is fixed in position or not
+var lockedDataMarker = false;
+// add listeners for moving and locking the data marker
 d3.select("#details")
     .on("mousemove", (function(){
       handleMouseMove(this);
+    }))
+    .on("click", (function(){
+      // toggle the lock of the data marker
+      lockedDataMarker = !lockedDataMarker;
+      // if it is unlocked, update its position
+      if(!lockedDataMarker)
+        handleMouseMove(this);
     }));
 
 
-// prepare tooltip element
-chart.append("div")
-    .attr("class", "chart-tooltip");
+// prepare tooltip element for marked data
+var chartTooltip = container.append("div")
+    .attr("class", "chart-tooltip")
+    .style("opacity", 0)
+    .style("left", margin.left)
+    .style("top", totalHeight);
+var prevX = 0;
+function updateChartTooltip(d, mousex){
+  // dynamic positioning of tooltip
+  var xIdx = Math.round(xScale.invert(mousex));
+  var xpos = xScale(xIdx) + margin.left/2;
+  var ypos = innerHeight + yScale(sampleData[xIdx].y) - margin.top - 25;
+  
+  // show x- and y-values (y-value rounded off to 3 decimal places)
+  var content = "X: " + d.x + "<br> Y: " + d.y.toFixed(3);
+
+  // stop all previous transitions if marked data is new
+  if(xIdx != prevX)
+    chartTooltip.interrupt();
+  // move the tooltip to its new position
+  chartTooltip.transition()
+    .duration(200)
+    .delay(100)
+    .ease(d3.easeCubic)
+    .style("opacity", 0.85)
+    .style("left", xpos+"px")
+    .style("top", ypos+"px");
+  // update the content of the tooltip
+  chartTooltip.html(content);
+  prevX = xIdx;
+}
+function hideChartTooltip(){
+  //currently unused, add if discrete data marker is removed
+}
 
 
 // retrieve the data (temporary sample data)
@@ -98,6 +147,7 @@ Promise.all([d3.json("data/random_test_data.json")
 }));
 
 function reloadLineChart(loadedData){
+    sampleData = loadedData;
     // add the line path itself
     drawLine(loadedData);
     // add horizontal gridlines
@@ -110,7 +160,7 @@ function drawLine(loadedData){
       // append the line itself when data has been loaded
       chart.append("path")
       .attr("class", "line")
-      .classed("line-loaded", true)
+      .attr("line-loaded", true)
       .data([loadedData]) 
       .attr("d" , line);
 }
@@ -134,14 +184,15 @@ function addDataPointDots(loadedData){
     .enter().append("circle")
       .attr("class", "chart-dot") // Assign a class for styling
       .attr("opacity", "0.5")
-      .attr("cx", (function(d, i) { return xScale(d.x); }))
+      .attr("cx", (function(d) { return xScale(d.x); }))
       .attr("cy", (function(d) { return yScale(d.y); }))
-      .attr("r", 3);
+      .attr("r", 3); // radius of 3px
 }
 
 
 // handle the marker following mouse movement
 function handleMouseMove(t){
+  if(lockedDataMarker) return;
 
   // move the vertical line marker (within bounds)
   mousex = d3.mouse(t)[0] - margin.left;
@@ -154,11 +205,16 @@ function handleMouseMove(t){
 
   // animate data point if on the line marker
   // and transition out if not on line marker anymore
-  chart.selectAll(".chart-dot")
+  var dots = chart.selectAll(".chart-dot")
       .classed("focus", (function(d){
         return d.x == Math.round(xScale.invert(mousex));
       }))
       .classed("nonfocus", (function(d){
         return d.x != Math.round(xScale.invert(mousex));
+      }));
+  dots.each((function(d){
+        if(d.x == Math.round(xScale.invert(mousex)) ){
+          updateChartTooltip(d, mousex);
+        }
       }));
 }
