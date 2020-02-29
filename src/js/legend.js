@@ -3,7 +3,7 @@ var legendLabels = {
   "danceability":     ["low", "high"],
   "energy":           ["calm", "energetic"],
   "instrumentalness": ["vocal", "instrumental"],
-  "key":              ["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"],
+  "key":              ["low", "high"],
   "liveness":         ["studio", "live"],
   "loudness":         ["quiet", "loud"],
   "mode":             ["minor", "major"],
