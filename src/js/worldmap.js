@@ -78,6 +78,7 @@ function updateWorldMap(data, minimum, maximum) {
         )
       );
     });
+  updateLegend(data, minimum, maximum);
 }
 
 function handleCountryClickShowDetail(CC) {
