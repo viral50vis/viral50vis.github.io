@@ -3,53 +3,79 @@
 #attr-list-container {
   position: absolute;
   z-index: 1;
+  margin: 16px 0px 0px 16px;
 }
 
-/* line 6, src/sass/attr_list.scss */
-.mdl-button--raised.mdl-button--colored {
-  background: none;
-  padding: 0px 8px 0px 8px;
-  margin: 0px;
-  line-height: 28px;
+/* line 7, src/sass/attr_list.scss */
+#attr-button {
+  padding: 0px 10px 0px 10px;
+  line-height: 34px;
   height: auto;
   color: #fff;
   font-weight: bold;
-  border: 1px solid #fff;
-  border-radius: 8px;
-  text-transform: uppercase;
-  margin: 16px 0px 0px 16px;
+  border-radius: 23px;
+  background: #282828;
+  overflow: auto;
+}
+
+/* line 18, src/sass/attr_list.scss */
+#attr-button:hover {
+  background: #2d2d2d;
   cursor: pointer;
 }
 
-/* line 21, src/sass/attr_list.scss */
-.mdl-button--raised.mdl-button--colored:hover {
-  background: none;
+/* line 23, src/sass/attr_list.scss */
+#attr-button span {
+  float: left;
 }
 
-/* line 25, src/sass/attr_list.scss */
-.mdl-button--raised {
-  -webkit-box-shadow: none;
-  box-shadow: none;
+/* line 27, src/sass/attr_list.scss */
+#attr-button span::first-letter {
+  text-transform: uppercase;
 }
 
-/* line 30, src/sass/attr_list.scss */
-.mdl-button--raised.mdl-button--colored:active {
-  -webkit-box-shadow: none;
-  box-shadow: none;
+/* line 31, src/sass/attr_list.scss */
+#drop-img {
+  float: right;
+  font-size: 34px;
+  margin-right: -8px;
 }
 
-/* line 35, src/sass/attr_list.scss */
-.mdl-menu__outline {
+/* line 37, src/sass/attr_list.scss */
+#dropdown-container {
+  position: absolute;
   background: #282828;
-}
-
-/* line 39, src/sass/attr_list.scss */
-.mdl-menu__item {
+  margin-top: 5px;
   color: #b3b3b3;
+  font-weight: bold;
+  padding: 0px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+  display: none;
 }
 
-/* line 43, src/sass/attr_list.scss */
-.mdl-menu__item:hover {
-  background: #333333;
-  color: white;
+/* line 50, src/sass/attr_list.scss */
+#dropdown-container li {
+  list-style: none;
+  padding: 8px 20px;
+  border-top: 1px solid #404040;
+}
+
+/* line 56, src/sass/attr_list.scss */
+#dropdown-container li::first-letter {
+  text-transform: uppercase;
+}
+
+/* line 60, src/sass/attr_list.scss */
+#dropdown-container li:hover {
+  background: #2d2d2d;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* line 66, src/sass/attr_list.scss */
+.toggleDropdown {
+  display: block !important;
 }

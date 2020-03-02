@@ -32,7 +32,7 @@ function listAttributes(attrs) {
     var li = document.createElement("li");
     li.innerHTML = element;
 
-    if(firstEle) {
+    if (firstEle) {
       li.setAttribute("style", "border: none;");
       firstEle = false;
     }
@@ -70,9 +70,9 @@ function toggleDropdown() {
   var dropdownEleCont = document.getElementById("dropdown-container");
   var dropdownArrow = document.getElementById("drop-img");
 
-  if(dropdownEleCont.className == "") {
+  if (dropdownEleCont.className == "") {
     dropdownEleCont.className = "toggleDropdown";
-    dropdownArrow.innerHTML = "arrow_drop_up"
+    dropdownArrow.innerHTML = "arrow_drop_up";
   } else {
     dropdownEleCont.className = "";
     dropdownArrow.innerHTML = "arrow_drop_down";

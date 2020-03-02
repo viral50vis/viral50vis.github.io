@@ -1,3 +1,4 @@
+/*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
 var legendLabels = {
   acousticness: ["electronic", "acoustic"],
   danceability: ["low", "high"],
@@ -31,11 +32,11 @@ function updateLegend(data, minimum, maximum) {
     .enter()
     .append("div")
     .attr("class", "legend-label")
-    .style("text-align", function(d) {
+    .style("text-align", (function(d) {
       if (continuous) return labels.indexOf(d) == 0 ? "left" : "right";
       return "center";
-    })
-    .text(function(d) {
+    }))
+    .text((function(d) {
       var value = "";
       if (continuous)
         value =
@@ -43,7 +44,7 @@ function updateLegend(data, minimum, maximum) {
           (labels.indexOf(d) == 0 ? min.toFixed(2) : max.toFixed(2)) +
           ")";
       return d + value;
-    });
+    }));
 
   d3.select("#legend-scale-container")
     .selectAll("div")
@@ -66,7 +67,7 @@ function updateLegend(data, minimum, maximum) {
       .enter()
       .append("div")
       .attr("class", "legend-scale-segment")
-      .style("background", function(d) {
+      .style("background", (function(d) {
         return calculateColorFromValue(
           d,
           0,
@@ -74,6 +75,6 @@ function updateLegend(data, minimum, maximum) {
           minColor,
           maxColor
         );
-      });
+      }));
   }
 }
