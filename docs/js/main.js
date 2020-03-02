@@ -6,6 +6,8 @@ var worldCountryZoomJSON;
 var countryCCJSON;
 var currentAttribute = "danceability";
 var filesLoaded = false;
+var isInDetailView = false;
+var selectedCountries = [];
 
 var maxColor = {
   red: 29,
