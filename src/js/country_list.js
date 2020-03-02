@@ -45,15 +45,14 @@ function loadCountryList(data, cNames) {
 }
 
 function highlightCountryInList(CC, highlit) {
-  list.select("#country-list-" + CC)
-    .classed("highlit-country", highlit);
+  list.select("#country-list-" + CC).classed("highlit-country", highlit);
 
   if (highlit) {
     d3.select("#country-list-" + CC)
       .node()
       .scrollIntoView({
         block: "center",
-		      behavior: "smooth"
-	    });
+        behavior: "smooth"
+      });
   }
 }

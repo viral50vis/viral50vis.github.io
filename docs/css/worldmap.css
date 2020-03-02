@@ -1,24 +1,24 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
-/* line 1, src/sass/worldmap.scss */
+/* line 3, src/sass/worldmap.scss */
 .world-detail {
   height: 100%;
   width: 100%;
   display: block;
 }
 
-/* line 6, src/sass/worldmap.scss */
+/* line 8, src/sass/worldmap.scss */
 .world-detail .world-wrapper {
   height: 100%;
   width: 100%;
 }
 
-/* line 10, src/sass/worldmap.scss */
+/* line 12, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world {
   height: 100%;
   width: 100%;
 }
 
-/* line 14, src/sass/worldmap.scss */
+/* line 16, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg {
   width: 100%;
   height: 100%;
@@ -26,14 +26,21 @@
   position: absolute;
 }
 
-/* line 20, src/sass/worldmap.scss */
+/* line 22, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg .defaultCountry {
   fill: #121212;
   stroke: #b3b3b3;
   stroke-width: 0.1;
 }
 
-/* line 26, src/sass/worldmap.scss */
+/* line 28, src/sass/worldmap.scss */
+.world-detail .world-wrapper #world svg .countryHighlight {
+  stroke: #9df1bb;
+  stroke-width: 1;
+  fill: none;
+}
+
+/* line 34, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg .countryIsInCurrentData {
   stroke: #121212;
 }

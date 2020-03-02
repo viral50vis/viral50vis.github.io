@@ -101,19 +101,17 @@ function handleCountryClickShowDetail(CC) {
 }
 
 function highlightCountryOnMap(CC, highlit) {
-  if (!existsOnMap(CC))
-    return;
-    
+  if (!existsOnMap(CC)) return;
+
   if (highlit) {
     g.append("path")
       .attr("d", d3.select("." + CC).attr("d"))
       .classed("countryHighlight", true)
       .attr("id", CC + "-highlit")
-      .attr("transform", d3.select("." + CC).attr("transform"))
-    } else {
-      d3.select("#" + CC + "-highlit")
-      .remove();
-    }
+      .attr("transform", d3.select("." + CC).attr("transform"));
+  } else {
+    d3.select("#" + CC + "-highlit").remove();
+  }
 }
 
 function zoomInCountry(CC) {

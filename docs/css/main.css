@@ -115,26 +115,26 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* line 1, src/sass/worldmap.scss */
+/* line 3, src/sass/worldmap.scss */
 .world-detail {
   height: 100%;
   width: 100%;
   display: block;
 }
 
-/* line 6, src/sass/worldmap.scss */
+/* line 8, src/sass/worldmap.scss */
 .world-detail .world-wrapper {
   height: 100%;
   width: 100%;
 }
 
-/* line 10, src/sass/worldmap.scss */
+/* line 12, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world {
   height: 100%;
   width: 100%;
 }
 
-/* line 14, src/sass/worldmap.scss */
+/* line 16, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg {
   width: 100%;
   height: 100%;
@@ -142,14 +142,21 @@
   position: absolute;
 }
 
-/* line 20, src/sass/worldmap.scss */
+/* line 22, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg .defaultCountry {
   fill: #121212;
   stroke: #b3b3b3;
   stroke-width: 0.1;
 }
 
-/* line 26, src/sass/worldmap.scss */
+/* line 28, src/sass/worldmap.scss */
+.world-detail .world-wrapper #world svg .countryHighlight {
+  stroke: #9df1bb;
+  stroke-width: 1;
+  fill: none;
+}
+
+/* line 34, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg .countryIsInCurrentData {
   stroke: #121212;
 }
@@ -570,11 +577,21 @@
 }
 
 /* line 66, src/sass/country_list.scss */
+#country-list #list-wrapper ul .highlit-country {
+  color: #ffffff;
+}
+
+/* line 69, src/sass/country_list.scss */
+#country-list #list-wrapper ul .highlit-country::before {
+  background-color: #1ed760;
+}
+
+/* line 74, src/sass/country_list.scss */
 #country-list #list-wrapper ul::-webkit-scrollbar {
   width: 16px;
 }
 
-/* line 69, src/sass/country_list.scss */
+/* line 77, src/sass/country_list.scss */
 #country-list #list-wrapper ul::-webkit-scrollbar-thumb {
   border: 4px solid transparent;
   border-radius: 16px;
@@ -583,13 +600,13 @@
   background-color: rgba(55, 55, 55, 0.8);
 }
 
-/* line 79, src/sass/country_list.scss */
+/* line 87, src/sass/country_list.scss */
 #country-list #list-wrapper .search-bar .bar {
   padding: 0;
   margin: 0 24px 6px;
 }
 
-/* line 83, src/sass/country_list.scss */
+/* line 91, src/sass/country_list.scss */
 #country-list #list-wrapper .search-bar .bar input {
   background-color: #111;
   color: inherit;
