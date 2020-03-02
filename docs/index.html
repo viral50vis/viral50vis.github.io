@@ -41,13 +41,19 @@
             <div class="world-wrapper">
               <!-- Begin Attribute List -->
               <div id="attr-list-container">
-                <button
+                <!--<button
                   id="demo-menu-lower-left"
                   class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
                 >
                   Attributes
-                </button>
-
+                </button>-->
+                <div id="attr-button">
+                  <span id="attr-btn-label">Danceability</span>
+                  <i class="material-icons" id="drop-img">
+                    arrow_drop_down
+                  </i>
+                </div>
+                <ul id="dropdown-container"></ul>
                 <ul
                   id="attr-list-items"
                   class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
@@ -55,7 +61,12 @@
                 ></ul>
               </div>
               <!-- End Attribute List -->
-
+              <!-- Begin Legend -->
+              <div id="legend-container">
+                <div id="legend-label-container"></div>
+                <div id="legend-scale-container"></div>
+              </div>
+              <!-- End Legend -->
               <!-- Begin World -->
               <div id="world"></div>
               <!-- End World -->
@@ -77,6 +88,7 @@
           <!-- End World Detail Card -->
         </div>
       </div>
+      <div class="Root__play-buttons"></div>
       <div class="Root__timeslider-bar">
         <footer class="timeslider-bar-wrapper">
           <div class="timeslider-bar">
@@ -113,13 +125,16 @@
     <!-- World map -->
     <script src="js/worldmap.js"></script>
 
+    <!-- Legend -->
+    <script src="js/legend.js"></script>
+
     <!-- Time slider -->
     <script src="js/timeslider.js"></script>
 
     <!-- Detail view -->
     <script src="js/detailview.js"></script>
 
-    <!-- Navbar 
+    <!-- Navbar
     <script src="js/nav.js"></script>
     -->
 
