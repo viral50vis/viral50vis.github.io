@@ -18,7 +18,12 @@ function loadCountryList(data, cNames) {
         handleCountryClickShowDetail(d);
       }
     })
-    .on("mouseover", function(d, i) {});
+    .on("mouseover", function(d, i) {
+      highlightCountryOnMap(d, true);
+    })
+    .on("mouseout", function(d, i) {
+      highlightCountryOnMap(d, false);
+    });
 
   /* Insert span into li */
   list
@@ -37,4 +42,18 @@ function loadCountryList(data, cNames) {
   countryList.sort("country-code-list", {
     order: "asc"
   });
+}
+
+function highlightCountryInList(CC, highlit) {
+  list.select("#country-list-" + CC)
+    .classed("highlit-country", highlit);
+
+  if (highlit) {
+    d3.select("#country-list-" + CC)
+      .node()
+      .scrollIntoView({
+        block: "center",
+		      behavior: "smooth"
+	    });
+  }
 }
