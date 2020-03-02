@@ -97,6 +97,7 @@ function updateWorldMap(data, minimum, maximum) {
 
 function handleCountryClickShowDetail(CC) {
   zoomInCountry(CC);
+  isInDetailView = true;
 }
 
 function highlightCountryOnMap(CC, highlit) {
