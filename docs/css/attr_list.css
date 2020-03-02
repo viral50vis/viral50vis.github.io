@@ -4,3 +4,52 @@
   position: absolute;
   z-index: 1;
 }
+
+/* line 6, src/sass/attr_list.scss */
+.mdl-button--raised.mdl-button--colored {
+  background: none;
+  padding: 0px 8px 0px 8px;
+  margin: 0px;
+  line-height: 28px;
+  height: auto;
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  text-transform: uppercase;
+  margin: 16px 0px 0px 16px;
+  cursor: pointer;
+}
+
+/* line 21, src/sass/attr_list.scss */
+.mdl-button--raised.mdl-button--colored:hover {
+  background: none;
+}
+
+/* line 25, src/sass/attr_list.scss */
+.mdl-button--raised {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 30, src/sass/attr_list.scss */
+.mdl-button--raised.mdl-button--colored:active {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 35, src/sass/attr_list.scss */
+.mdl-menu__outline {
+  background: #282828;
+}
+
+/* line 39, src/sass/attr_list.scss */
+.mdl-menu__item {
+  color: #b3b3b3;
+}
+
+/* line 43, src/sass/attr_list.scss */
+.mdl-menu__item:hover {
+  background: #333333;
+  color: white;
+}
