@@ -660,7 +660,7 @@ body {
   display: grid;
   grid-template-rows: 1fr auto;
   grid-template-columns: auto 1fr;
-  grid-template-areas: "country-list main-view" "timeslider-bar timeslider-bar";
+  grid-template-areas: "country-list main-view" "play-buttons timeslider-bar";
   background-color: #121212;
 }
 
@@ -702,61 +702,67 @@ body {
 }
 
 /* line 67, src/sass/main.scss */
+.Root__wrapper .Root__play-buttons {
+  grid-area: play-buttons;
+  width: 100%;
+}
+
+/* line 72, src/sass/main.scss */
 .Root__wrapper .Root__timeslider-bar {
   grid-area: timeslider-bar;
   width: 100%;
   z-index: 4;
 }
 
-/* line 74, src/sass/main.scss */
+/* line 79, src/sass/main.scss */
 .mdl-layout__content,
 .page-content {
   height: 100%;
 }
 
-/* line 79, src/sass/main.scss */
+/* line 84, src/sass/main.scss */
 .mdl-cell {
   height: calc(100% - 16px);
 }
 
-/* line 83, src/sass/main.scss */
+/* line 88, src/sass/main.scss */
 .top-grid {
   height: calc(85% - 8px);
   padding-bottom: 0;
 }
 
-/* line 87, src/sass/main.scss */
+/* line 92, src/sass/main.scss */
 .top-grid .mdl-card {
   width: 100%;
   height: 100%;
 }
 
-/* line 91, src/sass/main.scss */
+/* line 96, src/sass/main.scss */
 .top-grid .mdl-card .mdl-card__media {
   height: 100%;
   background-color: white;
 }
 
-/* line 95, src/sass/main.scss */
+/* line 100, src/sass/main.scss */
 .top-grid .mdl-card .mdl-card__media .world-detail {
   width: 100%;
   height: 100%;
 }
 
-/* line 103, src/sass/main.scss */
+/* line 108, src/sass/main.scss */
 .slider-grid {
   padding-top: 0;
   height: calc(15% - 8px);
 }
 
-/* line 107, src/sass/main.scss */
+/* line 112, src/sass/main.scss */
 .slider-grid .mdl-card {
   width: 100%;
   height: 100%;
   min-height: 0;
 }
 
-/* line 112, src/sass/main.scss */
+/* line 117, src/sass/main.scss */
 .slider-grid .mdl-card .mdl-card__media {
   height: 100%;
   width: 100%;
