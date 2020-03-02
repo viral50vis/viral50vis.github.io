@@ -13,7 +13,11 @@ function loadCountryList(data, cNames) {
     .attr("id", function(d) {
       return "country-list-" + d;
     })
-    .on("click", function(d) {})
+    .on("click", function(d) {
+      if (isInDetailView === false) {
+        handleCountryClickShowDetail(d);
+      }
+    })
     .on("mouseover", function(d, i) {});
 
   /* Insert span into li */
