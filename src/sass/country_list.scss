@@ -63,6 +63,14 @@
         }
       }
 
+      .highlit-country {
+        color: #ffffff;
+
+        &::before {
+          background-color: $spotify_green_color;
+        }
+      }
+
       &::-webkit-scrollbar {
         width: 16px;
       }

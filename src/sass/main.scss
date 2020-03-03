@@ -33,7 +33,7 @@ body {
   display: grid;
   grid-template-rows: 1fr auto;
   grid-template-columns: auto 1fr;
-  grid-template-areas: "country-list main-view" "timeslider-bar timeslider-bar";
+  grid-template-areas: "country-list main-view" "play-buttons timeslider-bar";
   background-color: $Root__wrapper_background;
 
   .Root__country-list,
@@ -62,6 +62,11 @@ body {
       flex: 1;
       min-height: 0;
     }
+  }
+
+  .Root__play-buttons {
+    grid-area: play-buttons;
+    width: 100%;
   }
 
   .Root__timeslider-bar {
