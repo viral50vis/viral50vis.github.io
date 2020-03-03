@@ -63,6 +63,29 @@
         }
       }
 
+      .noSelect {
+        color: #707070;
+        cursor: not-allowed;
+
+        &::before {
+          background-color: transparent;
+          position: absolute;
+          padding: 0 0 0;
+          height: 100%;
+          left: 0;
+          top: 0;
+          width: 2px;
+          content: "";
+        }
+
+        &:hover {
+          color: #707070;
+          &::before {
+            background-color: transparent;
+          }
+        }
+      }
+
       .highlit-country {
         color: #ffffff;
 

@@ -18,6 +18,7 @@ function loadCountryList(data, cNames) {
         handleCountryClickShowDetail(d);
       }
       countryClickSelection(d);
+      checkToggleListClickability();
     })
     .on("mouseover", function(d, i) {
       highlightCountryOnMap(d, true);
@@ -54,6 +55,26 @@ function highlightCountryInList(CC, highlit) {
       .scrollIntoView({
         block: "center",
         behavior: "smooth"
+      });
+  }
+}
+
+function checkToggleListClickability() {
+  if (selectedCountries.length == 3) {
+    d3.select("#country-list-ul")
+      .selectAll("li")
+      .each(function(d) {
+        if (selectedCountries.indexOf(d) === -1) {
+          d3.select(this).classed("noSelect", true);
+        }
+      });
+  } else {
+    d3.select("#country-list-ul")
+      .selectAll("li")
+      .each(function(d) {
+        if (selectedCountries.indexOf(d) === -1) {
+          d3.select(this).classed("noSelect", false);
+        }
       });
   }
 }
