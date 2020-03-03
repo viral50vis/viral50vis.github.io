@@ -1,4 +1,5 @@
 var data_attrs;
+var data_songs;
 var dataWeek = "2020-01-23";
 var worldJSON;
 var worldCountryZoomJSON;
