@@ -4,4 +4,4 @@ node_modules
 *.icloud
 venv/
 dist/
-.DS_Store
+**/.DS_Store
