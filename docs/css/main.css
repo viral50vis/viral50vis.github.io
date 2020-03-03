@@ -506,21 +506,23 @@
   stroke-dashoffset: 10000;
   -webkit-animation: drawline 2.5s ease-in forwards;
           animation: drawline 2.5s ease-in forwards;
+  -webkit-animation-delay: 2000ms;
+          animation-delay: 2000ms;
 }
 
 /* The vertical line that helps mark the correct data point */
-/* line 25, src/sass/linechart.scss */
+/* line 26, src/sass/linechart.scss */
 .chart-marker {
   fill: #b2b2b2;
 }
 
 /* The circles that represent each data point */
-/* line 30, src/sass/linechart.scss */
+/* line 31, src/sass/linechart.scss */
 .chart-dot {
   fill: #1ed760;
 }
 
-/* line 33, src/sass/linechart.scss */
+/* line 34, src/sass/linechart.scss */
 .chart-dot.nonfocus {
   opacity: 0.5;
   r: 3px;
@@ -528,7 +530,7 @@
   transition: opacity 0.4s ease, r 0.4s ease;
 }
 
-/* line 38, src/sass/linechart.scss */
+/* line 39, src/sass/linechart.scss */
 .chart-dot.focus {
   opacity: 1.0;
   r: 5px;
@@ -542,7 +544,7 @@
 }
 
 /* Styling of hover tooltip */
-/* line 49, src/sass/linechart.scss */
+/* line 50, src/sass/linechart.scss */
 .chart-tooltip {
   display: block;
   position: absolute;
@@ -556,6 +558,14 @@
   border-radius: 8px;
   pointer-events: none;
   z-index: 100;
+}
+
+/* line 66, src/sass/linechart.scss */
+.chart-legend {
+  border-radius: 10px;
+  border: 1px solid #b2b2b2;
+  fill: rgba(178, 178, 178, 0.1);
+  margin-left: 4px;
 }
 
 /* Animation of drawing the line path of the chart/graph */

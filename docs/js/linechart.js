@@ -6,7 +6,7 @@ var sampleData = [];
 // uncomment/comment lines:
 // - with "var xLength =" to test different data sizes
 //    # Note: small data size will show next data point outside of chart
-// - with 'd3.select("#details")' and 'container'
+// - with 'd3.select("#details")' and 'container' -> '.on'
 //    to test different ways of tracking the mouse movement
 
 // TODO:
@@ -16,7 +16,7 @@ var sampleData = [];
 - Use <selection>.join() to animate when data enters/exits the graph
 - Scale size according to rest of detail view (currently hardcoded 35%x30% size)
 - Zooming of x-axis (or/and y-axis?)
-- Styling of tooltip and possible change its animation (opacity?)
+- Styling of tooltip and possibly change its animation (opacity?)
 - ^ OR \/
 - Move tooltip to side of chart, next to the legend
 - Change line animation to be dynamic to size of data (?) ( - seems really hard )
@@ -34,7 +34,7 @@ var sampleData = [];
 
 
 // set up size and margin of chart
-var margin = {top: 50, right: 10, bottom: 20, left: 60},
+var margin = {top: 50, right: 70, bottom: 20, left: 50},
   totalWidth = window.innerWidth*0.35,
   innerWidth = totalWidth - margin.left - margin.right,
   totalHeight = window.innerHeight*0.30,
@@ -45,7 +45,7 @@ toggleDetailViewVisibility();
 
 // create the container element
 var container = d3.select("#linechart");
-var chart = d3.select("#linechart").append("svg")
+var chart = container.append("svg")
     .attr("width", totalWidth)
     .attr("height", totalHeight)
   .append("g")
@@ -53,8 +53,8 @@ var chart = d3.select("#linechart").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // number of weeks (utils.js) for indexing x axis
-//var xLength = weeks.length -1; // for large sample data
-var xLength = 30 -1; // for small sample data
+var xLength = weeks.length -1; // for large sample data
+//var xLength = 30 -1; // for small sample data
 
 // set up scales for chart
 var xScale = d3.scaleLinear()
@@ -93,8 +93,8 @@ var lineMarker = chart.append("rect")
 // determines whether the data marker is fixed in position or not
 var lockedDataMarker = false;
 // add listeners for moving and locking the data marker
-//d3.select("#details")
-container
+//d3.select("#details") // for larger mouse listening area
+container               // for mouse listening only in graph/chart area
     .on("mousemove", (function(){
       handleMouseMove(this);
     }))
@@ -113,35 +113,19 @@ var chartTooltip = container.append("div")
     .style("opacity", 0)
     .style("left", margin.left)
     .style("top", totalHeight);
+// used for smoother animation in tooltip movement
 var prevX = 0;
-function updateChartTooltip(d, mousex){
-  // dynamic positioning of tooltip
-  var xIdx = Math.round(xScale.invert(mousex));
-  var xpos = xScale(xIdx) + margin.left/2;
-  var ypos = innerHeight + yScale(sampleData[xIdx].y) - margin.top - 25;
-  
-  // show x- and y-values (y-value rounded off to 3 decimal places)
-  var content = "X: " + d.x + "<br> Y: " + d.y.toFixed(3);
 
-  // stop all previous transitions if marked data is new
-  if(xIdx != prevX)
-    chartTooltip.interrupt();
-  // move the tooltip to its new position
-  chartTooltip.transition()
-    .duration(200)
-    .delay(100)
-    .ease(d3.easeCubic)
-    .style("opacity", 0.85)
-    .style("left", xpos+"px")
-    .style("top", ypos+"px");
-  // update the content of the tooltip
-  chartTooltip.html(content);
-  prevX = xIdx;
-}
-function hideChartTooltip(){
-  //currently unused, add if discrete data marker is removed
-}
 
+
+// set up legend
+var legendMargin = {top: 5, right: 5, bottom: 0, left: 5}
+var legend = chart.append("g").append("rect")
+    .attr("class", "chart-legend")
+    .attr("width", margin.right - legendMargin.left - legendMargin.right)
+    .attr("height", innerHeight - legendMargin.top - legendMargin.bottom)
+    .attr("x", innerWidth+legendMargin.left)
+    .attr("y", legendMargin.top);
 
 // retrieve the data (temporary sample data)
 Promise.all([d3.json("data/random_test_data.json")
@@ -153,6 +137,14 @@ Promise.all([d3.json("data/random_test_data.json")
     // perform all steps that's dependent on data
     reloadLineChart(loadedData);       
 }));
+
+
+
+/* 
+  ==================================
+  ==========-FUNCTIONS-=============
+  ==================================
+*/
 
 function reloadLineChart(loadedData){
     sampleData = loadedData;
@@ -225,4 +217,32 @@ function handleMouseMove(t){
           updateChartTooltip(d, mousex);
         }
       }));
+}
+
+function updateChartTooltip(d, mousex){
+  // dynamic positioning of tooltip
+  var xIdx = Math.round(xScale.invert(mousex));
+  var xpos = xScale(xIdx) + margin.left/2;
+  var ypos = innerHeight + yScale(sampleData[xIdx].y) - margin.top - 25;
+  
+  // show x- and y-values (y-value rounded off to 3 decimal places)
+  var content = "X: " + d.x + "<br> Y: " + d.y.toFixed(3);
+
+  // stop all previous transitions if marked data is new
+  if(xIdx != prevX)
+    chartTooltip.interrupt();
+  // move the tooltip to its new position
+  chartTooltip.transition()
+    .duration(200)
+    .delay(100)
+    .ease(d3.easeCubic)
+    .style("opacity", 0.85)
+    .style("left", xpos+"px")
+    .style("top", ypos+"px");
+  // update the content of the tooltip
+  chartTooltip.html(content);
+  prevX = xIdx;
+}
+function hideChartTooltip(){
+  //currently unused, add if discrete data marker is removed
 }
