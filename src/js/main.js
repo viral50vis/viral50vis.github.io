@@ -20,7 +20,7 @@ var minColor = {
 };
 
 Promise.all([
-  d3.json("data/week_mean.json"),
+  d3.json("data/week_mean_new.json"),
   d3.json("data/world_topology.json"),
   d3.json("data/world_country_zoom.json"),
   d3.json("data/countries.json"),
