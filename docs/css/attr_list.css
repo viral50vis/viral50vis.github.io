@@ -4,9 +4,13 @@
   position: absolute;
   z-index: 1;
   margin: 16px 0px 0px 16px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
-/* line 7, src/sass/attr_list.scss */
+/* line 8, src/sass/attr_list.scss */
 #attr-button {
   padding: 0px 10px 0px 10px;
   line-height: 34px;
@@ -18,30 +22,30 @@
   overflow: auto;
 }
 
-/* line 18, src/sass/attr_list.scss */
+/* line 19, src/sass/attr_list.scss */
 #attr-button:hover {
   background: #2d2d2d;
   cursor: pointer;
 }
 
-/* line 23, src/sass/attr_list.scss */
+/* line 24, src/sass/attr_list.scss */
 #attr-button span {
   float: left;
 }
 
-/* line 27, src/sass/attr_list.scss */
+/* line 28, src/sass/attr_list.scss */
 #attr-button span::first-letter {
   text-transform: uppercase;
 }
 
-/* line 31, src/sass/attr_list.scss */
+/* line 32, src/sass/attr_list.scss */
 #drop-img {
   float: right;
   font-size: 34px;
   margin-right: -8px;
 }
 
-/* line 37, src/sass/attr_list.scss */
+/* line 38, src/sass/attr_list.scss */
 #dropdown-container {
   position: absolute;
   background: #282828;
@@ -54,28 +58,28 @@
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
   display: none;
+  cursor: pointer;
 }
 
-/* line 50, src/sass/attr_list.scss */
+/* line 52, src/sass/attr_list.scss */
 #dropdown-container li {
   list-style: none;
   padding: 8px 20px;
   border-top: 1px solid #404040;
 }
 
-/* line 56, src/sass/attr_list.scss */
+/* line 58, src/sass/attr_list.scss */
 #dropdown-container li::first-letter {
   text-transform: uppercase;
 }
 
-/* line 60, src/sass/attr_list.scss */
+/* line 62, src/sass/attr_list.scss */
 #dropdown-container li:hover {
   background: #2d2d2d;
   color: #fff;
-  cursor: pointer;
 }
 
-/* line 66, src/sass/attr_list.scss */
+/* line 67, src/sass/attr_list.scss */
 .toggleDropdown {
   display: block !important;
 }

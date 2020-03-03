@@ -55,6 +55,7 @@ function generateWorldMap(worldJSON) {
     })
     /* On Click */
     .on("click", function(d, i) {
+      countryClickSelection(d.id);
       handleCountryClickShowDetail(d.id);
     })
     /* On Mouse Out */
@@ -132,10 +133,25 @@ function zoomInCountry(CC) {
     );
 }
 
-function zoomOutCountryHideDetail() {
+function zoomOutCountryHideDetail(CC) {
+  isInDetailView = false;
   toggleDetailViewVisibility();
   d3.event.stopPropagation();
+
+  var coords = worldProjection(worldCountryZoomJSON[CC]);
+  var x = coords[0];
+  var y = coords[1];
+
   world
+    .transition()
+    .duration(1)
+    .call(
+      zoom.transform,
+      d3.zoomIdentity
+        .translate(worldWidth / 2, worldHeight / 2)
+        .scale(8)
+        .translate(-x, -y)
+    )
     .transition()
     .duration(1500)
     .call(zoom.transform, d3.zoomIdentity.scale(1));
