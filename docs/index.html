@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Viral 50</title>
+    <link
+      rel="stylesheet"
+      href="https://code.getmdl.io/1.3.0/material.green-orange.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+  </head>
+  <body>
+    <div class="Root__wrapper">
+      <div class="Root__country-list">
+        <nav id="country-list">
+          <!-- Begin Country List -->
+
+          <div id="list-wrapper">
+            <div class="search-bar">
+              <div class="bar">
+                <input class="fuzzy-search" type="text" placeholder="Search" />
+                <span></span>
+              </div>
+            </div>
+            <ul id="country-list-ul" class="list"></ul>
+          </div>
+          <!-- End Country List -->
+        </nav>
+      </div>
+      <div class="Root__main-view">
+        <div class="main-view-wrapper">
+          <!-- Begin World Detail Card -->
+          <div class="world-detail">
+            <div class="world-wrapper">
+              <!-- Begin Attribute List -->
+              <div id="attr-list-container">
+                <!--<button
+                  id="demo-menu-lower-left"
+                  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+                >
+                  Attributes
+                </button>-->
+                <div id="attr-button">
+                  <span id="attr-btn-label">Danceability</span>
+                  <i class="material-icons" id="drop-img">
+                    arrow_drop_down
+                  </i>
+                </div>
+                <ul id="dropdown-container"></ul>
+                <ul
+                  id="attr-list-items"
+                  class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                  for="demo-menu-lower-left"
+                ></ul>
+              </div>
+              <!-- End Attribute List -->
+              <!-- Begin Legend -->
+              <div id="legend-container">
+                <div id="legend-label-container"></div>
+                <div id="legend-scale-container"></div>
+              </div>
+              <!-- End Legend -->
+              <!-- Begin World -->
+              <div id="world"></div>
+              <!-- End World -->
+            </div>
+
+            <!-- Begin Detailed View -->
+            <div class="detail-wrapper detail-hidden">
+              <div id="details">
+                <button
+                  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                  id="details-back-button"
+                >
+                  Back to Overview
+                </button>
+              </div>
+            </div>
+            <!-- End Detailed View -->
+          </div>
+          <!-- End World Detail Card -->
+        </div>
+      </div>
+      <div class="Root__play-buttons"></div>
+      <div class="Root__timeslider-bar">
+        <footer class="timeslider-bar-wrapper">
+          <div class="timeslider-bar">
+            <!-- Begin Slider -->
+            <div id="slider-wrapper">
+              <input
+                class="slider"
+                type="range"
+                min="0"
+                max="155"
+                steps="1"
+                value="155"
+              />
+              <ul class="slider-labels"></ul>
+            </div>
+            <!-- End Slider -->
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"></script>
+    <script src="https://d3js.org/d3-array.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+    <!-- Utils -->
+    <script src="js/utils.js"></script>
+
+    <!-- World map -->
+    <script src="js/worldmap.js"></script>
+
+    <!-- Legend -->
+    <script src="js/legend.js"></script>
+
+    <!-- Time slider -->
+    <script src="js/timeslider.js"></script>
+
+    <!-- Detail view -->
+    <script src="js/detailview.js"></script>
+
+    <!-- Navbar
+    <script src="js/nav.js"></script>
+    -->
+
+    <!-- Attribute selection list -->
+    <script src="js/attr_list.js"></script>
+
+    <!-- Country list -->
+    <script src="js/country_list.js"></script>
+
+    <!-- Main (data loading) -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

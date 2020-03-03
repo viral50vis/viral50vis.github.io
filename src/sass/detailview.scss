@@ -1,0 +1,23 @@
+@import "variables.scss";
+
+.detail-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: opacity 0.5s 0.5s ease-in-out;
+  z-index: 2;
+
+  #details {
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    background-color: $Root__wrapper_background;
+  }
+}
+
+.detail-hidden {
+  opacity: 0;
+  pointer-events: none;
+}

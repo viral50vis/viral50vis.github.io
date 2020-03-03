@@ -1,0 +1,40 @@
+@import "variables.scss";
+
+.world-detail {
+  height: 100%;
+  width: 100%;
+  display: block;
+
+  .world-wrapper {
+    height: 100%;
+    width: 100%;
+
+    #world {
+      height: 100%;
+      width: 100%;
+
+      svg {
+        width: 100%;
+        height: 100%;
+        background-color: #535353;
+        position: absolute;
+
+        .defaultCountry {
+          fill: #121212;
+          stroke: #b3b3b3;
+          stroke-width: 0.1;
+        }
+
+        .countryHighlight {
+          stroke: lighten($spotify_green_color, 30);
+          stroke-width: 1;
+          fill: none;
+        }
+
+        .countryIsInCurrentData {
+          stroke: #121212;
+        }
+      }
+    }
+  }
+}
