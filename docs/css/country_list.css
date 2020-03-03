@@ -86,21 +86,49 @@
 }
 
 /* line 66, src/sass/country_list.scss */
+#country-list #list-wrapper ul .noSelect {
+  color: #707070;
+  cursor: not-allowed;
+}
+
+/* line 70, src/sass/country_list.scss */
+#country-list #list-wrapper ul .noSelect::before {
+  background-color: transparent;
+  position: absolute;
+  padding: 0 0 0;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 2px;
+  content: "";
+}
+
+/* line 81, src/sass/country_list.scss */
+#country-list #list-wrapper ul .noSelect:hover {
+  color: #707070;
+}
+
+/* line 83, src/sass/country_list.scss */
+#country-list #list-wrapper ul .noSelect:hover::before {
+  background-color: transparent;
+}
+
+/* line 89, src/sass/country_list.scss */
 #country-list #list-wrapper ul .highlit-country {
   color: #ffffff;
 }
 
-/* line 69, src/sass/country_list.scss */
+/* line 92, src/sass/country_list.scss */
 #country-list #list-wrapper ul .highlit-country::before {
   background-color: #1ed760;
 }
 
-/* line 74, src/sass/country_list.scss */
+/* line 97, src/sass/country_list.scss */
 #country-list #list-wrapper ul::-webkit-scrollbar {
   width: 16px;
 }
 
-/* line 77, src/sass/country_list.scss */
+/* line 100, src/sass/country_list.scss */
 #country-list #list-wrapper ul::-webkit-scrollbar-thumb {
   border: 4px solid transparent;
   border-radius: 16px;
@@ -109,13 +137,13 @@
   background-color: rgba(55, 55, 55, 0.8);
 }
 
-/* line 87, src/sass/country_list.scss */
+/* line 110, src/sass/country_list.scss */
 #country-list #list-wrapper .search-bar .bar {
   padding: 0;
   margin: 0 24px 6px;
 }
 
-/* line 91, src/sass/country_list.scss */
+/* line 114, src/sass/country_list.scss */
 #country-list #list-wrapper .search-bar .bar input {
   background-color: #111;
   color: inherit;

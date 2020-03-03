@@ -1,3 +1,5 @@
+/*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
+
 function listAttributes(attributes) {
   var ul = d3.select("#dropdown-container");
   var buttonLabel = d3.select("#attr-btn-label");
@@ -13,21 +15,21 @@ function listAttributes(attributes) {
       buttonLabel.text((function() {
         return d;
       }));
-      updateWorldMap(data[dataWeek], data.minimum, data.maximum);
+      updateWorldMap(data_attrs[dataWeek], data_attrs.minimum, data_attrs.maximum);
+
       toggleDropdown();
     }));
 }
 
 function loadAttrList() {
   var buttonLabel = d3.select("#attr-btn-label");
-  var firstDate = Object.keys(data)[0];
-  var firstCountry = Object.keys(data[firstDate])[0];
-  var attributes = Object.keys(data[firstDate][firstCountry]);
+  var firstDate = Object.keys(data_attrs)[0];
+  var firstCountry = Object.keys(data_attrs[firstDate])[0];
+  var attributes = Object.keys(data_attrs[firstDate][firstCountry]);
   listAttributes(attributes);
   buttonLabel.text((function() {
     return currentAttribute;
   }));
-
   var dropdownBtn = d3.select("#attr-button");
   dropdownBtn.on("click", (function() {
     toggleDropdown();
