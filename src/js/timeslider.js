@@ -48,6 +48,8 @@ function loadTimeSlider() {
   sliderInput.on("input", function() {
     updateTimeSliderStyle(155 - this.value);
     dataWeek = valueToWeek(155 - this.value);
+    d3.select("#week-label")
+      .text("Week: " + dataWeek);
     updateWorldMap(
       data_attrs[dataWeek],
       data_attrs.minimum,
@@ -59,6 +61,8 @@ function loadTimeSlider() {
     "background",
     "linear-gradient(to right, #1ed760 0%, #1ed760 100%, #404040 100%, #404040 100%)"
   );
+
+  sliderInput.dispatch("input");
 }
 
 function updateTimeSliderStyle(value) {

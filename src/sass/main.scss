@@ -1,6 +1,7 @@
 @import "modal.scss";
 @import "worldmap.scss";
 @import "legend.scss";
+@import "time_anim_control.scss";
 @import "timeslider.scss";
 @import "attr_list.scss";
 @import "country_list.scss";
@@ -33,7 +34,7 @@ body {
   display: grid;
   grid-template-rows: 1fr auto;
   grid-template-columns: auto 1fr;
-  grid-template-areas: "country-list main-view" "play-buttons timeslider-bar";
+  grid-template-areas: "country-list main-view" "time-anim-control timeslider-bar";
   background-color: $Root__wrapper_background;
 
   .Root__country-list,
@@ -64,8 +65,8 @@ body {
     }
   }
 
-  .Root__play-buttons {
-    grid-area: play-buttons;
+  .Root__time-anim-control {
+    grid-area: time-anim-control;
     width: 100%;
   }
 

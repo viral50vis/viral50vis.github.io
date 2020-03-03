@@ -88,7 +88,48 @@
           <!-- End World Detail Card -->
         </div>
       </div>
-      <div class="Root__play-buttons"></div>
+      <div class="Root__time-anim-control">
+        <div id="week-label"></div>
+        <div id="time-anim-control-wrapper">
+          <!-- Begin Skip Back Button -->
+          <div id="skipb-button" class="time-anim-button">
+            <svg id="skipb-icon" width="40px" height="40px">
+              <polygon points="16.563,13.5 16.563,18.773 26.438,13.072 26.438,26.928 16.563,21.227 16.563,26.5 13.563,26.5,13.563,13.5"/>
+              </svg>
+          </div>
+          <!-- End Skip Back Button -->
+          <!-- Begin Play/Pause Button -->
+          <div id="play-pause-button" class="time-anim-button">
+            <svg id="play-icon" width="40px" height="40px">
+              <g>
+              	<path d="M19.998,1.002c10.475,0,18.998,8.522,18.998,18.998c0,10.476-8.522,18.998-18.998,18.998S1,30.476,1,20
+              		                      C1,9.525,9.522,1.002,19.998,1.002 M19.998,0.002C8.953,0.002,0,8.956,0,20c0,11.045,8.953,19.998,19.998
+                                        19.998,S39.995,31.045,39.995,20C39.995,8.956,31.042,0.002,19.998,0.002L19.998,0.002z"/>
+              </g>
+              <polygon points="14.25,12.205 27.75,20 14.249,27.795"/>
+            </svg>
+            <svg id="pause-icon" display="none" width="40px" height="40px">
+              <g>
+              	<path d="M19.998,1.002c10.475,0,18.998,8.522,18.998,18.998c0,10.476-8.522,18.998-18.998,18.998S1,30.476,1,20
+              		                      C1,9.525,9.522,1.002,19.998,1.002 M19.998,0.002C8.953,0.002,0,8.956,0,20c0,11.045,8.953,19.998,19.998
+                                        19.998,S39.995,31.045,39.995,20C39.995,8.956,31.042,0.002,19.998,0.002L19.998,0.002z"/>
+              </g>
+              <g>
+              	<rect x="22.281" y="12.205" width="4.375" height="15.59"/>
+              	<rect x="13.344" y="12.205" width="4.375" height="15.59"/>
+              </g>
+            </svg>
+          </div>
+          <!-- End Play/Pause Button -->
+          <!-- Begin Skip Forward Button -->
+          <div id="skipf-button" class="time-anim-button">
+            <svg id="skipf-icon" width="40px" height="40px">
+              <polygon points="23.438,13.5 23.438,18.773 13.563,13.072 13.563,26.928 23.438,21.227 23.438,26.5 26.438,26.5,26.438,13.5"/>
+            </svg>
+          </div>
+          <!-- End Skip Forward Button -->
+        </div>
+      </div>
       <div class="Root__timeslider-bar">
         <footer class="timeslider-bar-wrapper">
           <div class="timeslider-bar">
@@ -130,6 +171,9 @@
 
     <!-- Time slider -->
     <script src="js/timeslider.js"></script>
+
+    <!-- Time animation controller -->
+    <script src="js/time_anim_control.js"></script>
 
     <!-- Detail view -->
     <script src="js/detailview.js"></script>
