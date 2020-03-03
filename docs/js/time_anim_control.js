@@ -1,16 +1,17 @@
+/*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
 var timeAnim;
 
-d3.select("#skipb-button").on("click", function() {
+d3.select("#skipb-button").on("click", (function() {
   addTimeSliderValue(-1);
-});
+}));
 
-d3.select("#skipf-button").on("click", function() {
+d3.select("#skipf-button").on("click", (function() {
   addTimeSliderValue(1);
-});
+}));
 
-d3.select("#play-pause-button").on("click", function() {
+d3.select("#play-pause-button").on("click", (function() {
   setTimeAnimPlaying(!isTimeAnimPlaying());
-});
+}));
 
 function getTimeSliderValue() {
   return +sliderInput.property("value");
@@ -35,10 +36,10 @@ function setTimeAnimPlaying(play) {
 
   if (play) {
     if (!isTimeAnimPlaying()) {
-      timeAnim = setInterval(function() {
+      timeAnim = setInterval((function() {
         addTimeSliderValue(1);
         if (getTimeSliderValue() == 155) setTimeAnimPlaying(false);
-      }, 600);
+      }), 600);
     }
   } else {
     if (isTimeAnimPlaying()) {
