@@ -464,25 +464,25 @@
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
   display: none;
+  cursor: pointer;
 }
 
-/* line 50, src/sass/attr_list.scss */
+/* line 51, src/sass/attr_list.scss */
 #dropdown-container li {
   list-style: none;
   padding: 8px 20px;
   border-top: 1px solid #404040;
 }
 
-/* line 56, src/sass/attr_list.scss */
+/* line 57, src/sass/attr_list.scss */
 #dropdown-container li::first-letter {
   text-transform: uppercase;
 }
 
-/* line 60, src/sass/attr_list.scss */
+/* line 61, src/sass/attr_list.scss */
 #dropdown-container li:hover {
   background: #2d2d2d;
   color: #fff;
-  cursor: pointer;
 }
 
 /* line 66, src/sass/attr_list.scss */

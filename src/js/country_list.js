@@ -17,6 +17,7 @@ function loadCountryList(data, cNames) {
       if (isInDetailView === false) {
         handleCountryClickShowDetail(d);
       }
+      countryClickSelection(d);
     })
     .on("mouseover", function(d, i) {
       highlightCountryOnMap(d, true);
