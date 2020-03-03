@@ -118,14 +118,17 @@ var prevX = 0;
 
 
 
-// set up legend
-var legendMargin = {top: 5, right: 5, bottom: 0, left: 5}
-var legend = chart.append("g").append("rect")
+// LEGEND
+var legendMargin = {top: 5, right: 5, bottom: 0, left: 10};
+// move the container to the right of the graph
+var legendContainer = chart.append("g")
+    .attr("transform", "translate(" + (innerWidth+legendMargin.left) +
+          "," + legendMargin.top + ")");
+var legend = legendContainer.append("rect")
     .attr("class", "chart-legend")
     .attr("width", margin.right - legendMargin.left - legendMargin.right)
-    .attr("height", innerHeight - legendMargin.top - legendMargin.bottom)
-    .attr("x", innerWidth+legendMargin.left)
-    .attr("y", legendMargin.top);
+    .attr("height", innerHeight - legendMargin.top - legendMargin.bottom);
+
 
 // retrieve the data (temporary sample data)
 Promise.all([d3.json("data/random_test_data.json")
