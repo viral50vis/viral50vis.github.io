@@ -14,7 +14,7 @@ function listAttributes(attributes) {
       buttonLabel.text(function() {
         return d;
       });
-      updateWorldMap(data[dataWeek], data.minimum, data.maximum);
+      updateWorldMap(data_attrs[dataWeek], data_attrs.minimum, data_attrs.maximum);
 
       toggleDropdown();
     });
@@ -22,9 +22,9 @@ function listAttributes(attributes) {
 
 function loadAttrList() {
   var buttonLabel = d3.select("#attr-btn-label");
-  var firstDate = Object.keys(data)[0];
-  var firstCountry = Object.keys(data[firstDate])[0];
-  var attributes = Object.keys(data[firstDate][firstCountry]);
+  var firstDate = Object.keys(data_attrs)[0];
+  var firstCountry = Object.keys(data_attrs[firstDate])[0];
+  var attributes = Object.keys(data_attrs[firstDate][firstCountry]);
   listAttributes(attributes);
   buttonLabel.text(function() {
     return currentAttribute;
