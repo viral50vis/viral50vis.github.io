@@ -77,10 +77,11 @@
 
 /* line 66, src/sass/linechart.scss */
 .chart-legend {
-  border-radius: 10px;
-  border: 1px solid #b2b2b2;
-  fill: rgba(178, 178, 178, 0.1);
-  margin-left: 4px;
+  stroke-linecap: round;
+  stroke-width: 1px;
+  stroke: rgba(178, 178, 178, 0.3);
+  fill: rgba(178, 178, 178, 0);
+  rx: 10px;
 }
 
 /* Animation of drawing the line path of the chart/graph */
