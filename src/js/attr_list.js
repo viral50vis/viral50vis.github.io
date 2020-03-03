@@ -1,3 +1,4 @@
+
 function listAttributes(attributes) {
   var ul = d3.select("#dropdown-container");
   var buttonLabel = d3.select("#attr-btn-label");
@@ -14,6 +15,7 @@ function listAttributes(attributes) {
         return d;
       });
       updateWorldMap(data[dataWeek], data.minimum, data.maximum);
+
       toggleDropdown();
     });
 }
@@ -27,7 +29,6 @@ function loadAttrList() {
   buttonLabel.text(function() {
     return currentAttribute;
   });
-
   var dropdownBtn = d3.select("#attr-button");
   dropdownBtn.on("click", function() {
     toggleDropdown();
