@@ -232,6 +232,57 @@
           flex-grow: 1;
 }
 
+/* line 3, src/sass/time_anim_control.scss */
+#week-label {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* line 8, src/sass/time_anim_control.scss */
+#time-anim-control-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 5px;
+}
+
+/* line 15, src/sass/time_anim_control.scss */
+.time-anim-button {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  fill: #b2b2b2;
+}
+
+/* line 21, src/sass/time_anim_control.scss */
+.time-anim-button:hover {
+  fill: #ffffff;
+}
+
+/* line 25, src/sass/time_anim_control.scss */
+.time-anim-button:active {
+  fill: #b2b2b2;
+}
+
+/* line 31, src/sass/time_anim_control.scss */
+#play-pause-button:hover {
+  -webkit-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
+}
+
+/* line 35, src/sass/time_anim_control.scss */
+#play-pause-button:active {
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+}
+
 /* line 3, src/sass/timeslider.scss */
 .timeslider-bar-wrapper {
   min-width: 620px;
@@ -834,7 +885,7 @@
 }
 
 /* Layout */
-/* line 11, src/sass/main.scss */
+/* line 12, src/sass/main.scss */
 html,
 body {
   margin: 0;
@@ -854,7 +905,7 @@ body {
   color: #b2b2b2;
 }
 
-/* line 28, src/sass/main.scss */
+/* line 29, src/sass/main.scss */
 .Root__wrapper {
   min-height: 100%;
   width: 100%;
@@ -863,11 +914,11 @@ body {
   display: grid;
   grid-template-rows: 1fr auto;
   grid-template-columns: auto 1fr;
-  grid-template-areas: "country-list main-view" "play-buttons timeslider-bar";
+  grid-template-areas: "country-list main-view" "time-anim-control timeslider-bar";
   background-color: #121212;
 }
 
-/* line 39, src/sass/main.scss */
+/* line 40, src/sass/main.scss */
 .Root__wrapper .Root__country-list,
 .Root__wrapper .Root__main-view {
   display: -webkit-box;
@@ -880,7 +931,7 @@ body {
   -webkit-box-direction: normal;
 }
 
-/* line 48, src/sass/main.scss */
+/* line 49, src/sass/main.scss */
 .Root__wrapper .Root__country-list {
   will-change: transform;
   grid-area: country-list;
@@ -889,14 +940,14 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 56, src/sass/main.scss */
+/* line 57, src/sass/main.scss */
 .Root__wrapper .Root__main-view {
   grid-area: main-view;
   width: 100%;
   position: relative;
 }
 
-/* line 61, src/sass/main.scss */
+/* line 62, src/sass/main.scss */
 .Root__wrapper .Root__main-view .main-view-wrapper {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -904,13 +955,14 @@ body {
   min-height: 0;
 }
 
-/* line 67, src/sass/main.scss */
-.Root__wrapper .Root__play-buttons {
-  grid-area: play-buttons;
+/* line 68, src/sass/main.scss */
+.Root__wrapper .Root__time-anim-control {
+  grid-area: time-anim-control;
   width: 100%;
+  background-color: #282828;
 }
 
-/* line 72, src/sass/main.scss */
+/* line 74, src/sass/main.scss */
 .Root__wrapper .Root__timeslider-bar {
   grid-area: timeslider-bar;
   width: 100%;
