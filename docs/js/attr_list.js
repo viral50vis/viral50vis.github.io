@@ -42,7 +42,11 @@ function listAttributes(attrs) {
       currentAttribute = element;
       btnLabel = document.getElementById("attr-btn-label");
       btnLabel.innerHTML = element;
-      updateWorldMap(data[dataWeek], data.minimum, data.maximum);
+      updateWorldMap(
+        data_attrs[dataWeek],
+        data_attrs.minimum,
+        data_attrs.maximum
+      );
       toggleDropdown();
     };
 
@@ -53,16 +57,16 @@ function listAttributes(attrs) {
 function loadAttrList() {
   var key1, key2;
   // Get first item so that we can get attribute list.
-  for (var i in data) {
+  for (var i in data_attrs) {
     key1 = i;
-    for (var j in data[i]) {
+    for (var j in data_attrs[i]) {
       key2 = j;
       break;
     }
     break;
   }
 
-  attrs = Object.keys(data[key1][key2]);
+  attrs = Object.keys(data_attrs[key1][key2]);
   listAttributes(attrs);
   setAttrBtn(currentAttribute);
 }
