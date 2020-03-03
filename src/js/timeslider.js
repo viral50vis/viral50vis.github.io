@@ -53,6 +53,7 @@ function loadTimeSlider() {
       data_attrs.minimum,
       data_attrs.maximum
     );
+    changeWeekDetailView();
   });
 
   sliderInput.style(

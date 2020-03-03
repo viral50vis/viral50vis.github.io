@@ -3,6 +3,8 @@ function loadCountryList(data, cNames) {
   list.selectAll(".country-list-item").remove();
 
   countries = Object.keys(data);
+  countries.splice(countries.indexOf("GLO"), 1);
+
   /* Create li items */
   list
     .selectAll("li")
