@@ -2,7 +2,7 @@ var sliderInput = d3.select(".slider");
 var sliderLabels = d3.select(".slider-labels");
 
 function loadTimeSlider() {
-  var week_list = Object.keys(data)
+  var week_list = Object.keys(data_attrs)
     .filter(function(d, i) {
       if (d === "minimum" || d === "maximum") {
         return false;
@@ -48,7 +48,11 @@ function loadTimeSlider() {
   sliderInput.on("input", function() {
     updateTimeSliderStyle(155 - this.value);
     dataWeek = valueToWeek(155 - this.value);
-    updateWorldMap(data[dataWeek], data.minimum, data.maximum);
+    updateWorldMap(
+      data_attrs[dataWeek],
+      data_attrs.minimum,
+      data_attrs.maximum
+    );
   });
 
   sliderInput.style(
