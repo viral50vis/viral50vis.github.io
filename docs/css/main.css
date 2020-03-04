@@ -884,8 +884,48 @@
   pointer-events: none;
 }
 
+/* line 1, src/sass/tooltip.scss */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* line 6, src/sass/tooltip.scss */
+.tooltip .tooltip-content {
+  visibility: hidden;
+  background: #282828;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  /*bottom: 125%;*/
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+/* line 20, src/sass/tooltip.scss */
+.tooltip .tooltip-content::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #282828 transparent transparent transparent;
+}
+
+/* line 31, src/sass/tooltip.scss */
+.tooltip:hover .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+}
+
 /* Layout */
-/* line 12, src/sass/main.scss */
+/* line 13, src/sass/main.scss */
 html,
 body {
   margin: 0;
@@ -905,7 +945,7 @@ body {
   color: #b2b2b2;
 }
 
-/* line 29, src/sass/main.scss */
+/* line 30, src/sass/main.scss */
 .Root__wrapper {
   min-height: 100%;
   width: 100%;
@@ -918,7 +958,7 @@ body {
   background-color: #121212;
 }
 
-/* line 40, src/sass/main.scss */
+/* line 41, src/sass/main.scss */
 .Root__wrapper .Root__country-list,
 .Root__wrapper .Root__main-view {
   display: -webkit-box;
@@ -931,7 +971,7 @@ body {
   -webkit-box-direction: normal;
 }
 
-/* line 49, src/sass/main.scss */
+/* line 50, src/sass/main.scss */
 .Root__wrapper .Root__country-list {
   will-change: transform;
   grid-area: country-list;
@@ -940,14 +980,14 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 57, src/sass/main.scss */
+/* line 58, src/sass/main.scss */
 .Root__wrapper .Root__main-view {
   grid-area: main-view;
   width: 100%;
   position: relative;
 }
 
-/* line 62, src/sass/main.scss */
+/* line 63, src/sass/main.scss */
 .Root__wrapper .Root__main-view .main-view-wrapper {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -955,14 +995,14 @@ body {
   min-height: 0;
 }
 
-/* line 68, src/sass/main.scss */
+/* line 69, src/sass/main.scss */
 .Root__wrapper .Root__time-anim-control {
   grid-area: time-anim-control;
   width: 100%;
   background-color: #282828;
 }
 
-/* line 74, src/sass/main.scss */
+/* line 75, src/sass/main.scss */
 .Root__wrapper .Root__timeslider-bar {
   grid-area: timeslider-bar;
   width: 100%;
