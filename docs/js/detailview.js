@@ -76,17 +76,13 @@ function removeCountryFromWeeklySongs(CC) {
 }
 
 function changeWeeklySongsWeek(CC) {
-  var country = countryCCJSON[CC];
-  if (country === "Vietnam") {
-    country = "Viet Nam";
-  }
   d3.select("#weekly-song-list-ul-" + CC)
     .selectAll("li")
     .remove();
-  if (data_songs[dataWeek][country]) {
+  if (data_songs[dataWeek][CC]) {
     d3.select("#weekly-song-list-ul-" + CC)
       .selectAll("li")
-      .data(data_songs[dataWeek][country])
+      .data(data_songs[dataWeek][CC])
       .enter()
       .append("li")
       .append("div")
@@ -99,7 +95,7 @@ function changeWeeklySongsWeek(CC) {
 
     d3.select("#weekly-song-list-ul-" + CC)
       .selectAll(".song-entry-wrapper")
-      .data(data_songs[dataWeek][country])
+      .data(data_songs[dataWeek][CC])
       .append("div")
       .classed("artist-name", true)
       .text((function(d) {

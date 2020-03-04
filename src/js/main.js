@@ -21,11 +21,11 @@ var minColor = {
 };
 
 Promise.all([
-  d3.json("data/week_mean_new.json"),
+  d3.json("data/week_mean_normalized.json"),
   d3.json("data/world_topology.json"),
   d3.json("data/world_country_zoom.json"),
   d3.json("data/countries.json"),
-  d3.json("data/week_countries_songs.json")
+  d3.json("data/week_countries_songs_normalized.json")
 ]).then(function(files) {
   filesLoaded = true;
   data_attrs = files[0];
