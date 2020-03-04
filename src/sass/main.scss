@@ -1,6 +1,7 @@
 @import "modal.scss";
 @import "worldmap.scss";
 @import "legend.scss";
+@import "time_anim_control.scss";
 @import "timeslider.scss";
 @import "attr_list.scss";
 @import "country_list.scss";
@@ -34,7 +35,7 @@ body {
   display: grid;
   grid-template-rows: 1fr auto;
   grid-template-columns: auto 1fr;
-  grid-template-areas: "country-list main-view" "play-buttons timeslider-bar";
+  grid-template-areas: "country-list main-view" "time-anim-control timeslider-bar";
   background-color: $Root__wrapper_background;
 
   .Root__country-list,
@@ -65,63 +66,15 @@ body {
     }
   }
 
-  .Root__play-buttons {
-    grid-area: play-buttons;
+  .Root__time-anim-control {
+    grid-area: time-anim-control;
     width: 100%;
+    background-color: #282828;
   }
 
   .Root__timeslider-bar {
     grid-area: timeslider-bar;
     width: 100%;
     z-index: 4;
-  }
-}
-
-.mdl-layout__content,
-.page-content {
-  height: 100%;
-}
-
-.mdl-cell {
-  height: calc(100% - 16px);
-}
-
-.top-grid {
-  height: calc(85% - 8px);
-  padding-bottom: 0;
-
-  .mdl-card {
-    width: 100%;
-    height: 100%;
-
-    .mdl-card__media {
-      height: 100%;
-      background-color: white;
-
-      .world-detail {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-}
-
-.slider-grid {
-  padding-top: 0;
-  height: calc(15% - 8px);
-
-  .mdl-card {
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-
-    .mdl-card__media {
-      height: 100%;
-      width: 100%;
-      background-color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
   }
 }

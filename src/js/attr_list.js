@@ -1,4 +1,3 @@
-
 function listAttributes(attributes) {
   var ul = d3.select("#dropdown-container");
   var buttonLabel = d3.select("#attr-btn-label");
@@ -14,7 +13,11 @@ function listAttributes(attributes) {
       buttonLabel.text(function() {
         return d;
       });
-      updateWorldMap(data_attrs[dataWeek], data_attrs.minimum, data_attrs.maximum);
+      updateWorldMap(
+        data_attrs[dataWeek],
+        data_attrs.minimum,
+        data_attrs.maximum
+      );
 
       toggleDropdown();
     });
