@@ -31,7 +31,7 @@ var sampleData = [];
 
 var container = d3.select("#linechart");
 // set up size and margin of chart
-var margin = {top: 50, right: 80, bottom: 20, left: 50},
+var margin = {top: 50, right: 80, bottom: 40, left: 50},
   totalWidth = +container.style("width").slice(0, -2),  // .style returns with 'px' after,
   innerWidth = totalWidth - margin.left - margin.right, //  slice it out and force the
   totalHeight = +container.style("height").slice(0, -2),//  result to a number
@@ -240,7 +240,7 @@ function updateChartTooltip(d, mousex){
   // dynamic positioning of tooltip
   var xIdx = Math.round(xScale.invert(mousex));
   var xpos = xScale(xIdx) + margin.left/2;
-  var ypos = innerHeight + yScale(sampleData[xIdx].y) - margin.top - 20;
+  var ypos = yScale(sampleData[xIdx].y) + margin.top - 35;
   
   // show x- and y-values (y-value rounded off to 3 decimal places)
   var content = "X: " + d.x + "<br> Y: " + d.y.toFixed(3);
