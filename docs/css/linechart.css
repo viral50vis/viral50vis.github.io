@@ -1,25 +1,32 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
-/* Remove the y-axis line*/
+/* Make the linechart container fill the entire grid container */
 /* line 5, src/sass/linechart.scss */
+#linechart {
+  width: 100%;
+  height: 100%;
+}
+
+/* Remove the y-axis line*/
+/* line 11, src/sass/linechart.scss */
 .y.axis > .domain {
   display: none;
 }
 
 /* Set all the axis ticks and text to lower opacity to match y-gridlines */
-/* line 10, src/sass/linechart.scss */
+/* line 16, src/sass/linechart.scss */
 .axis > * > text {
   color: rgba(178, 178, 178, 0.7);
 }
 
 /* The horizontal gridlines, the tick lines, and the x-axis line */
-/* line 15, src/sass/linechart.scss */
+/* line 21, src/sass/linechart.scss */
 .y-gridline, .axis > * > line, .x.axis > .domain {
   stroke: rgba(178, 178, 178, 0.1);
   stroke-width: 1px;
 }
 
 /* The line itself that illustrates the path between data points */
-/* line 22, src/sass/linechart.scss */
+/* line 28, src/sass/linechart.scss */
 .line {
   fill: none;
   stroke: #1ed760;
@@ -27,29 +34,29 @@
   /* Adds animation to the path when data is loaded */
 }
 
-/* line 28, src/sass/linechart.scss */
+/* line 34, src/sass/linechart.scss */
 .line.line-loaded {
-  stroke-dasharray: 10000;
-  stroke-dashoffset: 10000;
+  stroke-dasharray: 20000;
+  stroke-dashoffset: 20000;
   -webkit-animation: drawline 2.5s ease-in forwards;
           animation: drawline 2.5s ease-in forwards;
-  -webkit-animation-delay: 400ms;
-          animation-delay: 400ms;
+  -webkit-animation-delay: 4000ms;
+          animation-delay: 4000ms;
 }
 
 /* The vertical line that helps mark the correct data point */
-/* line 37, src/sass/linechart.scss */
+/* line 43, src/sass/linechart.scss */
 .chart-marker {
   fill: #b2b2b2;
 }
 
 /* The circles that represent each data point */
-/* line 42, src/sass/linechart.scss */
+/* line 48, src/sass/linechart.scss */
 .chart-dot {
   fill: #1ed760;
 }
 
-/* line 45, src/sass/linechart.scss */
+/* line 51, src/sass/linechart.scss */
 .chart-dot.nonfocus {
   opacity: 0.5;
   r: 3px;
@@ -57,7 +64,7 @@
   transition: opacity 0.4s ease, r 0.4s ease;
 }
 
-/* line 50, src/sass/linechart.scss */
+/* line 56, src/sass/linechart.scss */
 .chart-dot.focus {
   opacity: 0.95;
   r: 6px;
@@ -71,7 +78,7 @@
 }
 
 /* Styling of hover tooltip */
-/* line 61, src/sass/linechart.scss */
+/* line 67, src/sass/linechart.scss */
 .chart-tooltip {
   display: block;
   position: absolute;
@@ -88,13 +95,13 @@
 }
 
 /* Styling of everything in the chart */
-/* line 77, src/sass/linechart.scss */
+/* line 83, src/sass/linechart.scss */
 .chart-legend > text {
   font-size: 11px;
   fill: #b2b2b2;
 }
 
-/* line 82, src/sass/linechart.scss */
+/* line 88, src/sass/linechart.scss */
 .chart-legend-box {
   stroke-linecap: round;
   stroke-width: 1px;
@@ -103,7 +110,7 @@
   rx: 10px;
 }
 
-/* line 90, src/sass/linechart.scss */
+/* line 96, src/sass/linechart.scss */
 .chart-legend-dot {
   fill: #1ed760;
 }
@@ -111,7 +118,7 @@
 /* Animation of drawing the line path of the chart/graph */
 @-webkit-keyframes drawline {
   from {
-    stroke-dashoffset: 10000;
+    stroke-dashoffset: 20000;
   }
   to {
     stroke-dashoffset: 0;
@@ -119,7 +126,7 @@
 }
 @keyframes drawline {
   from {
-    stroke-dashoffset: 10000;
+    stroke-dashoffset: 20000;
   }
   to {
     stroke-dashoffset: 0;

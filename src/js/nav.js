@@ -1,6 +1,5 @@
-
 function toggleDrawer() {
-  var d = document.querySelector('.mdl-layout');
+  var d = document.querySelector(".mdl-layout");
   d.MaterialLayout.toggleDrawer();
 }
 
@@ -18,40 +17,40 @@ var aboutSpan = document.getElementsByClassName("about-close")[0];
 var backgroundSpan = document.getElementsByClassName("background-close")[0];
 var teamSpan = document.getElementsByClassName("team-close")[0];
 
-aboutButton.onclick = function () {
+aboutButton.onclick = function() {
   toggleDrawer();
   aboutModal.style.display = "block";
   overlay.style.display = "block";
 };
 
-backgroundButton.onclick = function () {
+backgroundButton.onclick = function() {
   toggleDrawer();
   backgroundModal.style.display = "block";
   overlay.style.display = "block";
 };
 
-teamButton.onclick = function () {
+teamButton.onclick = function() {
   toggleDrawer();
   teamModal.style.display = "block";
   overlay.style.display = "block";
 };
 
-aboutSpan.onclick = function () {
+aboutSpan.onclick = function() {
   aboutModal.style.display = "none";
   overlay.style.display = "none";
 };
 
-backgroundSpan.onclick = function () {
+backgroundSpan.onclick = function() {
   backgroundModal.style.display = "none";
   overlay.style.display = "none";
 };
 
-teamSpan.onclick = function () {
+teamSpan.onclick = function() {
   teamModal.style.display = "none";
   overlay.style.display = "none";
 };
 
-overlay.onclick = function (event) {
+overlay.onclick = function(event) {
   console.log("overlay happening");
   aboutModal.style.display = "none";
   backgroundModal.style.display = "none";

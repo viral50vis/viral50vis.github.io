@@ -48,13 +48,28 @@ function generateWorldMap(worldJSON) {
       d3.select(this).classed(d.id, true);
     }))
     /* On Mouse Enter */
-    .on("mouseover", (function(d, i) {}))
+    .on("mouseover", (function(d, i) {
+      if (d3.select(this).classed("countryIsInCurrentData")) {
+        highlightCountryInList(d.id, true);
+        highlightCountryOnMap(d.id, true);
+      }
+    }))
     /* On Click */
     .on("click", (function(d, i) {
+      countryClickSelection(d.id);
       handleCountryClickShowDetail(d.id);
     }))
     /* On Mouse Out */
-    .on("mouseout", (function(d, i) {}));
+    .on("mouseout", (function(d, i) {
+      if (d3.select(this).classed("countryIsInCurrentData")) {
+        highlightCountryInList(d.id, false);
+        highlightCountryOnMap(d.id, false);
+      }
+    }));
+}
+
+function existsOnMap(CC) {
+  return d3.select("." + CC)._groups[0][0] !== null;
 }
 
 function updateWorldMap(data, minimum, maximum) {
@@ -79,10 +94,26 @@ function updateWorldMap(data, minimum, maximum) {
         )
       );
     }));
+  updateLegend(data, minimum, maximum);
 }
 
 function handleCountryClickShowDetail(CC) {
   zoomInCountry(CC);
+  isInDetailView = true;
+}
+
+function highlightCountryOnMap(CC, highlit) {
+  if (!existsOnMap(CC)) return;
+
+  if (highlit) {
+    g.append("path")
+      .attr("d", d3.select("." + CC).attr("d"))
+      .classed("countryHighlight", true)
+      .attr("id", CC + "-highlit")
+      .attr("transform", d3.select("." + CC).attr("transform"));
+  } else {
+    d3.select("#" + CC + "-highlit").remove();
+  }
 }
 
 function zoomInCountry(CC) {
@@ -103,10 +134,25 @@ function zoomInCountry(CC) {
     );
 }
 
-function zoomOutCountryHideDetail() {
+function zoomOutCountryHideDetail(CC) {
+  isInDetailView = false;
   toggleDetailViewVisibility();
   d3.event.stopPropagation();
+
+  var coords = worldProjection(worldCountryZoomJSON[CC]);
+  var x = coords[0];
+  var y = coords[1];
+
   world
+    .transition()
+    .duration(1)
+    .call(
+      zoom.transform,
+      d3.zoomIdentity
+        .translate(worldWidth / 2, worldHeight / 2)
+        .scale(8)
+        .translate(-x, -y)
+    )
     .transition()
     .duration(1500)
     .call(zoom.transform, d3.zoomIdentity.scale(1));

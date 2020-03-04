@@ -3,7 +3,7 @@ var sliderInput = d3.select(".slider");
 var sliderLabels = d3.select(".slider-labels");
 
 function loadTimeSlider() {
-  var week_list = Object.keys(data)
+  var week_list = Object.keys(data_attrs)
     .filter((function(d, i) {
       if (d === "minimum" || d === "maximum") {
         return false;
@@ -49,13 +49,21 @@ function loadTimeSlider() {
   sliderInput.on("input", (function() {
     updateTimeSliderStyle(155 - this.value);
     dataWeek = valueToWeek(155 - this.value);
-    updateWorldMap(data[dataWeek], data.minimum, data.maximum);
+    d3.select("#week-label").text("Week: " + dataWeek);
+    updateWorldMap(
+      data_attrs[dataWeek],
+      data_attrs.minimum,
+      data_attrs.maximum
+    );
+    changeWeekDetailView();
   }));
 
   sliderInput.style(
     "background",
     "linear-gradient(to right, #1ed760 0%, #1ed760 100%, #404040 100%, #404040 100%)"
   );
+
+  sliderInput.dispatch("input");
 }
 
 function updateTimeSliderStyle(value) {

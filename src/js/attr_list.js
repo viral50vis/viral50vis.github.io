@@ -1,37 +1,56 @@
-function listAttributes(attrs) {
-  ul = document.getElementById("attr-list-items");
+function listAttributes(attributes) {
+  var ul = d3.select("#dropdown-container");
+  var buttonLabel = d3.select("#attr-btn-label");
+  ul.selectAll("li")
+    .data(attributes)
+    .enter()
+    .append("li")
+    .text(function(d) {
+      return d;
+    })
+    .on("click", function(d) {
+      currentAttribute = d;
+      buttonLabel.text(function() {
+        return d;
+      });
+      updateWorldMap(
+        data_attrs[dataWeek],
+        data_attrs.minimum,
+        data_attrs.maximum
+      );
 
-  attrs.forEach(function(element) {
-    var li = document.createElement("li");
-    li.setAttribute("id", "attr-list-item-" + element);
-    li.setAttribute("text", element);
-    li.setAttribute("class", "mdl-menu__item");
-    li.innerHTML = element;
-
-    //Update map functionality
-    li.onclick = function() {
-      currentAttribute = element;
-      btn = document.getElementById("demo-menu-lower-left");
-      btn.innerHTML = element;
-      updateWorldMap(data[dataWeek], data.minimum, data.maximum);
-    };
-
-    ul.appendChild(li);
-  });
+      toggleDropdown();
+    });
 }
 
 function loadAttrList() {
-  var key1, key2;
-  // Get first item so that we can get attribute list.
-  for (var i in data) {
-    key1 = i;
-    for (var j in data[i]) {
-      key2 = j;
-      break;
-    }
-    break;
-  }
+  var buttonLabel = d3.select("#attr-btn-label");
+  var firstDate = Object.keys(data_attrs)[0];
+  var firstCountry = Object.keys(data_attrs[firstDate])[0];
+  var attributes = Object.keys(data_attrs[firstDate][firstCountry]);
+  listAttributes(attributes);
+  buttonLabel.text(function() {
+    return currentAttribute;
+  });
+  var dropdownBtn = d3.select("#attr-button");
+  dropdownBtn.on("click", function() {
+    toggleDropdown();
+  });
+}
 
-  attrs = Object.keys(data[key1][key2]);
-  listAttributes(attrs);
+function toggleDropdown() {
+  var dropdownElementContainer = d3.select("#dropdown-container");
+  var dropdownArrow = d3.select("#drop-img");
+
+  if (dropdownElementContainer.classed("toggleDropdown")) {
+    dropdownElementContainer.classed("toggleDropdown", false);
+    dropdownArrow.text(function() {
+      return "arrow_drop_down";
+    });
+  } else {
+    dropdownElementContainer.classed("toggleDropdown", true);
+    dropdownArrow.text(function() {
+      return "arrow_drop_up";
+    });
+  }
 }

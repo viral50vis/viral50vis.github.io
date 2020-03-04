@@ -29,19 +29,18 @@ var sampleData = [];
 - Basic Legend
 */
 
-
+var container = d3.select("#linechart");
 // set up size and margin of chart
 var margin = {top: 50, right: 80, bottom: 20, left: 50},
-  totalWidth = window.innerWidth*0.60,
-  innerWidth = totalWidth - margin.left - margin.right,
-  totalHeight = window.innerHeight*0.28,
+  totalWidth = +container.style("width").slice(0, -2),  // .style returns with 'px' after,
+  innerWidth = totalWidth - margin.left - margin.right, //  slice it out and force the
+  totalHeight = +container.style("height").slice(0, -2),//  result to a number
   innerHeight = totalHeight - margin.top - margin.bottom;
 
 // for debugging, start in detail view
-toggleDetailViewVisibility();
+//toggleDetailViewVisibility();
 
-// create the container element
-var container = d3.select("#linechart");
+// create the svg container element
 var chart = container.append("svg")
     .attr("width", totalWidth)
     .attr("height", totalHeight)
@@ -115,7 +114,7 @@ var prevX = 0;
 
 
 // LEGEND
-var legendMargin = {top: 5, right: 5, bottom: 0, left: 10};
+var legendMargin = {top: 5, right: 10, bottom: 0, left: 10};
 // move the container to the right of the graph
 var legendContainer = chart.append("g")
     .attr("transform", "translate(" + (innerWidth+legendMargin.left) +

@@ -167,7 +167,7 @@ function weekToValue(week) {
 
 function calculateColorFromValue(value, min, max, minColor, maxColor) {
   var range = max - min;
-  var perc = value / range;
+  var perc = (value - min) / range;
 
   var dRed = maxColor.red - minColor.red;
   var dGreen = maxColor.green - minColor.green;
@@ -189,5 +189,21 @@ function toggleDetailViewVisibility() {
     details.classed("detail-hidden", false);
   } else {
     details.classed("detail-hidden", true);
+  }
+}
+
+function countryClickSelection(CC) {
+  var isSelected = selectedCountries.indexOf(CC);
+  if (isSelected > -1) {
+    selectedCountries.splice(isSelected, 1);
+    d3.select("#country-list-" + CC).style("color", null);
+    removeCountryFromDetailView(CC);
+    if (selectedCountries.length == 0) {
+      zoomOutCountryHideDetail(CC);
+    }
+  } else if (selectedCountries.length < 3) {
+    selectedCountries.push(CC);
+    d3.select("#country-list-" + CC).style("color", "#1ed760");
+    addCountryToDetailView(CC);
   }
 }

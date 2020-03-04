@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 .world-detail {
   height: 100%;
   width: 100%;
@@ -21,6 +23,12 @@
           fill: #121212;
           stroke: #b3b3b3;
           stroke-width: 0.1;
+        }
+
+        .countryHighlight {
+          stroke: lighten($spotify_green_color, 30);
+          stroke-width: 1;
+          fill: none;
         }
 
         .countryIsInCurrentData {
