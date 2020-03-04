@@ -6,20 +6,16 @@ var sampleData = [];
 // uncomment/comment lines:
 // - with "var xLength =" to test different data sizes
 //    # Note: small data size will show next data point outside of chart
-// - with 'd3.select("#details")' and 'container' -> '.on'
-//    to test different ways of tracking the mouse movement
 
 // TODO:
 /*
-- Legend
-- Better ticks on each axis (dynamic)
-- Use <selection>.join() to animate when data enters/exits the graph
-- Scale size according to rest of detail view (currently hardcoded 35%x30% size)
+- Better ticks on each axis (dynamic) - min/max
+- Put data marker at currently selected week from timeslider
+- Adapt graph to work with multiple (up to 3) countries
 - Zooming of x-axis (or/and y-axis?)
+- Use <selection>.join() to animate when data enters/exits the graph
+- Scale size according to rest of detail view (currently hardcoded 60%x28% size)
 - Styling of tooltip and possibly change its animation (opacity?)
-- ^ OR \/
-- Move tooltip to side of chart, next to the legend
-- Change line animation to be dynamic to size of data (?) ( - seems really hard )
 */
 /* DONE:
 - Hover animation
@@ -30,14 +26,15 @@ var sampleData = [];
 - Clean up classed properties of data point circles
 - Tooltip over data picker
 - Animated tooltip
+- Basic Legend
 */
 
 
 // set up size and margin of chart
-var margin = {top: 50, right: 70, bottom: 20, left: 50},
-  totalWidth = window.innerWidth*0.35,
+var margin = {top: 50, right: 80, bottom: 20, left: 50},
+  totalWidth = window.innerWidth*0.60,
   innerWidth = totalWidth - margin.left - margin.right,
-  totalHeight = window.innerHeight*0.30,
+  totalHeight = window.innerHeight*0.28,
   innerHeight = totalHeight - margin.top - margin.bottom;
 
 // for debugging, start in detail view
@@ -67,8 +64,8 @@ var yScale = d3.scaleLinear()
 
 // generate a line between data points
 var line = d3.line()
-    .x((function(d, i) { return xScale(d.x); }))
-    .y((function(d, i) { return yScale(d.y); }))
+    .x((function(d) { return xScale(d.x); }))
+    .y((function(d) { return yScale(d.y); }))
     .curve(d3.curveLinear); // strict straight lines between each data point
 
 // append x- and y-axis
@@ -93,7 +90,6 @@ var lineMarker = chart.append("rect")
 // determines whether the data marker is fixed in position or not
 var lockedDataMarker = false;
 // add listeners for moving and locking the data marker
-//d3.select("#details") // for larger mouse listening area
 container               // for mouse listening only in graph/chart area
     .on("mousemove", (function(){
       handleMouseMove(this);
@@ -123,11 +119,25 @@ var legendMargin = {top: 5, right: 5, bottom: 0, left: 10};
 // move the container to the right of the graph
 var legendContainer = chart.append("g")
     .attr("transform", "translate(" + (innerWidth+legendMargin.left) +
-          "," + legendMargin.top + ")");
-var legend = legendContainer.append("rect")
-    .attr("class", "chart-legend")
+          "," + legendMargin.top + ")")
+    .attr("class", "chart-legend");
+// add a border box
+legendContainer.append("rect")
+    .attr("class", "chart-legend-box")
     .attr("width", margin.right - legendMargin.left - legendMargin.right)
     .attr("height", innerHeight - legendMargin.top - legendMargin.bottom);
+// add color dot for each of the lines
+legendContainer.append("circle")
+    .attr("class", "chart-legend-dot")
+    .attr("r", 3)
+    .attr("cx", 10)
+    .attr("cy", 15);
+// add text for the line legend
+legendContainer.append("text")
+    .attr("x", 17)
+    .attr("y", 15)
+    .attr("dy", "0.35em")
+    .text("Country");
 
 
 // retrieve the data (temporary sample data)
@@ -151,6 +161,8 @@ Promise.all([d3.json("data/random_test_data.json")
 
 function reloadLineChart(loadedData){
     sampleData = loadedData;
+    // for dynamic y-axis if desired later
+    //yScale.domain(d3.extent(sampleData, function(d){return d.y;}))
     // add the line path itself
     drawLine(loadedData);
     // add horizontal gridlines
@@ -163,7 +175,7 @@ function drawLine(loadedData){
       // append the line itself when data has been loaded
       chart.append("path")
       .attr("class", "line")
-      .attr("line-loaded", true)
+      .classed("line-loaded", true)
       .data([loadedData]) 
       .attr("d" , line);
 }
@@ -206,17 +218,20 @@ function handleMouseMove(t){
   if(mousex > innerWidth) mousex = innerWidth;
   lineMarker.attr("x", mousex + "px" );
 
+  // rounded off to closest x index
+  var xMouseVal = Math.round(xScale.invert(mousex));
+
   // animate data point if on the line marker
   // and transition out if not on line marker anymore
   var dots = chart.selectAll(".chart-dot")
       .classed("focus", (function(d){
-        return d.x == Math.round(xScale.invert(mousex));
+        return d.x == xMouseVal;
       }))
       .classed("nonfocus", (function(d){
-        return d.x != Math.round(xScale.invert(mousex));
+        return d.x != xMouseVal;
       }));
   dots.each((function(d){
-        if(d.x == Math.round(xScale.invert(mousex)) ){
+        if(d.x == xMouseVal ){
           updateChartTooltip(d, mousex);
         }
       }));
@@ -226,7 +241,7 @@ function updateChartTooltip(d, mousex){
   // dynamic positioning of tooltip
   var xIdx = Math.round(xScale.invert(mousex));
   var xpos = xScale(xIdx) + margin.left/2;
-  var ypos = innerHeight + yScale(sampleData[xIdx].y) - margin.top - 25;
+  var ypos = innerHeight + yScale(sampleData[xIdx].y) - margin.top - 20;
   
   // show x- and y-values (y-value rounded off to 3 decimal places)
   var content = "X: " + d.x + "<br> Y: " + d.y.toFixed(3);

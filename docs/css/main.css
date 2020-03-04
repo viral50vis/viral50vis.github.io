@@ -484,15 +484,27 @@
   pointer-events: none;
 }
 
-/* Extra long horizontal gridlines for y-axis */
-/* line 4, src/sass/linechart.scss */
-.y-gridline {
+/* Remove the y-axis line*/
+/* line 5, src/sass/linechart.scss */
+.y.axis > .domain {
+  display: none;
+}
+
+/* Set all the axis ticks and text to lower opacity to match y-gridlines */
+/* line 10, src/sass/linechart.scss */
+.axis > * > text {
+  color: rgba(178, 178, 178, 0.7);
+}
+
+/* The horizontal gridlines, the tick lines, and the x-axis line */
+/* line 15, src/sass/linechart.scss */
+.y-gridline, .axis > * > line, .x.axis > .domain {
   stroke: rgba(178, 178, 178, 0.1);
   stroke-width: 1px;
 }
 
 /* The line itself that illustrates the path between data points */
-/* line 11, src/sass/linechart.scss */
+/* line 22, src/sass/linechart.scss */
 .line {
   fill: none;
   stroke: #1ed760;
@@ -500,29 +512,29 @@
   /* Adds animation to the path when data is loaded */
 }
 
-/* line 17, src/sass/linechart.scss */
+/* line 28, src/sass/linechart.scss */
 .line.line-loaded {
   stroke-dasharray: 10000;
   stroke-dashoffset: 10000;
   -webkit-animation: drawline 2.5s ease-in forwards;
           animation: drawline 2.5s ease-in forwards;
-  -webkit-animation-delay: 2000ms;
-          animation-delay: 2000ms;
+  -webkit-animation-delay: 400ms;
+          animation-delay: 400ms;
 }
 
 /* The vertical line that helps mark the correct data point */
-/* line 26, src/sass/linechart.scss */
+/* line 37, src/sass/linechart.scss */
 .chart-marker {
   fill: #b2b2b2;
 }
 
 /* The circles that represent each data point */
-/* line 31, src/sass/linechart.scss */
+/* line 42, src/sass/linechart.scss */
 .chart-dot {
   fill: #1ed760;
 }
 
-/* line 34, src/sass/linechart.scss */
+/* line 45, src/sass/linechart.scss */
 .chart-dot.nonfocus {
   opacity: 0.5;
   r: 3px;
@@ -530,10 +542,10 @@
   transition: opacity 0.4s ease, r 0.4s ease;
 }
 
-/* line 39, src/sass/linechart.scss */
+/* line 50, src/sass/linechart.scss */
 .chart-dot.focus {
-  opacity: 1.0;
-  r: 5px;
+  opacity: 0.95;
+  r: 6px;
   -webkit-transition: opacity 0.8s ease, r 0.8s ease;
   transition: opacity 0.8s ease, r 0.8s ease;
   -webkit-transition-delay: 0.05s;
@@ -544,7 +556,7 @@
 }
 
 /* Styling of hover tooltip */
-/* line 50, src/sass/linechart.scss */
+/* line 61, src/sass/linechart.scss */
 .chart-tooltip {
   display: block;
   position: absolute;
@@ -560,13 +572,25 @@
   z-index: 100;
 }
 
-/* line 66, src/sass/linechart.scss */
-.chart-legend {
+/* Styling of everything in the chart */
+/* line 77, src/sass/linechart.scss */
+.chart-legend > text {
+  font-size: 11px;
+  fill: #b2b2b2;
+}
+
+/* line 82, src/sass/linechart.scss */
+.chart-legend-box {
   stroke-linecap: round;
   stroke-width: 1px;
   stroke: rgba(178, 178, 178, 0.3);
   fill: rgba(178, 178, 178, 0);
   rx: 10px;
+}
+
+/* line 90, src/sass/linechart.scss */
+.chart-legend-dot {
+  fill: #1ed760;
 }
 
 /* Animation of drawing the line path of the chart/graph */
