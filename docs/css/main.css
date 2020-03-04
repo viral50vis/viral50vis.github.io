@@ -679,8 +679,48 @@
   pointer-events: none;
 }
 
+/* line 1, src/sass/tooltip.scss */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* line 6, src/sass/tooltip.scss */
+.tooltip .tooltip-content {
+  visibility: hidden;
+  background: #282828;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  /*bottom: 125%;*/
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+/* line 20, src/sass/tooltip.scss */
+.tooltip .tooltip-content::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #282828 transparent transparent transparent;
+}
+
+/* line 31, src/sass/tooltip.scss */
+.tooltip:hover .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+}
+
 /* Layout */
-/* line 11, src/sass/main.scss */
+/* line 12, src/sass/main.scss */
 html,
 body {
   margin: 0;
@@ -700,7 +740,7 @@ body {
   color: #b2b2b2;
 }
 
-/* line 28, src/sass/main.scss */
+/* line 29, src/sass/main.scss */
 .Root__wrapper {
   min-height: 100%;
   width: 100%;
@@ -713,7 +753,7 @@ body {
   background-color: #121212;
 }
 
-/* line 39, src/sass/main.scss */
+/* line 40, src/sass/main.scss */
 .Root__wrapper .Root__country-list,
 .Root__wrapper .Root__main-view {
   display: -webkit-box;
@@ -726,7 +766,7 @@ body {
   -webkit-box-direction: normal;
 }
 
-/* line 48, src/sass/main.scss */
+/* line 49, src/sass/main.scss */
 .Root__wrapper .Root__country-list {
   will-change: transform;
   grid-area: country-list;
@@ -735,14 +775,14 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 56, src/sass/main.scss */
+/* line 57, src/sass/main.scss */
 .Root__wrapper .Root__main-view {
   grid-area: main-view;
   width: 100%;
   position: relative;
 }
 
-/* line 61, src/sass/main.scss */
+/* line 62, src/sass/main.scss */
 .Root__wrapper .Root__main-view .main-view-wrapper {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -750,68 +790,68 @@ body {
   min-height: 0;
 }
 
-/* line 67, src/sass/main.scss */
+/* line 68, src/sass/main.scss */
 .Root__wrapper .Root__play-buttons {
   grid-area: play-buttons;
   width: 100%;
 }
 
-/* line 72, src/sass/main.scss */
+/* line 73, src/sass/main.scss */
 .Root__wrapper .Root__timeslider-bar {
   grid-area: timeslider-bar;
   width: 100%;
   z-index: 4;
 }
 
-/* line 79, src/sass/main.scss */
+/* line 80, src/sass/main.scss */
 .mdl-layout__content,
 .page-content {
   height: 100%;
 }
 
-/* line 84, src/sass/main.scss */
+/* line 85, src/sass/main.scss */
 .mdl-cell {
   height: calc(100% - 16px);
 }
 
-/* line 88, src/sass/main.scss */
+/* line 89, src/sass/main.scss */
 .top-grid {
   height: calc(85% - 8px);
   padding-bottom: 0;
 }
 
-/* line 92, src/sass/main.scss */
+/* line 93, src/sass/main.scss */
 .top-grid .mdl-card {
   width: 100%;
   height: 100%;
 }
 
-/* line 96, src/sass/main.scss */
+/* line 97, src/sass/main.scss */
 .top-grid .mdl-card .mdl-card__media {
   height: 100%;
   background-color: white;
 }
 
-/* line 100, src/sass/main.scss */
+/* line 101, src/sass/main.scss */
 .top-grid .mdl-card .mdl-card__media .world-detail {
   width: 100%;
   height: 100%;
 }
 
-/* line 108, src/sass/main.scss */
+/* line 109, src/sass/main.scss */
 .slider-grid {
   padding-top: 0;
   height: calc(15% - 8px);
 }
 
-/* line 112, src/sass/main.scss */
+/* line 113, src/sass/main.scss */
 .slider-grid .mdl-card {
   width: 100%;
   height: 100%;
   min-height: 0;
 }
 
-/* line 117, src/sass/main.scss */
+/* line 118, src/sass/main.scss */
 .slider-grid .mdl-card .mdl-card__media {
   height: 100%;
   width: 100%;
