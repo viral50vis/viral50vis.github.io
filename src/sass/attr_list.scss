@@ -2,6 +2,7 @@
   position: absolute;
   z-index: 1;
   margin: 16px 0px 0px 16px;
+  user-select: none;
 }
 
 #attr-button {
@@ -45,6 +46,7 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
   display: none;
+  cursor: pointer;
 }
 
 #dropdown-container li {
@@ -60,7 +62,6 @@
 #dropdown-container li:hover {
   background: #2d2d2d;
   color: #fff;
-  cursor: pointer;
 }
 
 .toggleDropdown {

@@ -4,3 +4,5 @@ node_modules
 *.icloud
 venv/
 dist/
+**/.ipynb_checkpoints/
+**/.DS_Store
