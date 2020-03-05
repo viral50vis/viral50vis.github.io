@@ -11,10 +11,10 @@ var sampleData = [];
 - Better ticks on each axis (dynamic) - min/max
 - Put data marker at currently selected week from timeslider
 - Adapt graph to work with multiple (up to 3) countries
-- Zooming of x-axis (or/and y-axis?)
 - Use <selection>.join() to animate when data enters/exits the graph
+- Zooming of x-axis (or/and y-axis?)
 - Scale size according to rest of detail view (currently hardcoded 60%x28% size)
-- Styling of tooltip and possibly change its animation (opacity?)
+- Styling of tooltip and possibly change its animation (opacity?) - use tooltip.scss
 */
 /* DONE:
 - Hover animation
@@ -30,14 +30,11 @@ var sampleData = [];
 
 var container = d3.select("#linechart");
 // set up size and margin of chart
-var margin = {top: 50, right: 80, bottom: 40, left: 50},
+var margin = {top: 50, right: 90, bottom: 40, left: 50},
   totalWidth = +container.style("width").slice(0, -2),  // .style returns with 'px' after,
   innerWidth = totalWidth - margin.left - margin.right, //  slice it out and force the
   totalHeight = +container.style("height").slice(0, -2),//  result to a number
   innerHeight = totalHeight - margin.top - margin.bottom;
-
-// for debugging, start in detail view
-//toggleDetailViewVisibility();
 
 // create the svg container element
 var chart = container.append("svg")
@@ -85,22 +82,6 @@ var lineMarker = chart.append("rect")
       .style("width", "2px")
       .style("height", innerHeight);
 
-// determines whether the data marker is fixed in position or not
-var lockedDataMarker = false;
-// add listeners for moving and locking the data marker
-container               // for mouse listening only in graph/chart area
-    .on("mousemove", function(){
-      handleMouseMove(this);
-    })
-    .on("click", function(){
-      // toggle the lock of the data marker
-      lockedDataMarker = !lockedDataMarker;
-      // if it is unlocked, update its position
-      if(!lockedDataMarker)
-        handleMouseMove(this);
-    });
-
-
 // prepare tooltip element for marked data
 var chartTooltip = container.append("div")
     .attr("class", "chart-tooltip")
@@ -113,7 +94,7 @@ var prevX = 0;
 
 
 // LEGEND
-var legendMargin = {top: 5, right: 10, bottom: 0, left: 10};
+var legendMargin = {top: 5, right: 15, bottom: 0, left: 10};
 // move the container to the right of the graph
 var legendContainer = chart.append("g")
     .attr("transform", "translate(" + (innerWidth+legendMargin.left) +
@@ -146,11 +127,12 @@ Promise.all([d3.json("data/random_test_data.json")
     });
 
     // perform all steps that's dependent on data
-    reloadLineChart(loadedData);       
-});
+    reloadLineChart(loadedData);
 
-
-
+    setTimeout(handleCountryClickShowDetail, 1000, "USA");
+    setTimeout(countryClickSelection, 1000, "USA")
+    setTimeout(checkToggleListClickability, 1000);
+  });
 /* 
   ==================================
   ==========-FUNCTIONS-=============
@@ -202,6 +184,30 @@ function addDataPointDots(loadedData){
       .attr("r", 3); // radius of 3px
 }
 
+function updateLineChartWeek(){
+  var currentWeekX = 155 - weeks.indexOf(dataWeek);
+  var mousex = xScale(Math.round(currentWeekX));
+  // center the marker on the data point's x-value
+  lineMarker.attr("x", (mousex - 0.5) + "px");
+
+  // rounded off to closest x index
+  var xMouseVal = Math.round(xScale.invert(mousex));
+
+  // animate data point if on the line marker
+  // and transition out if not on line marker anymore
+  var dots = chart.selectAll(".chart-dot")
+      .classed("focus", function(d){
+        return d.x == xMouseVal;
+      })
+      .classed("nonfocus", function(d){
+        return d.x != xMouseVal;
+      });
+  dots.each(function(d){
+      if(d.x == xMouseVal ){
+        updateChartTooltip(d, mousex);
+      }
+      });
+}
 
 // handle the marker following mouse movement
 function handleMouseMove(t){

@@ -11,6 +11,7 @@ function changeWeekDetailView() {
   selectedCountries.forEach((function(CC) {
     changeWeeklySongsWeek(CC);
   }));
+  updateLineChartWeek();
 }
 
 function addCountryToWeeklySongs(CC) {
