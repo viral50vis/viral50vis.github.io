@@ -36,6 +36,7 @@ function loadAttrList() {
   dropdownBtn.on("click", function() {
     toggleDropdown();
   });
+  loadTooltip();
 }
 
 function toggleDropdown() {
