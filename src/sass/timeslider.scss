@@ -1,8 +1,5 @@
 @import "variables.scss";
 
-
-
-
 .timeslider-bar-wrapper {
   min-width: 620px;
   background-color: $timeslider-bar-wrapper_background;
@@ -19,8 +16,7 @@
     height: 90px;
     padding: 0 64px;
 
-  
-    #slider-wrapper-test{
+    #slider-wrapper-test {
       visibility: hidden;
       position: relative;
     }
@@ -32,11 +28,6 @@
       position: relative;
       padding-bottom: 10px;
       //padding-top: 4em;
-
-      input[type="range"] {
-        
-
-      }
 
       @mixin rangeThumb {
         width: 18px;
@@ -65,8 +56,6 @@
         margin: 0;
         -webkit-appearance: none;
         z-index: 10;
-        
-        
 
         // Thumb
         &::-webkit-slider-thumb {
