@@ -1,15 +1,9 @@
 // local data array
 var sampleData = [];
 
-// FOR TESTING:
-// uncomment/comment lines:
-// - with "var xLength =" to test different data sizes
-//    # Note: small data size will show next data point outside of chart
-
 // TODO:
 /*
 - Better ticks on each axis (dynamic) - min/max
-- Put data marker at currently selected week from timeslider
 - Adapt graph to work with multiple (up to 3) countries
 - Use <selection>.join() to animate when data enters/exits the graph
 - Zooming of x-axis (or/and y-axis?)
@@ -26,6 +20,7 @@ var sampleData = [];
 - Tooltip over data picker
 - Animated tooltip
 - Basic Legend
+- Put data marker at currently selected week from timeslider
 */
 
 var container = d3.select("#linechart");
@@ -46,7 +41,6 @@ var chart = container.append("svg")
 
 // number of weeks (utils.js) for indexing x axis
 var xLength = weeks.length -1; // for large sample data
-//var xLength = 30 -1; // for small sample data
 
 // set up scales for chart
 var xScale = d3.scaleLinear()
@@ -129,6 +123,7 @@ Promise.all([d3.json("data/random_test_data.json")
     // perform all steps that's dependent on data
     reloadLineChart(loadedData);
 
+    // for debugging
     setTimeout(handleCountryClickShowDetail, 1000, "USA");
     setTimeout(countryClickSelection, 1000, "USA")
     setTimeout(checkToggleListClickability, 1000);
@@ -209,38 +204,6 @@ function updateLineChartWeek(){
       });
 }
 
-// handle the marker following mouse movement
-function handleMouseMove(t){
-  if(lockedDataMarker) return;
-
-  // move the vertical line marker (within bounds)
-  mousex = d3.mouse(t)[0] - margin.left;
-  // round off to closest data point
-  mousex = xScale(Math.round(xScale.invert(mousex)));
-  // edge cases
-  if(mousex < 0) mousex = 0;
-  if(mousex > innerWidth) mousex = innerWidth;
-  lineMarker.attr("x", mousex + "px" );
-
-  // rounded off to closest x index
-  var xMouseVal = Math.round(xScale.invert(mousex));
-
-  // animate data point if on the line marker
-  // and transition out if not on line marker anymore
-  var dots = chart.selectAll(".chart-dot")
-      .classed("focus", function(d){
-        return d.x == xMouseVal;
-      })
-      .classed("nonfocus", function(d){
-        return d.x != xMouseVal;
-      });
-  dots.each(function(d){
-        if(d.x == xMouseVal ){
-          updateChartTooltip(d, mousex);
-        }
-      });
-}
-
 function updateChartTooltip(d, mousex){
   // dynamic positioning of tooltip
   var xIdx = Math.round(xScale.invert(mousex));
@@ -264,7 +227,4 @@ function updateChartTooltip(d, mousex){
   // update the content of the tooltip
   chartTooltip.html(content);
   prevX = xIdx;
-}
-function hideChartTooltip(){
-  //currently unused, add if discrete data marker is removed
 }
