@@ -1,5 +1,11 @@
 // local data array
-var sampleData = [];
+var countryLines = [];
+
+
+// for debugging
+setTimeout(handleCountryClickShowDetail, 1000, "USA");
+setTimeout(countryClickSelection, 1000, "USA");
+setTimeout(checkToggleListClickability, 1000);
 
 // TODO:
 /*
@@ -7,7 +13,6 @@ var sampleData = [];
 - Adapt graph to work with multiple (up to 3) countries
 - Use <selection>.join() to animate when data enters/exits the graph
 - Zooming of x-axis (or/and y-axis?)
-- Scale size according to rest of detail view (currently hardcoded 60%x28% size)
 - Styling of tooltip and possibly change its animation (opacity?) - use tooltip.scss
 */
 /* DONE:
@@ -21,6 +26,7 @@ var sampleData = [];
 - Animated tooltip
 - Basic Legend
 - Put data marker at currently selected week from timeslider
+- Scale size according to rest of detail view (currently hardcoded 60%x28% size)
 */
 
 var container = d3.select("#linechart");
@@ -121,12 +127,9 @@ Promise.all([d3.json("data/random_test_data.json")
     });
 
     // perform all steps that's dependent on data
-    reloadLineChart(loadedData);
+    reloadLineChart(loadedData, 'USA');
 
-    // for debugging
-    setTimeout(handleCountryClickShowDetail, 1000, "USA");
-    setTimeout(countryClickSelection, 1000, "USA")
-    setTimeout(checkToggleListClickability, 1000);
+
   });
 /* 
   ==================================
@@ -134,10 +137,11 @@ Promise.all([d3.json("data/random_test_data.json")
   ==================================
 */
 
-function reloadLineChart(loadedData){
-    sampleData = loadedData;
+function reloadLineChart(loadedData, CC){
+    //data_attrs.values()
+    countryLines = loadedData;
     // for dynamic y-axis if desired later
-    //yScale.domain(d3.extent(sampleData, function(d){return d.y;}))
+    //yScale.domain(d3.extent(countryLines, function(d){return d.y;}))
     // add the line path itself
     drawLine(loadedData);
     // add horizontal gridlines
@@ -208,7 +212,7 @@ function updateChartTooltip(d, mousex){
   // dynamic positioning of tooltip
   var xIdx = Math.round(xScale.invert(mousex));
   var xpos = xScale(xIdx) + margin.left/2;
-  var ypos = yScale(sampleData[xIdx].y) + margin.top - 35;
+  var ypos = yScale(countryLines[xIdx].y) + margin.top - 35;
   
   // show x- and y-values (y-value rounded off to 3 decimal places)
   var content = "X: " + d.x + "<br> Y: " + d.y.toFixed(3);
