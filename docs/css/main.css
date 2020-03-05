@@ -489,42 +489,40 @@
   line-height: 34px;
   height: auto;
   color: #fff;
-  font-weight: bold;
   border-radius: 23px;
   background: #282828;
   overflow: auto;
 }
 
-/* line 19, src/sass/attr_list.scss */
+/* line 18, src/sass/attr_list.scss */
 #attr-button:hover {
   background: #2d2d2d;
   cursor: pointer;
 }
 
-/* line 24, src/sass/attr_list.scss */
+/* line 23, src/sass/attr_list.scss */
 #attr-button span {
   float: left;
 }
 
-/* line 28, src/sass/attr_list.scss */
+/* line 27, src/sass/attr_list.scss */
 #attr-button span::first-letter {
   text-transform: uppercase;
 }
 
-/* line 32, src/sass/attr_list.scss */
+/* line 31, src/sass/attr_list.scss */
 #drop-img {
   float: right;
   font-size: 34px;
   margin-right: -8px;
 }
 
-/* line 38, src/sass/attr_list.scss */
+/* line 37, src/sass/attr_list.scss */
 #dropdown-container {
   position: absolute;
   background: #282828;
   margin-top: 5px;
   color: #b3b3b3;
-  font-weight: bold;
   padding: 0px;
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -534,25 +532,24 @@
   cursor: pointer;
 }
 
-/* line 52, src/sass/attr_list.scss */
+/* line 50, src/sass/attr_list.scss */
 #dropdown-container li {
   list-style: none;
   padding: 8px 20px;
-  border-top: 1px solid #404040;
 }
 
-/* line 58, src/sass/attr_list.scss */
+/* line 55, src/sass/attr_list.scss */
 #dropdown-container li::first-letter {
   text-transform: uppercase;
 }
 
-/* line 62, src/sass/attr_list.scss */
+/* line 59, src/sass/attr_list.scss */
 #dropdown-container li:hover {
   background: #2d2d2d;
   color: #fff;
 }
 
-/* line 67, src/sass/attr_list.scss */
+/* line 64, src/sass/attr_list.scss */
 .toggleDropdown {
   display: block !important;
 }
@@ -897,43 +894,27 @@
 }
 
 /* line 1, src/sass/tooltip.scss */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-/* line 6, src/sass/tooltip.scss */
-.tooltip .tooltip-content {
+.tooltip-content {
   visibility: hidden;
+  min-width: 300px;
   background: #282828;
   color: #fff;
-  font-weight: bold;
   border-radius: 6px;
   padding: 5px 10px;
   position: absolute;
   z-index: 1;
-  /*bottom: 125%;*/
-  opacity: 0;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
 }
 
-/* line 20, src/sass/tooltip.scss */
-.tooltip .tooltip-content::after {
+/* line 12, src/sass/tooltip.scss */
+.tooltip-content::after {
   content: "";
   position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #282828 transparent transparent transparent;
-}
-
-/* line 31, src/sass/tooltip.scss */
-.tooltip:hover .tooltip-content {
-  visibility: visible;
-  opacity: 1;
+  border-color: transparent #282828 transparent transparent;
 }
 
 /* Layout */

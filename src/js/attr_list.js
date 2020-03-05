@@ -28,6 +28,15 @@ function loadAttrList() {
   var firstDate = Object.keys(data_attrs)[0];
   var firstCountry = Object.keys(data_attrs[firstDate])[0];
   var attributes = Object.keys(data_attrs[firstDate][firstCountry]);
+  attributes = [
+    "danceability",
+    "energy",
+    "speechiness",
+    "acousticness",
+    "instrumentalness",
+    "liveness",
+    "valence"
+  ];
   listAttributes(attributes);
   buttonLabel.text(function() {
     return currentAttribute;
@@ -36,6 +45,7 @@ function loadAttrList() {
   dropdownBtn.on("click", function() {
     toggleDropdown();
   });
+  loadTooltip();
 }
 
 function toggleDropdown() {
