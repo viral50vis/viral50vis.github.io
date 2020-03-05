@@ -16,10 +16,18 @@
     height: 90px;
     padding: 0 64px;
 
+    #slider-wrapper-test {
+      visibility: hidden;
+      position: relative;
+    }
+
     #slider-wrapper {
+      //display: block;
       width: 100%;
+      //height: 100%;
       position: relative;
       padding-bottom: 10px;
+      //padding-top: 4em;
 
       @mixin rangeThumb {
         width: 18px;
