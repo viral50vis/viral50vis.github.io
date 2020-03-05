@@ -1,8 +1,12 @@
 var timeAnim;
 
-// add global listener to change weeks with arrow keys
+// add global listener to change weeks and play animation
 d3.select("body").on("keydown", function(){
   switch(d3.event.keyCode){
+    // spacebar press
+    case 32:
+      setTimeAnimPlaying(!isTimeAnimPlaying());
+      break;
     // left key press
     case 37: // move one week back
       addTimeSliderValue(-1);
