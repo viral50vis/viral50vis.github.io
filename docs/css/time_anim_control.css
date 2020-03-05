@@ -25,7 +25,7 @@
   width: 40px;
   height: 40px;
   margin: 5px;
-  fill: #b3b3b3;
+  fill: #b2b2b2;
 }
 
 /* line 21, src/sass/time_anim_control.scss */
@@ -35,7 +35,7 @@
 
 /* line 25, src/sass/time_anim_control.scss */
 .time-anim-button:active {
-  fill: #b3b3b3;
+  fill: #b2b2b2;
 }
 
 /* line 31, src/sass/time_anim_control.scss */
