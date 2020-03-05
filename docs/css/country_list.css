@@ -43,7 +43,7 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  height: calc(100% - 38px);
+  height: calc(100% - 86px);
   display: block;
 }
 
@@ -54,17 +54,16 @@
 
 /* line 37, src/sass/country_list.scss */
 #country-list #list-wrapper ul li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  font-weight: lighter;
-  font-size: medium;
   margin: 0 0 0;
   padding: 4px 0 2px 24px;
   position: relative;
+  font-size: 14px;
+  line-height: 24px;
   text-transform: uppercase;
+  letter-spacing: 0.16em;
 }
 
-/* line 47, src/sass/country_list.scss */
+/* line 46, src/sass/country_list.scss */
 #country-list #list-wrapper ul li::before {
   background-color: transparent;
   position: absolute;
@@ -76,23 +75,23 @@
   content: "";
 }
 
-/* line 58, src/sass/country_list.scss */
+/* line 57, src/sass/country_list.scss */
 #country-list #list-wrapper ul li:hover {
   color: #ffffff;
 }
 
-/* line 61, src/sass/country_list.scss */
+/* line 60, src/sass/country_list.scss */
 #country-list #list-wrapper ul li:hover::before {
   background-color: #1ed760;
 }
 
-/* line 67, src/sass/country_list.scss */
+/* line 66, src/sass/country_list.scss */
 #country-list #list-wrapper ul .noSelect {
   color: #707070;
   cursor: not-allowed;
 }
 
-/* line 71, src/sass/country_list.scss */
+/* line 70, src/sass/country_list.scss */
 #country-list #list-wrapper ul .noSelect::before {
   background-color: transparent;
   position: absolute;
@@ -104,32 +103,32 @@
   content: "";
 }
 
-/* line 82, src/sass/country_list.scss */
+/* line 81, src/sass/country_list.scss */
 #country-list #list-wrapper ul .noSelect:hover {
   color: #707070;
 }
 
-/* line 84, src/sass/country_list.scss */
+/* line 83, src/sass/country_list.scss */
 #country-list #list-wrapper ul .noSelect:hover::before {
   background-color: transparent;
 }
 
-/* line 90, src/sass/country_list.scss */
+/* line 89, src/sass/country_list.scss */
 #country-list #list-wrapper ul .highlit-country {
   color: #ffffff;
 }
 
-/* line 93, src/sass/country_list.scss */
+/* line 92, src/sass/country_list.scss */
 #country-list #list-wrapper ul .highlit-country::before {
   background-color: #1ed760;
 }
 
-/* line 98, src/sass/country_list.scss */
+/* line 97, src/sass/country_list.scss */
 #country-list #list-wrapper ul::-webkit-scrollbar {
   width: 16px;
 }
 
-/* line 101, src/sass/country_list.scss */
+/* line 100, src/sass/country_list.scss */
 #country-list #list-wrapper ul::-webkit-scrollbar-thumb {
   border: 4px solid transparent;
   border-radius: 16px;
@@ -138,13 +137,13 @@
   background-color: rgba(55, 55, 55, 0.8);
 }
 
-/* line 111, src/sass/country_list.scss */
+/* line 110, src/sass/country_list.scss */
 #country-list #list-wrapper .search-bar .bar {
   padding: 0;
   margin: 0 24px 6px;
 }
 
-/* line 115, src/sass/country_list.scss */
+/* line 114, src/sass/country_list.scss */
 #country-list #list-wrapper .search-bar .bar input {
   background-color: #111;
   color: inherit;
@@ -157,4 +156,22 @@
   outline: 0;
   font-size: 14px;
   letter-spacing: 0.015em;
+}
+
+/* line 130, src/sass/country_list.scss */
+#country-list #list-wrapper h2 {
+  margin: 0;
+  padding: 4px 0 2px 24px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
+/* line 141, src/sass/country_list.scss */
+#country-list #list-wrapper hr {
+  margin: 8px 24px 8px 24px;
+  border-color: #282828;
 }

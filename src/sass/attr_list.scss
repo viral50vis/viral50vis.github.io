@@ -1,3 +1,64 @@
+@import "variables.scss";
+
+#attribute-list-wrapper {
+  h2 {
+    margin: 0;
+    padding: 4px 0 2px 24px;
+    position: relative;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: bold;
+  }
+
+  hr {
+    margin: 8px 24px 8px 24px;
+    border-color: #282828;
+  }
+
+  #attribute-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: block;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    li {
+      margin: 0 0 0;
+      padding: 4px 0 2px 24px;
+      position: relative;
+      font-size: 14px;
+      line-height: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+
+      &::before {
+        background-color: transparent;
+        position: absolute;
+        padding: 0 0 0;
+        height: 100%;
+        left: 0;
+        top: 0;
+        width: 2px;
+        content: "";
+      }
+
+      &:hover {
+        color: #ffffff;
+
+        &::before {
+          background-color: $spotify_green_color;
+        }
+      }
+    }
+  }
+}
+
 #attr-list-container {
   position: absolute;
   z-index: 1;
