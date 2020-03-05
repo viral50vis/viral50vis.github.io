@@ -157,7 +157,7 @@
 
 /* line 34, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg .countryHighlight {
-  stroke: #9df1bb;
+  stroke: rgba(255, 255, 255, 0.7);
   stroke-width: 1;
   fill: none;
 }
