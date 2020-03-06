@@ -27,7 +27,7 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: calc(100% - 38px);
+      height: calc(100% - 86px);
       display: block;
 
       &:hover {
@@ -35,14 +35,14 @@
       }
 
       li {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-        border-top: 1px solid hsla(0, 0%, 100%, 0.05);
-        font-weight: lighter;
-        font-size: medium;
         margin: 0 0 0;
         padding: 4px 0 2px 24px;
         position: relative;
+        font-size: 14px;
+        line-height: 24px;
         text-transform: uppercase;
+        letter-spacing: 0.16em;
+        display: flex;
 
         &::before {
           background-color: transparent;
@@ -126,6 +126,22 @@
           letter-spacing: 0.015em;
         }
       }
+    }
+
+    h2 {
+      margin: 0;
+      padding: 4px 0 2px 24px;
+      position: relative;
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: bold;
+    }
+
+    hr {
+      margin: 8px 24px 8px 24px;
+      border-color: #282828;
     }
   }
 }

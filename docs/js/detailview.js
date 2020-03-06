@@ -1,16 +1,21 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
+var attrBarChartColors = ["#98abc5", "#6b486b", "#ff8c00"];
+
 function addCountryToDetailView(CC) {
   addCountryToWeeklySongs(CC);
+  generateAttrBarChart();
 }
 
 function removeCountryFromDetailView(CC) {
   removeCountryFromWeeklySongs(CC);
+  generateAttrBarChart();
 }
 
 function changeWeekDetailView() {
   selectedCountries.forEach((function(CC) {
     changeWeeklySongsWeek(CC);
   }));
+  generateAttrBarChart();
 }
 
 function addCountryToWeeklySongs(CC) {
@@ -103,4 +108,108 @@ function changeWeeklySongsWeek(CC) {
       }));
   } else {
   }
+}
+
+function generateAttrBarChart() {
+  var attrs = [
+    "danceability",
+    "energy",
+    "speechiness",
+    "acousticness",
+    "instrumentalness",
+    "liveness",
+    "valence"
+  ];
+
+  var m = attrs.length;
+  var n = selectedCountries.length;
+
+  var data = d3.range(n).map((function(i) {
+    return d3.range(m).map((function(j) {
+      return data_attrs[dataWeek][selectedCountries[i]][attrs[j]];
+    }));
+  }));
+
+  var margin = { top: 20, right: 30, bottom: 30, left: 40 };
+  var width = 160 * m - margin.left - margin.right;
+  var height = 500 - margin.top - margin.bottom;
+
+  var y = d3
+    .scaleLinear()
+    .domain([0, 1])
+    .range([height, 0]);
+
+  var x0 = d3
+    .scaleBand()
+    .domain(d3.range(m))
+    .range([0, width], 0.2);
+
+  var x1 = d3
+    .scaleBand()
+    .domain(d3.range(n))
+    .range([0, x0.bandwidth() - 10]);
+
+  var colors = d3.scaleOrdinal().range(attrBarChartColors.slice(0, n));
+
+  d3.select("#attr-barchart-wrapper")
+    .selectAll("svg")
+    .remove();
+
+  var svg = d3
+    .select("#attr-barchart-wrapper")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg
+    .append("g")
+    .selectAll("g")
+    .data(data)
+    .enter()
+    .append("g")
+    .style("fill", (function(d, i) {
+      return colors(i);
+    }))
+    .attr("transform", (function(d, i) {
+      return "translate(" + x1(i) + ",0)";
+    }))
+    .selectAll("rect")
+    .data((function(d) {
+      return d;
+    }))
+    .enter()
+    .append("rect")
+    .attr("width", x1.bandwidth())
+    .attr("height", (function(d) {
+      return y(1 - d);
+    }))
+    .attr("x", (function(d, i) {
+      return x0(i);
+    }))
+    .attr("y", (function(d) {
+      return height - y(1 - d);
+    }));
+
+  svg
+    .append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(
+      d3.axisBottom(x0).tickFormat((function(d) {
+        return attrs[d];
+      }))
+    );
+
+  svg.append("g").call(d3.axisLeft(y));
+
+  svg
+    .selectAll("g.tick")
+    .filter((function(d) {
+      if (attrs.indexOf(d3.select(this).text()) > -1) {
+        return true;
+      }
+    }))
+    .select("text")
+    .classed("attribute-text", true);
 }

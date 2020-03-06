@@ -20,9 +20,18 @@
     <div class="Root__wrapper">
       <div class="Root__country-list">
         <nav id="country-list">
-          <!-- Begin Country List -->
+          <!-- Begin Attribute List -->
+          <div id="attribute-list-wrapper">
+            <h2>Attributes</h2>
+            <hr />
+            <ul id="attribute-ul"></ul>
+          </div>
+          <!-- End Attribute List -->
 
+          <!-- Begin Country List -->
           <div id="list-wrapper">
+            <h2>Countries</h2>
+            <hr />
             <div class="search-bar">
               <div class="bar">
                 <input class="fuzzy-search" type="text" placeholder="Search" />
@@ -39,30 +48,8 @@
           <!-- Begin World Detail Card -->
           <div class="world-detail">
             <div class="world-wrapper">
-              <!-- Begin Attribute List -->
-              <div id="attr-list-container">
-                <!--<button
-                  id="demo-menu-lower-left"
-                  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
-                >
-                  Attributes
-                </button>-->
-                <div id="attr-button">
-                  <span id="attr-btn-label">Danceability</span>
-                  <i class="material-icons" id="drop-img">
-                    arrow_drop_down
-                  </i>
-                </div>
-                <ul id="dropdown-container"></ul>
-                <ul
-                  id="attr-list-items"
-                  class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-                  for="demo-menu-lower-left"
-                ></ul>
-              </div>
-              <!-- End Attribute List -->
               <!-- Begin Legend -->
-              <div id="legend-container">
+              <div class="tooltip" id="legend-container">
                 <div id="legend-label-container"></div>
                 <div id="legend-scale-container"></div>
               </div>
@@ -75,6 +62,7 @@
             <!-- Begin Detailed View -->
             <div class="detail-wrapper detail-hidden">
               <div id="details">
+                <div id="close-detail">Return</div>
                 <div class="Detail__all-time-graph"></div>
                 <div class="Detail__weekly-songs">
                   <nav>
@@ -82,7 +70,9 @@
                   </nav>
                   <div id="weekly-songs-list-window"></div>
                 </div>
-                <div class="Detail__song-comparison"></div>
+                <div class="Detail__song-comparison">
+                  <div id="attr-barchart-wrapper"></div>
+                </div>
               </div>
             </div>
             <!-- End Detailed View -->

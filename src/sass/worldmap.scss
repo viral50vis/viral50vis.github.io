@@ -32,7 +32,7 @@
         }
 
         .countryHighlight {
-          stroke: lighten($spotify_green_color, 30);
+          stroke: rgba(255, 255, 255, 0.7);
           stroke-width: 1;
           fill: none;
         }

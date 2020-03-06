@@ -172,7 +172,15 @@
   height: 100%;
 }
 
-/* line 149, src/sass/detailview.scss */
+/* line 146, src/sass/detailview.scss */
+.detail-wrapper #details .Detail__song-comparison .attribute-text {
+  font-size: 9px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* line 156, src/sass/detailview.scss */
 .detail-hidden {
   opacity: 0;
   pointer-events: none;

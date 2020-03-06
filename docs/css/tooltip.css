@@ -1,40 +1,24 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
 /* line 1, src/sass/tooltip.scss */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-/* line 6, src/sass/tooltip.scss */
-.tooltip .tooltip-content {
+.tooltip-content {
   visibility: hidden;
+  min-width: 300px;
   background: #282828;
   color: #fff;
-  font-weight: bold;
   border-radius: 6px;
   padding: 5px 10px;
   position: absolute;
   z-index: 1;
-  /*bottom: 125%;*/
-  opacity: 0;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
 }
 
-/* line 20, src/sass/tooltip.scss */
-.tooltip .tooltip-content::after {
+/* line 12, src/sass/tooltip.scss */
+.tooltip-content::after {
   content: "";
   position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #282828 transparent transparent transparent;
-}
-
-/* line 31, src/sass/tooltip.scss */
-.tooltip:hover .tooltip-content {
-  visibility: visible;
-  opacity: 1;
+  border-color: transparent #282828 transparent transparent;
 }
