@@ -42,6 +42,7 @@
         line-height: 24px;
         text-transform: uppercase;
         letter-spacing: 0.16em;
+        display: flex;
 
         &::before {
           background-color: transparent;

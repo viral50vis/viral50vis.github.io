@@ -27,5 +27,5 @@ function loadAttrList() {
       d3.select(this).style("color", "#1ed760");
     });
   ul.select("li").style("color", "#1ed760");
-  //loadTooltip();
+  loadTooltip();
 }
