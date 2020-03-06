@@ -213,3 +213,14 @@ function generateAttrBarChart() {
     .select("text")
     .classed("attribute-text", true);
 }
+
+d3.select("#close-detail").on("click", (function(d) {
+  var tmpList = selectedCountries.slice(0);
+  tmpList.forEach((function(CC) {
+    selectedCountries.splice(selectedCountries.indexOf(CC), 1);
+    d3.select("#country-list-" + CC).style("color", null);
+    removeCountryFromWeeklySongs(CC);
+    checkToggleListClickability();
+  }));
+  zoomOutCountryHideDetail(tmpList[0]);
+}));
