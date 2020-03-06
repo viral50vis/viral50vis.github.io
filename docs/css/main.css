@@ -940,9 +940,12 @@
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0px;
           flex: 1 1 0;
+  height: 65px;
+  padding-left: 15px;
+  margin-bottom: -5px;
 }
 
-/* line 114, src/sass/detailview.scss */
+/* line 117, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .song-name {
   font-size: 16px;
   line-height: 22px;
@@ -951,28 +954,47 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding-top: 10px;
 }
 
-/* line 124, src/sass/detailview.scss */
+/* line 128, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .artist-name {
   color: #ffffff;
+  display: inline-block;
   opacity: 0.6;
+  position: absolute;
+  left: 15px;
 }
 
-/* line 134, src/sass/detailview.scss */
+/* line 136, src/sass/detailview.scss */
+.detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .spotify-link {
+  color: #1ed760;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10pt;
+  position: absolute;
+  right: 15px;
+}
+
+/* line 144, src/sass/detailview.scss */
+.detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .spotify-link:hover {
+  text-decoration: underline;
+}
+
+/* line 154, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* line 141, src/sass/detailview.scss */
+/* line 161, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__song-comparison {
   grid-area: song-comparison;
   width: 100%;
   height: 100%;
 }
 
-/* line 146, src/sass/detailview.scss */
+/* line 166, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__song-comparison .attribute-text {
   font-size: 9px;
   line-height: 24px;
@@ -980,13 +1002,18 @@
   letter-spacing: 0.16em;
 }
 
-/* line 156, src/sass/detailview.scss */
+/* line 176, src/sass/detailview.scss */
 .detail-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* line 161, src/sass/detailview.scss */
+/* line 181, src/sass/detailview.scss */
+.selected-song {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* line 185, src/sass/detailview.scss */
 #close-detail {
   position: absolute;
   top: 20px;
@@ -1004,7 +1031,7 @@
   cursor: pointer;
 }
 
-/* line 177, src/sass/detailview.scss */
+/* line 201, src/sass/detailview.scss */
 #close-detail:hover {
   background: #2d2d2d;
 }

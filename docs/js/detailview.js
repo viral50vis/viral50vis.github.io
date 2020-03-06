@@ -1,5 +1,6 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
-var attrBarChartColors = ["#98abc5", "#6b486b", "#ff8c00"];
+var selectedSongs = [];
+var attrBarChartColors = ["#ef4760", "#fdd161", "#40c990", "#2f8ba0", "#845f80", "#ee840e"];
 
 function addCountryToDetailView(CC) {
   addCountryToWeeklySongs(CC);
@@ -92,6 +93,30 @@ function changeWeeklySongsWeek(CC) {
       .append("li")
       .append("div")
       .classed("song-entry-wrapper", true)
+      .classed("selected-song", (function(d) {
+        return selectedSongs.includes(JSON.stringify(d));
+      }))
+      .on("click", (function(d) {
+        if (selectedSongs.includes(JSON.stringify(d))) {
+          d3.selectAll(".song-entry-wrapper")
+            .filter((function(e) {
+              return selectedSongs.includes(JSON.stringify(e));
+            }))
+            .classed("selected-song", false);
+          selectedSongs.splice(selectedSongs.indexOf(JSON.stringify(d)), 1);
+          generateAttrBarChart();
+        } else {
+          if (selectedSongs.length < 3) {
+            selectedSongs.push(JSON.stringify(d));
+            d3.selectAll(".song-entry-wrapper")
+              .filter((function(e) {
+                return selectedSongs.includes(JSON.stringify(e));
+              }))
+              .classed("selected-song", true);
+            generateAttrBarChart();
+          } else return;
+        }
+      }))
       .append("div")
       .classed("song-name", true)
       .text((function(d) {
@@ -106,6 +131,17 @@ function changeWeeklySongsWeek(CC) {
       .text((function(d) {
         return d.Artist;
       }));
+
+    d3.select("#weekly-song-list-ul-" + CC)
+      .selectAll(".song-entry-wrapper")
+      .data(data_songs[dataWeek][CC])
+      .append("a")
+      .classed("spotify-link", true)
+      .text("Open in Spotify ⤤")
+      .attr("href", (function(d) {
+        return d.URL;
+      }))
+      .attr("target", "_blank");
   } else {
   }
 }
@@ -121,17 +157,24 @@ function generateAttrBarChart() {
     "valence"
   ];
 
+  var countriesWithData = selectedCountries.filter((function(d) {
+    return data_attrs[dataWeek][d] != undefined;
+  }));
+
   var m = attrs.length;
-  var n = selectedCountries.length;
+  var n = countriesWithData.length + selectedSongs.length;
 
   var data = d3.range(n).map((function(i) {
     return d3.range(m).map((function(j) {
-      return data_attrs[dataWeek][selectedCountries[i]][attrs[j]];
+      if (i < countriesWithData.length)
+        return data_attrs[dataWeek][countriesWithData[i]][attrs[j]];
+      else
+        return JSON.parse(selectedSongs[i-countriesWithData.length])[attrs[j]];
     }));
   }));
 
   var margin = { top: 20, right: 30, bottom: 30, left: 40 };
-  var width = 160 * m - margin.left - margin.right;
+  var width = 960 - margin.left - margin.right;
   var height = 500 - margin.top - margin.bottom;
 
   var y = d3
