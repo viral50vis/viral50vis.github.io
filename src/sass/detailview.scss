@@ -157,3 +157,23 @@
   opacity: 0;
   pointer-events: none;
 }
+
+#close-detail {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  color: #fff;
+  background-color: #282828;
+  box-shadow: 0 2px 4px rgba(0,0,0,.3);
+  border-radius: 20px;
+  font-size: 14px;
+  padding: 10px 5px 10px 5px;
+  font-weight: bolder;
+  min-width: 80px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#close-detail:hover {
+  background: #2d2d2d;
+}
