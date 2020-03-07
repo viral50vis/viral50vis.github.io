@@ -54,7 +54,8 @@ var margin = { top: 50, right: 30, bottom: 20, left: 50 },
 // set up scales for chart
 var xScale = d3.scaleTime()
     .domain([ new Date(weeks[weeks.length-1]), new Date(weeks[0]) ])
-    .range([0, innerWidth]);
+    .range([0, innerWidth])
+    .nice();
 
 var yScale = d3.scaleLinear()
     .range([innerHeight, 0]);
@@ -95,7 +96,7 @@ function updateLineChartMinMax(){
   // find min and max for selected attribute
   lineAttrMinY = data_attrs.minimum[currentAttribute];
   lineAttrMaxY = data_attrs.maximum[currentAttribute];
-  yScale.domain([lineAttrMinY, lineAttrMaxY]);
+  yScale.domain([lineAttrMinY, lineAttrMaxY]).nice();
 }
 
 function addCountryToLineChart(CC, usedColor) {
@@ -203,8 +204,11 @@ function createLineChart(){
       .attr("class", "x axis")
       .attr("transform", "translate(0," + innerHeight+ ")")
       .call( d3.axisBottom(xScale) // create the (x) axis component itself
-      .ticks(d3.timeYear.every(1))
-      .tickFormat(d3.timeFormat('%Y'))
+      .ticks(d3.timeMonth.every(1)) //create one tick per month
+      .tickFormat((function(d,i){
+        // only write a tick label when a new year is reached
+          return (i%12 == 0) ? (d3.timeFormat('%Y')(d)) : "";
+        }))
       ); 
 
     //var yAxis = 
@@ -303,9 +307,9 @@ function changeLineChartWeek(){
 }
 
 function updateChartTooltip(d, currentDate){
-  // dynamic positioning of tooltip
+  // dynamic (x-)positioning of tooltip
   var xpos = xScale(currentDate) + margin.left/2;
-  var ypos = margin.top - 20;//yScale(countryLines[xIdx].y) + margin.top - 35;
+  var ypos = margin.top - 20;
   
   // show x- and y-values (y-value rounded off to 3 decimal places)
   var content = "Y: " + d.y.toFixed(3);
