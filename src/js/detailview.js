@@ -34,6 +34,11 @@ function addCountryToWeeklySongs(CC) {
     .on("click", function(d) {
       songListNav.selectAll("div").classed("active", false);
       d3.select(this).classed("active", true);
+      d3.selectAll(".song-entry-wrapper").classed(
+        "selected-song", function(e) {
+          return selectedSongs.includes(JSON.stringify(e));
+        }
+      );
       d3.selectAll(".weekly-song-list-wrapper").classed(
         "weekly-song-list-wrapper-hidden",
         true
@@ -102,20 +107,14 @@ function changeWeeklySongsWeek(CC) {
       })
       .on("click", function(d) {
         if (selectedSongs.includes(JSON.stringify(d))) {
-          d3.selectAll(".song-entry-wrapper")
-            .filter(function(e) {
-              return selectedSongs.includes(JSON.stringify(e));
-            })
+          d3.select(this)
             .classed("selected-song", false);
           selectedSongs.splice(selectedSongs.indexOf(JSON.stringify(d)), 1);
           generateAttrBarChart();
         } else {
           if (selectedSongs.length < 3) {
             selectedSongs.push(JSON.stringify(d));
-            d3.selectAll(".song-entry-wrapper")
-              .filter(function(e) {
-                return selectedSongs.includes(JSON.stringify(e));
-              })
+            d3.select(this)
               .classed("selected-song", true);
             generateAttrBarChart();
           } else return;
