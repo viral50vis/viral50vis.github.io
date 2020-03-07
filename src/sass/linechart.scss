@@ -55,7 +55,7 @@
   transition: opacity 0.4s ease, r 0.4s ease;
 }
 .chart-dot.focus {
-  opacity: 0.95;
+  opacity: 0.8;
   r: 6px;
   transition: opacity 0.8s ease, r 0.8s ease;
   transition-delay: 0.05s;
@@ -64,7 +64,7 @@
 
 /* Styling of hover tooltip */
 .chart-tooltip {
-  display: block;
+  display: none;
   position: absolute;
   text-align: center;
   width: 50px;

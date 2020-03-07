@@ -66,7 +66,7 @@
 
 /* line 57, src/sass/linechart.scss */
 .chart-dot.focus {
-  opacity: 0.95;
+  opacity: 0.8;
   r: 6px;
   -webkit-transition: opacity 0.8s ease, r 0.8s ease;
   transition: opacity 0.8s ease, r 0.8s ease;
@@ -78,7 +78,7 @@
 /* Styling of hover tooltip */
 /* line 66, src/sass/linechart.scss */
 .chart-tooltip {
-  display: block;
+  display: none;
   position: absolute;
   text-align: center;
   width: 50px;
