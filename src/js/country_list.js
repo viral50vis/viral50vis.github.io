@@ -52,12 +52,16 @@ function highlightCountryInList(CC, highlit) {
   list.select("#country-list-" + CC).classed("highlit-country", highlit);
 
   if (highlit) {
-    d3.select("#country-list-" + CC)
-      .node()
-      .scrollIntoView({
-        block: "center",
-        behavior: "smooth"
-      });
+    try {
+      d3.select("#country-list-" + CC)
+        .node()
+        .scrollIntoView({
+          block: "start",
+          behavior: "smooth"
+        });
+    } catch (error) {/* 
+      Prevents logging error when hovering
+      countries outside search results*/}
   }
 }
 

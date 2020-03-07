@@ -4,11 +4,13 @@ var lastDataWeek = 0;
 
 function addCountryToDetailView(CC) {
   addCountryToWeeklySongs(CC);
+  addCountryToLineChart(CC);
   generateAttrBarChart();
 }
 
 function removeCountryFromDetailView(CC) {
   removeCountryFromWeeklySongs(CC);
+  removeCountryFromLineChart(CC);
   generateAttrBarChart();
 }
 
@@ -16,6 +18,8 @@ function changeWeekDetailView() {
   selectedCountries.forEach(function(CC) {
     changeWeeklySongsWeek(CC);
   });
+  if(isInDetailView)
+    changeLineChartWeek();
   generateAttrBarChart();
 }
 
@@ -266,7 +270,7 @@ d3.select("#close-detail").on("click", function(d) {
   tmpList.forEach(function(CC) {
     selectedCountries.splice(selectedCountries.indexOf(CC), 1);
     d3.select("#country-list-" + CC).style("color", null);
-    removeCountryFromWeeklySongs(CC);
+    removeCountryFromDetailView(CC);
     checkToggleListClickability();
   });
   zoomOutCountryHideDetail(tmpList[0]);

@@ -72,6 +72,9 @@ function loadTimeSlider() {
     changeWeekDetailView();
   });
 
+  // prevent double pressing and instead listen globally for keydown
+  sliderInput.on("keydown", function(){ d3.event.preventDefault(); });
+
   sliderInput.style(
     "background",
     "linear-gradient(to right, #1ed760 0%, #1ed760 100%, #404040 100%, #404040 100%)"

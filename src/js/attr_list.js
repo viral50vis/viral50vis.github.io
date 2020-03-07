@@ -23,6 +23,7 @@ function loadAttrList() {
         data_attrs.minimum,
         data_attrs.maximum
       );
+      changeLineChartAttribute();
       ul.selectAll("li").style("color", null);
       d3.select(this).style("color", "#1ed760");
     });
