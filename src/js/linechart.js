@@ -158,7 +158,7 @@ function reloadLineChart(){
     // add horizontal gridlines
     addGridLines();
     // make sure the data marker is at the right point in time
-    updateLineChartWeek();
+    changeLineChartWeek();
 }
 
 function createLineChart(){
@@ -242,7 +242,7 @@ function addDataPointDots(lineObj){
       .attr("fill", lineChartColors[lineObj.color]);
 }
 
-function updateLineChartWeek(){
+function changeLineChartWeek(){
   var currentWeekX = 155 - weeks.indexOf(dataWeek);
   var mousex = xScale(Math.round(currentWeekX));
   // center the marker on the data point's x-value

@@ -20,7 +20,7 @@ function changeWeekDetailView() {
     changeWeeklySongsWeek(CC);
   }));
   if(isInDetailView)
-    updateLineChartWeek();
+    changeLineChartWeek();
   generateAttrBarChart();
 }
 
