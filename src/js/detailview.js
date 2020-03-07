@@ -1,5 +1,12 @@
 var selectedSongs = [];
-var attrBarChartColors = ["#ef4760", "#fdd161", "#40c990", "#2f8ba0", "#845f80", "#ee840e"];
+var attrBarChartColors = [
+  "#ef4760",
+  "#fdd161",
+  "#40c990",
+  "#2f8ba0",
+  "#845f80",
+  "#ee840e"
+];
 var lastDataWeek = 0;
 
 function addCountryToDetailView(CC) {
@@ -18,8 +25,7 @@ function changeWeekDetailView() {
   selectedCountries.forEach(function(CC) {
     changeWeeklySongsWeek(CC);
   });
-  if(isInDetailView)
-    changeLineChartWeek();
+  if (isInDetailView) changeLineChartWeek();
   generateAttrBarChart();
 }
 
@@ -38,6 +44,9 @@ function addCountryToWeeklySongs(CC) {
     .on("click", function(d) {
       songListNav.selectAll("div").classed("active", false);
       d3.select(this).classed("active", true);
+      d3.selectAll(".song-entry-wrapper").classed("selected-song", function(e) {
+        return selectedSongs.includes(JSON.stringify(e));
+      });
       d3.selectAll(".weekly-song-list-wrapper").classed(
         "weekly-song-list-wrapper-hidden",
         true
@@ -106,21 +115,13 @@ function changeWeeklySongsWeek(CC) {
       })
       .on("click", function(d) {
         if (selectedSongs.includes(JSON.stringify(d))) {
-          d3.selectAll(".song-entry-wrapper")
-            .filter(function(e) {
-              return selectedSongs.includes(JSON.stringify(e));
-            })
-            .classed("selected-song", false);
+          d3.select(this).classed("selected-song", false);
           selectedSongs.splice(selectedSongs.indexOf(JSON.stringify(d)), 1);
           generateAttrBarChart();
         } else {
           if (selectedSongs.length < 3) {
             selectedSongs.push(JSON.stringify(d));
-            d3.selectAll(".song-entry-wrapper")
-              .filter(function(e) {
-                return selectedSongs.includes(JSON.stringify(e));
-              })
-              .classed("selected-song", true);
+            d3.select(this).classed("selected-song", true);
             generateAttrBarChart();
           } else return;
         }
@@ -177,13 +178,27 @@ function generateAttrBarChart() {
       if (i < countriesWithData.length)
         return data_attrs[dataWeek][countriesWithData[i]][attrs[j]];
       else
-        return JSON.parse(selectedSongs[i-countriesWithData.length])[attrs[j]];
+        return JSON.parse(selectedSongs[i - countriesWithData.length])[
+          attrs[j]
+        ];
     });
   });
 
   var margin = { top: 20, right: 30, bottom: 30, left: 40 };
-  var width = d3.select("#attr-barchart-wrapper").node().getBoundingClientRect().width - margin.left - margin.right;
-  var height = d3.select("#attr-barchart-wrapper").node().getBoundingClientRect().height - margin.top - margin.bottom;
+  var width =
+    d3
+      .select("#attr-barchart-wrapper")
+      .node()
+      .getBoundingClientRect().width -
+    margin.left -
+    margin.right;
+  var height =
+    d3
+      .select("#attr-barchart-wrapper")
+      .node()
+      .getBoundingClientRect().height -
+    margin.top -
+    margin.bottom;
 
   var y = d3
     .scaleLinear()
@@ -250,9 +265,13 @@ function generateAttrBarChart() {
       d3.axisBottom(x0).tickFormat(function(d) {
         return attrs[d];
       })
-    );
+    )
+    .classed("x axis", true);
 
-  svg.append("g").call(d3.axisLeft(y));
+  svg
+    .append("g")
+    .call(d3.axisLeft(y))
+    .classed("y axis", true);
 
   svg
     .selectAll("g.tick")
@@ -263,6 +282,16 @@ function generateAttrBarChart() {
     })
     .select("text")
     .classed("attribute-text", true);
+
+  var yTicks = svg.selectAll(".y.axis > .tick");
+  yTicks.each(function() {
+    var l = d3
+      .create("svg:line")
+      .attr("class", "y-gridline")
+      .attr("x1", 0)
+      .attr("x2", innerWidth);
+    this.append(l.node());
+  });
 }
 
 d3.select("#close-detail").on("click", function(d) {

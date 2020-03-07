@@ -3,7 +3,9 @@ var chartCountryLines = [];
 var lineChartColors = ["#ef4760", "#fdd161", "#40c990", "#2f8ba0", "#845f80", "#ee840e"];
 var usedLineChartColors = []; // one boolean per color
 // initialize colors to unused
-lineChartColors.forEach(function(){ usedLineChartColors.push(false); });
+lineChartColors.forEach(function() {
+  usedLineChartColors.push(false);
+});
 
 var chart, lineMarker, chartTooltip, prevTooltipDate, lineAttrMinY, lineAttrMaxY;
 
@@ -42,34 +44,30 @@ var chart, lineMarker, chartTooltip, prevTooltipDate, lineAttrMinY, lineAttrMaxY
 
 var container = d3.select("#linechart");
 // set up size and margin of chart
-var margin = {top: 50, right: 30, bottom: 20, left: 50},
-  totalWidth = +container.style("width").slice(0, -2),  // .style returns with 'px' after,
+var margin = { top: 50, right: 30, bottom: 20, left: 50 },
+  totalWidth = +container.style("width").slice(0, -2), // .style returns with 'px' after,
   innerWidth = totalWidth - margin.left - margin.right, //  slice it out and force the
-  totalHeight = +container.style("height").slice(0, -2),//  result to a number
+  totalHeight = +container.style("height").slice(0, -2), //  result to a number
   innerHeight = totalHeight - margin.top - margin.bottom;
-
-// number of weeks (utils.js) for indexing x axis
-var xMax = weeks.length -1;
 
 // set up scales for chart
 var xScale = d3.scaleTime()
     .domain([ new Date(weeks[weeks.length-1]), new Date(weeks[0]) ])
     .range([0, innerWidth]);
-// old x-scale
-/*
-var xScale = d3.scaleLinear()
-    .domain([0, xMax])
-    .range([0, innerWidth]);
-*/
 
 var yScale = d3.scaleLinear()
     .range([innerHeight, 0]);
 
 // generate a line model that will be applied to each set of data
-var lineModel = d3.line()
-    .x(function(d) { return xScale(d.x); })
-    .y(function(d) { return yScale(d.y); })
-    .curve(d3.curveLinear); // strict straight lines between each data point
+var lineModel = d3
+  .line()
+  .x(function(d) {
+    return xScale(d.x);
+  })
+  .y(function(d) {
+    return yScale(d.y);
+  })
+  .curve(d3.curveLinear); // strict straight lines between each data point
 
 /* 
   ==================================
@@ -77,11 +75,11 @@ var lineModel = d3.line()
   ==================================
 */
 
-function changeLineChartAttribute(){
+function changeLineChartAttribute() {
   prevCountryLines = chartCountryLines;
   // empty the array with countries' line data
   chartCountryLines = [];
-  prevCountryLines.forEach(function(lineObj){
+  prevCountryLines.forEach(function(lineObj) {
     // re-add the countries with same colors
     // function call will load from selected attribute
     addCountryToLineChart(lineObj.CC, lineObj.color);
@@ -99,7 +97,7 @@ function updateLineChartMinMax(){
   yScale.domain([lineAttrMinY, lineAttrMaxY]);
 }
 
-function addCountryToLineChart(CC, usedColor){
+function addCountryToLineChart(CC, usedColor) {
   // turn dates/min/max object into an array
   // where each element holds the values of the keys
   var objVals = Object.values(data_attrs);
@@ -127,9 +125,9 @@ function addCountryToLineChart(CC, usedColor){
 
   // find available color
   var colorIdx;
-  usedLineChartColors.some(function(d, i){
+  usedLineChartColors.some(function(d, i) {
     // save any one that is free
-    if(!d){
+    if (!d) {
       colorIdx = i;
     }
     return !d; // exit once one is found
@@ -137,28 +135,28 @@ function addCountryToLineChart(CC, usedColor){
   // if the function is passed the color for the country,
   // i.e. it is being re-added for a different attribute,
   // use that color instead of the randomly selected
-  if(typeof usedColor !== 'undefined') colorIdx = usedColor;
+  if (typeof usedColor !== "undefined") colorIdx = usedColor;
 
   // mark the selected color as used
   usedLineChartColors[colorIdx] = true;
 
   // add as an object to the array that will determine drawn lines
   // and save the index of the country to keep track of colors
-  chartCountryLines.push({ "CC": CC, "data": line, "color": colorIdx });
+  chartCountryLines.push({ CC: CC, data: line, color: colorIdx });
 
   // reload the entire chart with the updated
   reloadLineChart();
 }
 
-function removeCountryFromLineChart(CC){
+function removeCountryFromLineChart(CC) {
   // update the array of lists and the colors used
-  chartCountryLines = chartCountryLines.filter(function(lineObj){
+  chartCountryLines = chartCountryLines.filter(function(lineObj) {
     // the country code corresponds to the one to remove
-    if(lineObj.CC == CC){
+    if (lineObj.CC == CC) {
       // mark its color as unused
       usedLineChartColors[lineObj.color] = false;
       return false; // do not include in new array
-    }else return true; // keep the rest
+    } else return true; // keep the rest
   });
 
   // redraw the graph without the removed country
@@ -246,36 +244,43 @@ function drawLine(lineObj){
       .attr("d", lineModel);
 }
 
-function addGridLines(){
-    // add grid lines to y-axis
-    var yTicks = d3.selectAll(".y.axis > .tick");
-    yTicks.each(function(){
-      var l = d3.create("svg:line")
-        .attr("class", "y-gridline")
-        .attr("x1", 0)
-        .attr("x2", innerWidth);
-      this.append(l.node());
-    });
+function addGridLines() {
+  // add grid lines to y-axis
+  var yTicks = d3.selectAll(".y.axis > .tick");
+  yTicks.each(function() {
+    var l = d3
+      .create("svg:line")
+      .attr("class", "y-gridline")
+      .attr("x1", 0)
+      .attr("x2", innerWidth);
+    this.append(l.node());
+  });
 }
 
-function addDataPointDots(lineObj){
-    // add one circle per data point
-    chart.selectAll(".dot")
-      .data(lineObj.data)
-    .enter().append("circle")
-      .attr("class", "chart-dot") // Assign a class for styling
-      .attr("opacity", "0.5")
-      .attr("cx", function(d) { return xScale(d.x); })
-      .attr("cy", function(d) { return yScale(d.y); })
-      .attr("r", 3) // radius of 3px
-      .attr("fill", lineChartColors[lineObj.color]);
+function addDataPointDots(lineObj) {
+  // add one circle per data point
+  chart
+    .selectAll(".dot")
+    .data(lineObj.data)
+    .enter()
+    .append("circle")
+    .attr("class", "chart-dot") // Assign a class for styling
+    .attr("opacity", "0.5")
+    .attr("cx", function(d) {
+      return xScale(d.x);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.y);
+    })
+    .attr("r", 3) // radius of 3px
+    .attr("fill", lineChartColors[lineObj.color]);
 }
 
 function changeLineChartWeek(){
   var currentDate = new Date(dataWeek);
   var mousex = xScale(currentDate);
   // center the marker on the data point's x-value
-  lineMarker.attr("x", (mousex - 0.5) + "px");
+  lineMarker.attr("x", mousex - 0.5 + "px");
 
   // rounded off to closest x index
   var xMouseVal = currentDate;
@@ -308,13 +313,14 @@ function updateChartTooltip(d, currentDate){
   if(currentDate != prevTooltipDate)
     chartTooltip.interrupt();
   // move the tooltip to its new position
-  chartTooltip.transition()
+  chartTooltip
+    .transition()
     .duration(200)
     .delay(100)
     .ease(d3.easeCubic)
     .style("opacity", 0.85)
-    .style("left", xpos+"px")
-    .style("top", ypos+"px");
+    .style("left", xpos + "px")
+    .style("top", ypos + "px");
   // update the content of the tooltip
   chartTooltip.html(content);
   prevTooltipDate = currentDate;
