@@ -1,11 +1,11 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
 // variables for keeping track of data
 var chartCountryLines = [];
-var lineChartColors = ["#ef4760", "#fdd161", "#40c990", "#2f8ba0", "#845f80", "#ee840e"];
-var usedLineChartColors = []; // one boolean per color
+var countryColors = ["#ef4760", "#fdd161", "#2f8ba0"];
+var usedCountryColors = []; // one boolean per color
 // initialize colors to unused
-lineChartColors.forEach((function() {
-  usedLineChartColors.push(false);
+countryColors.forEach((function() {
+  usedCountryColors.push(false);
 }));
 
 var chart, lineMarker, chartTooltip, prevTooltipDate, lineAttrMinY, lineAttrMaxY;
@@ -127,7 +127,7 @@ function addCountryToLineChart(CC, usedColor) {
 
   // find available color
   var colorIdx;
-  usedLineChartColors.some((function(d, i) {
+  usedCountryColors.some((function(d, i) {
     // save any one that is free
     if (!d) {
       colorIdx = i;
@@ -140,7 +140,7 @@ function addCountryToLineChart(CC, usedColor) {
   if (typeof usedColor !== "undefined") colorIdx = usedColor;
 
   // mark the selected color as used
-  usedLineChartColors[colorIdx] = true;
+  usedCountryColors[colorIdx] = true;
 
   // add as an object to the array that will determine drawn lines
   // and save the index of the country to keep track of colors
@@ -156,7 +156,7 @@ function removeCountryFromLineChart(CC) {
     // the country code corresponds to the one to remove
     if (lineObj.CC == CC) {
       // mark its color as unused
-      usedLineChartColors[lineObj.color] = false;
+      usedCountryColors[lineObj.color] = false;
       return false; // do not include in new array
     } else return true; // keep the rest
   }));
@@ -244,14 +244,14 @@ function drawLine(lineObj){
       .append("path")
       .attr("class", "line")
       .classed("line-loaded", true)
-      .attr("stroke", lineChartColors[lineObj.color])
+      .attr("stroke", countryColors[lineObj.color])
       .data([lineObj.data])       
       .attr("d", lineModel);
 }
 
 function addGridLines() {
   // add grid lines to y-axis
-  var yTicks = d3.selectAll(".y.axis > .tick");
+  var yTicks = chart.selectAll(".y.axis > .tick");
   yTicks.each((function() {
     var l = d3
       .create("svg:line")
@@ -278,7 +278,7 @@ function addDataPointDots(lineObj) {
       return yScale(d.y);
     }))
     .attr("r", 3) // radius of 3px
-    .attr("fill", lineChartColors[lineObj.color]);
+    .attr("fill", countryColors[lineObj.color]);
 }
 
 function changeLineChartWeek(){

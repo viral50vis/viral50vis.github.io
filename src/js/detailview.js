@@ -1,12 +1,17 @@
 var selectedSongs = [];
-var attrBarChartColors = [
-  "#ef4760",
-  "#fdd161",
+// map containing the song:colorIdx relation
+var songToColorMap = {};
+// all available colors for selected songs
+var songColors = [
   "#40c990",
-  "#2f8ba0",
   "#845f80",
   "#ee840e"
 ];
+var usedSongColors = [];
+// initialize colors to unused
+songColors.forEach(function() {
+  usedSongColors.push(false);
+});
 var lastDataWeek = 0;
 
 function addCountryToDetailView(CC) {
@@ -97,7 +102,8 @@ function removeCountryFromWeeklySongs(CC) {
 function changeWeeklySongsWeek(CC) {
   if (dataWeek != lastDataWeek) {
     lastDataWeek = dataWeek;
-    selectedSongs = [];
+    //clearSelectedSongs(); // uncommented to allow comparing songs over time
+    // call the clearSelectedSongs-function on a button press of "clear all songs" instead
   }
   d3.select("#weekly-song-list-ul-" + CC)
     .selectAll("li")
@@ -114,13 +120,18 @@ function changeWeeklySongsWeek(CC) {
         return selectedSongs.includes(JSON.stringify(d));
       })
       .on("click", function(d) {
-        if (selectedSongs.includes(JSON.stringify(d))) {
+        // convert the song data to a string for consistent comparison
+        var songAsKey = JSON.stringify(d);
+        if (selectedSongs.includes(songAsKey)) {
           d3.select(this).classed("selected-song", false);
-          selectedSongs.splice(selectedSongs.indexOf(JSON.stringify(d)), 1);
+          selectedSongs.splice(selectedSongs.indexOf(songAsKey), 1);
+          clearSongColor(songAsKey);
           generateAttrBarChart();
         } else {
           if (selectedSongs.length < 3) {
-            selectedSongs.push(JSON.stringify(d));
+            // find an unused color for the song and save the mapping
+            getSongColor(songAsKey);
+            selectedSongs.push(songAsKey);
             d3.select(this).classed("selected-song", true);
             generateAttrBarChart();
           } else return;
@@ -153,6 +164,43 @@ function changeWeeklySongsWeek(CC) {
       .attr("target", "_blank");
   } else {
   }
+}
+
+function clearSelectedSongs(){
+  selectedSongs = [];
+  songToColorMap = {};
+  usedSongColors = [];
+  songColors.forEach(function() {
+    usedSongColors.push(false);
+  });
+}
+
+function getSongColor(songAsKey){
+  // if the song already has a color, return its index
+  if(typeof songToColorMap[songAsKey] !== 'undefined')
+    return songColors[songToColorMap[songAsKey]];
+
+  // find an available color (index)
+  var colorIdx;
+  usedSongColors.some(function(d, i) {
+    // save any one that is free
+    if (!d) {
+      colorIdx = i;
+    }
+    return !d; // exit once one is found
+  });
+  // update the bool array and song:colorIdx map
+  usedSongColors[colorIdx] = true;
+  songToColorMap[songAsKey] = colorIdx;
+  // return the color
+  return songColors[colorIdx];
+}
+
+function clearSongColor(songAsKey){
+  // set the color to unused/available
+  usedSongColors[songToColorMap[songAsKey]] = false;
+  // remove the mapping from the song:colorIdx map
+  delete songToColorMap[songAsKey];
 }
 
 function generateAttrBarChart() {
@@ -215,7 +263,17 @@ function generateAttrBarChart() {
     .domain(d3.range(n))
     .range([0, x0.bandwidth() - 10]);
 
-  var colors = d3.scaleOrdinal().range(attrBarChartColors.slice(0, n));
+  //var colors = d3.scaleOrdinal().range(songColors.slice(0, n));
+  var colors = function(i){
+    selCs = selectedCountries.length;
+    // the color is for a country
+    if(i < selCs){
+      colorIdx = chartCountryLines[i].color;
+      return countryColors[colorIdx];
+    
+    }else // the color is for a song
+      return getSongColor(selectedSongs[i-selCs]);
+  };
 
   d3.select("#attr-barchart-wrapper")
     .selectAll("svg")
@@ -300,6 +358,7 @@ d3.select("#close-detail").on("click", function(d) {
     selectedCountries.splice(selectedCountries.indexOf(CC), 1);
     d3.select("#country-list-" + CC).style("color", null);
     removeCountryFromDetailView(CC);
+    clearSelectedSongs();
     checkToggleListClickability();
   });
   zoomOutCountryHideDetail(tmpList[0]);
