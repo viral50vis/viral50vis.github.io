@@ -120,7 +120,7 @@ function zoomInCountry(CC) {
   var coords = worldProjection(worldCountryZoomJSON[CC]);
   var x = coords[0];
   var y = coords[1];
-  //d3.event.stopPropagation();
+  d3.event.stopPropagation();
   world
     .transition()
     .duration(1500)
