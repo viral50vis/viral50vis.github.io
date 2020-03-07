@@ -5,7 +5,7 @@ var usedLineChartColors = []; // one boolean per color
 // initialize colors to unused
 lineChartColors.forEach(function(){ usedLineChartColors.push(false); });
 
-var chart, lineMarker, chartTooltip, prevTooltipX;
+var chart, lineMarker, chartTooltip, prevTooltipX, lineAttrMinY, lineAttrMaxY;
 
 // TODO:
 /*
@@ -15,7 +15,7 @@ var chart, lineMarker, chartTooltip, prevTooltipX;
 - Change x-axis to work with dates rather than indices
 - Handle countries missing data for certain time periods
 - Update with colors according to rest of detail view
-- Better ticks on each axis (dynamic) - min/max
+- Better ticks on each axis (dynamic) - min/max per loaded data?
 - Zooming of x-axis (or/and y-axis?)
 - Styling of tooltip and possibly change its animation (opacity?) - use tooltip.scss
 */
@@ -56,7 +56,6 @@ var xScale = d3.scaleLinear()
     .range([0, innerWidth]);
 
 var yScale = d3.scaleLinear()
-    .domain([0, 1])
     .range([innerHeight, 0]);
 
 // generate a line model that will be applied to each set of data
@@ -80,6 +79,17 @@ function changeLineChartAttribute(){
     // function call will load from selected attribute
     addCountryToLineChart(lineObj.CC, lineObj.color);
   });
+
+  // update to match newly selected attribute
+  updateLineChartMinMax();
+
+}
+
+function updateLineChartMinMax(){
+  // find min and max for selected attribute
+  lineAttrMinY = data_attrs.minimum[currentAttribute];
+  lineAttrMaxY = data_attrs.maximum[currentAttribute];
+  yScale.domain([lineAttrMinY, lineAttrMaxY]);
 }
 
 function addCountryToLineChart(CC, usedColor){
@@ -88,7 +98,7 @@ function addCountryToLineChart(CC, usedColor){
   var objVals = Object.values(data_attrs);
   // [w in weeks][CC][currentAttribute]
   var line = [];
-  Object.values(data_attrs).filter(function(d, i){
+  objVals.filter(function(d, i){
     // filter out the min and max data for the period
     // and keep the data corresponding to dates instead
     return i < objVals.length - 2;
@@ -144,6 +154,10 @@ function removeCountryFromLineChart(CC){
 }
 
 function reloadLineChart(){
+    // make sure to initialize the y-axis domain to the
+    // currently selected attributes min and max values
+    updateLineChartMinMax();
+
     // recreate the container and all of its essential elements
     createLineChart();
     // for dynamic y-axis if desired later (change countryLines to checking all 3)
