@@ -103,7 +103,8 @@ function removeCountryFromWeeklySongs(CC) {
 function changeWeeklySongsWeek(CC) {
   if (dataWeek != lastDataWeek) {
     lastDataWeek = dataWeek;
-    selectedSongs = [];
+    //clearSelectedSongs(); // uncommented to allow comparing songs over time
+    // call the clearSelectedSongs-function on a button press of "clear all songs" instead
   }
   d3.select("#weekly-song-list-ul-" + CC)
     .selectAll("li")
