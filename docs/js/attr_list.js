@@ -1,7 +1,15 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
-function listAttributes(attributes) {
-  var ul = d3.select("#dropdown-container");
-  var buttonLabel = d3.select("#attr-btn-label");
+function loadAttrList() {
+  var attributes = [
+    "danceability",
+    "energy",
+    "speechiness",
+    "acousticness",
+    "instrumentalness",
+    "liveness",
+    "valence"
+  ];
+  var ul = d3.select("#attribute-ul");
   ul.selectAll("li")
     .data(attributes)
     .enter()
@@ -11,47 +19,15 @@ function listAttributes(attributes) {
     }))
     .on("click", (function(d) {
       currentAttribute = d;
-      buttonLabel.text((function() {
-        return d;
-      }));
       updateWorldMap(
         data_attrs[dataWeek],
         data_attrs.minimum,
         data_attrs.maximum
       );
-
-      toggleDropdown();
+      changeLineChartAttribute();
+      ul.selectAll("li").style("color", null);
+      d3.select(this).style("color", "#1ed760");
     }));
-}
-
-function loadAttrList() {
-  var buttonLabel = d3.select("#attr-btn-label");
-  var firstDate = Object.keys(data_attrs)[0];
-  var firstCountry = Object.keys(data_attrs[firstDate])[0];
-  var attributes = Object.keys(data_attrs[firstDate][firstCountry]);
-  listAttributes(attributes);
-  buttonLabel.text((function() {
-    return currentAttribute;
-  }));
-  var dropdownBtn = d3.select("#attr-button");
-  dropdownBtn.on("click", (function() {
-    toggleDropdown();
-  }));
-}
-
-function toggleDropdown() {
-  var dropdownElementContainer = d3.select("#dropdown-container");
-  var dropdownArrow = d3.select("#drop-img");
-
-  if (dropdownElementContainer.classed("toggleDropdown")) {
-    dropdownElementContainer.classed("toggleDropdown", false);
-    dropdownArrow.text((function() {
-      return "arrow_drop_down";
-    }));
-  } else {
-    dropdownElementContainer.classed("toggleDropdown", true);
-    dropdownArrow.text((function() {
-      return "arrow_drop_up";
-    }));
-  }
+  ul.select("li").style("color", "#1ed760");
+  loadTooltip();
 }

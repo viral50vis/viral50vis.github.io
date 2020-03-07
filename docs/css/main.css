@@ -157,7 +157,7 @@
 
 /* line 34, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg .countryHighlight {
-  stroke: #9df1bb;
+  stroke: rgba(255, 255, 255, 0.7);
   stroke-width: 1;
   fill: none;
 }
@@ -472,7 +472,72 @@
   display: none;
 }
 
-/* line 1, src/sass/attr_list.scss */
+/* line 4, src/sass/attr_list.scss */
+#attribute-list-wrapper h2 {
+  margin: 0;
+  padding: 4px 0 2px 24px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
+/* line 15, src/sass/attr_list.scss */
+#attribute-list-wrapper hr {
+  margin: 8px 24px 8px 24px;
+  border-color: #282828;
+}
+
+/* line 20, src/sass/attr_list.scss */
+#attribute-list-wrapper #attribute-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: block;
+}
+
+/* line 27, src/sass/attr_list.scss */
+#attribute-list-wrapper #attribute-ul:hover {
+  cursor: pointer;
+}
+
+/* line 31, src/sass/attr_list.scss */
+#attribute-list-wrapper #attribute-ul li {
+  margin: 0 0 0;
+  padding: 4px 0 2px 24px;
+  position: relative;
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* line 40, src/sass/attr_list.scss */
+#attribute-list-wrapper #attribute-ul li::before {
+  background-color: transparent;
+  position: absolute;
+  padding: 0 0 0;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 2px;
+  content: "";
+}
+
+/* line 51, src/sass/attr_list.scss */
+#attribute-list-wrapper #attribute-ul li:hover {
+  color: #ffffff;
+}
+
+/* line 54, src/sass/attr_list.scss */
+#attribute-list-wrapper #attribute-ul li:hover::before {
+  background-color: #1ed760;
+}
+
+/* line 62, src/sass/attr_list.scss */
 #attr-list-container {
   position: absolute;
   z-index: 1;
@@ -483,48 +548,46 @@
           user-select: none;
 }
 
-/* line 8, src/sass/attr_list.scss */
+/* line 69, src/sass/attr_list.scss */
 #attr-button {
   padding: 0px 10px 0px 10px;
   line-height: 34px;
   height: auto;
   color: #fff;
-  font-weight: bold;
   border-radius: 23px;
   background: #282828;
   overflow: auto;
 }
 
-/* line 19, src/sass/attr_list.scss */
+/* line 79, src/sass/attr_list.scss */
 #attr-button:hover {
   background: #2d2d2d;
   cursor: pointer;
 }
 
-/* line 24, src/sass/attr_list.scss */
+/* line 84, src/sass/attr_list.scss */
 #attr-button span {
   float: left;
 }
 
-/* line 28, src/sass/attr_list.scss */
+/* line 88, src/sass/attr_list.scss */
 #attr-button span::first-letter {
   text-transform: uppercase;
 }
 
-/* line 32, src/sass/attr_list.scss */
+/* line 92, src/sass/attr_list.scss */
 #drop-img {
   float: right;
   font-size: 34px;
   margin-right: -8px;
 }
 
-/* line 38, src/sass/attr_list.scss */
+/* line 98, src/sass/attr_list.scss */
 #dropdown-container {
   position: absolute;
   background: #282828;
   margin-top: 5px;
   color: #b3b3b3;
-  font-weight: bold;
   padding: 0px;
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -534,25 +597,24 @@
   cursor: pointer;
 }
 
-/* line 52, src/sass/attr_list.scss */
+/* line 111, src/sass/attr_list.scss */
 #dropdown-container li {
   list-style: none;
   padding: 8px 20px;
-  border-top: 1px solid #404040;
 }
 
-/* line 58, src/sass/attr_list.scss */
+/* line 116, src/sass/attr_list.scss */
 #dropdown-container li::first-letter {
   text-transform: uppercase;
 }
 
-/* line 62, src/sass/attr_list.scss */
+/* line 120, src/sass/attr_list.scss */
 #dropdown-container li:hover {
   background: #2d2d2d;
   color: #fff;
 }
 
-/* line 67, src/sass/attr_list.scss */
+/* line 125, src/sass/attr_list.scss */
 .toggleDropdown {
   display: block !important;
 }
@@ -601,7 +663,7 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  height: calc(100% - 38px);
+  height: calc(100% - 86px);
   display: block;
 }
 
@@ -612,14 +674,16 @@
 
 /* line 37, src/sass/country_list.scss */
 #country-list #list-wrapper ul li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  font-weight: lighter;
-  font-size: medium;
   margin: 0 0 0;
   padding: 4px 0 2px 24px;
   position: relative;
+  font-size: 14px;
+  line-height: 24px;
   text-transform: uppercase;
+  letter-spacing: 0.16em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 /* line 47, src/sass/country_list.scss */
@@ -715,6 +779,24 @@
   outline: 0;
   font-size: 14px;
   letter-spacing: 0.015em;
+}
+
+/* line 131, src/sass/country_list.scss */
+#country-list #list-wrapper h2 {
+  margin: 0;
+  padding: 4px 0 2px 24px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
+/* line 142, src/sass/country_list.scss */
+#country-list #list-wrapper hr {
+  margin: 8px 24px 8px 24px;
+  border-color: #282828;
 }
 
 /* line 3, src/sass/detailview.scss */
@@ -858,9 +940,12 @@
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0px;
           flex: 1 1 0;
+  height: 65px;
+  padding-left: 15px;
+  margin-bottom: -5px;
 }
 
-/* line 114, src/sass/detailview.scss */
+/* line 117, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .song-name {
   font-size: 16px;
   line-height: 22px;
@@ -869,31 +954,86 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding-top: 10px;
 }
 
-/* line 124, src/sass/detailview.scss */
+/* line 128, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .artist-name {
   color: #ffffff;
+  display: inline-block;
   opacity: 0.6;
+  position: absolute;
+  left: 15px;
 }
 
-/* line 134, src/sass/detailview.scss */
+/* line 136, src/sass/detailview.scss */
+.detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .spotify-link {
+  color: #1ed760;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10pt;
+  position: absolute;
+  right: 15px;
+}
+
+/* line 144, src/sass/detailview.scss */
+.detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .spotify-link:hover {
+  text-decoration: underline;
+}
+
+/* line 154, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* line 141, src/sass/detailview.scss */
+/* line 161, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__song-comparison {
   grid-area: song-comparison;
   width: 100%;
   height: 100%;
 }
 
-/* line 149, src/sass/detailview.scss */
+/* line 166, src/sass/detailview.scss */
+.detail-wrapper #details .Detail__song-comparison .attribute-text {
+  font-size: 9px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* line 176, src/sass/detailview.scss */
 .detail-hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+/* line 181, src/sass/detailview.scss */
+.selected-song {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* line 185, src/sass/detailview.scss */
+#close-detail {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  color: #fff;
+  background-color: #282828;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  font-size: 14px;
+  padding: 10px 5px 10px 5px;
+  font-weight: bolder;
+  min-width: 80px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* line 201, src/sass/detailview.scss */
+#close-detail:hover {
+  background: #2d2d2d;
 }
 
 /* Make the linechart container fill the entire grid container */
@@ -1029,43 +1169,27 @@
 }
 
 /* line 1, src/sass/tooltip.scss */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-/* line 6, src/sass/tooltip.scss */
-.tooltip .tooltip-content {
+.tooltip-content {
   visibility: hidden;
+  min-width: 300px;
   background: #282828;
   color: #fff;
-  font-weight: bold;
   border-radius: 6px;
   padding: 5px 10px;
   position: absolute;
   z-index: 1;
-  /*bottom: 125%;*/
-  opacity: 0;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
 }
 
-/* line 20, src/sass/tooltip.scss */
-.tooltip .tooltip-content::after {
+/* line 12, src/sass/tooltip.scss */
+.tooltip-content::after {
   content: "";
   position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #282828 transparent transparent transparent;
-}
-
-/* line 31, src/sass/tooltip.scss */
-.tooltip:hover .tooltip-content {
-  visibility: visible;
-  opacity: 1;
+  border-color: transparent #282828 transparent transparent;
 }
 
 /* Layout */
@@ -1119,7 +1243,7 @@ body {
 .Root__wrapper .Root__country-list {
   will-change: transform;
   grid-area: country-list;
-  width: 230px;
+  width: 250px;
   z-index: 3;
   background-color: rgba(0, 0, 0, 0.8);
 }
@@ -1144,9 +1268,10 @@ body {
   grid-area: time-anim-control;
   width: 100%;
   background-color: #282828;
+  color: #ffffff;
 }
 
-/* line 76, src/sass/main.scss */
+/* line 77, src/sass/main.scss */
 .Root__wrapper .Root__timeslider-bar {
   grid-area: timeslider-bar;
   width: 100%;

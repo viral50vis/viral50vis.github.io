@@ -51,7 +51,7 @@ body {
   .Root__country-list {
     will-change: transform;
     grid-area: country-list;
-    width: 230px;
+    width: 250px;
     z-index: 3;
     background-color: $Root__country-list_background;
   }
@@ -71,6 +71,7 @@ body {
     grid-area: time-anim-control;
     width: 100%;
     background-color: #282828;
+    color: #ffffff;
   }
 
   .Root__timeslider-bar {

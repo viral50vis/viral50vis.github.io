@@ -43,7 +43,7 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  height: calc(100% - 38px);
+  height: calc(100% - 86px);
   display: block;
 }
 
@@ -54,14 +54,16 @@
 
 /* line 37, src/sass/country_list.scss */
 #country-list #list-wrapper ul li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  font-weight: lighter;
-  font-size: medium;
   margin: 0 0 0;
   padding: 4px 0 2px 24px;
   position: relative;
+  font-size: 14px;
+  line-height: 24px;
   text-transform: uppercase;
+  letter-spacing: 0.16em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 /* line 47, src/sass/country_list.scss */
@@ -157,4 +159,22 @@
   outline: 0;
   font-size: 14px;
   letter-spacing: 0.015em;
+}
+
+/* line 131, src/sass/country_list.scss */
+#country-list #list-wrapper h2 {
+  margin: 0;
+  padding: 4px 0 2px 24px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
+/* line 142, src/sass/country_list.scss */
+#country-list #list-wrapper hr {
+  margin: 8px 24px 8px 24px;
+  border-color: #282828;
 }

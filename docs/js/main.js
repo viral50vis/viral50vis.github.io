@@ -11,14 +11,14 @@ var isInDetailView = false;
 var selectedCountries = [];
 
 var maxColor = {
-  red: 29,
-  green: 185,
-  blue: 80
+  red: 30,
+  green: 215,
+  blue: 96
 };
 var minColor = {
-  red: 4,
-  green: 55,
-  blue: 79
+  red: 128,
+  green: 64,
+  blue: 0
 };
 
 Promise.all([

@@ -1,16 +1,11 @@
 var legendLabels = {
-  acousticness: ["electronic", "acoustic"],
-  danceability: ["low", "high"],
-  energy: ["calm", "energetic"],
-  instrumentalness: ["vocal", "instrumental"],
-  key: ["low", "high"],
-  liveness: ["studio", "live"],
-  loudness: ["quiet", "loud"],
-  mode: ["minor", "major"],
-  speechiness: ["song", "speech"],
-  tempo: ["slow", "fast"],
-  time_signature: ["low", "high"],
-  valence: ["negative", "positive"]
+  acousticness: ["Electronic music", "Acoustic music"],
+  danceability: ["Low danceability", "High danceability"],
+  energy: ["Calm music", "Energetic music"],
+  instrumentalness: ["Vocal tracks", "Instrumental tracks"],
+  liveness: ["Studio", "Live audience"],
+  speechiness: ["Low speechiness", "High speechiness"],
+  valence: ["Negative tone", "Positive tone"]
 };
 
 function updateLegend(data, minimum, maximum) {
@@ -42,7 +37,7 @@ function updateLegend(data, minimum, maximum) {
           " (" +
           (labels.indexOf(d) == 0 ? min.toFixed(2) : max.toFixed(2)) +
           ")";
-      return d + value;
+      return d;
     });
 
   d3.select("#legend-scale-container")

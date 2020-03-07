@@ -1,8 +1,8 @@
 // variables for keeping track of data
 var chartCountryLines = [];
-var indexOfCC = {};
 var lineChartColors = ["#fff", "#00f", "#f00"]; // white, blue, red
 var usedLineChartColors = []; // one boolean per color
+// initialize colors to unused
 lineChartColors.forEach(function(){ usedLineChartColors.push(false); });
 
 var chart, lineMarker, chartTooltip, prevTooltipX;
@@ -40,7 +40,7 @@ var chart, lineMarker, chartTooltip, prevTooltipX;
 
 var container = d3.select("#linechart");
 // set up size and margin of chart
-var margin = {top: 50, right: 90, bottom: 40, left: 50},
+var margin = {top: 50, right: 90, bottom: 20, left: 50},
   totalWidth = +container.style("width").slice(0, -2),  // .style returns with 'px' after,
   innerWidth = totalWidth - margin.left - margin.right, //  slice it out and force the
   totalHeight = +container.style("height").slice(0, -2),//  result to a number
@@ -70,7 +70,18 @@ var lineModel = d3.line()
   ==================================
 */
 
-function addCountryToLineChart(CC){
+function changeLineChartAttribute(){
+  prevCountryLines = chartCountryLines;
+  // empty the array with countries' line data
+  chartCountryLines = [];
+  prevCountryLines.forEach(function(lineObj){
+    // re-add the countries with same colors
+    // function call will load from selected attribute
+    addCountryToLineChart(lineObj.CC, lineObj.color);
+  });
+}
+
+function addCountryToLineChart(CC, usedColor){
   // turn dates/min/max object into an array
   // where each element holds the values of the keys
   var objVals = Object.values(data_attrs);
@@ -100,6 +111,11 @@ function addCountryToLineChart(CC){
     }
     return !d; // exit once one is found
   });
+  // if the function is passed the color for the country,
+  // i.e. it is being re-added for a different attribute,
+  // use that color instead of the randomly selected
+  if(typeof usedColor !== 'undefined') colorIdx = usedColor;
+
   // mark the selected color as used
   usedLineChartColors[colorIdx] = true;
 
