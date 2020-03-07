@@ -12,6 +12,7 @@ var chart, lineMarker, chartTooltip, prevTooltipX;
 /*
 - Fix styling of graph glyphs with several countries
 - Fix tooltip position and data with new graph
+- Y-axis rescale to min/max for whole dataset
 - Change x-axis to work with dates rather than indices
 - Handle countries missing data for certain time periods
 - Update with colors according to rest of detail view
@@ -41,7 +42,7 @@ var chart, lineMarker, chartTooltip, prevTooltipX;
 
 var container = d3.select("#linechart");
 // set up size and margin of chart
-var margin = {top: 50, right: 90, bottom: 20, left: 50},
+var margin = {top: 50, right: 30, bottom: 20, left: 50},
   totalWidth = +container.style("width").slice(0, -2),  // .style returns with 'px' after,
   innerWidth = totalWidth - margin.left - margin.right, //  slice it out and force the
   totalHeight = +container.style("height").slice(0, -2),//  result to a number
@@ -202,31 +203,6 @@ function createLineChart(){
       .style("top", totalHeight);
     // used for smoother animation in tooltip movement
     prevTooltipX = 0;
-
-    // LEGEND
-    var legendMargin = {top: 5, right: 15, bottom: 0, left: 10};
-    // move the container to the right of the graph
-    var legendContainer = chart.append("g")
-      .attr("transform", "translate(" + (innerWidth+legendMargin.left) +
-            "," + legendMargin.top + ")")
-      .attr("class", "chart-legend");
-    // add a border box
-    legendContainer.append("rect")
-      .attr("class", "chart-legend-box")
-      .attr("width", margin.right - legendMargin.left - legendMargin.right)
-      .attr("height", innerHeight - legendMargin.top - legendMargin.bottom);
-    // add color dot for each of the lines
-    legendContainer.append("circle")
-      .attr("class", "chart-legend-dot")
-      .attr("r", 3)
-      .attr("cx", 10)
-      .attr("cy", 15);
-    // add text for the line legend
-    legendContainer.append("text")
-      .attr("x", 17)
-      .attr("y", 15)
-      .attr("dy", "0.35em")
-      .text("Country");
 
     // end of createLineChart()
 }

@@ -271,7 +271,7 @@ d3.select("#close-detail").on("click", (function(d) {
   tmpList.forEach((function(CC) {
     selectedCountries.splice(selectedCountries.indexOf(CC), 1);
     d3.select("#country-list-" + CC).style("color", null);
-    removeCountryFromWeeklySongs(CC);
+    removeCountryFromDetailView(CC);
     checkToggleListClickability();
   }));
   zoomOutCountryHideDetail(tmpList[0]);
