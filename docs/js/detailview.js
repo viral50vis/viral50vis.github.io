@@ -110,7 +110,8 @@ function changeWeeklySongsWeek(CC) {
     .selectAll("li")
     .remove();
   if (data_songs[dataWeek][CC]) {
-    d3.select("#weekly-song-list-ul-" + CC)
+    var songList = d3.select("#weekly-song-list-ul-" + CC);
+    songList
       .selectAll("li")
       .data(data_songs[dataWeek][CC])
       .enter()
@@ -137,6 +138,15 @@ function changeWeeklySongsWeek(CC) {
             generateAttrBarChart();
           } else return;
         }
+        // clear previous color markers
+        d3.select(this).select("span").remove();
+        // add new color marker
+        if(selectedSongs.includes(songAsKey)){
+          d3.select(this)
+            .insert("span", ":first-child")
+            .attr("class", "before-selected-song")
+            .style("background-color", getSongColor(songAsKey));
+        }
       }))
       .append("div")
       .classed("song-name", true)
@@ -144,7 +154,7 @@ function changeWeeklySongsWeek(CC) {
         return d["Track Name"];
       }));
 
-    d3.select("#weekly-song-list-ul-" + CC)
+    songList
       .selectAll(".song-entry-wrapper")
       .data(data_songs[dataWeek][CC])
       .append("div")
@@ -153,7 +163,7 @@ function changeWeeklySongsWeek(CC) {
         return d.Artist;
       }));
 
-    d3.select("#weekly-song-list-ul-" + CC)
+    songList
       .selectAll(".song-entry-wrapper")
       .data(data_songs[dataWeek][CC])
       .append("a")
