@@ -7,7 +7,8 @@ function loadTimeSlider() {
       if (d === "minimum" || d === "maximum") {
         return false;
       }
-      return i % 10 === 0;
+      //This was originally 10
+      return i % 13 === 0;
     })
     .reverse();
 
@@ -18,19 +19,31 @@ function loadTimeSlider() {
     .append("li")
     .text(function(d) {
       d3.select(this).attr("id", "week_" + weekToValue(d));
-      return d;
+      var words = d.split("-");
+      var month = parseInt(words[1], 10);
+      var textMonth =
+        month > 2 && month <= 5
+          ? "Spring"
+          : month > 5 && month <= 8
+          ? "Summer"
+          : month > 8 && month <= 11
+          ? "Autumn"
+          : (month > 11 && month <= 12) || (month >= 0 && month <= 2)
+          ? "Winter"
+          : "ERROR";
+      return textMonth + " " + d.substring(2, 4);
     })
     .each(function(d) {
       var offset =
         (sliderInput.node().getBoundingClientRect().width *
           (155 - weekToValue(d))) /
           155 -
-        (18 * (155 - weekToValue(d))) / 155;
+        (10 * (155 - weekToValue(d))) / 155;
       var labelWidth = d3
         .select(this)
         .node()
         .getBoundingClientRect().width;
-      var thumbWidth = 18 / 2;
+      var thumbWidth = 10 / 2;
       offset = offset + thumbWidth - labelWidth / 2;
       d3.select(this).style("left", offset + "px");
     });
@@ -43,6 +56,8 @@ function loadTimeSlider() {
       updateTimeSliderStyle(weekToValue(d));
       sliderInput.dispatch("input");
     });
+
+  //Default
   sliderLabels.selectAll("#week_0").classed("active selected", true);
 
   sliderInput.on("input", function() {

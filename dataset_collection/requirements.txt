@@ -1,4 +1,0 @@
-jupyterlab
-numpy
-sklearn
-pycountry-convert

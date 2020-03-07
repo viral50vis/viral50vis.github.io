@@ -3,7 +3,7 @@ var chartCountryLines = [];
 var indexOfCC = {};
 var lineChartColors = ["#fff", "#00f", "#f00"]; // white, blue, red
 var usedLineChartColors = []; // one boolean per color
-lineChartColors.forEach(function(){ usedLineChartColors.push(false) });
+lineChartColors.forEach(function(){ usedLineChartColors.push(false); });
 
 var chart, lineMarker, chartTooltip, prevTooltipX;
 

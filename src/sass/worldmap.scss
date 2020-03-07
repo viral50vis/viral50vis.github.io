@@ -19,6 +19,12 @@
         background-color: #535353;
         position: absolute;
 
+        g {
+          path {
+            transition: fill 0.4s ease-in-out;
+          }
+        }
+
         .defaultCountry {
           fill: #121212;
           stroke: #b3b3b3;

@@ -142,21 +142,27 @@
   position: absolute;
 }
 
-/* line 22, src/sass/worldmap.scss */
+/* line 23, src/sass/worldmap.scss */
+.world-detail .world-wrapper #world svg g path {
+  -webkit-transition: fill 0.4s ease-in-out;
+  transition: fill 0.4s ease-in-out;
+}
+
+/* line 28, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg .defaultCountry {
   fill: #121212;
   stroke: #b3b3b3;
   stroke-width: 0.1;
 }
 
-/* line 28, src/sass/worldmap.scss */
+/* line 34, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg .countryHighlight {
   stroke: #9df1bb;
   stroke-width: 1;
   fill: none;
 }
 
-/* line 34, src/sass/worldmap.scss */
+/* line 40, src/sass/worldmap.scss */
 .world-detail .world-wrapper #world svg .countryIsInCurrentData {
   stroke: #121212;
 }
@@ -318,13 +324,19 @@
 }
 
 /* line 19, src/sass/timeslider.scss */
+.timeslider-bar-wrapper .timeslider-bar #slider-wrapper-test {
+  visibility: hidden;
+  position: relative;
+}
+
+/* line 24, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper {
   width: 100%;
   position: relative;
   padding-bottom: 10px;
 }
 
-/* line 43, src/sass/timeslider.scss */
+/* line 51, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider {
   width: 100%;
   top: -2px;
@@ -335,7 +347,7 @@
   z-index: 10;
 }
 
-/* line 53, src/sass/timeslider.scss */
+/* line 61, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 18px;
@@ -348,7 +360,7 @@
   z-index: 10;
 }
 
-/* line 58, src/sass/timeslider.scss */
+/* line 66, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-moz-range-thumb {
   width: 18px;
   height: 18px;
@@ -360,7 +372,7 @@
   z-index: 10;
 }
 
-/* line 62, src/sass/timeslider.scss */
+/* line 70, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-thumb {
   width: 18px;
   height: 18px;
@@ -372,7 +384,7 @@
   z-index: 10;
 }
 
-/* line 67, src/sass/timeslider.scss */
+/* line 75, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-webkit-slider-runnable-track {
   width: 100%;
   height: 3px;
@@ -381,7 +393,7 @@
   z-index: 10;
 }
 
-/* line 71, src/sass/timeslider.scss */
+/* line 79, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-moz-range-track {
   width: 100%;
   height: 3px;
@@ -390,7 +402,7 @@
   z-index: 10;
 }
 
-/* line 75, src/sass/timeslider.scss */
+/* line 83, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-track {
   width: 100%;
   height: 3px;
@@ -399,13 +411,13 @@
   z-index: 10;
 }
 
-/* line 79, src/sass/timeslider.scss */
+/* line 87, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider:focus {
   background: none;
   outline: none;
 }
 
-/* line 85, src/sass/timeslider.scss */
+/* line 93, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-track {
   width: 100%;
   cursor: pointer;
@@ -414,14 +426,14 @@
   color: transparent;
 }
 
-/* line 96, src/sass/timeslider.scss */
+/* line 104, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* line 101, src/sass/timeslider.scss */
+/* line 109, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels li {
   position: absolute;
   color: #b2b2b2;
@@ -430,7 +442,7 @@
   cursor: pointer;
 }
 
-/* line 108, src/sass/timeslider.scss */
+/* line 116, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels li::before {
   position: absolute;
   top: -13px;
@@ -445,17 +457,17 @@
   z-index: 0;
 }
 
-/* line 123, src/sass/timeslider.scss */
+/* line 131, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active {
   color: #ffffff;
 }
 
-/* line 127, src/sass/timeslider.scss */
+/* line 135, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active::before {
   background: #1ed760;
 }
 
-/* line 131, src/sass/timeslider.scss */
+/* line 139, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active.selected::before {
   display: none;
 }
