@@ -204,8 +204,11 @@ function createLineChart(){
       .attr("class", "x axis")
       .attr("transform", "translate(0," + innerHeight+ ")")
       .call( d3.axisBottom(xScale) // create the (x) axis component itself
-      .ticks(d3.timeYear.every(1))
-      .tickFormat(d3.timeFormat('%Y'))
+      .ticks(d3.timeMonth.every(1)) //create one tick per month
+      .tickFormat((function(d,i){
+        // only write a tick label when a new year is reached
+          return (i%12 == 0) ? (d3.timeFormat('%Y')(d)) : "";
+        }))
       ); 
 
     //var yAxis = 
