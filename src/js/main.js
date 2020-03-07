@@ -15,9 +15,9 @@ var maxColor = {
   blue: 96
 };
 var minColor = {
-  red: 5,
-  green: 41,
-  blue: 17
+  red: 30,
+  green: 30,
+  blue: 100
 };
 
 Promise.all([
