@@ -914,19 +914,18 @@
 /* line 28, src/sass/linechart.scss */
 .line {
   fill: none;
-  stroke: #1ed760;
   stroke-width: 1px;
   /* Adds animation to the path when data is loaded */
 }
 
 /* line 34, src/sass/linechart.scss */
 .line.line-loaded {
-  stroke-dasharray: 20000;
-  stroke-dashoffset: 20000;
+  stroke-dasharray: 10000;
+  stroke-dashoffset: 10000;
   -webkit-animation: drawline 2.5s ease-in forwards;
           animation: drawline 2.5s ease-in forwards;
-  -webkit-animation-delay: 4000ms;
-          animation-delay: 4000ms;
+  -webkit-animation-delay: 200ms;
+          animation-delay: 200ms;
 }
 
 /* The vertical line that helps mark the correct data point */
@@ -938,10 +937,11 @@
 /* The circles that represent each data point */
 /* line 48, src/sass/linechart.scss */
 .chart-dot {
-  fill: #1ed760;
+  /* Styling deleted to let it be dynamic */
+  /*fill: $spotify_green_color;*/
 }
 
-/* line 51, src/sass/linechart.scss */
+/* line 52, src/sass/linechart.scss */
 .chart-dot.nonfocus {
   opacity: 0.5;
   r: 3px;
@@ -949,7 +949,7 @@
   transition: opacity 0.4s ease, r 0.4s ease;
 }
 
-/* line 56, src/sass/linechart.scss */
+/* line 57, src/sass/linechart.scss */
 .chart-dot.focus {
   opacity: 0.95;
   r: 6px;
@@ -957,13 +957,11 @@
   transition: opacity 0.8s ease, r 0.8s ease;
   -webkit-transition-delay: 0.05s;
           transition-delay: 0.05s;
-  fill: ligthen(#1ed760, 60);
-  stroke: #127d38;
   stroke-width: 1px;
 }
 
 /* Styling of hover tooltip */
-/* line 67, src/sass/linechart.scss */
+/* line 66, src/sass/linechart.scss */
 .chart-tooltip {
   display: block;
   position: absolute;
@@ -980,13 +978,13 @@
 }
 
 /* Styling of everything in the chart */
-/* line 83, src/sass/linechart.scss */
+/* line 82, src/sass/linechart.scss */
 .chart-legend > text {
   font-size: 11px;
   fill: #b2b2b2;
 }
 
-/* line 88, src/sass/linechart.scss */
+/* line 87, src/sass/linechart.scss */
 .chart-legend-box {
   stroke-linecap: round;
   stroke-width: 1px;
@@ -995,7 +993,7 @@
   rx: 10px;
 }
 
-/* line 96, src/sass/linechart.scss */
+/* line 95, src/sass/linechart.scss */
 .chart-legend-dot {
   fill: #1ed760;
 }
@@ -1003,7 +1001,7 @@
 /* Animation of drawing the line path of the chart/graph */
 @-webkit-keyframes drawline {
   from {
-    stroke-dashoffset: 20000;
+    stroke-dashoffset: 10000;
   }
   to {
     stroke-dashoffset: 0;
@@ -1011,7 +1009,7 @@
 }
 @keyframes drawline {
   from {
-    stroke-dashoffset: 20000;
+    stroke-dashoffset: 10000;
   }
   to {
     stroke-dashoffset: 0;

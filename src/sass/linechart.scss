@@ -27,15 +27,15 @@
 /* The line itself that illustrates the path between data points */
 .line {
   fill: none;
-  stroke: $spotify_green_color;
+  //stroke: $spotify_green_color;
   stroke-width: 1px;
 
   /* Adds animation to the path when data is loaded */
   &.line-loaded{
-    stroke-dasharray: 20000;
-    stroke-dashoffset: 20000;
+    stroke-dasharray: 10000;
+    stroke-dashoffset: 10000;
     animation: drawline 2.5s ease-in forwards;
-    animation-delay: 4000ms;
+    animation-delay: 200ms; // TODO: make MUCH shorter
   }
 }
 
@@ -46,7 +46,8 @@
 
 /* The circles that represent each data point */
 .chart-dot {
-  fill: $spotify_green_color;
+  /* Styling deleted to let it be dynamic */
+  /*fill: $spotify_green_color;*/
 }
 .chart-dot.nonfocus{
   opacity: 0.5;
@@ -58,8 +59,6 @@
   r: 6px;
   transition: opacity 0.8s ease, r 0.8s ease;
   transition-delay: 0.05s;
-  fill: ligthen($spotify_green_color, 60);
-  stroke: darken($spotify_green_color, 20);
   stroke-width: 1px;
 }
 
@@ -100,7 +99,7 @@
 /* Animation of drawing the line path of the chart/graph */ 
 @keyframes drawline{
   from {
-    stroke-dashoffset: 20000;
+    stroke-dashoffset: 10000;
   }
   to {
     stroke-dashoffset: 0;

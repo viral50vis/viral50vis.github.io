@@ -1,17 +1,20 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
 function addCountryToDetailView(CC) {
   addCountryToWeeklySongs(CC);
+  addCountryToLineChart(CC);
 }
 
 function removeCountryFromDetailView(CC) {
   removeCountryFromWeeklySongs(CC);
+  removeCountryFromLineChart(CC);
 }
 
 function changeWeekDetailView() {
   selectedCountries.forEach((function(CC) {
     changeWeeklySongsWeek(CC);
   }));
-  updateLineChartWeek();
+  if(isInDetailView)
+    updateLineChartWeek();
 }
 
 function addCountryToWeeklySongs(CC) {

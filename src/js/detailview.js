@@ -1,16 +1,19 @@
 function addCountryToDetailView(CC) {
   addCountryToWeeklySongs(CC);
+  addCountryToLineChart(CC);
 }
 
 function removeCountryFromDetailView(CC) {
   removeCountryFromWeeklySongs(CC);
+  removeCountryFromLineChart(CC);
 }
 
 function changeWeekDetailView() {
   selectedCountries.forEach(function(CC) {
     changeWeeklySongsWeek(CC);
   });
-  updateLineChartWeek();
+  if(isInDetailView)
+    updateLineChartWeek();
 }
 
 function addCountryToWeeklySongs(CC) {
