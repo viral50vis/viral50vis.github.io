@@ -73,7 +73,18 @@ function loadTimeSlider() {
   });
 
   // prevent double pressing and instead listen globally for keydown
-  sliderInput.on("keydown", function(){ d3.event.preventDefault(); });
+  // but only preventdefault for the ones that are listened to globally
+  sliderInput.on("keydown", function(){
+    switch(d3.event.keyCode){
+      case 32:
+      case 37:
+      case 39:
+        d3.event.preventDefault();
+        break;
+      default:
+        break;
+    } 
+  });
 
   sliderInput.style(
     "background",
