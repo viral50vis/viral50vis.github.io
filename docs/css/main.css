@@ -1003,17 +1003,22 @@
 }
 
 /* line 176, src/sass/detailview.scss */
+#attr-barchart-wrapper {
+  height: 100%;
+}
+
+/* line 180, src/sass/detailview.scss */
 .detail-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* line 181, src/sass/detailview.scss */
+/* line 185, src/sass/detailview.scss */
 .selected-song {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* line 185, src/sass/detailview.scss */
+/* line 189, src/sass/detailview.scss */
 #close-detail {
   position: absolute;
   top: 20px;
@@ -1031,7 +1036,7 @@
   cursor: pointer;
 }
 
-/* line 201, src/sass/detailview.scss */
+/* line 205, src/sass/detailview.scss */
 #close-detail:hover {
   background: #2d2d2d;
 }

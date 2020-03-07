@@ -1,5 +1,6 @@
 var selectedSongs = [];
 var attrBarChartColors = ["#ef4760", "#fdd161", "#40c990", "#2f8ba0", "#845f80", "#ee840e"];
+var lastDataWeek = 0;
 
 function addCountryToDetailView(CC) {
   addCountryToWeeklySongs(CC);
@@ -85,6 +86,10 @@ function removeCountryFromWeeklySongs(CC) {
 }
 
 function changeWeeklySongsWeek(CC) {
+  if (dataWeek != lastDataWeek) {
+    lastDataWeek = dataWeek;
+    selectedSongs = [];
+  }
   d3.select("#weekly-song-list-ul-" + CC)
     .selectAll("li")
     .remove();
@@ -177,8 +182,8 @@ function generateAttrBarChart() {
   });
 
   var margin = { top: 20, right: 30, bottom: 30, left: 40 };
-  var width = 960 - margin.left - margin.right;
-  var height = 500 - margin.top - margin.bottom;
+  var width = d3.select("#attr-barchart-wrapper").node().getBoundingClientRect().width - margin.left - margin.right;
+  var height = d3.select("#attr-barchart-wrapper").node().getBoundingClientRect().height - margin.top - margin.bottom;
 
   var y = d3
     .scaleLinear()
