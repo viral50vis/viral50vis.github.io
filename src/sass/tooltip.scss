@@ -19,3 +19,17 @@
   border-style: solid;
   border-color: transparent #282828 transparent transparent;
 }
+
+.country-tooltip {
+  opacity: 0;
+  position: absolute;
+  padding: 6px 6px 2px;
+  min-width: 30px;
+  font-size: 11px;
+  line-height: 13px;
+  background: #282828;
+  color: #fff;
+  border-radius: 6px;
+  z-index: 10;
+  pointer-events: none;
+}
