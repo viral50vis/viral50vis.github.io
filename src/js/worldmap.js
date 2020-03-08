@@ -54,6 +54,7 @@ function generateWorldMap(worldJSON) {
       if (d3.select(this).classed("countryIsInCurrentData")) {
         highlightCountryInList(d.id, true);
         highlightCountryOnMap(d.id, true);
+        setTimeout(function(){ hideCountryTooltip(); }, 500);
         tooltipRecent = true;
         showCountryTooltip(d.id);
       }else{
@@ -63,8 +64,10 @@ function generateWorldMap(worldJSON) {
     })
     /* On Click */
     .on("click", function(d, i) {
-      countryClickSelection(d.id);
-      handleCountryClickShowDetail(d.id);
+      if (d3.select(this).classed("countryIsInCurrentData")) {
+        countryClickSelection(d.id);
+        handleCountryClickShowDetail(d.id);
+      }
     })
     /* On Mouse Out */
     .on("mouseout", function(d, i) {
@@ -193,7 +196,5 @@ function showCountryTooltip(CC){
 function hideCountryTooltip(){
   if(!tooltipRecent)
   countryTooltip
-    .transition()
-    .duration(200)
     .style("opacity", "0");
 }
