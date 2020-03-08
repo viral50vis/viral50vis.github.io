@@ -220,16 +220,19 @@ function changeWeeklySongsWeek(CC) {
         return d.Artist;
       }));
 
-    songList
+    songLink = songList
       .selectAll(".song-entry-wrapper")
       .data(data_songs[dataWeek][CC])
       .append("a")
       .classed("spotify-link", true)
-      .text("Spotify")
+      .text("Spotify ")
       .attr("href", (function(d) {
         return d.URL;
       }))
       .attr("target", "_blank");
+    songLink
+      .append("i")
+      .attr("class", "fas fa-external-link-alt")
   } else {
   }
 }
