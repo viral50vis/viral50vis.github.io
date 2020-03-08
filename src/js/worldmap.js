@@ -54,7 +54,7 @@ function generateWorldMap(worldJSON) {
       if (d3.select(this).classed("countryIsInCurrentData")) {
         highlightCountryInList(d.id, true);
         highlightCountryOnMap(d.id, true);
-        setTimeout(function(){ hideCountryTooltip(); }, 1500);
+        setTimeout(function(){ hideCountryTooltip(); }, 500);
         tooltipRecent = true;
         showCountryTooltip(d.id);
       }else{
