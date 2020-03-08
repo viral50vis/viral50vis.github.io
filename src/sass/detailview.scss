@@ -140,14 +140,14 @@
 
                 .song-entry-wrapper {
                   flex: 1 1 0;
-                  height: 65px;
+                  height: 66px;
                   padding-left: 15px;
 
                   /* Color marker for selected songs */
                   .before-selected-song {
                     position: absolute;
                     padding: 0;
-                    height: 65px;
+                    height: 66px;
                     left: 0;
                     top: inherit;
                     width: 5px;
@@ -185,6 +185,27 @@
                       text-decoration: underline;
                     }
                   }
+                }
+              }
+
+              .noSelect {
+                cursor: not-allowed;
+                div {
+                  .song-name {
+                    color: #707070;
+                  }
+
+                  .artist-name {
+                    color: #505050;
+                  }
+
+                  .spotify-link {
+                    color: #0f5a29;
+                  }
+                }
+                &:hover {
+                  color: #707070;
+                  background-color: $Root__wrapper_background;
                 }
               }
             }

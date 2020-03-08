@@ -56,6 +56,15 @@ function addCountryToWeeklySongs(CC) {
             .style("background-color", getSongColor(songAsKey));
         }
       }));
+
+      if (selectedSongs.length === 3) {
+        d3.selectAll(".song-entry-wrapper").each((function() {
+          d3.select(this.parentNode).classed("noSelect", true);
+        }));
+        d3.selectAll(".selected-song").each((function() {
+          d3.select(this.parentNode).classed("noSelect", false);
+        }));
+      }
       d3.selectAll(".weekly-song-list-wrapper").classed(
         "weekly-song-list-wrapper-hidden",
         true
@@ -162,7 +171,7 @@ function changeWeeklySongsWeek(CC) {
             selectedSongs.push(songAsKey);
             d3.select(this).classed("selected-song", true);
             generateAttrBarChart();
-          } else return;
+          }
         }
         // clear previous color markers
         d3.select(this)
@@ -178,6 +187,19 @@ function changeWeeklySongsWeek(CC) {
         d3.select("#weekly-songs-selected").text((function() {
           return "(" + selectedSongs.length + "/3";
         }));
+
+        if (selectedSongs.length === 3) {
+          d3.selectAll(".song-entry-wrapper").each((function() {
+            d3.select(this.parentNode).classed("noSelect", true);
+          }));
+          d3.selectAll(".selected-song").each((function() {
+            d3.select(this.parentNode).classed("noSelect", false);
+          }));
+        } else {
+          d3.selectAll(".song-entry-wrapper").each((function() {
+            d3.select(this.parentNode).classed("noSelect", false);
+          }));
+        }
       }))
       .append("div")
       .classed("song-name", true)
