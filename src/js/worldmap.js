@@ -2,6 +2,8 @@ var world = d3.select("#world").append("svg");
 var g = world.append("g");
 var worldWidth = parseInt(d3.select(".Root__main-view").style("width"));
 var worldHeight = parseInt(d3.select(".Root__main-view").style("height"));
+var countryTooltip = d3.select("#world")
+  .append("div").attr("class", "country-tooltip");
 
 var worldProjection = d3
   .geoMercator()
@@ -102,7 +104,10 @@ function handleCountryClickShowDetail(CC) {
 }
 
 function highlightCountryOnMap(CC, highlit) {
-  if (!existsOnMap(CC)) return;
+  if (!existsOnMap(CC)){
+    hideCountryTooltip();
+    return;
+  }
 
   if (highlit) {
     g.append("path")
@@ -110,8 +115,11 @@ function highlightCountryOnMap(CC, highlit) {
       .classed("countryHighlight", true)
       .attr("id", CC + "-highlit")
       .attr("transform", d3.select("." + CC).attr("transform"));
-  } else {
+    showCountryTooltip(CC);
+  } // remove the higlighting and tooltip 
+  else {
     d3.select("#" + CC + "-highlit").remove();
+    hideCountryTooltip();
   }
 }
 
@@ -155,4 +163,33 @@ function zoomOutCountryHideDetail(CC) {
     .transition()
     .duration(1500)
     .call(zoom.transform, d3.zoomIdentity.scale(1));
+}
+
+function showCountryTooltip(CC){
+  // round the data attribute to 3 decimal places
+  ttData = data_attrs[dataWeek][CC][currentAttribute].toFixed(3);
+  // show country name and its data
+  countryTooltip
+    .html("<strong>" +countryCCJSON[CC] + "</strong><br>" + ttData);
+  // fade the tooltip in
+  countryTooltip
+    .transition()
+    .delay(200)
+    .duration(200)
+    .style("opacity", "0.8");
+  // center tooltip horizontally on mouse and place it above
+  h = countryTooltip.style("height").slice(0, -2);
+  w = countryTooltip.style("width").slice(0, -2);
+  x = d3.event.layerX - w/2;
+  y = d3.event.layerY - h;
+  countryTooltip
+    .style("left", x+"px")
+    .style("top", y+"px");
+
+
+}
+
+function hideCountryTooltip(){
+  countryTooltip
+    .style("opacity", "0");
 }
