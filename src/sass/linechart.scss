@@ -1,10 +1,9 @@
 @import "variables.scss";
 
-
 /* Make the linechart container fill the entire grid container */
 #linechart {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 24px);
 }
 
 /* Remove the y-axis line*/
@@ -16,13 +15,14 @@
 .axis > * > text {
   color: rgba($body_color, 0.7);
 }
-  
+
 /* The horizontal gridlines, the tick lines, and the x-axis line */
-.y-gridline, .axis > * > line, .x.axis > .domain{
+.y-gridline,
+.axis > * > line,
+.x.axis > .domain {
   stroke: rgba($body_color, 0.1);
   stroke-width: 1px;
 }
-
 
 /* The line itself that illustrates the path between data points */
 .line {
@@ -31,7 +31,7 @@
   stroke-width: 1px;
 
   /* Adds animation to the path when data is loaded */
-  &.line-loaded{
+  &.line-loaded {
     stroke-dasharray: 10000;
     stroke-dashoffset: 10000;
     animation: drawline 2.5s ease-in forwards;
@@ -39,7 +39,7 @@
   }
 }
 
-/* The vertical line that helps mark the correct data point */ 
+/* The vertical line that helps mark the correct data point */
 .chart-marker {
   fill: rgba(#b2b2b2, 40);
 }
@@ -49,7 +49,7 @@
   /* Styling deleted to let it be dynamic */
   /*fill: $spotify_green_color;*/
 }
-.chart-dot.nonfocus{
+.chart-dot.nonfocus {
   opacity: 0.5;
   r: 3px;
   transition: opacity 0.4s ease, r 0.4s ease;
@@ -88,7 +88,7 @@
   stroke-linecap: round;
   stroke-width: 1px;
   stroke: rgba($body_color, 0.3);
-  fill: rgba($body_color, 0.0);
+  fill: rgba($body_color, 0);
   rx: 10px;
 }
 
@@ -96,8 +96,8 @@
   fill: $spotify_green_color;
 }
 
-/* Animation of drawing the line path of the chart/graph */ 
-@keyframes drawline{
+/* Animation of drawing the line path of the chart/graph */
+@keyframes drawline {
   from {
     stroke-dashoffset: 10000;
   }

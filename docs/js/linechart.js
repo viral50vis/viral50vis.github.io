@@ -8,7 +8,12 @@ countryColors.forEach((function() {
   usedCountryColors.push(false);
 }));
 
-var chart, lineMarker, chartTooltip, prevTooltipDate, lineAttrMinY, lineAttrMaxY;
+var chart,
+  lineMarker,
+  chartTooltip,
+  prevTooltipDate,
+  lineAttrMinY,
+  lineAttrMaxY;
 
 // TODO:
 /*
@@ -44,19 +49,19 @@ var chart, lineMarker, chartTooltip, prevTooltipDate, lineAttrMinY, lineAttrMaxY
 
 var container = d3.select("#linechart");
 // set up size and margin of chart
-var margin = { top: 50, right: 30, bottom: 20, left: 50 },
+var margin = { top: 15, right: 30, bottom: 20, left: 50 },
   totalWidth = +container.style("width").slice(0, -2), // .style returns with 'px' after,
   innerWidth = totalWidth - margin.left - margin.right, //  slice it out and force the
   totalHeight = +container.style("height").slice(0, -2), //  result to a number
   innerHeight = totalHeight - margin.top - margin.bottom;
 
 // set up scales for chart
-var xScale = d3.scaleTime()
+var xScale = d3
+    .scaleTime()
     .domain([ new Date("2016-12-31"), new Date("2020-02-01") ])//new Date(weeks[weeks.length-1]), new Date(weeks[0]) ])
     .range([0, innerWidth])
 
-var yScale = d3.scaleLinear()
-    .range([innerHeight, 0]);
+var yScale = d3.scaleLinear().range([innerHeight, 0]);
 
 // generate a line model that will be applied to each set of data
 var lineModel = d3
@@ -87,10 +92,9 @@ function changeLineChartAttribute() {
 
   // update to match newly selected attribute
   updateLineChartMinMax();
-
 }
 
-function updateLineChartMinMax(){
+function updateLineChartMinMax() {
   // find min and max for selected attribute
   lineAttrMinY = data_attrs.minimum[currentAttribute];
   lineAttrMaxY = data_attrs.maximum[currentAttribute];
@@ -102,25 +106,26 @@ function addCountryToLineChart(CC, usedColor) {
   // where each element holds the values of the keys
   var objVals = Object.values(data_attrs);
   var line = [];
-  objVals.filter((function(d, i){
-    // filter out the min and max data for the period
-    // and keep the data corresponding to dates instead
-    return i < objVals.length - 2;
-  })).map((function(d){
-    // pick out the data from the right country
-    // and the right attribute, avoid the weeks where
-    // no data exists for selected country
-    if(typeof d[CC] !== 'undefined')
-      line.push(d[CC][currentAttribute]); 
-  }));
+  objVals
+    .filter((function(d, i) {
+      // filter out the min and max data for the period
+      // and keep the data corresponding to dates instead
+      return i < objVals.length - 2;
+    }))
+    .map((function(d) {
+      // pick out the data from the right country
+      // and the right attribute, avoid the weeks where
+      // no data exists for selected country
+      if (typeof d[CC] !== "undefined") line.push(d[CC][currentAttribute]);
+    }));
   // get the first weeks (chronologically) at lowest indices
   line.reverse();
   // how many weeks should be skipped for this country
   var weeksOffset = weeks.length - line.length;
-  line = line.map((function(d, i){
+  line = line.map((function(d, i) {
     // the index of the weeks-array (index 0 is last week)
-    var wi = (weeks.length-1) - (i+weeksOffset);
-    return {'x': new Date(weeks[wi]), 'y': d};
+    var wi = weeks.length - 1 - (i + weeksOffset);
+    return { x: new Date(weeks[wi]), y: d };
   }));
 
   // find available color
@@ -163,88 +168,94 @@ function removeCountryFromLineChart(CC) {
   reloadLineChart();
 }
 
-function reloadLineChart(){
-    // make sure to initialize the y-axis domain to the
-    // currently selected attributes min and max values
-    updateLineChartMinMax();
+function reloadLineChart() {
+  // make sure to initialize the y-axis domain to the
+  // currently selected attributes min and max values
+  updateLineChartMinMax();
 
-    // recreate the container and all of its essential elements
-    createLineChart();
-    // for dynamic y-axis if desired later (change countryLines to checking all 3)
-    //yScale.domain(d3.extent(countryLines, function(d){return d.y;}))
+  // recreate the container and all of its essential elements
+  createLineChart();
+  // for dynamic y-axis if desired later (change countryLines to checking all 3)
+  //yScale.domain(d3.extent(countryLines, function(d){return d.y;}))
 
-    chartCountryLines.forEach((function(lineObj){
-      // add the line path itself
-      drawLine(lineObj);
-      // add dots (~scatter plot) for each data point
-      addDataPointDots(lineObj);  
-    }));
-    // add horizontal gridlines
-    addGridLines();
-    // make sure the data marker is at the right point in time
-    changeLineChartWeek();
+  chartCountryLines.forEach((function(lineObj) {
+    // add the line path itself
+    drawLine(lineObj);
+    // add dots (~scatter plot) for each data point
+    addDataPointDots(lineObj);
+  }));
+  // add horizontal gridlines
+  addGridLines();
+  // make sure the data marker is at the right point in time
+  changeLineChartWeek();
 }
 
-function createLineChart(){
-    // remove the previously existing element
-    container.selectAll("svg").remove();
-    // create the svg container element
-    chart = container.append("svg")
-      .attr("width", totalWidth)
-      .attr("height", totalHeight)
-      .append("g")
-      // move the chart according to the margin
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+function createLineChart() {
+  // remove the previously existing element
+  container.selectAll("svg").remove();
+  // create the svg container element
+  chart = container
+    .append("svg")
+    .attr("width", totalWidth)
+    .attr("height", totalHeight)
+    .append("g")
+    // move the chart according to the margin
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    // append x- and y-axis
-    //var xAxis = 
-    chart.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + innerHeight+ ")")
-      .call( d3.axisBottom(xScale) // create the (x) axis component itself
-      .ticks(d3.timeMonth.every(1)) //create one tick per month
-      .tickFormat((function(d,i){
-        // only write a tick label when a new year is reached
-          return (i%12 == 0) ? (d3.timeFormat('%Y')(d)) : "";
+  // append x- and y-axis
+  //var xAxis =
+  chart
+    .append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + innerHeight + ")")
+    .call(
+      d3
+        .axisBottom(xScale) // create the (x) axis component itself
+        .ticks(d3.timeMonth.every(1)) //create one tick per month
+        .tickFormat((function(d, i) {
+          // only write a tick label when a new year is reached
+          return i % 12 == 0 ? d3.timeFormat("%Y")(d) : "";
         }))
-      ); 
+    );
 
-    //var yAxis = 
-    chart.append("g")
-      .attr("class", "y axis")
-      .call(d3.axisLeft(yScale)); // create the (y) axis component itself
+  //var yAxis =
+  chart
+    .append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(yScale)); // create the (y) axis component itself
 
+  // provide mouse over vertical line
+  lineMarker = chart
+    .append("rect")
+    .attr("class", "chart-marker")
+    .style("position", "absolute")
+    .style("z-index", "19")
+    .style("width", "2px")
+    .style("height", innerHeight);
 
-    // provide mouse over vertical line
-    lineMarker = chart.append("rect")
-      .attr("class", "chart-marker")
-      .style("position", "absolute")
-      .style("z-index", "19")
-      .style("width", "2px")
-      .style("height", innerHeight);
+  // prepare tooltip element for marked data
+  d3.selectAll(".chart-tooltip").remove();
+  chartTooltip = container
+    .append("div")
+    .attr("class", "chart-tooltip")
+    .style("opacity", 0)
+    .style("left", margin.left)
+    .style("top", totalHeight);
+  // used for smoother animation in tooltip movement
+  prevTooltipX = 0;
 
-    // prepare tooltip element for marked data
-    d3.selectAll(".chart-tooltip").remove();
-    chartTooltip = container.append("div")
-      .attr("class", "chart-tooltip")
-      .style("opacity", 0)
-      .style("left", margin.left)
-      .style("top", totalHeight);
-    // used for smoother animation in tooltip movement
-    prevTooltipX = 0;
-
-    // end of createLineChart()
+  // end of createLineChart()
 }
 
-function drawLine(lineObj){
-    // append the line itself
-    chart
-      .append("path")
-      .attr("class", "line")
-      .classed("line-loaded", true)
-      .attr("stroke", countryColors[lineObj.color])
-      .data([lineObj.data])       
-      .attr("d", lineModel);
+function drawLine(lineObj) {
+  // append the line itself
+  chart
+    .append("path")
+    .attr("class", "line")
+    .classed("line-loaded", true)
+    .attr("stroke", countryColors[lineObj.color])
+    .data([lineObj.data])
+    .attr("d", lineModel);
 }
 
 function addGridLines() {
@@ -279,7 +290,7 @@ function addDataPointDots(lineObj) {
     .attr("fill", countryColors[lineObj.color]);
 }
 
-function changeLineChartWeek(){
+function changeLineChartWeek() {
   var currentDate = new Date(dataWeek);
   var mousex = xScale(currentDate);
   // center the marker on the data point's x-value
@@ -290,31 +301,31 @@ function changeLineChartWeek(){
 
   // animate data point if on the line marker
   // and transition out if not on line marker anymore
-  var dots = chart.selectAll(".chart-dot")
-      .classed("focus", (function(d){
-        return +d.x == +xMouseVal;
-      }))
-      .classed("nonfocus", (function(d){
-        return +d.x != +xMouseVal;
-      }));
-  dots.each((function(d){
-      if(+d.x == +xMouseVal ){
-        updateChartTooltip(d, currentDate);
-      }
-      }));
+  var dots = chart
+    .selectAll(".chart-dot")
+    .classed("focus", (function(d) {
+      return +d.x == +xMouseVal;
+    }))
+    .classed("nonfocus", (function(d) {
+      return +d.x != +xMouseVal;
+    }));
+  dots.each((function(d) {
+    if (+d.x == +xMouseVal) {
+      updateChartTooltip(d, currentDate);
+    }
+  }));
 }
 
-function updateChartTooltip(d, currentDate){
+function updateChartTooltip(d, currentDate) {
   // dynamic (x-)positioning of tooltip
-  var xpos = xScale(currentDate) + margin.left/2;
+  var xpos = xScale(currentDate) + margin.left / 2;
   var ypos = margin.top - 20;
-  
+
   // show x- and y-values (y-value rounded off to 3 decimal places)
   var content = "Y: " + d.y.toFixed(3);
 
   // stop all previous transitions if marked data is new
-  if(currentDate != prevTooltipDate)
-    chartTooltip.interrupt();
+  if (currentDate != prevTooltipDate) chartTooltip.interrupt();
   // move the tooltip to its new position
   chartTooltip
     .transition()

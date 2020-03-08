@@ -25,6 +25,17 @@
       grid-area: all-time-graph;
       width: 100%;
       height: 100%;
+
+      #all-time-title {
+        text-align: center;
+        padding: 0;
+        position: relative;
+        font-size: 16px;
+        line-height: 24px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-weight: bold;
+      }
     }
 
     .Detail__legend-to-plots {
@@ -121,7 +132,7 @@
 
       #weekly-songs-list-window {
         position: relative;
-        height: 90%;
+        height: 100%;
         overflow-y: scroll;
         flex: 1 1 auto;
 
@@ -236,11 +247,28 @@
       width: 100%;
       height: 100%;
 
+      #attr-barchart-title {
+        margin: 10px auto 0px auto;
+        text-align: center;
+        padding: 0;
+        position: relative;
+        font-size: 16px;
+        line-height: 24px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-weight: bold;
+      }
+
       .attribute-text {
         font-size: 9px;
         line-height: 24px;
         text-transform: uppercase;
         letter-spacing: 0.16em;
+        font-weight: bold;
+      }
+
+      #attr-barchart-wrapper {
+        height: calc(100% - 39px);
       }
     }
   }

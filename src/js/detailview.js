@@ -328,7 +328,7 @@ function generateAttrBarChart() {
   var x1 = d3
     .scaleBand()
     .domain(d3.range(n))
-    .range([0, x0.bandwidth() - 10]);
+    .range([0, x0.bandwidth() - 30]);
 
   //var colors = d3.scaleOrdinal().range(songColors.slice(0, n));
   var colors = function(i) {
@@ -384,7 +384,7 @@ function generateAttrBarChart() {
 
   svg
     .append("g")
-    .attr("transform", "translate(0," + height + ")")
+    .attr("transform", "translate(-15," + height + ")")
     .call(
       d3.axisBottom(x0).tickFormat(function(d) {
         return attrs[d];
