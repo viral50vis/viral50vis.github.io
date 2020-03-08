@@ -4,6 +4,7 @@ var worldWidth = parseInt(d3.select(".Root__main-view").style("width"));
 var worldHeight = parseInt(d3.select(".Root__main-view").style("height"));
 var countryTooltip = d3.select("#world")
   .append("div").attr("class", "country-tooltip");
+var tooltipRecent = false; // boolean to prevent stuck tooltip
 
 var worldProjection = d3
   .geoMercator()
@@ -53,6 +54,11 @@ function generateWorldMap(worldJSON) {
       if (d3.select(this).classed("countryIsInCurrentData")) {
         highlightCountryInList(d.id, true);
         highlightCountryOnMap(d.id, true);
+        tooltipRecent = true;
+        showCountryTooltip(d.id);
+      }else{
+        // country outside of data so tooltip shouldn't show
+        hideCountryTooltip();
       }
     })
     /* On Click */
@@ -104,10 +110,7 @@ function handleCountryClickShowDetail(CC) {
 }
 
 function highlightCountryOnMap(CC, highlit) {
-  if (!existsOnMap(CC)){
-    hideCountryTooltip();
-    return;
-  }
+  if (!existsOnMap(CC)) return;
 
   if (highlit) {
     g.append("path")
@@ -115,10 +118,10 @@ function highlightCountryOnMap(CC, highlit) {
       .classed("countryHighlight", true)
       .attr("id", CC + "-highlit")
       .attr("transform", d3.select("." + CC).attr("transform"));
-    showCountryTooltip(CC);
   } // remove the higlighting and tooltip 
   else {
     d3.select("#" + CC + "-highlit").remove();
+    tooltipRecent = false;
     hideCountryTooltip();
   }
 }
@@ -185,11 +188,12 @@ function showCountryTooltip(CC){
   countryTooltip
     .style("left", x+"px")
     .style("top", y+"px");
-
-
 }
 
 function hideCountryTooltip(){
+  if(!tooltipRecent)
   countryTooltip
+    .transition()
+    .duration(200)
     .style("opacity", "0");
 }
