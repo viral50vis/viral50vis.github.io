@@ -57,8 +57,8 @@ var margin = { top: 15, right: 30, bottom: 20, left: 50 },
 // set up scales for chart
 var xScale = d3
     .scaleTime()
-    .domain([ new Date("2016-12-31"), new Date("2020-02-01") ])//new Date(weeks[weeks.length-1]), new Date(weeks[0]) ])
-    .range([0, innerWidth])
+    .domain([ new Date("2016-12-31"), new Date("2020-01-31") ])
+    .range([0, innerWidth]);
 
 var yScale = d3.scaleLinear().range([innerHeight, 0]);
 
