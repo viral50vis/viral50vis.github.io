@@ -45,11 +45,23 @@
 
       #weekly-songs-title {
         margin-top: 10px;
-        span {
+        div {
+          width: 100%;
           margin: 0;
           padding: 0;
           position: relative;
           font-size: 16px;
+          line-height: 24px;
+          text-transform: uppercase;
+          letter-spacing: 0.16em;
+          font-weight: bold;
+        }
+
+        span {
+          margin: 0;
+          padding: 0;
+          position: relative;
+          font-size: 12px;
           line-height: 24px;
           text-transform: uppercase;
           letter-spacing: 0.16em;
