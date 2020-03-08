@@ -11,8 +11,6 @@ var chart, lineMarker, chartTooltip, prevTooltipDate, lineAttrMinY, lineAttrMaxY
 
 // TODO:
 /*
-- Update with colors according to rest of detail view
-- Review styling of graph glyphs with several countries
 - Review tooltip position and data with new graph
 - Better ticks on each axis (dynamic) - min/max per loaded data?
 - Zooming of x-axis (?)
@@ -36,6 +34,7 @@ var chart, lineMarker, chartTooltip, prevTooltipDate, lineAttrMinY, lineAttrMaxY
 - Reverse order on x-axis (dates inverted indices)
 - Change x-axis to work with dates rather than indices
 - Handle countries missing data for certain time periods
+- Update with colors according to rest of detail view
 */
 /* SKIPPED:
   - Use <selection>.join() to animate when data enters/exits the graph -- Probably not
@@ -52,9 +51,8 @@ var margin = { top: 50, right: 30, bottom: 20, left: 50 },
 
 // set up scales for chart
 var xScale = d3.scaleTime()
-    .domain([ new Date(weeks[weeks.length-1]), new Date(weeks[0]) ])
+    .domain([ new Date("2016-12-31"), new Date("2020-02-01") ])//new Date(weeks[weeks.length-1]), new Date(weeks[0]) ])
     .range([0, innerWidth])
-    .nice();
 
 var yScale = d3.scaleLinear()
     .range([innerHeight, 0]);
