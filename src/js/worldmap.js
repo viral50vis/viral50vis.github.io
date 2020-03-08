@@ -64,8 +64,10 @@ function generateWorldMap(worldJSON) {
     })
     /* On Click */
     .on("click", function(d, i) {
-      countryClickSelection(d.id);
-      handleCountryClickShowDetail(d.id);
+      if (d3.select(this).classed("countryIsInCurrentData")) {
+        countryClickSelection(d.id);
+        handleCountryClickShowDetail(d.id);
+      }
     })
     /* On Mouse Out */
     .on("mouseout", function(d, i) {
