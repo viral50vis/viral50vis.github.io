@@ -16,7 +16,7 @@
     height: 100%;
     position: relative;
     display: grid;
-    grid-template-rows: 0.1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 1fr 1fr;
     grid-template-columns: 3fr 1fr;
     grid-template-areas: "legend-to-plots weekly-songs" "all-time-graph weekly-songs" "song-comparison weekly-songs";
     background-color: $Root__wrapper_background;
@@ -31,7 +31,6 @@
       grid-area: legend-to-plots;
       width: 100%;
       height: 100%;
-      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -41,15 +40,46 @@
       grid-area: weekly-songs;
       width: 100%;
       height: 100%;
-      overflow-y: scroll;
+      display: flex;
+      flex-flow: column;
+
+      #weekly-songs-title {
+        margin-top: 10px;
+        div {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          font-size: 16px;
+          line-height: 24px;
+          text-transform: uppercase;
+          letter-spacing: 0.16em;
+          font-weight: bold;
+        }
+
+        span {
+          margin: 0;
+          padding: 0;
+          position: relative;
+          font-size: 12px;
+          line-height: 24px;
+          text-transform: uppercase;
+          letter-spacing: 0.16em;
+          font-weight: bold;
+        }
+      }
 
       nav {
         width: 100%;
+        height: auto;
+        flex: 1 1 auto;
 
         ul {
+          height: 100%;
           text-align: left;
           list-style: none;
           padding-left: 0;
+          margin: 0;
 
           li {
             font-size: 14px;
@@ -91,6 +121,9 @@
 
       #weekly-songs-list-window {
         position: relative;
+        height: 90%;
+        overflow-y: scroll;
+        flex: 1 1 auto;
 
         .weekly-song-list-wrapper {
           position: absolute;
@@ -108,10 +141,9 @@
               cursor: pointer;
               list-style: none;
               padding-left: 0;
+              margin: 0;
 
               li {
-                margin-top: 0.5em;
-                margin-bottom: 0.5em;
                 transition: background-color 0.1s linear;
 
                 &:hover {
@@ -120,9 +152,19 @@
 
                 .song-entry-wrapper {
                   flex: 1 1 0;
-                  height: 65px;
+                  height: 66px;
                   padding-left: 15px;
-                  margin-bottom: -5px;
+
+                  /* Color marker for selected songs */
+                  .before-selected-song {
+                    position: absolute;
+                    padding: 0;
+                    height: 66px;
+                    left: 0;
+                    top: inherit;
+                    width: 5px;
+                    content: "";
+                  }
 
                   .song-name {
                     font-size: 16px;
@@ -155,6 +197,27 @@
                       text-decoration: underline;
                     }
                   }
+                }
+              }
+
+              .noSelect {
+                cursor: not-allowed;
+                div {
+                  .song-name {
+                    color: #707070;
+                  }
+
+                  .artist-name {
+                    color: #505050;
+                  }
+
+                  .spotify-link {
+                    color: #0f5a29;
+                  }
+                }
+                &:hover {
+                  color: #707070;
+                  background-color: $Root__wrapper_background;
                 }
               }
             }
@@ -207,6 +270,7 @@
   width: 80px;
   text-align: center;
   cursor: pointer;
+  margin-left: 10px;
 }
 
 #close-detail:hover {
