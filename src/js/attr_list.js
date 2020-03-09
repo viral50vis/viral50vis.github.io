@@ -27,7 +27,7 @@ function loadAttrList() {
       ul.selectAll("li").style("color", null);
       d3.select(this).style("color", "#1ed760");
       d3.select("#all-time-title").text(function() {
-        return currentAttribute + " over all time";
+        return currentAttribute + " over time";
       });
     });
   ul.select("li").style("color", "#1ed760");

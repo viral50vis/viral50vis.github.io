@@ -8,6 +8,9 @@ function loadTimeSlider() {
       if (d === "minimum" || d === "maximum") {
         return false;
       }
+      // ensure a label for the first week of the data set
+      if(i == Object.keys(data_attrs).length-3)
+        return true;
       //This was originally 10
       return i % 13 === 0;
     }))
@@ -64,7 +67,7 @@ function loadTimeSlider() {
   sliderInput.on("input", (function() {
     updateTimeSliderStyle(155 - this.value);
     dataWeek = valueToWeek(155 - this.value);
-    d3.select("#week-label").text("Week: " + dataWeek);
+    d3.select("#week-label").text("WEEK OF " + dataWeek);
     updateWorldMap(
       data_attrs[dataWeek],
       data_attrs.minimum,

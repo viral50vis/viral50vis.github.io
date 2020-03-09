@@ -138,7 +138,7 @@
 .world-detail .world-wrapper #world svg {
   width: 100%;
   height: 100%;
-  background-color: #535353;
+  background-color: #3a3a3a;
   position: absolute;
 }
 
@@ -242,9 +242,17 @@
 #week-label {
   margin-top: 10px;
   text-align: center;
+  margin: 0;
+  padding: 12px 0 0 0;
+  position: relative;
+  font-size: 14px;
+  line-height: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #fff;
 }
 
-/* line 8, src/sass/time_anim_control.scss */
+/* line 16, src/sass/time_anim_control.scss */
 #time-anim-control-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -259,7 +267,7 @@
   margin-top: 5px;
 }
 
-/* line 15, src/sass/time_anim_control.scss */
+/* line 23, src/sass/time_anim_control.scss */
 .time-anim-button {
   width: 40px;
   height: 40px;
@@ -267,23 +275,23 @@
   fill: #b2b2b2;
 }
 
-/* line 21, src/sass/time_anim_control.scss */
+/* line 29, src/sass/time_anim_control.scss */
 .time-anim-button:hover {
   fill: #ffffff;
 }
 
-/* line 25, src/sass/time_anim_control.scss */
+/* line 33, src/sass/time_anim_control.scss */
 .time-anim-button:active {
   fill: #b2b2b2;
 }
 
-/* line 31, src/sass/time_anim_control.scss */
+/* line 39, src/sass/time_anim_control.scss */
 #play-pause-button:hover {
   -webkit-transform: scale(1.1, 1.1);
           transform: scale(1.1, 1.1);
 }
 
-/* line 35, src/sass/time_anim_control.scss */
+/* line 43, src/sass/time_anim_control.scss */
 #play-pause-button:active {
   -webkit-transform: scale(1, 1);
           transform: scale(1, 1);
@@ -292,8 +300,7 @@
 /* line 3, src/sass/timeslider.scss */
 .timeslider-bar-wrapper {
   min-width: 620px;
-  background-color: #282828;
-  border-top: 1px solid #000000;
+  background-color: #222;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -304,7 +311,7 @@
   height: auto;
 }
 
-/* line 11, src/sass/timeslider.scss */
+/* line 10, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -323,20 +330,20 @@
   padding: 0 64px;
 }
 
-/* line 19, src/sass/timeslider.scss */
+/* line 18, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper-test {
   visibility: hidden;
   position: relative;
 }
 
-/* line 24, src/sass/timeslider.scss */
+/* line 23, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper {
   width: 100%;
   position: relative;
   padding-bottom: 10px;
 }
 
-/* line 51, src/sass/timeslider.scss */
+/* line 50, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider {
   width: 100%;
   top: -2px;
@@ -347,7 +354,7 @@
   z-index: 10;
 }
 
-/* line 61, src/sass/timeslider.scss */
+/* line 60, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 18px;
@@ -360,7 +367,7 @@
   z-index: 10;
 }
 
-/* line 66, src/sass/timeslider.scss */
+/* line 65, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-moz-range-thumb {
   width: 18px;
   height: 18px;
@@ -372,7 +379,7 @@
   z-index: 10;
 }
 
-/* line 70, src/sass/timeslider.scss */
+/* line 69, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-thumb {
   width: 18px;
   height: 18px;
@@ -384,7 +391,7 @@
   z-index: 10;
 }
 
-/* line 75, src/sass/timeslider.scss */
+/* line 74, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-webkit-slider-runnable-track {
   width: 100%;
   height: 3px;
@@ -393,7 +400,7 @@
   z-index: 10;
 }
 
-/* line 79, src/sass/timeslider.scss */
+/* line 78, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-moz-range-track {
   width: 100%;
   height: 3px;
@@ -402,7 +409,7 @@
   z-index: 10;
 }
 
-/* line 83, src/sass/timeslider.scss */
+/* line 82, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-track {
   width: 100%;
   height: 3px;
@@ -411,13 +418,13 @@
   z-index: 10;
 }
 
-/* line 87, src/sass/timeslider.scss */
+/* line 86, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider:focus {
   background: none;
   outline: none;
 }
 
-/* line 93, src/sass/timeslider.scss */
+/* line 92, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider::-ms-track {
   width: 100%;
   cursor: pointer;
@@ -426,14 +433,14 @@
   color: transparent;
 }
 
-/* line 104, src/sass/timeslider.scss */
+/* line 103, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* line 109, src/sass/timeslider.scss */
+/* line 108, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels li {
   position: absolute;
   color: #b2b2b2;
@@ -442,7 +449,7 @@
   cursor: pointer;
 }
 
-/* line 116, src/sass/timeslider.scss */
+/* line 115, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels li::before {
   position: absolute;
   top: -13px;
@@ -457,17 +464,17 @@
   z-index: 0;
 }
 
-/* line 131, src/sass/timeslider.scss */
+/* line 130, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active {
   color: #ffffff;
 }
 
-/* line 135, src/sass/timeslider.scss */
+/* line 134, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active::before {
   background: #1ed760;
 }
 
-/* line 139, src/sass/timeslider.scss */
+/* line 138, src/sass/timeslider.scss */
 .timeslider-bar-wrapper .timeslider-bar #slider-wrapper .slider-labels .active.selected::before {
   display: none;
 }
@@ -847,8 +854,8 @@
 /* line 41, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__legend-to-plots {
   grid-area: legend-to-plots;
-  width: 100%;
-  height: 100%;
+  height: 95px;
+  margin: 10px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1095,48 +1102,53 @@
 }
 
 /* line 237, src/sass/detailview.scss */
+.detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .spotify-link i {
+  padding-left: 6px;
+}
+
+/* line 241, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .spotify-link:hover {
   text-decoration: underline;
 }
 
-/* line 244, src/sass/detailview.scss */
+/* line 248, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol .noSelect {
   cursor: not-allowed;
 }
 
-/* line 247, src/sass/detailview.scss */
+/* line 251, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol .noSelect div .song-name {
   color: #707070;
 }
 
-/* line 251, src/sass/detailview.scss */
+/* line 255, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol .noSelect div .artist-name {
   color: #505050;
 }
 
-/* line 255, src/sass/detailview.scss */
+/* line 259, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol .noSelect div .spotify-link {
   color: #0f5a29;
 }
 
-/* line 259, src/sass/detailview.scss */
+/* line 263, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol .noSelect:hover {
   color: #707070;
   background-color: #121212;
 }
 
-/* line 268, src/sass/detailview.scss */
+/* line 272, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* line 273, src/sass/detailview.scss */
+/* line 277, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window::-webkit-scrollbar {
   width: 16px;
 }
 
-/* line 276, src/sass/detailview.scss */
+/* line 280, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window::-webkit-scrollbar-thumb {
   border: 4px solid transparent;
   border-radius: 16px;
@@ -1145,14 +1157,14 @@
   background-color: rgba(55, 55, 55, 0.8);
 }
 
-/* line 286, src/sass/detailview.scss */
+/* line 290, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__song-comparison {
   grid-area: song-comparison;
   width: 100%;
   height: 100%;
 }
 
-/* line 291, src/sass/detailview.scss */
+/* line 295, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__song-comparison #attr-barchart-title {
   margin: 10px auto 0px auto;
   text-align: center;
@@ -1165,7 +1177,7 @@
   font-weight: bold;
 }
 
-/* line 303, src/sass/detailview.scss */
+/* line 307, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__song-comparison .attribute-text {
   font-size: 9px;
   line-height: 24px;
@@ -1174,46 +1186,108 @@
   font-weight: bold;
 }
 
-/* line 311, src/sass/detailview.scss */
+/* line 315, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__song-comparison #attr-barchart-wrapper {
   height: calc(100% - 39px);
 }
 
-/* line 318, src/sass/detailview.scss */
+/* line 322, src/sass/detailview.scss */
 #attr-barchart-wrapper {
   height: 100%;
 }
 
-/* line 322, src/sass/detailview.scss */
+/* line 326, src/sass/detailview.scss */
 .detail-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* line 327, src/sass/detailview.scss */
+/* line 331, src/sass/detailview.scss */
 .selected-song {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* line 331, src/sass/detailview.scss */
-#close-detail {
+/* line 335, src/sass/detailview.scss */
+#legend-wrapper {
+  width: 100%;
+  text-align: right;
+  display: inline-block;
+}
+
+/* line 341, src/sass/detailview.scss */
+#country-legend-wrapper {
+  display: inline-block;
+}
+
+/* line 345, src/sass/detailview.scss */
+#song-legend-wrapper {
+  margin-left: -5px;
+  display: inline-block;
+}
+
+/* line 350, src/sass/detailview.scss */
+.legend-chip {
   color: #fff;
   background-color: #282828;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
-  font-size: 14px;
-  padding: 10px 5px 10px 5px;
-  font-weight: bolder;
-  width: 80px;
-  text-align: center;
+  height: 25px;
+  padding: 5px 10px;
+  margin: 5px;
   cursor: pointer;
-  margin-left: 10px;
+  display: inline-block;
 }
 
-/* line 345, src/sass/detailview.scss */
-#close-detail:hover {
+/* line 361, src/sass/detailview.scss */
+.legend-chip.chip-inverted {
+  color: #000;
+}
+
+/* line 366, src/sass/detailview.scss */
+.legend-chip:hover {
   background: #2d2d2d;
+}
+
+/* line 370, src/sass/detailview.scss */
+#legend-return-label {
+  width: 60px;
+}
+
+/* line 374, src/sass/detailview.scss */
+.legend-chip-label {
+  max-width: 150px;
+  font-size: 14px;
+  font-weight: bolder;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 385, src/sass/detailview.scss */
+.legend-chip-remove {
+  color: #ffffff88;
+  font-size: 20pt;
+  margin-left: 7.5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 392, src/sass/detailview.scss */
+.legend-chip-remove:hover {
+  color: #fff;
+}
+
+/* line 396, src/sass/detailview.scss */
+.legend-chip-remove.chip-remove-inverted {
+  color: #00000088;
+}
+
+/* line 399, src/sass/detailview.scss */
+.legend-chip-remove.chip-remove-inverted:hover {
+  color: #000;
 }
 
 /* Make the linechart container fill the entire grid container */
@@ -1474,8 +1548,8 @@ body {
 .Root__wrapper .Root__time-anim-control {
   grid-area: time-anim-control;
   width: 100%;
-  background-color: #282828;
-  color: #ffffff;
+  background-color: #222;
+  color: #b2b2b2;
 }
 
 /* line 84, src/sass/main.scss */
