@@ -229,9 +229,7 @@ function changeWeeklySongsWeek(CC) {
         return d.URL;
       })
       .attr("target", "_blank");
-    songLink
-      .append("i")
-      .attr("class", "fas fa-external-link-alt")
+    songLink.append("i").attr("class", "fas fa-external-link-alt");
   } else {
   }
 }
@@ -358,6 +356,31 @@ function generateAttrBarChart() {
 
   svg
     .append("g")
+    .call(d3.axisLeft(y))
+    .classed("y axis", true);
+
+  svg
+    .selectAll("g.tick")
+    .filter(function(d) {
+      if (attrs.indexOf(d3.select(this).text()) > -1) {
+        return true;
+      }
+    })
+    .select("text")
+    .classed("attribute-text", true);
+
+  var yTicks = svg.selectAll(".y.axis > .tick");
+  yTicks.each(function() {
+    var l = d3
+      .create("svg:line")
+      .attr("class", "y-gridline")
+      .attr("x1", 0)
+      .attr("x2", innerWidth);
+    this.append(l.node());
+  });
+
+  svg
+    .append("g")
     .selectAll("g")
     .data(data)
     .enter()
@@ -394,31 +417,6 @@ function generateAttrBarChart() {
       })
     )
     .classed("x axis", true);
-
-  svg
-    .append("g")
-    .call(d3.axisLeft(y))
-    .classed("y axis", true);
-
-  svg
-    .selectAll("g.tick")
-    .filter(function(d) {
-      if (attrs.indexOf(d3.select(this).text()) > -1) {
-        return true;
-      }
-    })
-    .select("text")
-    .classed("attribute-text", true);
-
-  var yTicks = svg.selectAll(".y.axis > .tick");
-  yTicks.each(function() {
-    var l = d3
-      .create("svg:line")
-      .attr("class", "y-gridline")
-      .attr("x1", 0)
-      .attr("x2", innerWidth);
-    this.append(l.node());
-  });
 }
 
 d3.select("#close-detail").on("click", function(d) {
