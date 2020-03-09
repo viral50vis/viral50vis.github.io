@@ -50,7 +50,7 @@
         margin-left: 15px;
         background-color: #282828;
         border-radius: 20px;
-        padding: 4px 12px 4px;
+        padding: 4px 30px 4px 12px;
 
         /* Change the outline of unchecked boxes  */
         /* (Checked box has green color from CDN) */
@@ -64,12 +64,15 @@
 
         /* White dot to represent the legend */
         .global-checkbox-legend{
-          margin-left: 6px;
+          position: absolute;
+          padding: 0;
           height: 10px;
           width: 10px;
-          background-color: #fff;
           border-radius: 50%;
-          display: inline-block;
+          left: calc(100% + 5px);
+          top: calc(50% - 5px);
+          content: "";
+          background-color: #fff;
         }
       }
 

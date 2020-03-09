@@ -475,14 +475,12 @@ d3.select("#close-detail").on("click", (function(d) {
 /* Functions and code for showing global
     data in linechart */
 function toggleGlobalLineDetailView(){
-  isChecked = globalLegendDot.classed("global-checkbox-legend");
-  globalLegendDot.classed("global-checkbox-legend", !isChecked);
   toggleGlobalLine();
 }
 
 var globalContainer = d3
   .select(".Detail__legend-to-plots")
-    .append("div")
+    .select("#global-checkbox")
     .classed("global-checkbox-div", true)
       .append("label")
       .attr("for", "globalCheck")
@@ -499,8 +497,8 @@ globalContainer.append("span")
   .classed("global-checkbox-label", true)
   .classed("mdl-checkbox__label", true)
   .text("Global");
-var globalLegendDot = globalContainer.append("span");
-
+var globalLegendDot = globalContainer.append("span")
+    .classed("global-checkbox-legend", true);
 
 /* Functions and code for the legend (chips) */
 function addCountryLegendChip(CC) {
