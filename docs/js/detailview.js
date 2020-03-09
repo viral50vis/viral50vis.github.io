@@ -453,7 +453,8 @@ function generateAttrBarChart() {
     .attr("transform", "translate(-15," + height + ")")
     .call(
       d3.axisBottom(x0).tickFormat((function(d) {
-        return attrs[d];
+        var formatted = attrs[d][0].toUpperCase() + attrs[d].slice(1);
+        return formatted;
       }))
     )
     .classed("x axis", true);
