@@ -496,8 +496,6 @@ globalContainer.append("span")
   .classed("global-checkbox-label", true)
   .classed("mdl-checkbox__label", true)
   .text("Global");
-var globalLegendDot = globalContainer.append("span")
-    .classed("global-checkbox-legend", true);
 
 /* Functions and code for the legend (chips) */
 function addCountryLegendChip(CC) {
