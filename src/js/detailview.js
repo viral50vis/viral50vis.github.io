@@ -493,6 +493,9 @@ function addCountryLegendChip(CC) {
 
 function removeCountryLegendChip(CC) {
   d3.select("#legend-chip-" + CC).remove();
+  d3.select("#country-list-ul")
+    .selectAll("li")
+    .classed("noSelect", false);
 }
 
 function addSongLegendChip(song) {
@@ -531,12 +534,19 @@ function addSongLegendChip(song) {
 
 function removeSongLegendChip(song) {
   d3.select("#legend-chip-" + getStyleFriendlySongString(song)).remove();
+  d3.select(".weekly-song-list")
+    .select("ol")
+    .selectAll("li")
+    .classed("noSelect", false);
 }
 
 function getStyleFriendlySongString(song) {
   var result = "";
-  for (c of song["Track Name"] + "-" + song.artist)
-    if (c.match(/^[0-9a-z]+$/)) result += c;
+  for (var c of song["Track Name"] + "-" + song.artist) {
+    if (c.match(/^[0-9a-z]+$/)) {
+      result += c;
+    }
+  }
   return result;
 }
 
