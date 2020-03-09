@@ -45,6 +45,34 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
+
+      .global-checkbox-div {
+        margin-left: 15px;
+        background-color: #282828;
+        border-radius: 20px;
+        padding: 4px 12px 4px;
+
+        /* Change the outline of unchecked boxes  */
+        /* (Checked box has green color from CDN) */
+        label:not(.is-checked) > span.mdl-checkbox__box-outline{
+          border: 2px solid $body_color;
+        }
+
+        .global-checkbox-label {
+          font-size: 14px;
+        }
+
+        /* White dot to represent the legend */
+        .global-checkbox-legend{
+          margin-left: 6px;
+          height: 10px;
+          width: 10px;
+          background-color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+        }
+      }
+
     }
 
     .Detail__weekly-songs {

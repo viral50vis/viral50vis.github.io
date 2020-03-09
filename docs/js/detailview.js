@@ -433,3 +433,31 @@ d3.select("#close-detail").on("click", (function(d) {
   }));
   zoomOutCountryHideDetail(tmpList[0]);
 }));
+
+
+function toggleGlobalLineDetailView(){
+  isChecked = globalLegendDot.classed("global-checkbox-legend");
+  globalLegendDot.classed("global-checkbox-legend", !isChecked);
+  toggleGlobalLine();
+}
+
+var globalContainer = d3
+  .select(".Detail__legend-to-plots")
+    .append("div")
+    .classed("global-checkbox-div", true)
+      .append("label")
+      .attr("for", "globalCheck")
+      .attr("class", "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect");
+
+var globalCheckbox = globalContainer
+  .append("input")
+    .attr("type", "checkbox")
+    .attr("id", "globalCheck")
+    .classed("mdl-checkbox__input", true)
+    .on("change", toggleGlobalLineDetailView);
+
+globalContainer.append("span")
+  .classed("global-checkbox-label", true)
+  .classed("mdl-checkbox__label", true)
+  .text("Global");
+var globalLegendDot = globalContainer.append("span");
