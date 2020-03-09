@@ -1,5 +1,6 @@
 // variables for keeping track of data
 var chartCountryLines = [];
+var globalLine = [];
 var countryColors = ["#ef4760", "#fdd161", "#2f8ba0"];
 var usedCountryColors = []; // one boolean per color
 // initialize colors to unused
@@ -79,28 +80,7 @@ var lineModel = d3
   ==================================
 */
 
-function changeLineChartAttribute() {
-  prevCountryLines = chartCountryLines;
-  // empty the array with countries' line data
-  chartCountryLines = [];
-  prevCountryLines.forEach(function(lineObj) {
-    // re-add the countries with same colors
-    // function call will load from selected attribute
-    addCountryToLineChart(lineObj.CC, lineObj.color);
-  });
-
-  // update to match newly selected attribute
-  updateLineChartMinMax();
-}
-
-function updateLineChartMinMax() {
-  // find min and max for selected attribute
-  lineAttrMinY = data_attrs.minimum[currentAttribute];
-  lineAttrMaxY = data_attrs.maximum[currentAttribute];
-  yScale.domain([lineAttrMinY, lineAttrMaxY]).nice();
-}
-
-function addCountryToLineChart(CC, usedColor) {
+function mapDataToLine(CC){
   // turn dates/min/max object into an array
   // where each element holds the values of the keys
   var objVals = Object.values(data_attrs);
@@ -126,6 +106,56 @@ function addCountryToLineChart(CC, usedColor) {
     var wi = weeks.length - 1 - (i + weeksOffset);
     return { x: new Date(weeks[wi]), y: d };
   });
+
+  return line;
+}
+
+function changeLineChartAttribute() {
+  // update to match newly selected attribute
+  updateLineChartMinMax();
+
+  // if global data is already loaded, reload
+  // it with the new attribute
+  if(globalLine.length == 1)
+    loadGlobalLineData(); 
+
+  prevCountryLines = chartCountryLines;
+  // empty the array with countries' line data
+  chartCountryLines = [];
+  prevCountryLines.forEach(function(lineObj) {
+    // re-add the countries with same colors
+    // function call will load from selected attribute
+    addCountryToLineChart(lineObj.CC, lineObj.color);
+  });
+
+}
+
+function updateLineChartMinMax() {
+  // find min and max for selected attribute
+  lineAttrMinY = data_attrs.minimum[currentAttribute];
+  lineAttrMaxY = data_attrs.maximum[currentAttribute];
+  yScale.domain([lineAttrMinY, lineAttrMaxY]).nice();
+}
+
+function toggleGlobalLine(){
+  // global line was inactive, add it
+  if(globalLine.length == 0){
+    loadGlobalLineData();
+    reloadLineChart();
+  }
+  else{ // global line was active, remove it
+    globalLine = [];
+    reloadLineChart();
+  }
+}
+
+function loadGlobalLineData(){
+  line = mapDataToLine("GLO");
+  globalLine = [ {"CC": "GLO", "data": line, "color": "#fff"} ];
+}
+
+function addCountryToLineChart(CC, usedColor) {
+  var line = mapDataToLine(CC);
 
   // find available color
   var colorIdx;
@@ -183,6 +213,13 @@ function reloadLineChart() {
     // add dots (~scatter plot) for each data point
     addDataPointDots(lineObj);
   });
+
+  // draw the global line and its data if it is active
+  if(globalLine.length === 1){
+    drawLine(globalLine[0]);
+    addDataPointDots(globalLine[0]);
+  }
+
   // add horizontal gridlines
   addGridLines();
   // make sure the data marker is at the right point in time
@@ -247,12 +284,16 @@ function createLineChart() {
 }
 
 function drawLine(lineObj) {
+  // global variable stores the color directly
+  // instead of an index to a color array
+  var global = (lineObj.CC === "GLO");
+
   // append the line itself
   chart
     .append("path")
     .attr("class", "line")
     .classed("line-loaded", true)
-    .attr("stroke", countryColors[lineObj.color])
+    .attr("stroke", global ? lineObj.color : countryColors[lineObj.color])
     .data([lineObj.data])
     .attr("d", lineModel);
 }
@@ -271,6 +312,10 @@ function addGridLines() {
 }
 
 function addDataPointDots(lineObj) {
+  // global variable stores the color directly
+  // instead of an index to a color array
+  var global = (lineObj.CC === "GLO");
+
   // add one circle per data point
   chart
     .selectAll(".dot")
@@ -286,7 +331,7 @@ function addDataPointDots(lineObj) {
       return yScale(d.y);
     })
     .attr("r", 3) // radius of 3px
-    .attr("fill", countryColors[lineObj.color]);
+    .attr("fill", global ? lineObj.color : countryColors[lineObj.color]);
 }
 
 function changeLineChartWeek() {

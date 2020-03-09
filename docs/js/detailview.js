@@ -453,11 +453,16 @@ function generateAttrBarChart() {
     .attr("transform", "translate(-15," + height + ")")
     .call(
       d3.axisBottom(x0).tickFormat((function(d) {
-        return attrs[d];
+        var formatted = attrs[d][0].toUpperCase() + attrs[d].slice(1);
+        return formatted;
       }))
     )
     .classed("x axis", true);
 }
+
+d3.select("#legend-return-label")
+  .insert("i", ":first-child")
+  .attr("class", "fas fa-chevron-left");
 
 d3.select("#close-detail").on("click", (function(d) {
   var tmpList = selectedCountries.slice(0);
@@ -471,6 +476,33 @@ d3.select("#close-detail").on("click", (function(d) {
   zoomOutCountryHideDetail(tmpList[0]);
 }));
 
+/* Functions and code for showing global
+    data in linechart */
+function toggleGlobalLineDetailView(){
+  toggleGlobalLine();
+}
+
+var globalContainer = d3
+  .select(".Detail__legend-to-plots")
+    .select("#global-checkbox")
+    .classed("global-checkbox-div", true)
+      .append("label")
+      .attr("for", "globalCheck")
+      .attr("class", "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect");
+
+var globalCheckbox = globalContainer
+  .append("input")
+    .attr("type", "checkbox")
+    .attr("id", "globalCheck")
+    .classed("mdl-checkbox__input", true)
+    .on("change", toggleGlobalLineDetailView);
+
+globalContainer.append("span")
+  .classed("global-checkbox-label", true)
+  .classed("mdl-checkbox__label", true)
+  .text("Global");
+
+/* Functions and code for the legend (chips) */
 function addCountryLegendChip(CC) {
   var color =
     countryColors[chartCountryLines[selectedCountries.indexOf(CC)].color];
