@@ -2,7 +2,7 @@
 /* line 3, src/sass/timeslider.scss */
 .timeslider-bar-wrapper {
   min-width: 620px;
-  background-color: #282828;
+  background-color: #222;
   border-top: 1px solid #000000;
   display: -webkit-box;
   display: -ms-flexbox;

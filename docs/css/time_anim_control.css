@@ -3,9 +3,17 @@
 #week-label {
   margin-top: 10px;
   text-align: center;
+  margin: 0;
+  padding: 12px 0 0 0;
+  position: relative;
+  font-size: 14px;
+  line-height: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #fff;
 }
 
-/* line 8, src/sass/time_anim_control.scss */
+/* line 16, src/sass/time_anim_control.scss */
 #time-anim-control-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -20,7 +28,7 @@
   margin-top: 5px;
 }
 
-/* line 15, src/sass/time_anim_control.scss */
+/* line 23, src/sass/time_anim_control.scss */
 .time-anim-button {
   width: 40px;
   height: 40px;
@@ -28,23 +36,23 @@
   fill: #b2b2b2;
 }
 
-/* line 21, src/sass/time_anim_control.scss */
+/* line 29, src/sass/time_anim_control.scss */
 .time-anim-button:hover {
   fill: #ffffff;
 }
 
-/* line 25, src/sass/time_anim_control.scss */
+/* line 33, src/sass/time_anim_control.scss */
 .time-anim-button:active {
   fill: #b2b2b2;
 }
 
-/* line 31, src/sass/time_anim_control.scss */
+/* line 39, src/sass/time_anim_control.scss */
 #play-pause-button:hover {
   -webkit-transform: scale(1.1, 1.1);
           transform: scale(1.1, 1.1);
 }
 
-/* line 35, src/sass/time_anim_control.scss */
+/* line 43, src/sass/time_anim_control.scss */
 #play-pause-button:active {
   -webkit-transform: scale(1, 1);
           transform: scale(1, 1);

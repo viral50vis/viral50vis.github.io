@@ -77,8 +77,8 @@ body {
   .Root__time-anim-control {
     grid-area: time-anim-control;
     width: 100%;
-    background-color: #282828;
-    color: #ffffff;
+    background-color: $timeslider-bar-wrapper_background;
+    color: $body_color;
   }
 
   .Root__timeslider-bar {
