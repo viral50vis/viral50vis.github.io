@@ -234,8 +234,8 @@ function deselectSong(song) {
       return JSON.stringify(d) === songAsKey;
     })
     .classed("selected-song", false)
-      .selectAll("span")
-      .remove();
+    .selectAll("span")
+    .remove();
 
   d3.selectAll(".selected-song").each(function(d) {
     var songAsKeyComp = JSON.stringify(d);
@@ -255,8 +255,7 @@ function deselectCountry(CC) {
   selectedCountries.splice(selectedCountries.indexOf(CC), 1);
   d3.select("#country-list-" + CC).style("color", null);
   removeCountryFromDetailView(CC);
-  if (selectedCountries.length == 0)
-    zoomOutCountryHideDetail(CC);
+  if (selectedCountries.length == 0) zoomOutCountryHideDetail(CC);
 }
 
 function clearSelectedSongs() {
@@ -266,8 +265,7 @@ function clearSelectedSongs() {
   songColors.forEach(function() {
     usedSongColors.push(false);
   });
-  d3.selectAll(".song-chip")
-    .remove();
+  d3.selectAll(".song-chip").remove();
 }
 
 function getSongColor(songAsKey) {
@@ -365,7 +363,9 @@ function generateAttrBarChart() {
     if (i < selCs) {
       colorIdx = chartCountryLines[i].color;
       return countryColors[colorIdx];
-    else return getSongColor(selectedSongs[i - selCs]);
+    } else {
+      return getSongColor(selectedSongs[i - selCs]);
+    }
   };
 
   d3.select("#attr-barchart-wrapper")
@@ -458,9 +458,11 @@ d3.select("#close-detail").on("click", function(d) {
 });
 
 function addCountryLegendChip(CC) {
-  var color = countryColors[chartCountryLines[selectedCountries.indexOf(CC)].color];
+  var color =
+    countryColors[chartCountryLines[selectedCountries.indexOf(CC)].color];
   var shouldInvertChip = invertChip[countryColors.indexOf(color)];
-  var chip = d3.select("#country-legend-wrapper")
+  var chip = d3
+    .select("#country-legend-wrapper")
     .append("div")
     .attr("id", "legend-chip-" + CC)
     .classed("legend-chip", true)
@@ -474,11 +476,13 @@ function addCountryLegendChip(CC) {
       //dehighlightColor();
     });
 
-  chip.append("div")
+  chip
+    .append("div")
     .classed("legend-chip-label", true)
     .text(countryCCJSON[CC]);
 
-  chip.append("div")
+  chip
+    .append("div")
     .classed("legend-chip-remove", true)
     .classed("chip-remove-inverted", shouldInvertChip)
     .text("×")
@@ -488,15 +492,15 @@ function addCountryLegendChip(CC) {
 }
 
 function removeCountryLegendChip(CC) {
-  d3.select("#legend-chip-" + CC)
-    .remove();
+  d3.select("#legend-chip-" + CC).remove();
 }
 
 function addSongLegendChip(song) {
   var songAsKey = JSON.stringify(song);
   var color = getSongColor(songAsKey);
   var shouldInvertChip = invertChip[songColors.indexOf(color)];
-  var chip = d3.select("#song-legend-wrapper")
+  var chip = d3
+    .select("#song-legend-wrapper")
     .append("div")
     .attr("id", "legend-chip-" + getStyleFriendlySongString(song))
     .classed("legend-chip", true)
@@ -510,11 +514,13 @@ function addSongLegendChip(song) {
       //dehighlightColor();
     });
 
-  chip.append("div")
+  chip
+    .append("div")
     .classed("legend-chip-label", true)
     .text(song["Track Name"]);
 
-  chip.append("div")
+  chip
+    .append("div")
     .classed("legend-chip-remove", true)
     .classed("chip-remove-inverted", invertChip)
     .text("×")
@@ -524,15 +530,13 @@ function addSongLegendChip(song) {
 }
 
 function removeSongLegendChip(song) {
-  d3.select("#legend-chip-" + getStyleFriendlySongString(song))
-    .remove();
+  d3.select("#legend-chip-" + getStyleFriendlySongString(song)).remove();
 }
 
 function getStyleFriendlySongString(song) {
   var result = "";
   for (c of song["Track Name"] + "-" + song.artist)
-    if (c.match(/^[0-9a-z]+$/))
-      result += c;
+    if (c.match(/^[0-9a-z]+$/)) result += c;
   return result;
 }
 

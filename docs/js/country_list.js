@@ -60,7 +60,7 @@ function highlightCountryInList(CC, highlit) {
           block: "start",
           behavior: "smooth"
         });
-    } catch (error) {/* 
+    } catch (error) {/*
       Prevents logging error when hovering
       countries outside search results*/}
   }
