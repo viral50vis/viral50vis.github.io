@@ -206,6 +206,10 @@
                     position: absolute;
                     right: 15px;
 
+                    i {
+                      padding-left: 6px;
+                    }
+
                     &:hover {
                       text-decoration: underline;
                     }
