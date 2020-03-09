@@ -8,6 +8,9 @@ function loadTimeSlider() {
       if (d === "minimum" || d === "maximum") {
         return false;
       }
+      // ensure a label for the first week of the data set
+      if(i == Object.keys(data_attrs).length-3)
+        return true;
       //This was originally 10
       return i % 13 === 0;
     }))
