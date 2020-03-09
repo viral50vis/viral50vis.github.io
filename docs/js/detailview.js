@@ -232,7 +232,7 @@ function changeWeeklySongsWeek(CC) {
       .attr("target", "_blank");
     songLink
       .append("i")
-      .attr("class", "fas fa-external-link-alt")
+      .attr("class", "fas fa-external-link-alt");
   } else {
   }
 }
