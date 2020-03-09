@@ -195,12 +195,7 @@ function toggleDetailViewVisibility() {
 function countryClickSelection(CC) {
   var isSelected = selectedCountries.indexOf(CC);
   if (isSelected > -1) {
-    selectedCountries.splice(isSelected, 1);
-    d3.select("#country-list-" + CC).style("color", null);
-    removeCountryFromDetailView(CC);
-    if (selectedCountries.length == 0) {
-      zoomOutCountryHideDetail(CC);
-    }
+    deselectCountry(CC);
   } else if (selectedCountries.length < 3) {
     selectedCountries.push(CC);
     d3.select("#country-list-" + CC).style("color", "#1ed760");
