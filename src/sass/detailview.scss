@@ -134,6 +134,8 @@
         position: relative;
         height: 100%;
         overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: none;
         flex: 1 1 auto;
 
         .weekly-song-list-wrapper {
@@ -238,6 +240,17 @@
         .weekly-song-list-wrapper-hidden {
           opacity: 0;
           pointer-events: none;
+        }
+
+        &::-webkit-scrollbar {
+          width: 16px;
+        }
+        &::-webkit-scrollbar-thumb {
+          border: 4px solid transparent;
+          border-radius: 16px;
+          background-clip: padding-box;
+          min-height: 30px;
+          background-color: rgba(55, 55, 55, 0.8);
         }
       }
     }
