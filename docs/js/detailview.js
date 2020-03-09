@@ -250,6 +250,10 @@ function deselectSong(song) {
   selectedSongs.splice(selectedSongs.indexOf(songAsKey), 1);
   clearSongColor(songAsKey);
   generateAttrBarChart();
+
+  d3.select("#weekly-songs-selected").text((function() {
+    return "(" + selectedSongs.length + "/3";
+  }));
 }
 
 function deselectCountry(CC) {
