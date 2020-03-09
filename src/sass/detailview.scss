@@ -352,7 +352,6 @@
   height: 25px;
   padding: 4px 10px 4px;
   margin: 5px;
-  cursor: pointer;
   display: inline-block;
 
   &.chip-inverted {
@@ -364,6 +363,10 @@
   background: #2d2d2d;
 }
 
+/* Return button (container and label) */
+#close-detail{
+  cursor: pointer;
+}
 #legend-return-label {
   width: 60px;
   i{
@@ -389,6 +392,7 @@
   margin-left: 7.5px;
   display: inline-block;
   vertical-align: middle;
+  cursor: pointer;
 
   &:hover {
     color: #fff;

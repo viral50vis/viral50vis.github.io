@@ -425,32 +425,37 @@
   height: 25px;
   padding: 4px 10px 4px;
   margin: 5px;
-  cursor: pointer;
   display: inline-block;
 }
 
-/* line 358, src/sass/detailview.scss */
+/* line 357, src/sass/detailview.scss */
 .legend-chip.chip-inverted {
   color: #000;
 }
 
-/* line 363, src/sass/detailview.scss */
+/* line 362, src/sass/detailview.scss */
 .legend-chip:hover {
   background: #2d2d2d;
 }
 
+/* Return button (container and label) */
 /* line 367, src/sass/detailview.scss */
+#close-detail {
+  cursor: pointer;
+}
+
+/* line 370, src/sass/detailview.scss */
 #legend-return-label {
   width: 60px;
 }
 
-/* line 369, src/sass/detailview.scss */
+/* line 372, src/sass/detailview.scss */
 #legend-return-label i {
   float: left;
   margin-top: 3px;
 }
 
-/* line 375, src/sass/detailview.scss */
+/* line 378, src/sass/detailview.scss */
 .legend-chip-label {
   max-width: 150px;
   font-size: 14px;
@@ -462,26 +467,27 @@
   vertical-align: middle;
 }
 
-/* line 386, src/sass/detailview.scss */
+/* line 389, src/sass/detailview.scss */
 .legend-chip-remove {
   color: #ffffff88;
   font-size: 20pt;
   margin-left: 7.5px;
   display: inline-block;
   vertical-align: middle;
+  cursor: pointer;
 }
 
-/* line 393, src/sass/detailview.scss */
+/* line 397, src/sass/detailview.scss */
 .legend-chip-remove:hover {
   color: #fff;
 }
 
-/* line 397, src/sass/detailview.scss */
+/* line 401, src/sass/detailview.scss */
 .legend-chip-remove.chip-remove-inverted {
   color: #00000088;
 }
 
-/* line 400, src/sass/detailview.scss */
+/* line 404, src/sass/detailview.scss */
 .legend-chip-remove.chip-remove-inverted:hover {
   color: #000;
 }
