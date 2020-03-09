@@ -225,11 +225,12 @@ function changeWeeklySongsWeek(CC) {
       .data(data_songs[dataWeek][CC])
       .append("a")
       .classed("spotify-link", true)
-      .text("Spotify ")
+      .text("Spotify")
       .attr("href", (function(d) {
         return d.URL;
       }))
       .attr("target", "_blank");
+    // add fontawesome's icon for external links
     songLink.append("i").attr("class", "fas fa-external-link-alt");
   } else {
   }

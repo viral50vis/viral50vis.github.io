@@ -1064,48 +1064,53 @@
 }
 
 /* line 209, src/sass/detailview.scss */
+.detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .spotify-link i {
+  padding-left: 6px;
+}
+
+/* line 213, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol li .song-entry-wrapper .spotify-link:hover {
   text-decoration: underline;
 }
 
-/* line 216, src/sass/detailview.scss */
+/* line 220, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol .noSelect {
   cursor: not-allowed;
 }
 
-/* line 219, src/sass/detailview.scss */
+/* line 223, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol .noSelect div .song-name {
   color: #707070;
 }
 
-/* line 223, src/sass/detailview.scss */
+/* line 227, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol .noSelect div .artist-name {
   color: #505050;
 }
 
-/* line 227, src/sass/detailview.scss */
+/* line 231, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol .noSelect div .spotify-link {
   color: #0f5a29;
 }
 
-/* line 231, src/sass/detailview.scss */
+/* line 235, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper .weekly-song-list ol .noSelect:hover {
   color: #707070;
   background-color: #121212;
 }
 
-/* line 240, src/sass/detailview.scss */
+/* line 244, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window .weekly-song-list-wrapper-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* line 245, src/sass/detailview.scss */
+/* line 249, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window::-webkit-scrollbar {
   width: 16px;
 }
 
-/* line 248, src/sass/detailview.scss */
+/* line 252, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__weekly-songs #weekly-songs-list-window::-webkit-scrollbar-thumb {
   border: 4px solid transparent;
   border-radius: 16px;
@@ -1114,14 +1119,14 @@
   background-color: rgba(55, 55, 55, 0.8);
 }
 
-/* line 258, src/sass/detailview.scss */
+/* line 262, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__song-comparison {
   grid-area: song-comparison;
   width: 100%;
   height: 100%;
 }
 
-/* line 263, src/sass/detailview.scss */
+/* line 267, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__song-comparison #attr-barchart-title {
   margin: 10px auto 0px auto;
   text-align: center;
@@ -1134,7 +1139,7 @@
   font-weight: bold;
 }
 
-/* line 275, src/sass/detailview.scss */
+/* line 279, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__song-comparison .attribute-text {
   font-size: 9px;
   line-height: 24px;
@@ -1143,28 +1148,28 @@
   font-weight: bold;
 }
 
-/* line 283, src/sass/detailview.scss */
+/* line 287, src/sass/detailview.scss */
 .detail-wrapper #details .Detail__song-comparison #attr-barchart-wrapper {
   height: calc(100% - 39px);
 }
 
-/* line 290, src/sass/detailview.scss */
+/* line 294, src/sass/detailview.scss */
 #attr-barchart-wrapper {
   height: 100%;
 }
 
-/* line 294, src/sass/detailview.scss */
+/* line 298, src/sass/detailview.scss */
 .detail-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* line 299, src/sass/detailview.scss */
+/* line 303, src/sass/detailview.scss */
 .selected-song {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* line 303, src/sass/detailview.scss */
+/* line 307, src/sass/detailview.scss */
 #close-detail {
   color: #fff;
   background-color: #282828;
@@ -1180,7 +1185,7 @@
   margin-left: 10px;
 }
 
-/* line 317, src/sass/detailview.scss */
+/* line 321, src/sass/detailview.scss */
 #close-detail:hover {
   background: #2d2d2d;
 }

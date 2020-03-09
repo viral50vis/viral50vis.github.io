@@ -150,6 +150,7 @@ function zoomInCountry(CC) {
 
 function zoomOutCountryHideDetail(CC) {
   isInDetailView = false;
+  clearSelectedSongs();
   toggleDetailViewVisibility();
   d3.event.stopPropagation();
 
