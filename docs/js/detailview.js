@@ -271,6 +271,15 @@ function clearSelectedSongs() {
     usedSongColors.push(false);
   }));
   d3.selectAll(".song-chip").remove();
+
+  d3.select(".weekly-song-list")
+    .select("ol")
+    .selectAll("li")
+    .classed("noSelect", false);
+
+  d3.select("#weekly-songs-selected").text((function() {
+    return "(" + selectedSongs.length + "/3";
+  }));
 }
 
 function getSongColor(songAsKey) {
