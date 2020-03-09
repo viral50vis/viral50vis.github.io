@@ -460,6 +460,10 @@ function generateAttrBarChart() {
     .classed("x axis", true);
 }
 
+d3.select("#legend-return-label")
+  .insert("i", ":first-child")
+  .attr("class", "fas fa-chevron-left");
+
 d3.select("#close-detail").on("click", (function(d) {
   var tmpList = selectedCountries.slice(0);
   tmpList.forEach((function(CC) {

@@ -1251,7 +1251,13 @@
   width: 60px;
 }
 
-/* line 371, src/sass/detailview.scss */
+/* line 369, src/sass/detailview.scss */
+#legend-return-label i {
+  float: left;
+  margin-top: 3px;
+}
+
+/* line 375, src/sass/detailview.scss */
 .legend-chip-label {
   max-width: 150px;
   font-size: 14px;
@@ -1263,7 +1269,7 @@
   vertical-align: middle;
 }
 
-/* line 382, src/sass/detailview.scss */
+/* line 386, src/sass/detailview.scss */
 .legend-chip-remove {
   color: #ffffff88;
   font-size: 20pt;
@@ -1272,17 +1278,17 @@
   vertical-align: middle;
 }
 
-/* line 389, src/sass/detailview.scss */
+/* line 393, src/sass/detailview.scss */
 .legend-chip-remove:hover {
   color: #fff;
 }
 
-/* line 393, src/sass/detailview.scss */
+/* line 397, src/sass/detailview.scss */
 .legend-chip-remove.chip-remove-inverted {
   color: #00000088;
 }
 
-/* line 396, src/sass/detailview.scss */
+/* line 400, src/sass/detailview.scss */
 .legend-chip-remove.chip-remove-inverted:hover {
   color: #000;
 }
