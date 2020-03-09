@@ -40,8 +40,8 @@
 
     .Detail__legend-to-plots {
       grid-area: legend-to-plots;
-      width: 100%;
-      height: 100%;
+      height: 95px;
+      margin: 10px 15px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -304,20 +304,72 @@
   background-color: hsla(0, 0%, 100%, 0.1);
 }
 
-#close-detail {
+#legend-wrapper {
+  width: 100%;
+  text-align: right;
+  display: inline-block;
+}
+
+#country-legend-wrapper {
+  display: inline-block;
+}
+
+#song-legend-wrapper {
+  margin-left: -5px;
+  display: inline-block;
+}
+
+.legend-chip {
   color: #fff;
   background-color: #282828;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
-  font-size: 14px;
-  padding: 10px 5px 10px 5px;
-  font-weight: bolder;
-  width: 80px;
-  text-align: center;
+  height: 25px;
+  padding: 5px 10px;
+  margin: 5px;
   cursor: pointer;
-  margin-left: 10px;
+  display: inline-block;
+
+  &.chip-inverted {
+    color: #000;
+  }
 }
 
-#close-detail:hover {
+.legend-chip:hover {
   background: #2d2d2d;
+}
+
+#legend-return-label {
+  width: 60px;
+}
+
+.legend-chip-label {
+  max-width: 150px;
+  font-size: 14px;
+  font-weight: bolder;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.legend-chip-remove {
+  color: #ffffff88;
+  font-size: 20pt;
+  margin-left: 7.5px;
+  display: inline-block;
+  vertical-align: middle;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &.chip-remove-inverted {
+    color: #00000088;
+
+    &:hover {
+      color: #000;
+    }
+  }
 }
