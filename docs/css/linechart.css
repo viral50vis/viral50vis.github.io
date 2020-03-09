@@ -1,26 +1,28 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
 /* Make the linechart container fill the entire grid container */
-/* line 5, src/sass/linechart.scss */
+/* line 4, src/sass/linechart.scss */
 #linechart {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 24px);
 }
 
 /* Remove the y-axis line*/
-/* line 11, src/sass/linechart.scss */
+/* line 10, src/sass/linechart.scss */
 .y.axis > .domain {
   display: none;
 }
 
 /* Set all the axis ticks and text to lower opacity to match y-gridlines */
-/* line 16, src/sass/linechart.scss */
+/* line 15, src/sass/linechart.scss */
 .axis > * > text {
   color: rgba(178, 178, 178, 0.7);
 }
 
 /* The horizontal gridlines, the tick lines, and the x-axis line */
-/* line 21, src/sass/linechart.scss */
-.y-gridline, .axis > * > line, .x.axis > .domain {
+/* line 20, src/sass/linechart.scss */
+.y-gridline,
+.axis > * > line,
+.x.axis > .domain {
   stroke: rgba(178, 178, 178, 0.1);
   stroke-width: 1px;
 }

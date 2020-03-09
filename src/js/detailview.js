@@ -3,11 +3,7 @@ var selectedSongs = [];
 // map containing the song:colorIdx relation
 var songToColorMap = {};
 // all available colors for selected songs
-var songColors = [
-  "#40c990",
-  "#845f80",
-  "#ee840e"
-];
+var songColors = ["#40c990", "#845f80", "#ee840e"];
 var usedSongColors = [];
 // initialize colors to unused
 songColors.forEach(function() {
@@ -55,9 +51,25 @@ function addCountryToWeeklySongs(CC) {
     .on("click", function(d) {
       songListNav.selectAll("div").classed("active", false);
       d3.select(this).classed("active", true);
-      d3.selectAll(".song-entry-wrapper").classed("selected-song", function(e) {
-        return selectedSongs.includes(JSON.stringify(e));
+      d3.selectAll(".song-entry-wrapper").each(function(d) {
+        var songAsKey = JSON.stringify(d);
+        if (selectedSongs.includes(songAsKey)) {
+          d3.select(this)
+            .classed("selected-song", true)
+            .insert("span", ":first-child")
+            .attr("class", "before-selected-song")
+            .style("background-color", getSongColor(songAsKey));
+        }
       });
+
+      if (selectedSongs.length === 3) {
+        d3.selectAll(".song-entry-wrapper").each(function() {
+          d3.select(this.parentNode).classed("noSelect", true);
+        });
+        d3.selectAll(".selected-song").each(function() {
+          d3.select(this.parentNode).classed("noSelect", false);
+        });
+      }
       d3.selectAll(".weekly-song-list-wrapper").classed(
         "weekly-song-list-wrapper-hidden",
         true
@@ -115,15 +127,26 @@ function changeWeeklySongsWeek(CC) {
     .selectAll("li")
     .remove();
   if (data_songs[dataWeek][CC]) {
-    d3.select("#weekly-song-list-ul-" + CC)
+    var songList = d3.select("#weekly-song-list-ul-" + CC);
+    songList
       .selectAll("li")
       .data(data_songs[dataWeek][CC])
       .enter()
       .append("li")
       .append("div")
       .classed("song-entry-wrapper", true)
-      .classed("selected-song", function(d) {
-        return selectedSongs.includes(JSON.stringify(d));
+      .each(function(d) {
+        var songAsKey = JSON.stringify(d);
+        if (selectedSongs.includes(songAsKey)) {
+          d3.select(this)
+            .select("span")
+            .remove();
+          d3.select(this)
+            .classed("selected-song", true)
+            .insert("span", ":first-child")
+            .attr("class", "before-selected-song")
+            .style("background-color", getSongColor(songAsKey));
+        }
       })
       .on("click", function(d) {
         // convert the song data to a string for consistent comparison
@@ -138,16 +161,47 @@ function changeWeeklySongsWeek(CC) {
             addSongLegendChip(d);
             d3.select(this).classed("selected-song", true);
             generateAttrBarChart();
-          } else return;
+          }
+        }
+        // clear previous color markers
+        d3.select(this)
+          .select("span")
+          .remove();
+        // add new color marker
+        if (selectedSongs.includes(songAsKey)) {
+          d3.select(this)
+            .insert("span", ":first-child")
+            .attr("class", "before-selected-song")
+            .style("background-color", getSongColor(songAsKey));
+        }
+        d3.select("#weekly-songs-selected").text(function() {
+          return "(" + selectedSongs.length + "/3";
+        });
+
+        if (selectedSongs.length === 3) {
+          d3.selectAll(".song-entry-wrapper").each(function() {
+            d3.select(this.parentNode).classed("noSelect", true);
+          });
+          d3.selectAll(".selected-song").each(function() {
+            d3.select(this.parentNode).classed("noSelect", false);
+          });
+        } else {
+          d3.selectAll(".song-entry-wrapper").each(function() {
+            d3.select(this.parentNode).classed("noSelect", false);
+          });
         }
       })
       .append("div")
       .classed("song-name", true)
       .text(function(d) {
-        return d["Track Name"];
+        pos =
+          data_songs[dataWeek][CC].map(function(e) {
+            return e["Track Name"];
+          }).indexOf(d["Track Name"]) + 1;
+        return pos + ". " + d["Track Name"];
       });
 
-    d3.select("#weekly-song-list-ul-" + CC)
+    songList
       .selectAll(".song-entry-wrapper")
       .data(data_songs[dataWeek][CC])
       .append("div")
@@ -156,16 +210,18 @@ function changeWeeklySongsWeek(CC) {
         return d.Artist;
       });
 
-    d3.select("#weekly-song-list-ul-" + CC)
+    songLink = songList
       .selectAll(".song-entry-wrapper")
       .data(data_songs[dataWeek][CC])
       .append("a")
       .classed("spotify-link", true)
-      .text("Open in Spotify ⤤")
+      .text("Spotify")
       .attr("href", function(d) {
         return d.URL;
       })
       .attr("target", "_blank");
+    // add fontawesome's icon for external links
+    songLink.append("i").attr("class", "fas fa-external-link-alt");
   } else {
   }
 }
@@ -177,7 +233,19 @@ function deselectSong(song) {
     .filter(function(d) {
       return JSON.stringify(d) === songAsKey;
     })
-    .classed("selected-song", false);
+    .classed("selected-song", false)
+      .selectAll("span")
+      .remove();
+
+  d3.selectAll(".selected-song").each(function(d) {
+    var songAsKeyComp = JSON.stringify(d);
+    if (songAsKeyComp === songAsKey) {
+      d3.select(this)
+        .classed("selected-song", false)
+        .selectAll("span")
+        .remove();
+    }
+  });
   selectedSongs.splice(selectedSongs.indexOf(songAsKey), 1);
   clearSongColor(songAsKey);
   generateAttrBarChart();
@@ -191,7 +259,7 @@ function deselectCountry(CC) {
     zoomOutCountryHideDetail(CC);
 }
 
-function clearSelectedSongs(){
+function clearSelectedSongs() {
   selectedSongs = [];
   songToColorMap = {};
   usedSongColors = [];
@@ -202,9 +270,9 @@ function clearSelectedSongs(){
     .remove();
 }
 
-function getSongColor(songAsKey){
+function getSongColor(songAsKey) {
   // if the song already has a color, return its index
-  if(typeof songToColorMap[songAsKey] !== 'undefined')
+  if (typeof songToColorMap[songAsKey] !== "undefined")
     return songColors[songToColorMap[songAsKey]];
 
   // find an available color (index)
@@ -223,7 +291,7 @@ function getSongColor(songAsKey){
   return songColors[colorIdx];
 }
 
-function clearSongColor(songAsKey){
+function clearSongColor(songAsKey) {
   // set the color to unused/available
   usedSongColors[songToColorMap[songAsKey]] = false;
   // remove the mapping from the song:colorIdx map
@@ -288,18 +356,16 @@ function generateAttrBarChart() {
   var x1 = d3
     .scaleBand()
     .domain(d3.range(n))
-    .range([0, x0.bandwidth() - 10]);
+    .range([0, x0.bandwidth() - 30]);
 
   //var colors = d3.scaleOrdinal().range(songColors.slice(0, n));
-  var colors = function(i){
+  var colors = function(i) {
     selCs = selectedCountries.length;
     // the color is for a country
-    if(i < selCs){
+    if (i < selCs) {
       colorIdx = chartCountryLines[i].color;
       return countryColors[colorIdx];
-
-    }else // the color is for a song
-      return getSongColor(selectedSongs[i-selCs]);
+    else return getSongColor(selectedSongs[i - selCs]);
   };
 
   d3.select("#attr-barchart-wrapper")
@@ -313,6 +379,31 @@ function generateAttrBarChart() {
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg
+    .append("g")
+    .call(d3.axisLeft(y))
+    .classed("y axis", true);
+
+  svg
+    .selectAll("g.tick")
+    .filter(function(d) {
+      if (attrs.indexOf(d3.select(this).text()) > -1) {
+        return true;
+      }
+    })
+    .select("text")
+    .classed("attribute-text", true);
+
+  var yTicks = svg.selectAll(".y.axis > .tick");
+  yTicks.each(function() {
+    var l = d3
+      .create("svg:line")
+      .attr("class", "y-gridline")
+      .attr("x1", 0)
+      .attr("x2", innerWidth);
+    this.append(l.node());
+  });
 
   svg
     .append("g")
@@ -345,38 +436,13 @@ function generateAttrBarChart() {
 
   svg
     .append("g")
-    .attr("transform", "translate(0," + height + ")")
+    .attr("transform", "translate(-15," + height + ")")
     .call(
       d3.axisBottom(x0).tickFormat(function(d) {
         return attrs[d];
       })
     )
     .classed("x axis", true);
-
-  svg
-    .append("g")
-    .call(d3.axisLeft(y))
-    .classed("y axis", true);
-
-  svg
-    .selectAll("g.tick")
-    .filter(function(d) {
-      if (attrs.indexOf(d3.select(this).text()) > -1) {
-        return true;
-      }
-    })
-    .select("text")
-    .classed("attribute-text", true);
-
-  var yTicks = svg.selectAll(".y.axis > .tick");
-  yTicks.each(function() {
-    var l = d3
-      .create("svg:line")
-      .attr("class", "y-gridline")
-      .attr("x1", 0)
-      .attr("x2", innerWidth);
-    this.append(l.node());
-  });
 }
 
 d3.select("#close-detail").on("click", function(d) {

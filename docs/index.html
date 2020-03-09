@@ -14,6 +14,7 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <script src="https://kit.fontawesome.com/c99a26aee3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css" />
   </head>
   <body>
@@ -66,17 +67,24 @@
                   <div id="close-detail">Return</div>
                 </div>
                 <div class="Detail__all-time-graph">
+                  <div id="all-time-title">DANCEABILITY OVER ALL TIME</div>
                   <div id="linechart">
                     <!-- Canvas and svg for plotting attributes over time -->
                   </div>
                 </div>
                 <div class="Detail__weekly-songs">
+                  <div id="weekly-songs-title">
+                    <div>TOP TRACKS</div>
+                    <span id="weekly-songs-selected">(0/3</span>
+                    <span>SELECTED)</span>
+                  </div>
                   <nav>
                     <ul id="weekly-songs-list"></ul>
                   </nav>
                   <div id="weekly-songs-list-window"></div>
                 </div>
                 <div class="Detail__song-comparison">
+                  <div id="attr-barchart-title">ATTRIBUTES COMPARISON</div>
                   <div id="attr-barchart-wrapper"></div>
                 </div>
               </div>
