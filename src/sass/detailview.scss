@@ -48,31 +48,25 @@
 
       .global-checkbox-div {
         margin-left: 15px;
-        background-color: #282828;
+        background-color: #fff;
+        font-weight: bolder;
+        color: #282828;
+        height: 25px;
         border-radius: 20px;
-        padding: 4px 30px 4px 12px;
+        padding: 4px 16px 4px 12px;
 
         /* Change the outline of unchecked boxes  */
         /* (Checked box has green color from CDN) */
         label:not(.is-checked) > span.mdl-checkbox__box-outline{
-          border: 2px solid $body_color;
+          border: 2px solid rgba(#282828, 0.5);
+        }
+
+        label > span.mdl-checkbox__box-outline{
+          border-radius: 10px;
         }
 
         .global-checkbox-label {
           font-size: 14px;
-        }
-
-        /* White dot to represent the legend */
-        .global-checkbox-legend{
-          position: absolute;
-          padding: 0;
-          height: 10px;
-          width: 10px;
-          border-radius: 50%;
-          left: calc(100% + 5px);
-          top: calc(50% - 5px);
-          content: "";
-          background-color: #fff;
         }
       }
 
@@ -356,7 +350,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   height: 25px;
-  padding: 5px 10px;
+  padding: 4px 10px 4px;
   margin: 5px;
   cursor: pointer;
   display: inline-block;
