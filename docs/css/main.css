@@ -1472,8 +1472,190 @@
   pointer-events: none;
 }
 
+/* Modify to change color of loading text */
+/* Must also be changed in the circle element in html */
+/* line 7, src/sass/loading.scss */
+.Loading__wrapper {
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: grid;
+  justify-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 50% 10% 1fr;
+  background-color: rgba(18, 18, 18, 0.9);
+  z-index: 100;
+}
+
+/* line 27, src/sass/loading.scss */
+.Loading__wrapper #pseudo-logo {
+  align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: 2 / 1 / 3;
+  height: 100%;
+  opacity: 0;
+}
+
+/* line 32, src/sass/loading.scss */
+.Loading__wrapper #logo {
+  align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: 2 / 1 / 3;
+  height: 100%;
+  /*margin: 0 auto 0;*/
+  opacity: 1.0;
+  -webkit-animation: logoPulse 0.7s infinite ease-in-out alternate;
+          animation: logoPulse 0.7s infinite ease-in-out alternate;
+}
+
+/* line 38, src/sass/loading.scss */
+.Loading__wrapper svg {
+  height: 100%;
+  z-index: 101;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-self: center;
+  grid-area: 3 / 1 / 5;
+  overflow: visible;
+}
+
+/* line 46, src/sass/loading.scss */
+.Loading__wrapper svg .circle {
+  stroke-dasharray: 150;
+  -webkit-animation: draw 2s linear infinite;
+          animation: draw 2s linear infinite;
+}
+
+/* line 51, src/sass/loading.scss */
+.Loading__wrapper svg .one, .Loading__wrapper svg .two, .Loading__wrapper svg .three, .Loading__wrapper svg .four, .Loading__wrapper svg .five, .Loading__wrapper svg .six {
+  -webkit-animation: letterflash 2s ease-in-out infinite;
+          animation: letterflash 2s ease-in-out infinite;
+}
+
+/* line 55, src/sass/loading.scss */
+.Loading__wrapper svg .six {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+/* line 56, src/sass/loading.scss */
+.Loading__wrapper svg .five {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+/* line 57, src/sass/loading.scss */
+.Loading__wrapper svg .four {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+/* line 58, src/sass/loading.scss */
+.Loading__wrapper svg .three {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+/* line 59, src/sass/loading.scss */
+.Loading__wrapper svg .two {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+
+/* line 60, src/sass/loading.scss */
+.Loading__wrapper svg .one {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+/* Animation of drawing the line path of the chart/graph */
+@-webkit-keyframes logoPulse {
+  from {
+    opacity: 1.0;
+    height: 100%;
+  }
+  to {
+    opacity: 0.8;
+    height: 90%;
+  }
+}
+@keyframes logoPulse {
+  from {
+    opacity: 1.0;
+    height: 100%;
+  }
+  to {
+    opacity: 0.8;
+    height: 90%;
+  }
+}
+
+@-webkit-keyframes draw {
+  0% {
+    stroke: #1ed760;
+  }
+  100% {
+    stroke-dashoffset: 300;
+  }
+}
+
+@keyframes draw {
+  0% {
+    stroke: #1ed760;
+  }
+  100% {
+    stroke-dashoffset: 300;
+  }
+}
+
+@-webkit-keyframes letterflash {
+  0% {
+    fill: #1ed760;
+  }
+  100% {
+    fill: #127d38;
+  }
+}
+
+@keyframes letterflash {
+  0% {
+    fill: #1ed760;
+  }
+  100% {
+    fill: #127d38;
+  }
+}
+
+@-webkit-keyframes spinnerflash {
+  0% {
+    stroke: #1ed760;
+  }
+  100% {
+    fill: #127d38;
+  }
+}
+
+@keyframes spinnerflash {
+  0% {
+    stroke: #1ed760;
+  }
+  100% {
+    fill: #127d38;
+  }
+}
+
 /* Layout */
-/* line 14, src/sass/main.scss */
+/* line 15, src/sass/main.scss */
 html,
 body {
   margin: 0;
@@ -1503,7 +1685,7 @@ body {
   user-select: none;
 }
 
-/* line 38, src/sass/main.scss */
+/* line 39, src/sass/main.scss */
 .Root__wrapper {
   min-height: 100%;
   width: 100%;
@@ -1514,9 +1696,10 @@ body {
   grid-template-columns: auto 1fr;
   grid-template-areas: "country-list main-view" "time-anim-control timeslider-bar";
   background-color: #121212;
+  z-index: 0;
 }
 
-/* line 49, src/sass/main.scss */
+/* line 51, src/sass/main.scss */
 .Root__wrapper .Root__country-list,
 .Root__wrapper .Root__main-view {
   display: -webkit-box;
@@ -1529,7 +1712,7 @@ body {
   -webkit-box-direction: normal;
 }
 
-/* line 58, src/sass/main.scss */
+/* line 60, src/sass/main.scss */
 .Root__wrapper .Root__country-list {
   will-change: transform;
   grid-area: country-list;
@@ -1538,14 +1721,14 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 66, src/sass/main.scss */
+/* line 68, src/sass/main.scss */
 .Root__wrapper .Root__main-view {
   grid-area: main-view;
   width: 100%;
   position: relative;
 }
 
-/* line 71, src/sass/main.scss */
+/* line 73, src/sass/main.scss */
 .Root__wrapper .Root__main-view .main-view-wrapper {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -1553,7 +1736,7 @@ body {
   min-height: 0;
 }
 
-/* line 77, src/sass/main.scss */
+/* line 79, src/sass/main.scss */
 .Root__wrapper .Root__time-anim-control {
   grid-area: time-anim-control;
   width: 100%;
@@ -1561,7 +1744,7 @@ body {
   color: #b2b2b2;
 }
 
-/* line 84, src/sass/main.scss */
+/* line 86, src/sass/main.scss */
 .Root__wrapper .Root__timeslider-bar {
   grid-area: timeslider-bar;
   width: 100%;

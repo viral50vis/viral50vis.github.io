@@ -27,6 +27,12 @@ Promise.all([
   d3.json("data/countries.json"),
   d3.json("data/week_countries_songs_normalized.json")
 ]).then(function(files) {
+  // fade out and then remove the loading screen wrapper node
+  d3.select(".Loading__wrapper").transition()
+    .style("opacity", 0)
+    .duration(800)
+    .on("end", function(){ d3.select(this).remove(); });
+  // save the loaded files and initialize the app
   filesLoaded = true;
   data_attrs = files[0];
   worldJSON = files[1];
