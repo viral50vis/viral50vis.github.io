@@ -14,7 +14,7 @@
 }
 .modal-header h2 {
   margin: 0;
-  padding: 4px 0 2px 24px;
+  padding: 4px 0 2px 20px;
   position: relative;
   font-size: 16px;
   line-height: 24px;
@@ -25,11 +25,57 @@
 
 /* Modal Body */
 .modal-body {
-  padding: 10px;
+  padding: 30px;
+  padding-top: 0;
   border-radius: 0 0 2px 2px;
-  width: calc(100% - 20px);
-  height: calc(100% - 104px);
+  width: calc(100% - 60px);
+  height: calc(100% - 114px);
   overflow-y: scroll;
+
+  iframe {
+  }
+
+  .flex-teamlist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-left: 24px;
+
+    div {
+      margin-bottom: 20px;
+      p {
+        margin: 0;
+        padding: 4px 0 2px 0;
+        position: relative;
+        font-size: 12px;
+        line-height: 24px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-weight: bold;
+      }
+
+      img {
+        border: 0;
+        width: 150px;
+        height: 150px;
+        border-radius: 4px;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          position: relative;
+          font-size: 10px;
+          line-height: 20px;
+          text-transform: uppercase;
+          letter-spacing: 0.16em;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
 .modal-body img {
   border: 1px solid black;
@@ -71,7 +117,8 @@
 
 .modal-body h2 {
   margin: 0;
-  padding: 4px 0 2px 24px;
+  margin-top: 30px;
+  padding: 4px 0 2px 0;
   position: relative;
   font-size: 16px;
   line-height: 24px;
