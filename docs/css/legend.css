@@ -37,16 +37,17 @@
           justify-content: space-between;
   margin: 10px;
   margin-bottom: 0px;
+  color: #fff;
 }
 
-/* line 25, src/sass/legend.scss */
+/* line 26, src/sass/legend.scss */
 #legend-container #legend-label-container .legend-label {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-/* line 30, src/sass/legend.scss */
+/* line 31, src/sass/legend.scss */
 #legend-container #legend-scale-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -63,7 +64,7 @@
   border: 1px solid #b2b2b2;
 }
 
-/* line 39, src/sass/legend.scss */
+/* line 40, src/sass/legend.scss */
 #legend-container #legend-scale-container .legend-scale-segment {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
