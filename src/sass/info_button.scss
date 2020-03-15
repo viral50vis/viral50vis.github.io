@@ -1,0 +1,35 @@
+@import "variables.scss";
+
+#information-button-wrapper {
+  h2 {
+    display: inline-block;
+    margin: 0;
+    padding: 4px 0 2px 24px;
+    position: relative;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: bold;
+  }
+
+  hr {
+    margin: 8px 24px 8px 24px;
+    border-color: #282828;
+  }
+}
+
+#information-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.information-button-text {
+}
+.information-button-icon {
+}
