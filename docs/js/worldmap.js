@@ -5,6 +5,8 @@ var worldWidth = parseInt(d3.select(".Root__main-view").style("width"));
 var worldHeight = parseInt(d3.select(".Root__main-view").style("height"));
 var countryTooltip = d3.select("#world")
   .append("div").attr("class", "country-tooltip");
+var tooltipZoom;
+var tooltipCC;
 var tooltipRecent = false; // boolean to prevent stuck tooltip
 
 var worldProjection = d3
@@ -24,6 +26,12 @@ var zoom = d3
   .on("zoom", (function() {
     var t = d3.event.transform;
 
+    // adapt tooltip zoom to map zoom and scale it accordingly
+    updateTooltipScale(t.k);
+    
+    // update the shown tooltip (scale of) as zoom is happening
+    if(tooltipRecent) showCountryTooltip(tooltipCC);
+
     var w_max = 0;
     var w_min = worldWidth * (1 - t.k);
     var h_max = 0;
@@ -36,6 +44,7 @@ var zoom = d3
   }));
 
 world.call(zoom);
+updateTooltipScale(1);
 
 function generateWorldMap(worldJSON) {
   /* Countries */
@@ -174,20 +183,26 @@ function zoomOutCountryHideDetail(CC) {
 }
 
 function showCountryTooltip(CC){
+  tooltipCC = CC;
   // round the data attribute to 3 decimal places
   ttData = data_attrs[dataWeek][CC][currentAttribute].toFixed(3);
+  ttAttrName = currentAttribute.charAt(0).toUpperCase() + currentAttribute.substring(1);
+  ttAttrHtml = ttAttrName + ": " + ttData;
   // show country name and its data
   countryTooltip
-    .html("<strong>" +countryCCJSON[CC] + "</strong><br>" + ttData);
+    .html("<strong>" +countryCCJSON[CC] + "</strong><br>" + ttAttrHtml);
   // fade the tooltip in
   countryTooltip
     .transition()
     .delay(200)
     .duration(200)
     .style("opacity", "0.8");
-  // center tooltip horizontally on mouse and place it above
+  // adapt the size of tooltip according to zoom
+  countryTooltip.style("transform", "scale(" + tooltipZoom + "," + tooltipZoom + ")");
+  // get the current height and width of the tooltip
   h = countryTooltip.style("height").slice(0, -2);
   w = countryTooltip.style("width").slice(0, -2);
+  // center tooltip horizontally on mouse and place it above
   x = d3.event.layerX - w/2;
   y = d3.event.layerY - h;
   countryTooltip
@@ -199,4 +214,13 @@ function hideCountryTooltip(){
   if(!tooltipRecent)
   countryTooltip
     .style("opacity", "0");
+}
+
+function updateTooltipScale(zoom){
+  // scale the tooltip according to screen height
+  screenBaseScale = Math.abs((worldHeight-780)/195);
+  // adapt tooltip zoom to map zoom and scale it accordingly
+  tooltipZoom = (Math.log(zoom*3)/(2.7*2.25*Math.abs(((800-worldHeight)/1080))))*screenBaseScale;
+  // never scale down
+  if(tooltipZoom < 1) tooltipZoom = 1;
 }
