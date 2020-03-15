@@ -477,26 +477,27 @@ d3.select("#close-detail").on("click", function(d) {
 
 /* Functions and code for showing global
     data in linechart */
-function toggleGlobalLineDetailView(){
+function toggleGlobalLineDetailView() {
   toggleGlobalLine();
 }
 
 var globalContainer = d3
   .select(".Detail__legend-to-plots")
-    .select("#global-checkbox")
-    .classed("global-checkbox-div", true)
-      .append("label")
-      .attr("for", "globalCheck")
-      .attr("class", "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect");
+  .select("#global-checkbox")
+  .classed("global-checkbox-div", true)
+  .append("label")
+  .attr("for", "globalCheck")
+  .attr("class", "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect");
 
 var globalCheckbox = globalContainer
   .append("input")
-    .attr("type", "checkbox")
-    .attr("id", "globalCheck")
-    .classed("mdl-checkbox__input", true)
-    .on("change", toggleGlobalLineDetailView);
+  .attr("type", "checkbox")
+  .attr("id", "globalCheck")
+  .classed("mdl-checkbox__input", true)
+  .on("change", toggleGlobalLineDetailView);
 
-globalContainer.append("span")
+globalContainer
+  .append("span")
   .classed("global-checkbox-label", true)
   .classed("mdl-checkbox__label", true)
   .text("Global");

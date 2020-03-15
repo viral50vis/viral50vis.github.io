@@ -47,7 +47,7 @@
   overflow-y: scroll;
 }
 
-/* line 38, src/sass/modal.scss */
+/* line 35, src/sass/modal.scss */
 .modal-body .flex-teamlist {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -59,12 +59,12 @@
   padding-left: 24px;
 }
 
-/* line 44, src/sass/modal.scss */
+/* line 41, src/sass/modal.scss */
 .modal-body .flex-teamlist div {
   margin-bottom: 20px;
 }
 
-/* line 46, src/sass/modal.scss */
+/* line 43, src/sass/modal.scss */
 .modal-body .flex-teamlist div p {
   margin: 0;
   padding: 4px 0 2px 0;
@@ -76,7 +76,7 @@
   font-weight: bold;
 }
 
-/* line 57, src/sass/modal.scss */
+/* line 54, src/sass/modal.scss */
 .modal-body .flex-teamlist div img {
   border: 0;
   width: 150px;
@@ -84,14 +84,14 @@
   border-radius: 4px;
 }
 
-/* line 64, src/sass/modal.scss */
+/* line 61, src/sass/modal.scss */
 .modal-body .flex-teamlist div ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* line 68, src/sass/modal.scss */
+/* line 65, src/sass/modal.scss */
 .modal-body .flex-teamlist div ul li {
   position: relative;
   font-size: 10px;
@@ -101,20 +101,20 @@
   font-weight: bold;
 }
 
-/* line 80, src/sass/modal.scss */
+/* line 77, src/sass/modal.scss */
 .modal-body img {
   border: 1px solid black;
   width: calc(100% - 20px);
 }
 
-/* line 85, src/sass/modal.scss */
+/* line 82, src/sass/modal.scss */
 #information-button,
 #background-button,
 #team-button {
   cursor: pointer;
 }
 
-/* line 91, src/sass/modal.scss */
+/* line 88, src/sass/modal.scss */
 .information-close,
 .background-close,
 .team-close {
@@ -123,7 +123,7 @@
 }
 
 /* Modal Content */
-/* line 99, src/sass/modal.scss */
+/* line 96, src/sass/modal.scss */
 .modal-content {
   display: none;
   position: absolute;
@@ -145,7 +145,7 @@
           animation-duration: 0.4s;
 }
 
-/* line 118, src/sass/modal.scss */
+/* line 115, src/sass/modal.scss */
 .modal-body h2 {
   margin: 0;
   margin-top: 30px;
@@ -158,7 +158,7 @@
   font-weight: bold;
 }
 
-/* line 130, src/sass/modal.scss */
+/* line 127, src/sass/modal.scss */
 .modal-body p {
   margin: 0;
   padding: 4px 0 2px 24px;
@@ -186,7 +186,7 @@
   }
 }
 
-/* line 145, src/sass/modal.scss */
+/* line 142, src/sass/modal.scss */
 #overlay {
   display: none;
   width: 100%;

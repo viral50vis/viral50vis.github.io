@@ -3,7 +3,7 @@
 #information-button-wrapper h2 {
   display: inline-block;
   margin: 0;
-  padding: 4px 0 2px 24px;
+  padding: 4px 0 2px 10px;
   position: relative;
   font-size: 16px;
   line-height: 24px;
@@ -14,7 +14,7 @@
 
 /* line 16, src/sass/info_button.scss */
 #information-button-wrapper hr {
-  margin: 8px 24px 8px 24px;
+  margin: 0;
   border-color: #282828;
 }
 
@@ -24,12 +24,13 @@
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  padding: 8px 24px 8px 24px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-/* line 27, src/sass/info_button.scss */
+/* line 28, src/sass/info_button.scss */
 #information-button:hover {
   color: #ffffff;
 }
