@@ -102,6 +102,12 @@
   font-weight: bold;
 }
 
+/* line 83, src/sass/modal.scss */
+.modal-body p {
+  margin: 0;
+  padding: 4px 0 2px 24px;
+}
+
 @-webkit-keyframes animatetop {
   from {
     top: -300px;
@@ -124,7 +130,7 @@
   }
 }
 
-/* line 93, src/sass/modal.scss */
+/* line 98, src/sass/modal.scss */
 #overlay {
   display: none;
   width: 100%;

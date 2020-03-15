@@ -80,6 +80,11 @@
   font-weight: bold;
 }
 
+.modal-body p {
+  margin: 0;
+  padding: 4px 0 2px 24px;
+}
+
 @keyframes animatetop {
   from {
     top: -300px;
