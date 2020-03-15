@@ -26,8 +26,145 @@
       <h2>LOADING</h2>
     </div>
     <div class="Root__wrapper">
+      <!-- Information modal -->
+      <div id="overlay"></div>
+      <div id="information-modal" class="modal-content">
+        <div class="modal-header">
+          <h2>Information</h2>
+          <span class="information-close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <h2>Demo</h2>
+          <iframe
+            width="420"
+            height="315"
+            src="https://www.youtube.com/embed/QULYsx5YSII"
+          >
+          </iframe>
+
+          <h2>Background</h2>
+          <p>
+            This project originates from the course DH2321 Information
+            Visualization at KTH Royal Institute of Technology. The course set
+            out to teach students about the theoretical and practical aspects of
+            Information Visualization.
+          </p>
+          <p>
+            The group project Viral50 aims to enable artists, content creators,
+            and music enthusiasts to visualize and gain insight into modern
+            music trends. The visualized data in the Viral50 project are the top
+            50 songs for each week and country from Spotify's viral playlists.
+          </p>
+          <p>
+            A viral song is a song that has a very high amount of social media
+            shares, song plays, and other web exposure in a short period. Since
+            viral playlists vary a lot between countries, we decided it would be
+            fun and exciting to visualize how song attributes differed between
+            countries at the same point in time.
+          </p>
+          <p>
+            The attributes visualized are aggregated by Spotify and constits of
+            a song's core elements. An example is the "Danceability" attribute
+            which consists of the elements tempo, rythm stability, beath
+            streangth and regularity.
+          </p>
+          <h2>Learning Objectives</h2>
+          <p>
+            We have created an interactive tool that can significantly assist in
+            gaining insights into viral music trends. The tool features an
+            overview of a specific attribute by the use of a world map. We
+            believe that the world map was a great choice since it helps to get
+            an understanding of viral music trends and if they are based on
+            geographic locations.
+          </p>
+
+          <p>
+            The detailed view enables users to compare specific countries and
+            songs with scatter plots and bar diagrams, which fit great when the
+            number of elements compared is small.
+          </p>
+
+          <p>
+            Even though the Mercator map projection squishes Africa, the second
+            largest continent in the world, we decided to go with it since we,
+            unfortunately, did not have any data from Africa.
+          </p>
+
+          <p>
+            During the project, we have been faced with three 15 minutes
+            presentations. It has been challenging but also fun to create,
+            rehearse, and present these with high quality.
+          </p>
+
+          <h2>Team</h2>
+          <div class="flex-teamlist">
+            <div>
+              <p>Erik Båvenstrand</p>
+              <img src="erik.jpg" />
+              <ul>
+                <li>Data Collection</li>
+                <li>Front-end</li>
+                <li>Design</li>
+              </ul>
+            </div>
+            <div>
+              <p>Måns Ekelund</p>
+              <img src="mans.png" />
+              <ul>
+                <li>Data Collection</li>
+                <li>Front-end</li>
+                <li>Design</li>
+              </ul>
+            </div>
+            <div>
+              <p>Martin Falke</p>
+              <img src="martin.jpg" />
+              <ul>
+                <li>Front-end</li>
+                <li>Design</li>
+              </ul>
+            </div>
+            <div>
+              <p>Hannes Runelöv</p>
+              <img src="hannes.png" />
+              <ul>
+                <li>Front-end</li>
+                <li>Design</li>
+              </ul>
+            </div>
+            <div>
+              <p>Diego Flores Leon</p>
+              <img src="diego.png" />
+              <ul>
+                <li>Front-end</li>
+                <li>Design</li>
+              </ul>
+            </div>
+            <div>
+              <p>Robin Dahlkvist</p>
+              <img src="robin.png" />
+              <ul>
+                <li>Design</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="Root__country-list">
         <nav id="country-list">
+          <!-- Begin Information button List -->
+          <div id="information-button-wrapper">
+            <div id="information-button">
+              <h2 id="information-button-text">Information</h2>
+              <i class="material-icons" id="information-button-icon">
+                arrow_forward
+              </i>
+            </div>
+            <hr />
+          </div>
+          <!-- End Attribute List -->
+
           <!-- Begin Attribute List -->
           <div id="attribute-list-wrapper">
             <h2>Attributes</h2>
@@ -228,5 +365,8 @@
 
     <!-- Main (data loading) -->
     <script src="js/main.js"></script>
+
+    <!-- About modal -->
+    <script src="js/about.js"></script>
   </body>
 </html>

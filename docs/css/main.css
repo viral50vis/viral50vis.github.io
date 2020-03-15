@@ -13,8 +13,8 @@
           align-items: center;
   height: 64px;
   padding: 10px;
-  background-color: #39a847;
-  color: black;
+  background-color: black;
+  color: b2b2b2;
   border-radius: 2px 2px 0 0;
 }
 
@@ -25,35 +25,97 @@
 }
 
 /* line 15, src/sass/modal.scss */
-.modal-header h4 {
+.modal-header h2 {
   margin: 0;
+  padding: 4px 0 2px 20px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
 }
 
 /* Modal Body */
-/* line 20, src/sass/modal.scss */
+/* line 27, src/sass/modal.scss */
 .modal-body {
-  padding: 10px;
+  padding: 30px;
+  padding-top: 0;
   border-radius: 0 0 2px 2px;
-  width: calc(100% - 20px);
-  height: calc(100% - 104px);
+  width: calc(100% - 60px);
+  height: calc(100% - 114px);
   overflow-y: scroll;
 }
 
-/* line 27, src/sass/modal.scss */
+/* line 38, src/sass/modal.scss */
+.modal-body .flex-teamlist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-left: 24px;
+}
+
+/* line 44, src/sass/modal.scss */
+.modal-body .flex-teamlist div {
+  margin-bottom: 20px;
+}
+
+/* line 46, src/sass/modal.scss */
+.modal-body .flex-teamlist div p {
+  margin: 0;
+  padding: 4px 0 2px 0;
+  position: relative;
+  font-size: 12px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
+/* line 57, src/sass/modal.scss */
+.modal-body .flex-teamlist div img {
+  border: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 4px;
+}
+
+/* line 64, src/sass/modal.scss */
+.modal-body .flex-teamlist div ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 68, src/sass/modal.scss */
+.modal-body .flex-teamlist div ul li {
+  position: relative;
+  font-size: 10px;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
+/* line 80, src/sass/modal.scss */
 .modal-body img {
   border: 1px solid black;
   width: calc(100% - 20px);
 }
 
-/* line 32, src/sass/modal.scss */
-#about-button,
+/* line 85, src/sass/modal.scss */
+#information-button,
 #background-button,
 #team-button {
   cursor: pointer;
 }
 
-/* line 38, src/sass/modal.scss */
-.about-close,
+/* line 91, src/sass/modal.scss */
+.information-close,
 .background-close,
 .team-close {
   cursor: pointer;
@@ -61,13 +123,13 @@
 }
 
 /* Modal Content */
-/* line 46, src/sass/modal.scss */
+/* line 99, src/sass/modal.scss */
 .modal-content {
   display: none;
   position: absolute;
-  background-color: #fefefe;
+  background-color: #3a3a3a;
   z-index: 99;
-  top: 10%;
+  top: 8%;
   left: 0;
   right: 0;
   margin: auto;
@@ -83,13 +145,32 @@
           animation-duration: 0.4s;
 }
 
+/* line 118, src/sass/modal.scss */
+.modal-body h2 {
+  margin: 0;
+  margin-top: 30px;
+  padding: 4px 0 2px 0;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
+/* line 130, src/sass/modal.scss */
+.modal-body p {
+  margin: 0;
+  padding: 4px 0 2px 24px;
+}
+
 @-webkit-keyframes animatetop {
   from {
     top: -300px;
     opacity: 0;
   }
   to {
-    top: 10%;
+    top: 8%;
     opacity: 1;
   }
 }
@@ -100,12 +181,12 @@
     opacity: 0;
   }
   to {
-    top: 10%;
+    top: 8%;
     opacity: 1;
   }
 }
 
-/* line 75, src/sass/modal.scss */
+/* line 145, src/sass/modal.scss */
 #overlay {
   display: none;
   width: 100%;
@@ -624,6 +705,41 @@
 /* line 125, src/sass/attr_list.scss */
 .toggleDropdown {
   display: block !important;
+}
+
+/* line 4, src/sass/info_button.scss */
+#information-button-wrapper h2 {
+  display: inline-block;
+  margin: 0;
+  padding: 4px 0 2px 24px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
+/* line 16, src/sass/info_button.scss */
+#information-button-wrapper hr {
+  margin: 8px 24px 8px 24px;
+  border-color: #282828;
+}
+
+/* line 22, src/sass/info_button.scss */
+#information-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* line 27, src/sass/info_button.scss */
+#information-button:hover {
+  color: #ffffff;
 }
 
 /* line 3, src/sass/country_list.scss */
@@ -1539,7 +1655,7 @@
 }
 
 /* Layout */
-/* line 15, src/sass/main.scss */
+/* line 16, src/sass/main.scss */
 html,
 body {
   margin: 0;
@@ -1569,7 +1685,7 @@ body {
   user-select: none;
 }
 
-/* line 39, src/sass/main.scss */
+/* line 40, src/sass/main.scss */
 .Root__wrapper {
   min-height: 100%;
   width: 100%;
@@ -1583,7 +1699,7 @@ body {
   z-index: 0;
 }
 
-/* line 51, src/sass/main.scss */
+/* line 52, src/sass/main.scss */
 .Root__wrapper .Root__country-list,
 .Root__wrapper .Root__main-view {
   display: -webkit-box;
@@ -1596,7 +1712,7 @@ body {
   -webkit-box-direction: normal;
 }
 
-/* line 60, src/sass/main.scss */
+/* line 61, src/sass/main.scss */
 .Root__wrapper .Root__country-list {
   will-change: transform;
   grid-area: country-list;
@@ -1605,14 +1721,14 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 68, src/sass/main.scss */
+/* line 69, src/sass/main.scss */
 .Root__wrapper .Root__main-view {
   grid-area: main-view;
   width: 100%;
   position: relative;
 }
 
-/* line 73, src/sass/main.scss */
+/* line 74, src/sass/main.scss */
 .Root__wrapper .Root__main-view .main-view-wrapper {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -1620,7 +1736,7 @@ body {
   min-height: 0;
 }
 
-/* line 79, src/sass/main.scss */
+/* line 80, src/sass/main.scss */
 .Root__wrapper .Root__time-anim-control {
   grid-area: time-anim-control;
   width: 100%;
@@ -1628,7 +1744,7 @@ body {
   color: #b2b2b2;
 }
 
-/* line 86, src/sass/main.scss */
+/* line 87, src/sass/main.scss */
 .Root__wrapper .Root__timeslider-bar {
   grid-area: timeslider-bar;
   width: 100%;
