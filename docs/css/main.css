@@ -1586,6 +1586,12 @@
   border-radius: 6px;
   z-index: 10;
   pointer-events: none;
+  visibility: visible;
+}
+
+/* line 38, src/sass/tooltip.scss */
+.country-tooltip-hidden {
+  visibility: hidden;
 }
 
 /* line 3, src/sass/loading.scss */
