@@ -5,15 +5,22 @@
   align-items: center;
   height: 64px;
   padding: 10px;
-  background-color: rgba(57, 168, 71, 1);
-  color: black;
+  background-color: black;
+  color: b2b2b2;
   border-radius: 2px 2px 0 0;
 }
 .modal-header span {
   align-self: start;
 }
-.modal-header h4 {
+.modal-header h2 {
   margin: 0;
+  padding: 4px 0 2px 24px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
 }
 
 /* Modal Body */
@@ -29,13 +36,13 @@
   width: calc(100% - 20px);
 }
 
-#about-button,
+#information-button,
 #background-button,
 #team-button {
   cursor: pointer;
 }
 
-.about-close,
+.information-close,
 .background-close,
 .team-close {
   cursor: pointer;
@@ -46,9 +53,9 @@
 .modal-content {
   display: none;
   position: absolute;
-  background-color: #fefefe;
+  background-color: #3a3a3a;
   z-index: 99;
-  top: 10%;
+  top: 8%;
   left: 0;
   right: 0;
   margin: auto;
@@ -62,13 +69,24 @@
   animation-duration: 0.4s;
 }
 
+.modal-body h2 {
+  margin: 0;
+  padding: 4px 0 2px 24px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
 @keyframes animatetop {
   from {
     top: -300px;
     opacity: 0;
   }
   to {
-    top: 10%;
+    top: 8%;
     opacity: 1;
   }
 }
