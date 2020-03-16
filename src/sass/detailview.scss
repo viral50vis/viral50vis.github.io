@@ -57,11 +57,11 @@
 
         /* Change the outline of unchecked boxes  */
         /* (Checked box has green color from CDN) */
-        label:not(.is-checked) > span.mdl-checkbox__box-outline{
+        label:not(.is-checked) > span.mdl-checkbox__box-outline {
           border: 2px solid rgba(#282828, 0.5);
         }
 
-        label > span.mdl-checkbox__box-outline{
+        label > span.mdl-checkbox__box-outline {
           border-radius: 10px;
         }
 
@@ -69,7 +69,6 @@
           font-size: 14px;
         }
       }
-
     }
 
     #center-legend-container {
@@ -80,6 +79,7 @@
       -webkit-box-pack: start;
       -ms-flex-pack: start;
       justify-content: flex-start;
+      align-items: center;
     }
 
     .Detail__weekly-songs {
@@ -374,14 +374,20 @@
 }
 
 /* Return button (container and label) */
-#close-detail{
+#close-detail {
   cursor: pointer;
+  height: 50px;
+  border-radius: 50%;
+  padding-top: 0;
 }
 #legend-return-label {
-  width: 60px;
-  i{
-    float: left;
-    margin-top: 3px;
+  width: 30px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  i {
+    font-size: 25px;
   }
 }
 
@@ -422,8 +428,8 @@ foreignObject {
     45deg,
     transparent,
     transparent 5px,
-    rgba(53,59,72, 0.3) 5px,
-    rgba(53,59,72, 0.3) 10px
+    rgba(53, 59, 72, 0.3) 5px,
+    rgba(53, 59, 72, 0.3) 10px
   );
 }
 
@@ -435,11 +441,11 @@ foreignObject {
 
 .song-chip {
   background: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 5px,
-      rgba(53,59,72, 0.3) 5px,
-      rgba(53,59,72, 0.3) 10px
-    ) !important;
+    45deg,
+    transparent,
+    transparent 5px,
+    rgba(53, 59, 72, 0.3) 5px,
+    rgba(53, 59, 72, 0.3) 10px
+  ) !important;
   margin: 0px;
 }

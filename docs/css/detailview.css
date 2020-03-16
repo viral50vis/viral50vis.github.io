@@ -88,7 +88,7 @@
   font-size: 14px;
 }
 
-/* line 75, src/sass/detailview.scss */
+/* line 74, src/sass/detailview.scss */
 .detail-wrapper #details #center-legend-container {
   width: 100%;
   display: -webkit-box;
@@ -97,6 +97,9 @@
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /* line 85, src/sass/detailview.scss */
@@ -453,20 +456,32 @@
 /* line 377, src/sass/detailview.scss */
 #close-detail {
   cursor: pointer;
+  height: 50px;
+  border-radius: 50%;
+  padding-top: 0;
 }
 
-/* line 380, src/sass/detailview.scss */
+/* line 383, src/sass/detailview.scss */
 #legend-return-label {
-  width: 60px;
+  width: 30px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-/* line 382, src/sass/detailview.scss */
+/* line 389, src/sass/detailview.scss */
 #legend-return-label i {
-  float: left;
-  margin-top: 3px;
+  font-size: 25px;
 }
 
-/* line 388, src/sass/detailview.scss */
+/* line 394, src/sass/detailview.scss */
 .legend-chip-label {
   max-width: 150px;
   font-size: 14px;
@@ -478,7 +493,7 @@
   vertical-align: middle;
 }
 
-/* line 399, src/sass/detailview.scss */
+/* line 405, src/sass/detailview.scss */
 .legend-chip-remove {
   color: #ffffff88;
   font-size: 20pt;
@@ -488,34 +503,34 @@
   cursor: pointer;
 }
 
-/* line 407, src/sass/detailview.scss */
+/* line 413, src/sass/detailview.scss */
 .legend-chip-remove:hover {
   color: #fff;
 }
 
-/* line 411, src/sass/detailview.scss */
+/* line 417, src/sass/detailview.scss */
 .legend-chip-remove.chip-remove-inverted {
   color: #00000088;
 }
 
-/* line 414, src/sass/detailview.scss */
+/* line 420, src/sass/detailview.scss */
 .legend-chip-remove.chip-remove-inverted:hover {
   color: #000;
 }
 
-/* line 420, src/sass/detailview.scss */
+/* line 426, src/sass/detailview.scss */
 foreignObject {
   background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(53, 59, 72, 0.3) 5px, rgba(53, 59, 72, 0.3) 10px);
 }
 
-/* line 430, src/sass/detailview.scss */
+/* line 436, src/sass/detailview.scss */
 .song-chip-bg {
   border-radius: 20px !important;
   margin: 0px 5px 5px 5px;
   display: inline-block;
 }
 
-/* line 436, src/sass/detailview.scss */
+/* line 442, src/sass/detailview.scss */
 .song-chip {
   background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(53, 59, 72, 0.3) 5px, rgba(53, 59, 72, 0.3) 10px) !important;
   margin: 0px;
