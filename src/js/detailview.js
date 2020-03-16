@@ -149,7 +149,6 @@ function changeWeeklySongsWeek(CC) {
         }
       })
       .on("click", function(d) {
-        //rrrr
         // convert the song data to a string for consistent comparison
         var songAsKey = JSON.stringify(d);
         if (selectedSongs.includes(songAsKey)) {
@@ -247,10 +246,8 @@ function deselectSong(song) {
         .remove();
     }
   });
-  //rrrrr
-  console.log(selectedSongs);
+
   selectedSongs.splice(selectedSongs.indexOf(songAsKey), 1);
-  console.log(selectedSongs);
   clearSongColor(songAsKey);
   generateAttrBarChart();
 
@@ -273,7 +270,7 @@ function clearSelectedSongs() {
   songColors.forEach(function() {
     usedSongColors.push(false);
   });
-  d3.selectAll(".song-chip").remove();
+  d3.selectAll(".song-chip-bg").remove();
 
   d3.select(".weekly-song-list")
     .select("ol")
@@ -314,7 +311,6 @@ function clearSongColor(songAsKey) {
 }
 
 function generateAttrBarChart() {
-  //rrrr
   var attrs = [
     "danceability",
     "energy",
@@ -573,14 +569,16 @@ function addSongLegendChip(song) {
   var songAsKey = JSON.stringify(song);
   var color = getSongColor(songAsKey);
   var shouldInvertChip = invertChip[songColors.indexOf(color)];
+
   var chip = d3
     .select("#song-legend-wrapper")
+    .append("div").attr("id", "legend-chip-" + getStyleFriendlySongString(song))
+    .style("background", color)
+    .attr("class", "song-chip-bg")
     .append("div")
-    .attr("id", "legend-chip-" + getStyleFriendlySongString(song))
     .classed("legend-chip", true)
     .classed("chip-inverted", invertChip)
     .classed("song-chip", true)
-    .style("background", color)
     .on("mouseover", function() {
       //highlightColor(color);
     })
