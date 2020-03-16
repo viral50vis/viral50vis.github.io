@@ -1,5 +1,6 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
 var selectedSongs = [];
+var globalSelected = false;
 
 // map containing the song:colorIdx relation
 var songToColorMap = {};
@@ -36,7 +37,7 @@ function changeWeekDetailView() {
   if (isInDetailView) changeLineChartWeek();
   generateAttrBarChart();
   // update tooltip if changing week on worldmap
-  if(!isInDetailView && tooltipRecent) showCountryTooltip(tooltipCC);
+  if (!isInDetailView && tooltipRecent) showCountryTooltip(tooltipCC);
 }
 
 function addCountryToWeeklySongs(CC) {
@@ -225,6 +226,18 @@ function changeWeeklySongsWeek(CC) {
       .attr("target", "_blank");
     // add fontawesome's icon for external links
     songLink.append("i").attr("class", "fas fa-external-link-alt");
+    if (selectedSongs.length === 3) {
+      d3.selectAll(".song-entry-wrapper").each((function() {
+        d3.select(this.parentNode).classed("noSelect", true);
+      }));
+      d3.selectAll(".selected-song").each((function() {
+        d3.select(this.parentNode).classed("noSelect", false);
+      }));
+    } else {
+      d3.selectAll(".song-entry-wrapper").each((function() {
+        d3.select(this.parentNode).classed("noSelect", false);
+      }));
+    }
   } else {
   }
 }
@@ -333,14 +346,26 @@ function generateAttrBarChart() {
 
   var data = d3.range(n).map((function(i) {
     return d3.range(m).map((function(j) {
-      if (i < countriesWithData.length)
+      if (i < countriesWithData.length) {
         return data_attrs[dataWeek][countriesWithData[i]][attrs[j]];
-      else
+      } else {
         return JSON.parse(selectedSongs[i - countriesWithData.length])[
           attrs[j]
         ];
+      }
     }));
   }));
+
+  var globalDataIndex = -1;
+  if (globalSelected) {
+    n += 1;
+    var globalData = d3.range(attrs.length).map((function(i) {
+      return data_attrs[dataWeek]["GLO"][attrs[i]];
+    }));
+    data.splice(countriesWithData.length, 0, globalData);
+  }
+
+  globalDataIndex = data.indexOf(globalData);
 
   var margin = { top: 20, right: 30, bottom: 30, left: 40 };
   var width =
@@ -381,6 +406,7 @@ function generateAttrBarChart() {
       colorIdx = chartCountryLines[i].color;
       return countryColors[colorIdx];
     } else {
+      if (globalSelected) i -= 1;
       return getSongColor(selectedSongs[i - selCs]);
     }
   };
@@ -428,9 +454,18 @@ function generateAttrBarChart() {
     .enter()
     .append("g")
     .attr("class", (function(d, i) {
-        return i >= countriesWithData.length ? "songBarContianer" : "";
+      if (i >= countriesWithData.length) {
+        if (globalSelected && globalDataIndex === i) {
+          return "";
+        } else {
+          return "songBarContianer";
+        }
+      }
     }))
     .style("fill", (function(d, i) {
+      if (globalSelected && globalDataIndex === i) {
+        return "#fff";
+      }
       return colors(i);
     }))
     .attr("transform", (function(d, i) {
@@ -453,7 +488,8 @@ function generateAttrBarChart() {
       return height - y(1 - d);
     }));
 
-  svg.selectAll(".songBarContianer")
+  svg
+    .selectAll(".songBarContianer")
     .selectAll("span")
     .data((function(d) {
       return d;
@@ -469,7 +505,7 @@ function generateAttrBarChart() {
     }))
     .attr("y", (function(d) {
       return height - y(1 - d);
-    }));    
+    }));
 
   svg
     .append("g")
@@ -503,6 +539,9 @@ d3.select("#close-detail").on("click", (function(d) {
     data in linechart */
 function toggleGlobalLineDetailView() {
   toggleGlobalLine();
+
+  globalSelected = !globalSelected;
+  generateAttrBarChart();
 }
 
 var globalContainer = d3
@@ -575,7 +614,8 @@ function addSongLegendChip(song) {
 
   var chip = d3
     .select("#song-legend-wrapper")
-    .append("div").attr("id", "legend-chip-" + getStyleFriendlySongString(song))
+    .append("div")
+    .attr("id", "legend-chip-" + getStyleFriendlySongString(song))
     .style("background", color)
     .attr("class", "song-chip-bg")
     .append("div")
