@@ -72,6 +72,16 @@
 
     }
 
+    #center-legend-container {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+    }
+
     .Detail__weekly-songs {
       grid-area: weekly-songs;
       width: 100%;
@@ -349,9 +359,9 @@
   background-color: #282828;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
-  height: 25px;
-  padding: 4px 10px 4px;
-  margin: 5px;
+  height: 28px;
+  padding: 5px 10px 0px 10px;
+  margin: 0px 5px 5px 5px;
   display: inline-block;
 
   &.chip-inverted {
@@ -419,7 +429,7 @@ foreignObject {
 
 .song-chip-bg {
   border-radius: 20px !important;
-  margin: 5px;
+  margin: 0px 5px 5px 5px;
   display: inline-block;
 }
 
