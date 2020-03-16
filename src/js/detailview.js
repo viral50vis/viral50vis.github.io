@@ -149,6 +149,7 @@ function changeWeeklySongsWeek(CC) {
         }
       })
       .on("click", function(d) {
+        //rrrr
         // convert the song data to a string for consistent comparison
         var songAsKey = JSON.stringify(d);
         if (selectedSongs.includes(songAsKey)) {
@@ -246,7 +247,10 @@ function deselectSong(song) {
         .remove();
     }
   });
+  //rrrrr
+  console.log(selectedSongs);
   selectedSongs.splice(selectedSongs.indexOf(songAsKey), 1);
+  console.log(selectedSongs);
   clearSongColor(songAsKey);
   generateAttrBarChart();
 
@@ -310,6 +314,7 @@ function clearSongColor(songAsKey) {
 }
 
 function generateAttrBarChart() {
+  //rrrr
   var attrs = [
     "danceability",
     "energy",
@@ -417,13 +422,15 @@ function generateAttrBarChart() {
       .attr("x2", innerWidth);
     this.append(l.node());
   });
-
   svg
     .append("g")
     .selectAll("g")
     .data(data)
     .enter()
     .append("g")
+    .attr("class", function(d, i) {
+        return i >= countriesWithData.length ? "songBarContianer" : "";
+    })
     .style("fill", function(d, i) {
       return colors(i);
     })
@@ -446,6 +453,24 @@ function generateAttrBarChart() {
     .attr("y", function(d) {
       return height - y(1 - d);
     });
+
+  svg.selectAll(".songBarContianer")
+    .selectAll("span")
+    .data(function(d) {
+      return d;
+    })
+    .enter()
+    .append("foreignObject")
+    .attr("width", x1.bandwidth())
+    .attr("height", function(d) {
+      return y(1 - d);
+    })
+    .attr("x", function(d, i) {
+      return x0(i);
+    })
+    .attr("y", function(d) {
+      return height - y(1 - d);
+    });    
 
   svg
     .append("g")
