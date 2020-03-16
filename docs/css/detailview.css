@@ -459,9 +459,10 @@
   height: 50px;
   border-radius: 50%;
   padding: 0 12px 0 8px;
+  margin-bottom: 0;
 }
 
-/* line 383, src/sass/detailview.scss */
+/* line 384, src/sass/detailview.scss */
 #legend-return-label {
   width: 30px;
   height: 100%;
@@ -476,12 +477,12 @@
           align-items: center;
 }
 
-/* line 389, src/sass/detailview.scss */
+/* line 390, src/sass/detailview.scss */
 #legend-return-label i {
   font-size: 30px;
 }
 
-/* line 394, src/sass/detailview.scss */
+/* line 395, src/sass/detailview.scss */
 .legend-chip-label {
   max-width: 150px;
   font-size: 14px;
@@ -493,7 +494,7 @@
   vertical-align: middle;
 }
 
-/* line 405, src/sass/detailview.scss */
+/* line 406, src/sass/detailview.scss */
 .legend-chip-remove {
   color: #ffffff88;
   font-size: 20pt;
@@ -503,34 +504,34 @@
   cursor: pointer;
 }
 
-/* line 413, src/sass/detailview.scss */
+/* line 414, src/sass/detailview.scss */
 .legend-chip-remove:hover {
   color: #fff;
 }
 
-/* line 417, src/sass/detailview.scss */
+/* line 418, src/sass/detailview.scss */
 .legend-chip-remove.chip-remove-inverted {
   color: #00000088;
 }
 
-/* line 420, src/sass/detailview.scss */
+/* line 421, src/sass/detailview.scss */
 .legend-chip-remove.chip-remove-inverted:hover {
   color: #000;
 }
 
-/* line 426, src/sass/detailview.scss */
+/* line 427, src/sass/detailview.scss */
 foreignObject {
   background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(53, 59, 72, 0.3) 5px, rgba(53, 59, 72, 0.3) 10px);
 }
 
-/* line 436, src/sass/detailview.scss */
+/* line 437, src/sass/detailview.scss */
 .song-chip-bg {
   border-radius: 20px !important;
   margin: 0px 5px 5px 5px;
   display: inline-block;
 }
 
-/* line 442, src/sass/detailview.scss */
+/* line 443, src/sass/detailview.scss */
 .song-chip {
   background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(53, 59, 72, 0.3) 5px, rgba(53, 59, 72, 0.3) 10px) !important;
   margin: 0px;
