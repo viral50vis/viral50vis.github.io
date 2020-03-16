@@ -114,10 +114,13 @@ function removeCountryFromWeeklySongs(CC) {
     selectedCountries.length > 0 &&
     !songListNav.selectAll("div").classed("active")
   ) {
+    /* Commented out to solve song list bug of two countries
+          being selected at once
     songListNav.select("div").classed("active", true);
     d3.select("#weekly-songs-list-window")
       .select("div")
       .classed("weekly-song-list-wrapper-hidden", false);
+      */
   }
 }
 
