@@ -32,4 +32,9 @@
   border-radius: 6px;
   z-index: 10;
   pointer-events: none;
+  visibility: visible;
+}
+
+.country-tooltip-hidden {
+  visibility: hidden;
 }

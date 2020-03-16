@@ -34,6 +34,8 @@ function changeWeekDetailView() {
   });
   if (isInDetailView) changeLineChartWeek();
   generateAttrBarChart();
+  // update tooltip if changing week on worldmap
+  if(!isInDetailView && tooltipRecent) showCountryTooltip(tooltipCC);
 }
 
 function addCountryToWeeklySongs(CC) {

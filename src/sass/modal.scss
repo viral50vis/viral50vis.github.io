@@ -6,7 +6,7 @@
   height: 64px;
   padding: 10px;
   background-color: black;
-  color: b2b2b2;
+  color: #b2b2b2;
   border-radius: 2px 2px 0 0;
 }
 .modal-header span {
@@ -31,6 +31,7 @@
   width: calc(100% - 60px);
   height: calc(100% - 114px);
   overflow-y: scroll;
+  color: #fff;
 
   .flex-teamlist {
     display: flex;
