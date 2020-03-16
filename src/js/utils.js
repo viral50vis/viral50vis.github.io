@@ -187,8 +187,15 @@ function toggleDetailViewVisibility() {
   var isHidden = details.classed("detail-hidden");
   if (isHidden) {
     details.classed("detail-hidden", false);
+    // make sure the country tooltip is hidden
+    countryTooltip.classed("country-tooltip-hidden", true);
+    setTimeout(hideCountryTooltip, 500);
   } else {
     details.classed("detail-hidden", true);
+    // let tooltip be shown on map after zooming out is almost done
+    setTimeout(function(){
+      countryTooltip.classed("country-tooltip-hidden", false);
+    }, 1100);
   }
 }
 

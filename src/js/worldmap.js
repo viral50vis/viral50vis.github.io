@@ -2,16 +2,20 @@ var world = d3.select("#world").append("svg");
 var g = world.append("g");
 var worldWidth = parseInt(d3.select(".Root__main-view").style("width"));
 var worldHeight = parseInt(d3.select(".Root__main-view").style("height"));
-var countryTooltip = d3.select("#world")
-  .append("div").attr("class", "country-tooltip");
+var countryTooltip = d3
+  .select("#world")
+  .append("div")
+  .attr("class", "country-tooltip");
+var tooltipZoom;
+var tooltipCC;
 var tooltipRecent = false; // boolean to prevent stuck tooltip
 
 var worldProjection = d3
   .geoMercator()
   .rotate([-12, 0, 0])
   .center([0, 0])
-  .scale(worldHeight / 1.3 / Math.PI)
-  .translate([worldWidth / 2, worldHeight / 1.5]);
+  .scale(worldHeight / 1.17 / Math.PI)
+  .translate([worldWidth / 2, worldHeight / 1.7]);
 var worldGraticule = d3.geoGraticule();
 
 var worldPath = d3.geoPath().projection(worldProjection);
@@ -22,6 +26,12 @@ var zoom = d3
   .scaleExtent([1, 7])
   .on("zoom", function() {
     var t = d3.event.transform;
+
+    // adapt tooltip zoom to map zoom and scale it accordingly
+    updateTooltipScale(t.k);
+
+    // update the shown tooltip (scale of) as zoom is happening
+    if (tooltipRecent) showCountryTooltip(tooltipCC);
 
     var w_max = 0;
     var w_min = worldWidth * (1 - t.k);
@@ -35,6 +45,7 @@ var zoom = d3
   });
 
 world.call(zoom);
+updateTooltipScale(1);
 
 function generateWorldMap(worldJSON) {
   /* Countries */
@@ -54,10 +65,12 @@ function generateWorldMap(worldJSON) {
       if (d3.select(this).classed("countryIsInCurrentData")) {
         highlightCountryInList(d.id, true);
         highlightCountryOnMap(d.id, true);
-        setTimeout(function(){ hideCountryTooltip(); }, 500);
+        setTimeout(function() {
+          hideCountryTooltip();
+        }, 500);
         tooltipRecent = true;
         showCountryTooltip(d.id);
-      }else{
+      } else {
         // country outside of data so tooltip shouldn't show
         hideCountryTooltip();
       }
@@ -121,7 +134,7 @@ function highlightCountryOnMap(CC, highlit) {
       .classed("countryHighlight", true)
       .attr("id", CC + "-highlit")
       .attr("transform", d3.select("." + CC).attr("transform"));
-  } // remove the higlighting and tooltip 
+  } // remove the higlighting and tooltip
   else {
     d3.select("#" + CC + "-highlit").remove();
     tooltipRecent = false;
@@ -172,30 +185,48 @@ function zoomOutCountryHideDetail(CC) {
     .call(zoom.transform, d3.zoomIdentity.scale(1));
 }
 
-function showCountryTooltip(CC){
+function showCountryTooltip(CC) {
+  tooltipCC = CC;
   // round the data attribute to 3 decimal places
   ttData = data_attrs[dataWeek][CC][currentAttribute].toFixed(3);
+  ttAttrName =
+    currentAttribute.charAt(0).toUpperCase() + currentAttribute.substring(1);
+  ttAttrHtml = ttAttrName + ": " + ttData;
   // show country name and its data
-  countryTooltip
-    .html("<strong>" +countryCCJSON[CC] + "</strong><br>" + ttData);
+  countryTooltip.html(
+    "<strong>" + countryCCJSON[CC] + "</strong><br>" + ttAttrHtml
+  );
   // fade the tooltip in
   countryTooltip
     .transition()
     .delay(200)
     .duration(200)
     .style("opacity", "0.8");
-  // center tooltip horizontally on mouse and place it above
+  // adapt the size of tooltip according to zoom
+  countryTooltip.style(
+    "transform",
+    "scale(" + tooltipZoom + "," + tooltipZoom + ")"
+  );
+  // get the current height and width of the tooltip
   h = countryTooltip.style("height").slice(0, -2);
   w = countryTooltip.style("width").slice(0, -2);
-  x = d3.event.layerX - w/2;
+  // center tooltip horizontally on mouse and place it above
+  x = d3.event.layerX - w / 2;
   y = d3.event.layerY - h;
-  countryTooltip
-    .style("left", x+"px")
-    .style("top", y+"px");
+  countryTooltip.style("left", x + "px").style("top", y + "px");
 }
 
-function hideCountryTooltip(){
-  if(!tooltipRecent)
-  countryTooltip
-    .style("opacity", "0");
+function hideCountryTooltip() {
+  if (!tooltipRecent) countryTooltip.style("opacity", "0");
+}
+
+function updateTooltipScale(zoom) {
+  // scale the tooltip according to screen height
+  screenBaseScale = Math.abs((worldHeight - 780) / 195);
+  // adapt tooltip zoom to map zoom and scale it accordingly
+  tooltipZoom =
+    (Math.log(zoom * 3) / (2.7 * 2.25 * Math.abs((800 - worldHeight) / 1080))) *
+    screenBaseScale;
+  // never scale down
+  if (tooltipZoom < 1) tooltipZoom = 1;
 }

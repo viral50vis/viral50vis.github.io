@@ -23,7 +23,7 @@
 .country-tooltip {
   opacity: 0;
   position: absolute;
-  padding: 6px 6px 2px;
+  padding: 4px 6px 4px;
   min-width: 30px;
   font-size: 11px;
   line-height: 13px;
@@ -32,4 +32,9 @@
   border-radius: 6px;
   z-index: 10;
   pointer-events: none;
+  visibility: visible;
+}
+
+.country-tooltip-hidden {
+  visibility: hidden;
 }
