@@ -493,9 +493,9 @@ d3.select("#legend-return-label")
   .attr("class", "fas fa-chevron-left");
 
 d3.select("#close-detail").on("click", function(d) {
-  var tmpList = countriesWithData.slice(0);
+  var tmpList = selectedCountries.slice(0);
   tmpList.forEach(function(CC) {
-    countriesWithData.splice(countriesWithData.indexOf(CC), 1);
+    selectedCountries.splice(selectedCountries.indexOf(CC), 1);
     d3.select("#country-list-" + CC).style("color", null);
     removeCountryFromDetailView(CC);
     clearSelectedSongs();
@@ -654,6 +654,8 @@ function highlight(key) {
 function dehighlight() {
   d3.selectAll(".chart-element")
     .style("opacity", 1);
-  d3.selectAll(".chart-dot")
-    .style("opacity", (d3.select(this).classed("focus") ? 0.8 : 0.5));
+  d3.selectAll(".chart-dot.focus")
+    .style("opacity", 0.8);
+  d3.selectAll(".chart-dot.nonfocus")
+    .style("opacity", 0.5);
 }
