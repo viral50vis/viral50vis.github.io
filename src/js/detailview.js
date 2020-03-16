@@ -248,6 +248,7 @@ function deselectSong(song) {
         .remove();
     }
   });
+
   selectedSongs.splice(selectedSongs.indexOf(songAsKey), 1);
   clearSongColor(songAsKey);
   generateAttrBarChart();
@@ -271,7 +272,7 @@ function clearSelectedSongs() {
   songColors.forEach(function() {
     usedSongColors.push(false);
   });
-  d3.selectAll(".song-chip").remove();
+  d3.selectAll(".song-chip-bg").remove();
 
   d3.select(".weekly-song-list")
     .select("ol")
@@ -419,13 +420,15 @@ function generateAttrBarChart() {
       .attr("x2", innerWidth);
     this.append(l.node());
   });
-
   svg
     .append("g")
     .selectAll("g")
     .data(data)
     .enter()
     .append("g")
+    .attr("class", function(d, i) {
+        return i >= countriesWithData.length ? "songBarContianer" : "";
+    })
     .style("fill", function(d, i) {
       return colors(i);
     })
@@ -448,6 +451,24 @@ function generateAttrBarChart() {
     .attr("y", function(d) {
       return height - y(1 - d);
     });
+
+  svg.selectAll(".songBarContianer")
+    .selectAll("span")
+    .data(function(d) {
+      return d;
+    })
+    .enter()
+    .append("foreignObject")
+    .attr("width", x1.bandwidth())
+    .attr("height", function(d) {
+      return y(1 - d);
+    })
+    .attr("x", function(d, i) {
+      return x0(i);
+    })
+    .attr("y", function(d) {
+      return height - y(1 - d);
+    });    
 
   svg
     .append("g")
@@ -550,14 +571,16 @@ function addSongLegendChip(song) {
   var songAsKey = JSON.stringify(song);
   var color = getSongColor(songAsKey);
   var shouldInvertChip = invertChip[songColors.indexOf(color)];
+
   var chip = d3
     .select("#song-legend-wrapper")
+    .append("div").attr("id", "legend-chip-" + getStyleFriendlySongString(song))
+    .style("background", color)
+    .attr("class", "song-chip-bg")
     .append("div")
-    .attr("id", "legend-chip-" + getStyleFriendlySongString(song))
     .classed("legend-chip", true)
     .classed("chip-inverted", invertChip)
     .classed("song-chip", true)
-    .style("background", color)
     .on("mouseover", function() {
       //highlightColor(color);
     })
