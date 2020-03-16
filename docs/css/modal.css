@@ -13,8 +13,8 @@
           align-items: center;
   height: 64px;
   padding: 10px;
-  background-color: #39a847;
-  color: black;
+  background-color: black;
+  color: #b2b2b2;
   border-radius: 2px 2px 0 0;
 }
 
@@ -25,35 +25,98 @@
 }
 
 /* line 15, src/sass/modal.scss */
-.modal-header h4 {
+.modal-header h2 {
   margin: 0;
+  padding: 4px 0 2px 20px;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
 }
 
 /* Modal Body */
-/* line 20, src/sass/modal.scss */
+/* line 27, src/sass/modal.scss */
 .modal-body {
-  padding: 10px;
+  padding: 30px;
+  padding-top: 0;
   border-radius: 0 0 2px 2px;
-  width: calc(100% - 20px);
-  height: calc(100% - 104px);
+  width: calc(100% - 60px);
+  height: calc(100% - 114px);
   overflow-y: scroll;
+  color: #fff;
 }
 
-/* line 27, src/sass/modal.scss */
+/* line 36, src/sass/modal.scss */
+.modal-body .flex-teamlist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-left: 24px;
+}
+
+/* line 42, src/sass/modal.scss */
+.modal-body .flex-teamlist div {
+  margin-bottom: 20px;
+}
+
+/* line 44, src/sass/modal.scss */
+.modal-body .flex-teamlist div p {
+  margin: 0;
+  padding: 4px 0 2px 0;
+  position: relative;
+  font-size: 12px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
+/* line 55, src/sass/modal.scss */
+.modal-body .flex-teamlist div img {
+  border: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 4px;
+}
+
+/* line 62, src/sass/modal.scss */
+.modal-body .flex-teamlist div ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 66, src/sass/modal.scss */
+.modal-body .flex-teamlist div ul li {
+  position: relative;
+  font-size: 10px;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
+/* line 78, src/sass/modal.scss */
 .modal-body img {
   border: 1px solid black;
   width: calc(100% - 20px);
 }
 
-/* line 32, src/sass/modal.scss */
-#about-button,
+/* line 83, src/sass/modal.scss */
+#information-button,
 #background-button,
 #team-button {
   cursor: pointer;
 }
 
-/* line 38, src/sass/modal.scss */
-.about-close,
+/* line 89, src/sass/modal.scss */
+.information-close,
 .background-close,
 .team-close {
   cursor: pointer;
@@ -61,13 +124,13 @@
 }
 
 /* Modal Content */
-/* line 46, src/sass/modal.scss */
+/* line 97, src/sass/modal.scss */
 .modal-content {
   display: none;
   position: absolute;
-  background-color: #fefefe;
+  background-color: #3a3a3a;
   z-index: 99;
-  top: 10%;
+  top: 8%;
   left: 0;
   right: 0;
   margin: auto;
@@ -83,13 +146,32 @@
           animation-duration: 0.4s;
 }
 
+/* line 116, src/sass/modal.scss */
+.modal-body h2 {
+  margin: 0;
+  margin-top: 30px;
+  padding: 4px 0 2px 0;
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: bold;
+}
+
+/* line 128, src/sass/modal.scss */
+.modal-body p {
+  margin: 0;
+  padding: 4px 0 2px 24px;
+}
+
 @-webkit-keyframes animatetop {
   from {
     top: -300px;
     opacity: 0;
   }
   to {
-    top: 10%;
+    top: 8%;
     opacity: 1;
   }
 }
@@ -100,12 +182,12 @@
     opacity: 0;
   }
   to {
-    top: 10%;
+    top: 8%;
     opacity: 1;
   }
 }
 
-/* line 75, src/sass/modal.scss */
+/* line 143, src/sass/modal.scss */
 #overlay {
   display: none;
   width: 100%;

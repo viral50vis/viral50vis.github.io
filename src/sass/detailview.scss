@@ -57,11 +57,11 @@
 
         /* Change the outline of unchecked boxes  */
         /* (Checked box has green color from CDN) */
-        label:not(.is-checked) > span.mdl-checkbox__box-outline{
+        label:not(.is-checked) > span.mdl-checkbox__box-outline {
           border: 2px solid rgba(#282828, 0.5);
         }
 
-        label > span.mdl-checkbox__box-outline{
+        label > span.mdl-checkbox__box-outline {
           border-radius: 10px;
         }
 
@@ -69,7 +69,17 @@
           font-size: 14px;
         }
       }
+    }
 
+    #center-legend-container {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      align-items: center;
     }
 
     .Detail__weekly-songs {
@@ -349,9 +359,9 @@
   background-color: #282828;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
-  height: 25px;
-  padding: 4px 10px 4px;
-  margin: 5px;
+  height: 28px;
+  padding: 5px 10px 0px 10px;
+  margin: 0px 5px 5px 5px;
   display: inline-block;
 
   &.chip-inverted {
@@ -364,14 +374,21 @@
 }
 
 /* Return button (container and label) */
-#close-detail{
+#close-detail {
   cursor: pointer;
+  height: 50px;
+  border-radius: 50%;
+  padding: 0 12px 0 8px;
+  margin-bottom: 0;
 }
 #legend-return-label {
-  width: 60px;
-  i{
-    float: left;
-    margin-top: 3px;
+  width: 30px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  i {
+    font-size: 30px;
   }
 }
 
@@ -409,4 +426,31 @@
 
 .chart-element {
   transition: opacity 0.4s ease;
+}
+  
+foreignObject {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    rgba(53, 59, 72, 0.3) 5px,
+    rgba(53, 59, 72, 0.3) 10px
+  );
+}
+
+.song-chip-bg {
+  border-radius: 20px !important;
+  margin: 0px 5px 5px 5px;
+  display: inline-block;
+}
+
+.song-chip {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    rgba(53, 59, 72, 0.3) 5px,
+    rgba(53, 59, 72, 0.3) 10px
+  ) !important;
+  margin: 0px;
 }

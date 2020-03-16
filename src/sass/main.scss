@@ -4,11 +4,13 @@
 @import "time_anim_control.scss";
 @import "timeslider.scss";
 @import "attr_list.scss";
+@import "info_button.scss";
 @import "country_list.scss";
 @import "detailview.scss";
 @import "linechart.scss";
 @import "variables.scss";
 @import "tooltip.scss";
+@import "loading.scss";
 
 /* Layout */
 html,
@@ -45,6 +47,7 @@ body {
   grid-template-columns: auto 1fr;
   grid-template-areas: "country-list main-view" "time-anim-control timeslider-bar";
   background-color: $Root__wrapper_background;
+  z-index: 0;
 
   .Root__country-list,
   .Root__main-view {

@@ -4,7 +4,7 @@ var legendLabels = {
   danceability: ["Low danceability", "High danceability"],
   energy: ["Calm music", "Energetic music"],
   instrumentalness: ["Vocal tracks", "Instrumental tracks"],
-  liveness: ["Studio", "Live audience"],
+  liveness: ["Studio recorded", "Live audience"],
   speechiness: ["Low speechiness", "High speechiness"],
   valence: ["Negative tone", "Positive tone"]
 };
@@ -15,7 +15,7 @@ function updateLegend(data, minimum, maximum) {
   var max = maximum[currentAttribute];
   var c1 = calculateColorFromValue(min, min, max, minColor, maxColor);
   var c2 = calculateColorFromValue(max, min, max, minColor, maxColor);
-  var continuous = labels.length == 2;
+  var continuous = (labels.length == 2);
 
   d3.select("#legend-label-container")
     .selectAll("div")
@@ -33,11 +33,13 @@ function updateLegend(data, minimum, maximum) {
     }))
     .text((function(d) {
       var value = "";
-      if (continuous)
+      if (continuous){
         value =
           " (" +
           (labels.indexOf(d) == 0 ? min.toFixed(2) : max.toFixed(2)) +
-          ")";
+          ") ";
+        return (labels.indexOf(d) == 0) ? (value + d) : (d + value);
+      }
       return d;
     }));
 

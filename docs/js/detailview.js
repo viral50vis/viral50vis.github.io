@@ -1,5 +1,6 @@
 /*! viral-50 v0.0.1 | (c) 2020 Erik Båvenstrand | MIT License | https://github.com/ErikBavenstrand/DH2321-Spotify-Project */
 var selectedSongs = [];
+var globalSelected = false;
 
 // map containing the song:colorIdx relation
 var songToColorMap = {};
@@ -35,6 +36,8 @@ function changeWeekDetailView() {
   }));
   if (isInDetailView) changeLineChartWeek();
   generateAttrBarChart();
+  // update tooltip if changing week on worldmap
+  if (!isInDetailView && tooltipRecent) showCountryTooltip(tooltipCC);
 }
 
 function addCountryToWeeklySongs(CC) {
@@ -111,10 +114,13 @@ function removeCountryFromWeeklySongs(CC) {
     selectedCountries.length > 0 &&
     !songListNav.selectAll("div").classed("active")
   ) {
+    /* Commented out to solve song list bug of two countries
+          being selected at once
     songListNav.select("div").classed("active", true);
     d3.select("#weekly-songs-list-window")
       .select("div")
       .classed("weekly-song-list-wrapper-hidden", false);
+      */
   }
 }
 
@@ -223,6 +229,18 @@ function changeWeeklySongsWeek(CC) {
       .attr("target", "_blank");
     // add fontawesome's icon for external links
     songLink.append("i").attr("class", "fas fa-external-link-alt");
+    if (selectedSongs.length === 3) {
+      d3.selectAll(".song-entry-wrapper").each((function() {
+        d3.select(this.parentNode).classed("noSelect", true);
+      }));
+      d3.selectAll(".selected-song").each((function() {
+        d3.select(this.parentNode).classed("noSelect", false);
+      }));
+    } else {
+      d3.selectAll(".song-entry-wrapper").each((function() {
+        d3.select(this.parentNode).classed("noSelect", false);
+      }));
+    }
   } else {
   }
 }
@@ -247,6 +265,7 @@ function deselectSong(song) {
         .remove();
     }
   }));
+
   selectedSongs.splice(selectedSongs.indexOf(songAsKey), 1);
   clearSongColor(songAsKey);
   generateAttrBarChart();
@@ -270,7 +289,7 @@ function clearSelectedSongs() {
   songColors.forEach((function() {
     usedSongColors.push(false);
   }));
-  d3.selectAll(".song-chip").remove();
+  d3.selectAll(".song-chip-bg").remove();
 
   d3.select(".weekly-song-list")
     .select("ol")
@@ -330,14 +349,26 @@ function generateAttrBarChart() {
 
   var data = d3.range(n).map((function(i) {
     return d3.range(m).map((function(j) {
-      if (i < countriesWithData.length)
+      if (i < countriesWithData.length) {
         return data_attrs[dataWeek][countriesWithData[i]][attrs[j]];
-      else
+      } else {
         return JSON.parse(selectedSongs[i - countriesWithData.length])[
           attrs[j]
         ];
+      }
     }));
   }));
+
+  var globalDataIndex = -1;
+  if (globalSelected) {
+    n += 1;
+    var globalData = d3.range(attrs.length).map((function(i) {
+      return data_attrs[dataWeek]["GLO"][attrs[i]];
+    }));
+    data.splice(countriesWithData.length, 0, globalData);
+  }
+
+  globalDataIndex = data.indexOf(globalData);
 
   var margin = { top: 20, right: 30, bottom: 30, left: 40 };
   var width =
@@ -378,6 +409,7 @@ function generateAttrBarChart() {
       colorIdx = chartCountryLines[i].color;
       return countryColors[colorIdx];
     } else {
+      if (globalSelected) i -= 1;
       return getSongColor(selectedSongs[i - selCs]);
     }
   };
@@ -418,14 +450,25 @@ function generateAttrBarChart() {
       .attr("x2", innerWidth);
     this.append(l.node());
   }));
-
   svg
     .append("g")
     .selectAll("g")
     .data(data)
     .enter()
     .append("g")
+    .attr("class", (function(d, i) {
+      if (i >= countriesWithData.length) {
+        if (globalSelected && globalDataIndex === i) {
+          return "";
+        } else {
+          return "songBarContianer";
+        }
+      }
+    }))
     .style("fill", (function(d, i) {
+      if (globalSelected && globalDataIndex === i) {
+        return "#fff";
+      }
       return colors(i);
     }))
     .attr("transform", (function(d, i) {
@@ -437,6 +480,25 @@ function generateAttrBarChart() {
     }))
     .enter()
     .append("rect")
+    .attr("width", x1.bandwidth())
+    .attr("height", (function(d) {
+      return y(1 - d);
+    }))
+    .attr("x", (function(d, i) {
+      return x0(i);
+    }))
+    .attr("y", (function(d) {
+      return height - y(1 - d);
+    }));
+
+  svg
+    .selectAll(".songBarContianer")
+    .selectAll("span")
+    .data((function(d) {
+      return d;
+    }))
+    .enter()
+    .append("foreignObject")
     .attr("width", x1.bandwidth())
     .attr("height", (function(d) {
       return y(1 - d);
@@ -478,26 +540,30 @@ d3.select("#close-detail").on("click", (function(d) {
 
 /* Functions and code for showing global
     data in linechart */
-function toggleGlobalLineDetailView(){
+function toggleGlobalLineDetailView() {
   toggleGlobalLine();
+
+  globalSelected = !globalSelected;
+  generateAttrBarChart();
 }
 
 var globalContainer = d3
   .select(".Detail__legend-to-plots")
-    .select("#global-checkbox")
-    .classed("global-checkbox-div", true)
-      .append("label")
-      .attr("for", "globalCheck")
-      .attr("class", "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect");
+  .select("#global-checkbox")
+  .classed("global-checkbox-div", true)
+  .append("label")
+  .attr("for", "globalCheck")
+  .attr("class", "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect");
 
 var globalCheckbox = globalContainer
   .append("input")
-    .attr("type", "checkbox")
-    .attr("id", "globalCheck")
-    .classed("mdl-checkbox__input", true)
-    .on("change", toggleGlobalLineDetailView);
+  .attr("type", "checkbox")
+  .attr("id", "globalCheck")
+  .classed("mdl-checkbox__input", true)
+  .on("change", toggleGlobalLineDetailView);
 
-globalContainer.append("span")
+globalContainer
+  .append("span")
   .classed("global-checkbox-label", true)
   .classed("mdl-checkbox__label", true)
   .text("Global");
@@ -548,14 +614,17 @@ function addSongLegendChip(song) {
   var songAsKey = JSON.stringify(song);
   var color = getSongColor(songAsKey);
   var shouldInvertChip = invertChip[songColors.indexOf(color)];
+
   var chip = d3
     .select("#song-legend-wrapper")
     .append("div")
     .attr("id", "legend-chip-" + getStyleFriendlySongString(song))
+    .style("background", color)
+    .attr("class", "song-chip-bg")
+    .append("div")
     .classed("legend-chip", true)
     .classed("chip-inverted", invertChip)
     .classed("song-chip", true)
-    .style("background", color)
     .on("mouseover", (function() {
       //highlightColor(color);
     }))
