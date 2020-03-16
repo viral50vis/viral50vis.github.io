@@ -282,6 +282,19 @@ function deselectSong(song) {
   d3.select("#weekly-songs-selected").text(function() {
     return "(" + selectedSongs.length + "/3";
   });
+
+  if (selectedSongs.length === 3) {
+    d3.selectAll(".song-entry-wrapper").each(function() {
+      d3.select(this.parentNode).classed("noSelect", true);
+    });
+    d3.selectAll(".selected-song").each(function() {
+      d3.select(this.parentNode).classed("noSelect", false);
+    });
+  } else {
+    d3.selectAll(".song-entry-wrapper").each(function() {
+      d3.select(this.parentNode).classed("noSelect", false);
+    });
+  }
 }
 
 function deselectCountry(CC) {
@@ -308,6 +321,18 @@ function clearSelectedSongs() {
   d3.select("#weekly-songs-selected").text(function() {
     return "(" + selectedSongs.length + "/3";
   });
+  if (selectedSongs.length === 3) {
+    d3.selectAll(".song-entry-wrapper").each(function() {
+      d3.select(this.parentNode).classed("noSelect", true);
+    });
+    d3.selectAll(".selected-song").each(function() {
+      d3.select(this.parentNode).classed("noSelect", false);
+    });
+  } else {
+    d3.selectAll(".song-entry-wrapper").each(function() {
+      d3.select(this.parentNode).classed("noSelect", false);
+    });
+  }
 }
 
 function getSongColor(songAsKey) {
