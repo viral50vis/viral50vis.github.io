@@ -9,6 +9,7 @@ var informationSpan = document.getElementsByClassName("information-close")[0];
 
 informationButton.onclick = function() {
   //toggleDrawer();
+  tooltipRecent = false;
   informationModal.style.display = "block";
   overlay.style.display = "block";
 };

@@ -75,7 +75,7 @@ var lineModel = d3
   }))
   .curve(d3.curveLinear); // strict straight lines between each data point
 
-/* 
+/*
   ==================================
   ==========-FUNCTIONS-=============
   ==================================
@@ -118,7 +118,7 @@ function changeLineChartAttribute() {
   // if global data is already loaded, reload
   // it with the new attribute
   if(globalLine.length == 1)
-    loadGlobalLineData(); 
+    loadGlobalLineData();
 
   prevCountryLines = chartCountryLines;
   // empty the array with countries' line data
@@ -292,7 +292,7 @@ function drawLine(lineObj) {
   // append the line itself
   chart
     .append("path")
-    .attr("class", "line")
+    .attr("class", "line line-loaded chart-element chart-element-" + lineObj.CC)
     .classed("line-loaded", true)
     .attr("stroke", global ? lineObj.color : countryColors[lineObj.color])
     .data([lineObj.data])
@@ -323,7 +323,7 @@ function addDataPointDots(lineObj) {
     .data(lineObj.data)
     .enter()
     .append("circle")
-    .attr("class", "chart-dot") // Assign a class for styling
+    .attr("class", "chart-dot chart-element-" + lineObj.CC) // Assign a class for styling
     .attr("opacity", "0.5")
     .attr("cx", (function(d) {
       return xScale(d.x);
