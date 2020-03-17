@@ -171,7 +171,6 @@ function changeWeeklySongsWeek(CC) {
         var songAsKey = JSON.stringify(d);
         if (selectedSongs.includes(songAsKey)) {
           deselectSong(d);
-          dehighlight();
         } else {
           if (selectedSongs.length < 3) {
             // find an unused color for the song and save the mapping
@@ -286,6 +285,10 @@ function deselectSong(song) {
   d3.select("#weekly-songs-selected").text((function() {
     return "(" + selectedSongs.length + "/3";
   }));
+
+  // remove filtering opacities
+  dehighlight();
+
 }
 
 function deselectCountry(CC) {
@@ -304,10 +307,15 @@ function clearSelectedSongs() {
   }));
   d3.selectAll(".song-chip-bg").remove();
 
+  /*
   d3.select(".weekly-song-list")
     .select("ol")
     .selectAll("li")
     .classed("noSelect", false);
+    */
+  d3.selectAll(".song-entry-wrapper").each((function() {
+    d3.select(this.parentNode).classed("noSelect", false);
+  }));
 
   d3.select("#weekly-songs-selected").text((function() {
     return "(" + selectedSongs.length + "/3";
@@ -497,7 +505,7 @@ function generateAttrBarChart() {
           for(var j = 0; j < songAttrs.length; j++){
             filtered = songAttrs[j].filter((function(d2, i){
               return (d2 == barData[i]);
-            }))
+            }));
             if(songAttrs[j].length == filtered.length)
               k = j;
           }
@@ -722,10 +730,15 @@ function addSongLegendChip(song) {
 
 function removeSongLegendChip(song) {
   d3.select("#legend-chip-" + getStyleFriendlySongString(song)).remove();
+  d3.selectAll(".song-entry-wrapper").each((function() {
+    d3.select(this.parentNode).classed("noSelect", false);
+  }));
+  /*
   d3.select(".weekly-song-list")
     .select("ol")
     .selectAll("li")
     .classed("noSelect", false);
+    */
 }
 
 function getStyleFriendlySongString(song) {
