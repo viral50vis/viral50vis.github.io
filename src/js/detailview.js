@@ -356,6 +356,7 @@ function generateAttrBarChart() {
   var m = attrs.length;
   var n = countriesWithData.length + selectedSongs.length + globalLine.length;
 
+  // get the attribute data for each country, song and global selected
   var data = d3.range(n).map(function(i) {
     return d3.range(m).map(function(j) {
       var selCs = countriesWithData.length;
@@ -369,17 +370,7 @@ function generateAttrBarChart() {
     });
   });
 
-  var globalDataIndex = -1;
-  if (globalSelected) {
-    n += 1;
-    var globalData = d3.range(attrs.length).map(function(i) {
-      return data_attrs[dataWeek]["GLO"][attrs[i]];
-    });
-    data.splice(countriesWithData.length, 0, globalData);
-  }
-
-  globalDataIndex = data.indexOf(globalData);
-
+  // set dimensions of bar chart
   var margin = { top: 20, right: 30, bottom: 30, left: 40 };
   var width =
     d3
@@ -396,6 +387,7 @@ function generateAttrBarChart() {
     margin.top -
     margin.bottom;
 
+  // set up x- and y-axis with scales
   var y = d3
     .scaleLinear()
     .domain([0, 1])
@@ -411,10 +403,9 @@ function generateAttrBarChart() {
     .domain(d3.range(n))
     .range([0, x0.bandwidth() - 30]);
 
-  //var colors = d3.scaleOrdinal().range(songColors.slice(0, n));
+  var selCs = countriesWithData.length;
+  var selSo = selectedSongs.length;
   var colors = function(i) {
-    var selCs = countriesWithData.length;
-    var selSo = selectedSongs.length;
     // the color is for a country
     if (i < selCs) {
       var colorIdx = chartCountryLines[i].color;
@@ -428,10 +419,12 @@ function generateAttrBarChart() {
       return "#fff";
   };
 
+  // remove previous version of bar chart
   d3.select("#attr-barchart-wrapper")
     .selectAll("svg")
     .remove();
 
+  // recreate the container
   var svg = d3
     .select("#attr-barchart-wrapper")
     .append("svg")
@@ -440,11 +433,13 @@ function generateAttrBarChart() {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  // add y-axis
   svg
     .append("g")
     .call(d3.axisLeft(y))
     .classed("y axis", true);
 
+  // format the tick text
   svg
     .selectAll("g.tick")
     .filter(function(d) {
@@ -455,6 +450,7 @@ function generateAttrBarChart() {
     .select("text")
     .classed("attribute-text", true);
 
+  // create light gridlines in the background
   var yTicks = svg.selectAll(".y.axis > .tick");
   yTicks.each(function() {
     var l = d3
@@ -465,6 +461,7 @@ function generateAttrBarChart() {
     this.append(l.node());
   });
 
+  // add the bars themselves and style according to its category
   var id = d3.local();
   svg
     .append("g")
@@ -473,17 +470,15 @@ function generateAttrBarChart() {
     .enter()
     .append("g")
     .attr("class", function(d, i) {
-      if (i >= countriesWithData.length) {
-        if (globalSelected && globalDataIndex === i) {
+      if (i >= selCs) {
+        if (globalSelected && i === data.length-1) {
           return "";
         } else {
-          return "songBarContianer";
+          return "songBarContainer";
         }
       }
     })
     .style("fill", function(d, i) {
-      var selCs = countriesWithData.length;
-      var selSo = selectedSongs.length;
       if (i < selCs)
         id.set(this, selectedCountries[i]);
       else if (i - selCs < selSo)
@@ -515,14 +510,16 @@ function generateAttrBarChart() {
       return height - y(1 - d);
     });
 
+  // add stripes to bars belonging to songs
   svg
-    .selectAll(".songBarContianer")
+    .selectAll(".songBarContainer")
     .selectAll("span")
     .data(function(d) {
       return d;
     })
     .enter()
     .append("foreignObject")
+    .classed("song-bar-stripes", true)
     .attr("width", x1.bandwidth())
     .attr("height", function(d) {
       return y(1 - d);
@@ -534,11 +531,13 @@ function generateAttrBarChart() {
       return height - y(1 - d);
     });
 
+  // add x-axis with attribute labels
   svg
     .append("g")
     .attr("transform", "translate(-15," + height + ")")
     .call(
       d3.axisBottom(x0).tickFormat(function(d) {
+        // first letter capitalized
         var formatted = attrs[d][0].toUpperCase() + attrs[d].slice(1);
         return formatted;
       })
@@ -568,7 +567,9 @@ function toggleGlobalLineDetailView(){
   toggleGlobalLine();
   globalSelected = !globalSelected;
   generateAttrBarChart();
-  highlight("GLO");
+  if(globalSelected)
+    highlight("GLO");
+  else dehighlight();
 }
 
 var globalContainer = d3
@@ -578,7 +579,8 @@ var globalContainer = d3
     .classed("chart-element", true)
     .classed("chart-element-GLO", true)
     .on("mouseover", function() {
-      highlight("GLO");
+      if(globalSelected)
+        highlight("GLO");
     })
     .on("mouseout", function() {
       dehighlight();
@@ -647,7 +649,8 @@ function removeCountryLegendChip(CC) {
 function addSongLegendChip(song) {
   var songAsKey = JSON.stringify(song);
   var color = getSongColor(songAsKey);
-  var shouldInvertChip = invertChip[songColors.indexOf(color)];
+  // +3 because countries occupy first 3 indices in invertChip
+  var shouldInvertChip = invertChip[songToColorMap[songAsKey] + 3];
 
   var chip = d3
     .select("#song-legend-wrapper")
@@ -659,7 +662,8 @@ function addSongLegendChip(song) {
     .classed("song-chip-bg", true)
     .append("div")
     .classed("legend-chip", true)
-    .classed("chip-inverted", invertChip)
+    .classed("chip-normal", !shouldInvertChip)
+    .classed("chip-inverted", shouldInvertChip)
     .classed("song-chip", true)
     .on("mouseover", function() {
       highlight(getStyleFriendlySongString(songAsKey));
@@ -676,7 +680,7 @@ function addSongLegendChip(song) {
   chip
     .append("div")
     .classed("legend-chip-remove", true)
-    .classed("chip-remove-inverted", invertChip)
+    .classed("chip-remove-inverted", shouldInvertChip)
     .text("×")
     .on("click", function() {
       deselectSong(song);

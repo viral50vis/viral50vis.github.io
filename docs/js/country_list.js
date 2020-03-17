@@ -22,12 +22,19 @@ function loadCountryList(data, cNames) {
       }
       countryClickSelection(d);
       checkToggleListClickability();
+      if (selectedCountries.includes(d))
+        highlight(d);
+      else
+        dehighlight();
     }))
     .on("mouseover", (function(d, i) {
       highlightCountryOnMap(d, true);
+      if (selectedCountries.includes(d))
+        highlight(d);
     }))
     .on("mouseout", (function(d, i) {
       highlightCountryOnMap(d, false);
+      dehighlight();
     }));
 
   /* Insert span into li */
