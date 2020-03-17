@@ -736,14 +736,36 @@ function getStyleFriendlySongString(song) {
 }
 
 function highlight(key) {
-  d3.selectAll(".chart-element")
-    .style("opacity", function() {
-      return (d3.select(this).classed("chart-element-" + key) ? 1 : 0.2);
-    });
+  // special treatment for chart dots
   d3.selectAll(".chart-dot")
     .style("opacity", function() {
       var op = (d3.select(this).classed("focus") ? 0.8 : 0.5);
       return (d3.select(this).classed("chart-element-" + key) ? op : 0.1);
+    });
+
+  // all the other elements that belong to the charts
+  var elements = d3.selectAll(".chart-element");
+  // unfocused
+  elements.filter(function(){
+    return !d3.select(this).classed("chart-element-" + key);
+    })
+    .style("opacity", 0.2)
+    // the stripes are siblings to its bar => accessed via parent
+    .each(function(){
+      d3.select(this.parentNode)
+        .selectAll(".song-bar-stripes")
+        .style("opacity", 0.2);
+    });
+  // focused
+  elements.filter(function(){
+    return d3.select(this).classed("chart-element-" + key);
+    })
+    .style("opacity", 1)
+    // the stripes are siblings to its bar => accessed via parent
+    .each(function(){
+      d3.select(this.parentNode)
+        .selectAll(".song-bar-stripes")
+        .style("opacity", 1);
     });
 }
 
@@ -754,4 +776,6 @@ function dehighlight() {
     .style("opacity", 0.8);
   d3.selectAll(".chart-dot.nonfocus")
     .style("opacity", 0.5);
+  d3.selectAll(".song-bar-stripes")
+    .style("opacity", 1);
 }
