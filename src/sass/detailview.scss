@@ -427,24 +427,9 @@
 .chart-element {
   transition: opacity 0.4s ease;
 }
-  
-.song-bar-stripes {
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 5px,
-    rgba(59, 59, 59, 0.3) 5px,
-    rgba(59, 59, 59, 0.3) 10px
-  );
-}
 
-.song-chip-bg {
-  border-radius: 20px !important;
-  margin: 0px 5px 5px 5px;
-  display: inline-block;
-}
-
-.song-chip.chip-normal {
+/* Stripes for songs with non-inverted colors */
+@mixin song-stripes-normal {
   background: repeating-linear-gradient(
     45deg,
     transparent,
@@ -454,10 +439,8 @@
   ) !important;
   margin: 0px;
 }
-
-
-
-.song-chip.chip-inverted {
+/* Stripes for songs with inverted colors */
+@mixin song-stripes-inverted {
   background: repeating-linear-gradient(
     45deg,
     transparent,
@@ -466,4 +449,21 @@
     rgba(255, 255, 255, 0.3) 10px
   ) !important;
   margin: 0px;
+}
+
+
+/* Stripes of the bar chart and chips (songs) - normal */
+.song-bar-normal .song-bar-stripes, .song-chip.chip-normal {
+  @include song-stripes-normal();
+}
+
+/* Stripes of the bar chart and chips (songs) - inverted */
+.song-bar-inverted .song-bar-stripes, .song-chip.chip-inverted {
+  @include song-stripes-inverted();
+}
+
+.song-chip-bg {
+  border-radius: 20px !important;
+  margin: 0px 5px 5px 5px;
+  display: inline-block;
 }

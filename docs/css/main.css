@@ -1451,28 +1451,27 @@
   transition: opacity 0.4s ease;
 }
 
-/* line 431, src/sass/detailview.scss */
-.song-bar-stripes {
-  background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(59, 59, 59, 0.3) 5px, rgba(59, 59, 59, 0.3) 10px);
-}
-
-/* line 441, src/sass/detailview.scss */
-.song-chip-bg {
-  border-radius: 20px !important;
-  margin: 0px 5px 5px 5px;
-  display: inline-block;
-}
-
-/* line 447, src/sass/detailview.scss */
-.song-chip.chip-normal {
+/* Stripes for songs with non-inverted colors */
+/* Stripes for songs with inverted colors */
+/* Stripes of the bar chart and chips (songs) - normal */
+/* line 456, src/sass/detailview.scss */
+.song-bar-normal .song-bar-stripes, .song-chip.chip-normal {
   background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(59, 59, 59, 0.3) 5px, rgba(59, 59, 59, 0.3) 10px) !important;
   margin: 0px;
 }
 
-/* line 460, src/sass/detailview.scss */
-.song-chip.chip-inverted {
+/* Stripes of the bar chart and chips (songs) - inverted */
+/* line 461, src/sass/detailview.scss */
+.song-bar-inverted .song-bar-stripes, .song-chip.chip-inverted {
   background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255, 255, 255, 0.3) 5px, rgba(255, 255, 255, 0.3) 10px) !important;
   margin: 0px;
+}
+
+/* line 465, src/sass/detailview.scss */
+.song-chip-bg {
+  border-radius: 20px !important;
+  margin: 0px 5px 5px 5px;
+  display: inline-block;
 }
 
 /* Make the linechart container fill the entire grid container */

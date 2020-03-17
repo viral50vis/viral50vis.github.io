@@ -366,7 +366,7 @@ function generateAttrBarChart() {
       else if (i - selCs < selSo)
         return JSON.parse(selectedSongs[i - selCs])[attrs[j]];
       else
-        return data_attrs[dataWeek]["GLO"][attrs[j]];
+        return data_attrs[dataWeek].GLO[attrs[j]];
     });
   });
 
@@ -469,12 +469,41 @@ function generateAttrBarChart() {
     .data(data)
     .enter()
     .append("g")
-    .attr("class", function(d, i) {
+    .attr("class", function(barData, i) {
       if (i >= selCs) {
         if (globalSelected && i === data.length-1) {
           return "";
         } else {
-          return "songBarContainer";
+          // get all the song data to decide which should be inverted
+          songAttrs = selectedSongs.map(function(d2){
+            // array to fill
+            attrArray = [];
+            // convert the string into an object
+            d2 = JSON.parse(d2);
+            // filter out the attributes used in barchart
+            Object.keys(d2).forEach(function(key){
+              if(attributes.indexOf(key) !== -1)
+                attrArray.push(d2[key]);
+            });
+            return attrArray;
+          });
+
+          var k = -1;
+          // find the index of the data in selectedSongs
+          for(var j = 0; j < songAttrs.length; j++){
+            filtered = songAttrs[j].filter(function(d2, i){
+              return (d2 == barData[i]);
+            })
+            if(songAttrs[j].length == filtered.length)
+              k = j;
+          }
+          // get the index for the song's color in songColors
+          var colorIdx = songToColorMap[selectedSongs[k]];
+          // return class of the bar based on its invert status
+          if(invertChip[3 + colorIdx])
+            return "song-bar-container song-bar-inverted";
+          else
+            return "song-bar-container song-bar-normal";
         }
       }
     })
@@ -512,7 +541,7 @@ function generateAttrBarChart() {
 
   // add stripes to bars belonging to songs
   svg
-    .selectAll(".songBarContainer")
+    .selectAll(".song-bar-container")
     .selectAll("span")
     .data(function(d) {
       return d;
@@ -587,7 +616,7 @@ var globalContainer = d3
     })
     .append("label")
     .attr("for", "globalCheck")
-    .attr("class", "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect")
+    .attr("class", "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect");
 
 var globalCheckbox = globalContainer
   .append("input")

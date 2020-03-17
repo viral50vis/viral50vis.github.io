@@ -1,13 +1,13 @@
+var attributes = [
+  "danceability",
+  "energy",
+  "speechiness",
+  "acousticness",
+  "instrumentalness",
+  "liveness",
+  "valence"
+];
 function loadAttrList() {
-  var attributes = [
-    "danceability",
-    "energy",
-    "speechiness",
-    "acousticness",
-    "instrumentalness",
-    "liveness",
-    "valence"
-  ];
   var ul = d3.select("#attribute-ul");
   ul.selectAll("li")
     .data(attributes)
