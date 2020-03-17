@@ -26,6 +26,7 @@ function removeCountryFromDetailView(CC) {
   removeCountryFromWeeklySongs(CC);
   removeCountryFromLineChart(CC);
   removeCountryLegendChip(CC);
+  dehighlight();
   generateAttrBarChart();
 }
 
@@ -108,19 +109,21 @@ function removeCountryFromWeeklySongs(CC) {
   var songListNav = d3.select("#weekly-songs-list");
   d3.select("#weekly-songs-" + CC).remove();
   d3.select("#weekly-song-tab-" + CC).remove();
-
+  var activesLeft = false;
+  songListNav.selectAll("div").each(function(){
+    if(d3.select(this).classed("active"))
+      activesLeft = true;
+  });
   if (
-    selectedCountries.length > 0 &&
-    !songListNav.selectAll("div").classed("active")
+    selectedCountries.length > 0
   ) {
-    /* Commented out to solve song list bug of two countries
-          being selected at once
-    songListNav.select("div").classed("active", true);
-    d3.select("#weekly-songs-list-window")
-      .select("div")
-      .classed("weekly-song-list-wrapper-hidden", false);
-      */
-  }
+    if(!activesLeft){
+      songListNav.select("div").classed("active", true);
+      d3.select("#weekly-songs-list-window")
+        .select("div")
+        .classed("weekly-song-list-wrapper-hidden", false);
+      }
+    }
 }
 
 function changeWeeklySongsWeek(CC) {
